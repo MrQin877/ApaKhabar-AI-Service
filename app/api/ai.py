@@ -1,7 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
 
-from app.services.ai_service import OllamaService
+from app.services.ai_service import AIServiceError, OllamaService
 
 router = APIRouter()
 
@@ -12,9 +12,16 @@ class DocumentRequest(BaseModel):
 
 @router.post("/summarize")
 def summarize_document(req: DocumentRequest):
-
-    summary = OllamaService.summarize(req.content)
-
-    return {
-        "summary": summary
-    }
+    try:
+        summary = OllamaService.summarize(req.content)
+        return {"summary": summary}
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            detail=str(exc),
+        ) from exc
+    except AIServiceError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(exc),
+        ) from exc

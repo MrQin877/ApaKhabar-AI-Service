@@ -1,206 +1,176 @@
-import requests
-import json
 import re
+
+from ollama import Client, ResponseError
+from pydantic import BaseModel, ValidationError
+
+from app.core.config import get_settings
 from app.schemas.information import ExtractionResponse
+from app.schemas.news import CompletenessResult, NewsArticle, NewsLanguage
+
+
+class AIServiceError(RuntimeError):
+    """Raised when the local model cannot produce a usable response."""
+
 
 class OllamaService:
+    @staticmethod
+    def _client() -> Client:
+        settings = get_settings()
+        return Client(host=settings.ollama_base_url, timeout=120.0)
 
     @staticmethod
-    def extract_information(text: str):
+    def _structured_chat(
+        response_model: type[BaseModel],
+        system_prompt: str,
+        user_prompt: str,
+        temperature: float = 0,
+    ) -> BaseModel:
+        settings = get_settings()
+        try:
+            response = OllamaService._client().chat(
+                model=settings.ollama_generation_model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                format=response_model.model_json_schema(),
+                stream=False,
+                think=False,
+                options={"temperature": temperature},
+            )
+            return response_model.model_validate_json(response.message.content)
+        except ResponseError as exc:
+            raise AIServiceError(f"Ollama request failed: {exc}") from exc
+        except (ConnectionError, OSError) as exc:
+            raise AIServiceError("Ollama is unavailable.") from exc
+        except ValidationError as exc:
+            raise AIServiceError(
+                f"Ollama returned data that did not match {response_model.__name__}."
+            ) from exc
 
-        url = "http://localhost:11434/api/generate"
+    @staticmethod
+    def extract_information(text: str) -> dict:
+        if not text.strip():
+            raise ValueError("Document content cannot be empty.")
 
-        prompt_template = """
-        You are a professional information extraction and news structuring AI.
+        system_prompt = """
+You extract structured facts for a news-writing system.
 
-        Your job is to convert raw documents into HIGH-QUALITY structured information for a news system.
+Rules:
+- Extract only information explicitly supported by the document.
+- Never invent names, dates, amounts, quotations, or events.
+- Create multiple information items when the document contains distinct topics.
+- Use only the information types allowed by the response schema.
+- Write a concise title and a one-to-two sentence summary.
+- Add short topical labels such as education, finance, health, or emergency.
+- Put type-specific factual values in fields.
+- Add brief supporting quotes and their supplied source markers to evidence.
+- Use null for an individual value that is unknown; do not guess it.
+- Set confidence according to how clearly the document supports the item.
+""".strip()
 
-        You MUST follow ALL rules strictly.
-
-        ----------------------------------------------------
-        OUTPUT FORMAT (ONLY JSON):
-        ----------------------------------------------------:
-
-        {
-        "information": [
-            {
-            "type": "",
-            "title": "",
-            "summary": "",
-            "fields": {}
-            }
-        ]
-        }
-
-        ----------------------------------------------------
-        CRITICAL RULES:
-        ----------------------------------------------------
-
-        1. SUMMARY RULES:
-        - Must NOT be empty
-        - Must be 1–2 clear sentences
-        - Must be written in formal news style
-        - Must not repeat the title only
-
-        2. TYPE RULES:
-        Use ONLY these types:
-        - Meeting
-        - Finance
-        - Event
-        - Health
-        - Announcement
-        - Project
-        - Emergency
-        - Education
-        - General
-
-        If unsure → use "General"
-
-        3. FIELD RULES (VERY IMPORTANT):
-        - Extract ONLY factual information
-        - Normalize values properly
-
-        Examples:
-        - amount → always include currency (RM, USD, etc.)
-        - date → use readable format (e.g. 2026-06-15 if possible)
-        - location → clean location name only
-
-        Finance fields:
-        - amount
-        - purpose
-        - source
-
-        Meeting fields:
-        - date
-        - location
-        - decisions (if any)
-        - agenda (if any)
-
-        Event fields:
-        - date
-        - location
-        - organizer (if mentioned)
-
-        Health fields:
-        - date
-        - organization
-        - purpose
-
-        Announcement fields:
-        - date
-        - issuer
-        - topic
-
-        4. IMPORTANT RULES:
-        - NEVER leave summary empty
-        - NEVER leave fields empty if data exists
-        - NEVER add explanations outside JSON
-        - MUST extract multiple information items if present
-
-        ----------------------------------------------------
-        DOCUMENT:
-        ----------------------------------------------------
-
-        {text}
-        """
-
-        prompt = prompt_template.replace("{text}", text)
-
-        response = requests.post(
-            url,
-            json={
-                "model": "llama3.1",
-                "prompt": prompt,
-                "stream": False
-            }
+        validated = OllamaService._structured_chat(
+            ExtractionResponse,
+            system_prompt,
+            text,
         )
-
-        raw = response.json()["response"]
-
-        raw_json = OllamaService._safe_json(raw)
-
-        try:
-            validated = ExtractionResponse(**raw_json)
-            return validated.model_dump()
-        except Exception as e:
-
-            # STEP 2: auto fix attempt
-            fixed = OllamaService.fix_json_with_ai(raw)
-
-            try:
-                validated = ExtractionResponse(**fixed)
-                return validated.model_dump()
-
-            except Exception as e2:
-                return {
-                    "error": "Schema validation failed after retry",
-                    "details": str(e2),
-                    "raw_output": raw_json,
-                    "fixed_output": fixed
-                }
+        return validated.model_dump()
 
     @staticmethod
-    def _safe_json(text: str):
+    def check_news_completeness(text: str) -> CompletenessResult:
+        if not text.strip():
+            raise ValueError("Information cannot be empty.")
 
-        # 1. Try direct JSON parse
-        try:
-            return json.loads(text)
-        except:
-            pass
+        system_prompt = """
+You check whether supplied information is sufficient for a factual news draft.
 
-        # 2. Extract JSON inside ``` blocks
-        try:
-            match = re.search(r"```(?:json)?(.*?)```", text, re.DOTALL)
-            if match:
-                return json.loads(match.group(1).strip())
-        except:
-            pass
+Required facts are: what happened, who was involved or supplied the information,
+where it happened, and when it happened. Mark genuinely useful absent facts as
+missing. Do not report a field as missing if the text clearly supplies it. Ask one
+short, specific question for each missing field. Put contradictions in conflicts.
+Set status to has_conflicts when conflicts exist, needs_information when required
+facts are missing, otherwise ready. Recommended details must not prevent ready.
+List only facts explicitly supported by the supplied information in known_facts.
+Do not demand more detail for a fact that is already usable: an event name such as
+"community clean-up programme" answers what happened. A relative date such as
+"next month" supplies partial timing but may justify asking for the exact date.
+Do not mark what happened missing merely because its programme details are absent.
 
-        # 3. Extract raw JSON object
-        try:
-            start = text.find("{")
-            end = text.rfind("}")
-            if start != -1 and end != -1:
-                return json.loads(text[start:end+1])
-        except:
-            pass
-
-        # 4. Final fallback
-        return {
-            "error": "Invalid JSON from model",
-            "raw_output": text
-        }
-    
-    @staticmethod
-    def fix_json_with_ai(raw_output: str):
-
-        url = "http://localhost:11434/api/generate"
-
-        prompt = f"""
-    You are a strict JSON repair engine.
-
-    Convert the following into VALID JSON ONLY.
-
-    RULES:
-    - Output ONLY JSON
-    - No explanation
-    - No markdown
-    - No backticks
-
-    Broken data:
-    {raw_output}
-    """
-
-        response = requests.post(
-            url,
-            json={
-                "model": "llama3.1",
-                "prompt": prompt,
-                "stream": False
-            }
+Example: For "A community clean-up programme will be held next month", what
+happened is PRESENT. Missing required facts are the organizer and location; an
+exact date can be requested. Never ask what activities are part of the programme.
+""".strip()
+        result = OllamaService._structured_chat(
+            CompletenessResult,
+            system_prompt,
+            text,
         )
+        return CompletenessResult.model_validate(result)
 
-        raw_text = response.json()["response"]
+    @staticmethod
+    def write_news(
+        text: str,
+        language: NewsLanguage,
+        tone: str,
+    ) -> NewsArticle:
+        if not text.strip():
+            raise ValueError("Information cannot be empty.")
 
-        # 🔥 IMPORTANT: parse again using your safe parser
-        return OllamaService._safe_json(raw_text)
+        language_name = "Bahasa Melayu" if language == "ms" else "English"
+        system_prompt = f"""
+You write accurate news articles in {language_name} with a {tone} tone.
+
+Use only facts explicitly present in the supplied information. Never invent names,
+dates, numbers, explanations, sources, or quotations. Preserve uncertainty and
+attribute claims when attribution is supplied. Write the most important verified
+fact first. Body must contain an ordered list of publishable paragraphs. Include
+source identifiers in sources_used when the input contains markers such as page,
+sheet, row, paragraph, or filename. Put any limitation in warnings. The language
+field must be {language}.
+""".strip()
+        result = OllamaService._structured_chat(
+            NewsArticle,
+            system_prompt,
+            text,
+            temperature=0.2,
+        )
+        article = NewsArticle.model_validate(result)
+        if not re.search(r"\[source:\s*[^\]]+\]", text, re.IGNORECASE):
+            article.sources_used = []
+        return article
+
+    @staticmethod
+    def summarize(text: str) -> str:
+        if not text.strip():
+            raise ValueError("Document content cannot be empty.")
+
+        settings = get_settings()
+
+        try:
+            response = OllamaService._client().chat(
+                model=settings.ollama_generation_model,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "Summarize the supplied document in two or three "
+                            "clear sentences. Use only supported facts and do "
+                            "not add commentary."
+                        ),
+                    },
+                    {"role": "user", "content": text},
+                ],
+                stream=False,
+                think=False,
+                options={"temperature": 0},
+            )
+        except ResponseError as exc:
+            raise AIServiceError(f"Ollama request failed: {exc}") from exc
+        except (ConnectionError, OSError) as exc:
+            raise AIServiceError("Ollama is unavailable.") from exc
+
+        summary = response.message.content.strip()
+        if not summary:
+            raise AIServiceError("Ollama returned an empty summary.")
+
+        return summary
