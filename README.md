@@ -225,6 +225,11 @@ Compile-check the application:
 python -m compileall -q app tests
 ```
 
+Measure the project objectives with the labelled evaluation workflow in
+[`docs/MODEL_EVALUATION_AND_TUNING.md`](docs/MODEL_EVALUATION_AND_TUNING.md). It
+calculates field-level extraction F1 and the human-reviewed news acceptance rate;
+model-reported `confidence` is not used as accuracy.
+
 Core modules:
 
 - `app/services/document_service.py`: file parsing and normalization
