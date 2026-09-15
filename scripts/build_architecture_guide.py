@@ -418,15 +418,14 @@ def build() -> None:
     add_table(document, ["Order", "Endpoint", "Depends on"], [
         ["1", "GET /health", "FastAPI only"],
         ["2", "GET /health/ollama", "Settings + Ollama"],
-        ["3", "POST /documents/upload", "Document normalization"],
-        ["4", "POST /extract-information", "Ollama + extraction schema"],
-        ["5", "POST /documents/extract-information", "Upload + extraction"],
-        ["6", "POST /news/check-completeness", "Completeness schema + Ollama"],
-        ["7", "POST /news/generate", "Completeness + writer"],
-        ["8", "POST /documents/index", "Normalization + embeddings + Chroma"],
-        ["9", "POST /rag/search", "Query embedding + Chroma"],
-        ["10", "POST /rag/generate-news", "Retrieval + completeness + writer"],
-        ["11", "DELETE /rag/documents/{id}", "Chroma metadata deletion"],
+        ["3", "POST /extract-information", "Ollama + extraction schema"],
+        ["4", "POST /documents/extract-information", "Upload + extraction"],
+        ["5", "POST /news/check-completeness", "Completeness schema + Ollama"],
+        ["6", "POST /news/generate", "Completeness + writer"],
+        ["7", "POST /documents/index", "Normalization + embeddings + Chroma"],
+        ["8", "POST /rag/search", "Query embedding + Chroma"],
+        ["9", "POST /rag/generate-news", "Retrieval + completeness + writer"],
+        ["10", "DELETE /rag/documents/{id}", "Chroma metadata deletion"],
     ], [1000, 3950, 4410])
     add_heading(document, "8.1 Frontend sequence", 2)
     for item in [

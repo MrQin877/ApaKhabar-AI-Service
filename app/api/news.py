@@ -35,7 +35,8 @@ def check_completeness(request: CompletenessRequest) -> CompletenessResult:
 @router.post("/generate", response_model=NewsGenerationResponse)
 def generate_news(request: NewsRequest) -> NewsGenerationResponse:
     try:
-        completeness = OllamaService.check_news_completeness(request.information)
+        information_text = request.information_text()
+        completeness = OllamaService.check_news_completeness(information_text)
         if completeness.status != "ready":
             return NewsGenerationResponse(
                 completeness=completeness,
@@ -43,7 +44,7 @@ def generate_news(request: NewsRequest) -> NewsGenerationResponse:
             )
 
         article = OllamaService.write_news(
-            text=request.information,
+            text=information_text,
             language=request.language,
             tone=request.tone,
         )

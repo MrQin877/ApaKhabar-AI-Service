@@ -3,10 +3,8 @@ import unittest
 
 import fitz
 from docx import Document
-from fastapi.testclient import TestClient
 from openpyxl import Workbook
 
-from app.main import app
 from app.services.document_service import (
     DocumentService,
     EmptyDocumentError,
@@ -84,15 +82,6 @@ class DocumentServiceTests(unittest.TestCase):
     def test_rejects_empty_document(self):
         with self.assertRaises(EmptyDocumentError):
             DocumentService.normalize(b"\n\n", "empty.txt", "text/plain")
-
-    def test_upload_endpoint_normalizes_text(self):
-        response = TestClient(app).post(
-            "/documents/upload",
-            files={"file": ("notice.txt", b"Verified notice", "text/plain")},
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["elements"][0]["content"], "Verified notice")
-
 
 if __name__ == "__main__":
     unittest.main()

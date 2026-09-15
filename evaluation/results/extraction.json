@@ -1,0 +1,57 @@
+{
+  "evaluation": "data-to-information",
+  "cases": 1,
+  "aggregate": {
+    "true_positive": 3,
+    "false_positive": 6,
+    "false_negative": 3,
+    "precision": 0.3333,
+    "recall": 0.5,
+    "f1": 0.4,
+    "target_f1": 0.95,
+    "passed": false
+  },
+  "details": [
+    {
+      "id": "extract-001",
+      "metrics": {
+        "true_positive": 3,
+        "false_positive": 6,
+        "false_negative": 3,
+        "precision": 0.3333,
+        "recall": 0.5,
+        "f1": 0.4,
+        "target_f1": 0.95,
+        "passed": false
+      },
+      "actual": {
+        "information": [
+          {
+            "type": "Event",
+            "title": "Free AI Workshop for 120 Students",
+            "summary": "Universiti Example will host a free AI workshop for 120 students at Dewan Kuala Lumpur on 15 September 2026.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "event_name": "Free AI Workshop for 120 Students",
+              "organizer": "Universiti Example",
+              "participants": "120 students",
+              "location": "Dewan Kuala Lumpur",
+              "date": "15 September 2026",
+              "event_type": "workshop",
+              "event_category": "AI"
+            },
+            "evidence": [
+              {
+                "source": "Document",
+                "quote": "Universiti Example announced a free AI workshop for 120 students at Dewan Kuala Lumpur on 15 September 2026."
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ]
+}

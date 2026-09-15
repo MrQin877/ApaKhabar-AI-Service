@@ -42,11 +42,6 @@ async def _normalize_upload(file: UploadFile) -> NormalizedDocument:
         ) from exc
 
 
-@router.post("/upload", response_model=NormalizedDocument)
-async def upload_document(file: UploadFile = File(...)) -> NormalizedDocument:
-    return await _normalize_upload(file)
-
-
 @router.post("/extract-information", response_model=DocumentExtractionResponse)
 async def extract_uploaded_document(
     file: UploadFile = File(...),

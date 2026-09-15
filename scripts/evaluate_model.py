@@ -77,6 +77,11 @@ def main() -> None:
         command.add_argument("--dataset", type=Path, required=True)
         command.add_argument("--output", type=Path)
     args = parser.parse_args()
+    if not args.dataset.is_file():
+        parser.error(
+            f"dataset file not found: {args.dataset}. "
+            "Copy and edit a template from evaluation/data first."
+        )
     report = (
         evaluate_extraction(args.dataset, args.output)
         if args.command == "extraction"

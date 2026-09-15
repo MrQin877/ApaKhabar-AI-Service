@@ -421,9 +421,9 @@ def build() -> None:
     add_heading(document, "5. API reference", 1)
     api_rows = [
         ["GET", "/health", "Application health"], ["GET", "/health/ollama", "Ollama and model health"],
-        ["POST", "/documents/upload", "Normalize a file"], ["POST", "/documents/extract-information", "Extract labelled information"],
+        ["POST", "/documents/extract-information", "Extract labelled information"],
         ["POST", "/documents/index", "Index a file for RAG"], ["POST", "/extract-information", "Extract plain text"],
-        ["POST", "/summarize", "Summarize plain text"], ["POST", "/news/check-completeness", "Find missing/conflicting facts"],
+        ["POST", "/news/check-completeness", "Find missing/conflicting facts"],
         ["POST", "/news/generate", "Generate from supplied facts"], ["POST", "/rag/search", "Retrieve indexed evidence"],
         ["POST", "/rag/generate-news", "Retrieve and write"], ["DELETE", "/rag/documents/{id}", "Delete indexed document"],
     ]

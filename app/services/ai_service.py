@@ -116,7 +116,7 @@ exact date can be requested. Never ask what activities are part of the programme
         if not text.strip():
             raise ValueError("Information cannot be empty.")
 
-        language_name = "Bahasa Melayu" if language == "ms" else "English"
+        language_name = "Bahasa Indonesia"
         system_prompt = f"""
 You write accurate news articles in {language_name} with a {tone} tone.
 
@@ -138,39 +138,3 @@ field must be {language}.
         if not re.search(r"\[source:\s*[^\]]+\]", text, re.IGNORECASE):
             article.sources_used = []
         return article
-
-    @staticmethod
-    def summarize(text: str) -> str:
-        if not text.strip():
-            raise ValueError("Document content cannot be empty.")
-
-        settings = get_settings()
-
-        try:
-            response = OllamaService._client().chat(
-                model=settings.ollama_generation_model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "Summarize the supplied document in two or three "
-                            "clear sentences. Use only supported facts and do "
-                            "not add commentary."
-                        ),
-                    },
-                    {"role": "user", "content": text},
-                ],
-                stream=False,
-                think=False,
-                options={"temperature": 0},
-            )
-        except ResponseError as exc:
-            raise AIServiceError(f"Ollama request failed: {exc}") from exc
-        except (ConnectionError, OSError) as exc:
-            raise AIServiceError("Ollama is unavailable.") from exc
-
-        summary = response.message.content.strip()
-        if not summary:
-            raise AIServiceError("Ollama returned an empty summary.")
-
-        return summary

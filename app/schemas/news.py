@@ -2,8 +2,10 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
+from app.schemas.information import ExtractionResponse
 
-NewsLanguage = Literal["en", "ms"]
+
+NewsLanguage = Literal["id"]
 
 
 class MissingInformation(BaseModel):
@@ -20,15 +22,23 @@ class CompletenessResult(BaseModel):
 
 
 class NewsRequest(BaseModel):
-    information: str = Field(min_length=1)
-    language: NewsLanguage = "en"
+    information: str | ExtractionResponse
+    language: NewsLanguage = "id"
     tone: str = Field(default="formal", min_length=1, max_length=50)
 
     @model_validator(mode="after")
     def reject_blank_information(self):
-        if not self.information.strip():
+        if isinstance(self.information, str) and not self.information.strip():
             raise ValueError("Information cannot be blank.")
+        if isinstance(self.information, ExtractionResponse) and not self.information.information:
+            raise ValueError("Extracted information cannot be empty.")
         return self
+
+    def information_text(self) -> str:
+        """Return either request form as grounded model input."""
+        if isinstance(self.information, str):
+            return self.information
+        return self.information.model_dump_json(indent=2)
 
 
 class NewsArticle(BaseModel):
@@ -38,7 +48,7 @@ class NewsArticle(BaseModel):
     body: list[str] = Field(min_length=1)
     summary: str = Field(min_length=1)
     labels: list[str]
-    language: NewsLanguage
+    language: NewsLanguage = "id"
     sources_used: list[str]
     warnings: list[str]
 

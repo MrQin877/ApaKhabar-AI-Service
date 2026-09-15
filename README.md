@@ -79,15 +79,6 @@ Open:
 
 ## Main workflows
 
-### Upload and inspect a document
-
-```bash
-curl -X POST http://127.0.0.1:8000/documents/upload \
-  -F "file=@report.pdf"
-```
-
-This returns normalized elements and source locations without calling the generation model.
-
 ### Upload and extract labelled information
 
 ```bash
@@ -182,11 +173,9 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 |---|---|---|
 | GET | `/health` | Check the application |
 | GET | `/health/ollama` | Check Ollama and configured models |
-| POST | `/documents/upload` | Normalize an uploaded file |
 | POST | `/documents/extract-information` | Upload and extract labelled information |
 | POST | `/documents/index` | Add a document to the RAG index |
 | POST | `/extract-information` | Extract information from plain text |
-| POST | `/summarize` | Summarize plain text |
 | POST | `/news/check-completeness` | Find missing or conflicting news facts |
 | POST | `/news/generate` | Generate news from supplied information |
 | POST | `/rag/search` | Search indexed evidence |
