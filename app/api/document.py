@@ -1,7 +1,12 @@
 from fastapi import APIRouter, File, HTTPException, UploadFile, status
 
 from app.core.config import get_settings
-from app.schemas.document import DocumentExtractionResponse, NormalizedDocument
+from app.schemas.document import (
+    BatchDocumentExtractionItem,
+    BatchDocumentExtractionResponse,
+    DocumentExtractionResponse,
+    NormalizedDocument,
+)
 from app.schemas.information import ExtractionResponse
 from app.services.ai_service import AIServiceError, OllamaService
 from app.services.document_service import DocumentService
@@ -10,6 +15,7 @@ from app.services.rag_service import RagService
 
 
 router = APIRouter(prefix="/documents", tags=["documents"])
+MAX_BATCH_FILES = 5
 
 
 async def _normalize_upload(file: UploadFile) -> NormalizedDocument:
@@ -61,6 +67,54 @@ async def extract_uploaded_document(
         document=document,
         extraction=extraction,
     )
+
+
+@router.post("/batch-extract", response_model=BatchDocumentExtractionResponse)
+async def batch_extract_uploaded_documents(
+    files: list[UploadFile] = File(...),
+) -> BatchDocumentExtractionResponse:
+    if not 1 <= len(files) <= MAX_BATCH_FILES:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            detail=f"Upload between 1 and {MAX_BATCH_FILES} files per request.",
+        )
+
+    results: list[BatchDocumentExtractionItem] = []
+    for file in files:
+        filename = file.filename or "unnamed"
+        try:
+            document = await _normalize_upload(file)
+            extraction = ExtractionResponse.model_validate(
+                OllamaService.extract_information(document.as_model_text())
+            )
+            chunks_indexed = RagService().index_document(document)
+            results.append(
+                BatchDocumentExtractionItem(
+                    filename=filename,
+                    status="ready",
+                    document=document,
+                    extraction=extraction,
+                    chunks_indexed=chunks_indexed,
+                )
+            )
+        except HTTPException as exc:
+            results.append(
+                BatchDocumentExtractionItem(
+                    filename=filename,
+                    status="failed",
+                    error=str(exc.detail),
+                )
+            )
+        except (AIServiceError, ValueError) as exc:
+            results.append(
+                BatchDocumentExtractionItem(
+                    filename=filename,
+                    status="failed",
+                    error=str(exc),
+                )
+            )
+
+    return BatchDocumentExtractionResponse(results=results)
 
 
 @router.post("/index", response_model=IndexedDocumentResponse)

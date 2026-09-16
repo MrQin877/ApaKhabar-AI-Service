@@ -51,3 +51,16 @@ class NormalizedDocument(BaseModel):
 class DocumentExtractionResponse(BaseModel):
     document: NormalizedDocument
     extraction: ExtractionResponse
+
+
+class BatchDocumentExtractionItem(BaseModel):
+    filename: str
+    status: Literal["ready", "failed"]
+    document: NormalizedDocument | None = None
+    extraction: ExtractionResponse | None = None
+    chunks_indexed: int = 0
+    error: str | None = None
+
+
+class BatchDocumentExtractionResponse(BaseModel):
+    results: list[BatchDocumentExtractionItem]

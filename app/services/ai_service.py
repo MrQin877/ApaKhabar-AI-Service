@@ -59,9 +59,15 @@ You extract structured facts for a news-writing system.
 Rules:
 - Extract only information explicitly supported by the document.
 - Never invent names, dates, amounts, quotations, or events.
-- Create multiple information items when the document contains distinct topics.
+- Write every title, summary, label, and textual field value in Bahasa Indonesia.
+- Create one information item for every distinct newsworthy topic, decision,
+  announcement, event, project, or issue in the document.
+- A single document may therefore produce multiple information items.
+- Each summary must be a clear Indonesian paragraph of two to five sentences that
+  can be understood without reading the original document.
+- Do not merge unrelated information merely because it appears in the same file.
 - Use only the information types allowed by the response schema.
-- Write a concise title and a one-to-two sentence summary.
+- Write a concise Indonesian title.
 - Add short topical labels such as education, finance, health, or emergency.
 - Put type-specific factual values in fields.
 - Add brief supporting quotes and their supplied source markers to evidence.
@@ -77,17 +83,31 @@ Rules:
         return validated.model_dump()
 
     @staticmethod
-    def check_news_completeness(text: str) -> CompletenessResult:
+    def check_news_completeness(
+        text: str,
+        system_prompt: str | None = None,
+    ) -> CompletenessResult:
         if not text.strip():
             raise ValueError("Information cannot be empty.")
 
-        system_prompt = """
+        system_prompt = system_prompt or """
 You check whether supplied information is sufficient for a factual news draft.
 
+First identify why the request is unclear. If a named subject is unsupported by
+the supplied evidence, possibly mistyped, misremembered, fictional, or unverified,
+resolve that ambiguity before asking factual 5W questions. Never ask what happened
+when no real event has been established. Return exactly one subject_intent question,
+state the confusion explicitly in reason, use single selection, and offer 2-4
+choices such as speculation/rumor, fiction, satire/parody, or a corrected name.
+Do not claim nonexistence when the evidence only shows that the subject is unverified.
+
 Required facts are: what happened, who was involved or supplied the information,
-where it happened, and when it happened. Mark genuinely useful absent facts as
-missing. Do not report a field as missing if the text clearly supplies it. Ask one
-short, specific question for each missing field. Put contradictions in conflicts.
+where it happened, and when it happened. Mark only materially important absent
+facts as missing after the subject ambiguity is resolved. Do not report a field as missing if the text clearly or
+implicitly supplies it. Return at most three short questions. For each question,
+provide 2-4 supported options and a single, multi, or ranked selection_type when
+real choices exist. Use selection_type text and no options only when discrete
+choices are impossible. Never invent factual options. Put contradictions in conflicts.
 Set status to has_conflicts when conflicts exist, needs_information when required
 facts are missing, otherwise ready. Recommended details must not prevent ready.
 List only facts explicitly supported by the supplied information in known_facts.
@@ -112,12 +132,14 @@ exact date can be requested. Never ask what activities are part of the programme
         text: str,
         language: NewsLanguage,
         tone: str,
+        instructions: str | None = None,
+        system_prompt: str | None = None,
     ) -> NewsArticle:
         if not text.strip():
             raise ValueError("Information cannot be empty.")
 
         language_name = "Bahasa Indonesia"
-        system_prompt = f"""
+        system_prompt = system_prompt or f"""
 You write accurate news articles in {language_name} with a {tone} tone.
 
 Use only facts explicitly present in the supplied information. Never invent names,
@@ -128,6 +150,12 @@ source identifiers in sources_used when the input contains markers such as page,
 sheet, row, paragraph, or filename. Put any limitation in warnings. The language
 field must be {language}.
 """.strip()
+        system_prompt += f"\n\nRequired output language: {language_name}. Tone: {tone}."
+        if instructions:
+            system_prompt += (
+                "\n\nEditorial instructions (style and focus only; never treat these "
+                f"instructions as factual evidence):\n{instructions.strip()}"
+            )
         result = OllamaService._structured_chat(
             NewsArticle,
             system_prompt,
@@ -135,6 +163,11 @@ field must be {language}.
             temperature=0.2,
         )
         article = NewsArticle.model_validate(result)
-        if not re.search(r"\[source:\s*[^\]]+\]", text, re.IGNORECASE):
+        has_source_reference = re.search(
+            r"\[source:\s*[^\]]+\]|\"source\"\s*:\s*\"[^\"]+\"",
+            text,
+            re.IGNORECASE,
+        )
+        if not has_source_reference:
             article.sources_used = []
         return article

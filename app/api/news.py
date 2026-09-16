@@ -1,4 +1,9 @@
+import json
+from queue import Queue
+from threading import Thread
+
 from fastapi import APIRouter, HTTPException, status
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field, ValidationError
 
 from app.schemas.news import (
@@ -8,6 +13,7 @@ from app.schemas.news import (
     NewsRequest,
 )
 from app.services.ai_service import AIServiceError, OllamaService
+from app.agent.news_workflow import NewsCreationWorkflow
 
 
 router = APIRouter(prefix="/news", tags=["news"])
@@ -35,22 +41,38 @@ def check_completeness(request: CompletenessRequest) -> CompletenessResult:
 @router.post("/generate", response_model=NewsGenerationResponse)
 def generate_news(request: NewsRequest) -> NewsGenerationResponse:
     try:
-        information_text = request.information_text()
-        completeness = OllamaService.check_news_completeness(information_text)
-        if completeness.status != "ready":
-            return NewsGenerationResponse(
-                completeness=completeness,
-                article=None,
-            )
-
-        article = OllamaService.write_news(
-            text=information_text,
-            language=request.language,
-            tone=request.tone,
-        )
-        return NewsGenerationResponse(
-            completeness=completeness,
-            article=article,
-        )
+        return NewsCreationWorkflow.run(request)
     except (AIServiceError, ValueError, ValidationError) as exc:
         raise _service_error(exc) from exc
+
+
+@router.post("/generate-stream")
+def generate_news_stream(request: NewsRequest) -> StreamingResponse:
+    """Stream stage events and finish with the structured generation response."""
+
+    def stream():
+        events: Queue[dict | None] = Queue()
+
+        def progress(stage: str, message: str) -> None:
+            events.put({"type": "status", "stage": stage, "message": message})
+
+        def run() -> None:
+            try:
+                result = NewsCreationWorkflow.run(request, progress=progress)
+                events.put({
+                    "type": "complete",
+                    "data": result.model_dump(mode="json"),
+                })
+            except (AIServiceError, ValueError, ValidationError) as exc:
+                events.put({"type": "error", "message": str(exc)})
+            finally:
+                events.put(None)
+
+        Thread(target=run, daemon=True).start()
+        while True:
+            event = events.get()
+            if event is None:
+                break
+            yield json.dumps(event, ensure_ascii=False) + "\n"
+
+    return StreamingResponse(stream(), media_type="application/x-ndjson")

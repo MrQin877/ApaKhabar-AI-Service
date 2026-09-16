@@ -7,6 +7,8 @@ import fitz
 from docx import Document
 from openpyxl import load_workbook
 
+from app.core.config import get_settings
+
 from app.schemas.document import (
     DocumentElement,
     NormalizedDocument,
@@ -23,7 +25,17 @@ class EmptyDocumentError(ValueError):
 
 
 class DocumentService:
-    SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".csv", ".txt"}
+    SUPPORTED_EXTENSIONS = {
+        ".pdf",
+        ".docx",
+        ".xlsx",
+        ".xlsm",
+        ".csv",
+        ".txt",
+        ".jpg",
+        ".jpeg",
+        ".png",
+    }
 
     @classmethod
     def normalize(
@@ -44,8 +56,12 @@ class DocumentService:
             ".pdf": cls._pdf_elements,
             ".docx": cls._docx_elements,
             ".xlsx": cls._xlsx_elements,
+            ".xlsm": cls._xlsx_elements,
             ".csv": cls._csv_elements,
             ".txt": cls._text_elements,
+            ".jpg": cls._image_elements,
+            ".jpeg": cls._image_elements,
+            ".png": cls._image_elements,
         }
         elements = extractors[extension](data, safe_name)
         if not elements:
@@ -67,10 +83,11 @@ class DocumentService:
         try:
             with fitz.open(stream=data, filetype="pdf") as document:
                 for page_number, page in enumerate(document, start=1):
+                    page_elements: list[DocumentElement] = []
                     for block in page.get_text("blocks"):
                         text = " ".join(block[4].split())
                         if text:
-                            elements.append(
+                            page_elements.append(
                                 DocumentElement(
                                     element_type="paragraph",
                                     content=text,
@@ -80,9 +97,71 @@ class DocumentService:
                                     ),
                                 )
                             )
+                    if page_elements:
+                        elements.extend(page_elements)
+                        continue
+
+                    image = page.get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False)
+                    ocr_text = DocumentService._ocr_image(image.tobytes("png"))
+                    if ocr_text:
+                        elements.append(
+                            DocumentElement(
+                                element_type="paragraph",
+                                content=ocr_text,
+                                source=SourceReference(
+                                    filename=filename,
+                                    page=page_number,
+                                ),
+                                metadata={"ocr": True},
+                            )
+                        )
         except (fitz.FileDataError, RuntimeError) as exc:
             raise UnsupportedDocumentError("The PDF is invalid or damaged.") from exc
         return elements
+
+    @staticmethod
+    def _image_elements(data: bytes, filename: str) -> list[DocumentElement]:
+        text = DocumentService._ocr_image(data)
+        if not text:
+            return []
+        return [
+            DocumentElement(
+                element_type="paragraph",
+                content=text,
+                source=SourceReference(filename=filename, page=1),
+                metadata={"ocr": True},
+            )
+        ]
+
+    @staticmethod
+    def _ocr_image(data: bytes) -> str:
+        try:
+            import pytesseract
+            from PIL import Image, UnidentifiedImageError
+        except ImportError as exc:
+            raise UnsupportedDocumentError(
+                "OCR dependencies are unavailable. Install Pillow, pytesseract, "
+                "and the Tesseract executable."
+            ) from exc
+
+        try:
+            with Image.open(io.BytesIO(data)) as image:
+                image.load()
+                languages = get_settings().ocr_languages
+                try:
+                    text = pytesseract.image_to_string(image, lang=languages)
+                except pytesseract.TesseractError:
+                    # English OCR still reads Indonesian Latin characters when the
+                    # optional Indonesian trained data is not installed.
+                    text = pytesseract.image_to_string(image, lang="eng")
+        except UnidentifiedImageError as exc:
+            raise UnsupportedDocumentError("The image is invalid or damaged.") from exc
+        except pytesseract.TesseractNotFoundError as exc:
+            raise UnsupportedDocumentError(
+                "Tesseract OCR is not installed or not available on PATH."
+            ) from exc
+
+        return " ".join(text.split())
 
     @staticmethod
     def _docx_elements(data: bytes, filename: str) -> list[DocumentElement]:

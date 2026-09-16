@@ -1,5 +1,6 @@
 import io
 import unittest
+from unittest.mock import patch
 
 import fitz
 from docx import Document
@@ -60,6 +61,30 @@ class DocumentServiceTests(unittest.TestCase):
         )
         self.assertEqual(result.elements[1].source.sheet, "Budget")
         self.assertEqual(result.elements[1].source.row, 2)
+
+    def test_xlsm_uses_spreadsheet_extractor(self):
+        workbook = Workbook()
+        workbook.active.append(["Agenda", "Rapat desa"])
+        buffer = io.BytesIO()
+        workbook.save(buffer)
+
+        result = DocumentService.normalize(
+            buffer.getvalue(),
+            "agenda.xlsm",
+            "application/vnd.ms-excel.sheet.macroenabled.12",
+        )
+        self.assertEqual(result.elements[0].content, "Agenda | Rapat desa")
+
+    @patch.object(DocumentService, "_ocr_image", return_value="Pengumuman desa")
+    def test_jpeg_uses_ocr_and_preserves_source(self, ocr):
+        result = DocumentService.normalize(
+            b"image bytes",
+            "notice.jpeg",
+            "image/jpeg",
+        )
+        self.assertEqual(result.elements[0].content, "Pengumuman desa")
+        self.assertTrue(result.elements[0].metadata["ocr"])
+        ocr.assert_called_once_with(b"image bytes")
 
     def test_pdf_preserves_page_reference(self):
         document = fitz.open()

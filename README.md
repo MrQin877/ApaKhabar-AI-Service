@@ -4,7 +4,7 @@ ApaKhabar is a local-first FastAPI service that converts documents and plain tex
 
 ## Features
 
-- PDF, DOCX, XLSX, CSV, and TXT ingestion
+- PDF, scanned PDF, JPG, JPEG, PNG, DOCX, XLSX, XLSM, CSV, and TXT ingestion
 - Page, paragraph, sheet, and row source references
 - Schema-validated extraction with labels, evidence, and confidence
 - Missing-information and conflict checks before news generation
@@ -30,6 +30,7 @@ RAG is intended for large or multiple documents. Use direct extraction for one s
 - macOS, Windows, or Linux
 - Python 3.11 or newer
 - Ollama
+- Tesseract OCR with Indonesian and English language data
 - At least 8 GB memory; 16 GB is recommended
 - Sufficient disk space for local models (approximately 4 GB for the recommended pair)
 
@@ -44,6 +45,15 @@ ollama list
 ```
 
 The expected local API address is `http://localhost:11434`.
+
+For scanned PDFs and JPG/JPEG/PNG documents, install Tesseract with Indonesian
+and English language data. On macOS with Homebrew:
+
+```bash
+brew install tesseract tesseract-lang
+```
+
+Verify that `ind` and `eng` appear in `tesseract --list-langs`.
 
 ## 2. Prepare the Python application
 
@@ -190,8 +200,8 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 | `OLLAMA_GENERATION_MODEL` | `qwen3:4b` | Extraction and writing model |
 | `OLLAMA_EMBEDDING_MODEL` | `qwen3-embedding:0.6b` | RAG embedding model |
 | `CHROMA_PATH` | `./data/chroma` | Persistent vector database directory |
-| `UPLOAD_PATH` | `./data/uploads` | Reserved upload directory |
 | `MAX_UPLOAD_MB` | `20` | Maximum accepted upload size |
+| `OCR_LANGUAGES` | `ind+eng` | Tesseract languages used for scans and images |
 | `RAG_CHUNK_SIZE` | `1000` | Approximate characters in each chunk |
 | `RAG_CHUNK_OVERLAP` | `150` | Repeated characters between chunks |
 | `RAG_TOP_K` | `5` | Default retrieval result count |

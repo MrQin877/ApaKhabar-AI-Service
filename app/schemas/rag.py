@@ -30,7 +30,7 @@ class RagSearchResponse(BaseModel):
 
 
 class RagNewsRequest(RagSearchRequest):
-    language: NewsLanguage = "en"
+    language: NewsLanguage = "id"
     tone: str = Field(default="formal", min_length=1, max_length=50)
 
 
