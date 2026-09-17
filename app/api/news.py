@@ -10,6 +10,8 @@ from app.schemas.news import (
     CompletenessResult,
     NewsGenerationResponse,
     NewsLanguage,
+    NewsArticle,
+    NewsQualityEvaluation,
     NewsRequest,
 )
 from app.services.ai_service import AIServiceError, OllamaService
@@ -21,6 +23,12 @@ router = APIRouter(prefix="/news", tags=["news"])
 
 class CompletenessRequest(BaseModel):
     information: str = Field(min_length=1)
+
+
+class NewsQualityRequest(BaseModel):
+    article: NewsArticle
+    evidence: str = Field(min_length=1)
+    user_request: str | None = Field(default=None, max_length=2000)
 
 
 def _service_error(exc: Exception) -> HTTPException:
@@ -42,6 +50,19 @@ def check_completeness(request: CompletenessRequest) -> CompletenessResult:
 def generate_news(request: NewsRequest) -> NewsGenerationResponse:
     try:
         return NewsCreationWorkflow.run(request)
+    except (AIServiceError, ValueError, ValidationError) as exc:
+        raise _service_error(exc) from exc
+
+
+@router.post("/evaluate-quality", response_model=NewsQualityEvaluation)
+def evaluate_news_quality(request: NewsQualityRequest) -> NewsQualityEvaluation:
+    """Evaluate a saved or edited draft against its approved evidence."""
+    try:
+        return OllamaService.evaluate_news_quality(
+            article=request.article,
+            evidence=request.evidence,
+            user_request=request.user_request,
+        )
     except (AIServiceError, ValueError, ValidationError) as exc:
         raise _service_error(exc) from exc
 

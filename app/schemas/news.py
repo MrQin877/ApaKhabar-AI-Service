@@ -1,6 +1,6 @@
-from typing import Literal
+from typing import ClassVar, Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, computed_field, model_validator
 
 from app.schemas.information import ExtractionResponse
 from app.schemas.tools import AskUserChoiceToolCall, WebSearchResult
@@ -88,6 +88,143 @@ class NewsArticle(BaseModel):
     category: str | None = None
 
 
+class QualityDimension(BaseModel):
+    score: float = Field(ge=0, le=100)
+    explanation: str = Field(min_length=1, max_length=1000)
+    issues: list[str] = Field(default_factory=list, max_length=20)
+
+
+class NewsQualityDimensions(BaseModel):
+    accuracy: QualityDimension
+    completeness: QualityDimension
+    relevance: QualityDimension
+    readability: QualityDimension
+    structure: QualityDimension
+    language: QualityDimension
+    safety: QualityDimension
+
+
+class ClaimCheck(BaseModel):
+    claim: str = Field(min_length=1, max_length=2000)
+    status: Literal["supported", "partially_supported", "unsupported", "contradicted"]
+    source: str | None = Field(default=None, max_length=1000)
+    reason: str = Field(min_length=1, max_length=1000)
+
+
+class NewsQualityAssessment(BaseModel):
+    """Raw evaluator output. Weighted arithmetic is deliberately excluded."""
+
+    dimensions: NewsQualityDimensions
+    claim_checks: list[ClaimCheck] = Field(default_factory=list, max_length=100)
+    warnings: list[str] = Field(default_factory=list, max_length=30)
+
+
+class NewsQualityEvaluation(NewsQualityAssessment):
+    estimated: Literal[True] = True
+    evaluation_version: Literal["news-quality-v1"] = "news-quality-v1"
+    evaluator_model: str
+    publish_blocked: bool
+
+    WEIGHTS: ClassVar[dict[str, float]] = {
+        "accuracy": 0.30,
+        "completeness": 0.20,
+        "relevance": 0.15,
+        "readability": 0.10,
+        "structure": 0.10,
+        "language": 0.10,
+        "safety": 0.05,
+    }
+
+    @computed_field
+    @property
+    def quality_score(self) -> float:
+        total = sum(
+            getattr(self.dimensions, name).score * weight
+            for name, weight in self.WEIGHTS.items()
+        )
+        return round(total, 2)
+
+    @computed_field
+    @property
+    def weights(self) -> dict[str, float]:
+        return self.WEIGHTS.copy()
+
+    @computed_field
+    @property
+    def weighted_scores(self) -> dict[str, float]:
+        return {
+            name: round(getattr(self.dimensions, name).score * weight, 2)
+            for name, weight in self.WEIGHTS.items()
+        }
+
+    @computed_field
+    @property
+    def quality_label(self) -> Literal[
+        "excellent", "good", "needs_review", "weak", "not_ready"
+    ]:
+        score = self.quality_score
+        if score >= 90:
+            return "excellent"
+        if score >= 80:
+            return "good"
+        if score >= 70:
+            return "needs_review"
+        if score >= 50:
+            return "weak"
+        return "not_ready"
+
+    @computed_field
+    @property
+    def disclaimer(self) -> str:
+        return (
+            "This is an automated quality estimate, not a guarantee of factual "
+            "accuracy. Moderator review is required."
+        )
+
+    @classmethod
+    def from_assessment(
+        cls,
+        assessment: NewsQualityAssessment,
+        evaluator_model: str,
+    ) -> "NewsQualityEvaluation":
+        claim_block = any(
+            item.status in {"unsupported", "contradicted"}
+            for item in assessment.claim_checks
+        )
+        dimensions = assessment.dimensions
+        if assessment.claim_checks:
+            claim_values = {
+                "supported": 1.0,
+                "partially_supported": 0.5,
+                "unsupported": 0.0,
+                "contradicted": 0.0,
+            }
+            grounded_accuracy = round(
+                sum(claim_values[item.status] for item in assessment.claim_checks)
+                / len(assessment.claim_checks)
+                * 100,
+                2,
+            )
+            dimensions = dimensions.model_copy(
+                update={
+                    "accuracy": dimensions.accuracy.model_copy(
+                        update={"score": grounded_accuracy}
+                    )
+                }
+            )
+        publish_blocked = (
+            dimensions.accuracy.score < 70
+            or dimensions.safety.score < 70
+            or claim_block
+        )
+        return cls(
+            **assessment.model_dump(exclude={"dimensions"}),
+            dimensions=dimensions,
+            evaluator_model=evaluator_model,
+            publish_blocked=publish_blocked,
+        )
+
+
 class NewsGenerationResponse(BaseModel):
     completeness: CompletenessResult
     article: NewsArticle | None
@@ -95,3 +232,4 @@ class NewsGenerationResponse(BaseModel):
     tool_calls: list[AskUserChoiceToolCall] = Field(default_factory=list, max_length=3)
     web_sources: list[WebSearchResult] = Field(default_factory=list)
     guidance: str | None = None
+    quality: NewsQualityEvaluation | None = None

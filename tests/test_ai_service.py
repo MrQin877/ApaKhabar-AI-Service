@@ -1,7 +1,15 @@
 import unittest
 from unittest.mock import patch
 
-from app.schemas.news import MissingInformation, NewsArticle, NewsRequest
+from app.schemas.news import (
+    MissingInformation,
+    NewsArticle,
+    NewsQualityAssessment,
+    NewsQualityDimensions,
+    NewsQualityEvaluation,
+    NewsRequest,
+    QualityDimension,
+)
 from app.services.ai_service import OllamaService
 from app.agent.news_workflow import NewsCreationWorkflow, load_skill_prompt
 from app.schemas.news import CompletenessResult
@@ -148,9 +156,13 @@ class AIServiceTests(unittest.TestCase):
         self.assertIsNone(result.article)
         self.assertEqual(result.completeness.missing[0].field, "location")
 
+    @patch.object(OllamaService, "evaluate_news_quality")
     @patch.object(OllamaService, "write_news")
     @patch.object(OllamaService, "check_news_completeness")
-    def test_completed_clarification_skips_further_questions(self, check, write):
+    def test_completed_clarification_skips_further_questions(
+        self, check, write, evaluate
+    ):
+        evaluate.return_value = self._quality_evaluation()
         write.return_value = NewsArticle(
             headline="Judul berita",
             subheadline=None,
@@ -176,8 +188,62 @@ class AIServiceTests(unittest.TestCase):
 
         check.assert_not_called()
         write.assert_called_once()
+        evaluate.assert_called_once()
         self.assertIsNotNone(result.article)
+        self.assertEqual(result.quality.quality_score, 90)
         self.assertEqual(result.tool_calls, [])
+
+    def test_quality_score_is_calculated_from_fixed_weights(self):
+        dimensions = NewsQualityDimensions(
+            accuracy=QualityDimension(score=90, explanation="Grounded."),
+            completeness=QualityDimension(score=80, explanation="Mostly complete."),
+            relevance=QualityDimension(score=85, explanation="Relevant."),
+            readability=QualityDimension(score=88, explanation="Readable."),
+            structure=QualityDimension(score=95, explanation="Well structured."),
+            language=QualityDimension(score=90, explanation="Good Indonesian."),
+            safety=QualityDimension(score=100, explanation="No safety issue."),
+        )
+        result = NewsQualityEvaluation.from_assessment(
+            NewsQualityAssessment(dimensions=dimensions),
+            evaluator_model="test-model",
+        )
+
+        self.assertEqual(result.quality_score, 88.05)
+        self.assertEqual(result.quality_label, "good")
+        self.assertFalse(result.publish_blocked)
+
+    def test_unsupported_claim_blocks_publication(self):
+        assessment = NewsQualityAssessment(
+            dimensions=self._quality_evaluation().dimensions,
+            claim_checks=[{
+                "claim": "Jumlah korban 100 orang.",
+                "status": "unsupported",
+                "source": None,
+                "reason": "No approved evidence contains this number.",
+            }],
+        )
+        result = NewsQualityEvaluation.from_assessment(assessment, "test-model")
+
+        self.assertTrue(result.publish_blocked)
+        self.assertEqual(result.dimensions.accuracy.score, 0)
+
+    @staticmethod
+    def _quality_evaluation() -> NewsQualityEvaluation:
+        dimension = lambda: QualityDimension(score=90, explanation="Validated.")
+        return NewsQualityEvaluation.from_assessment(
+            NewsQualityAssessment(
+                dimensions=NewsQualityDimensions(
+                    accuracy=dimension(),
+                    completeness=dimension(),
+                    relevance=dimension(),
+                    readability=dimension(),
+                    structure=dimension(),
+                    language=dimension(),
+                    safety=dimension(),
+                )
+            ),
+            evaluator_model="test-model",
+        )
 
     @patch.object(OllamaService, "check_news_completeness")
     def test_first_clarification_round_combines_up_to_three_questions(self, check):

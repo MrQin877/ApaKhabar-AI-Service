@@ -14,7 +14,7 @@ from app.schemas.tools import (
     WebSearchInput,
     WebSearchResult,
 )
-from app.services.ai_service import OllamaService
+from app.services.ai_service import AIServiceError, OllamaService
 from app.services.web_search_service import WebSearchError, WebSearchService
 
 
@@ -155,11 +155,24 @@ class NewsCreationWorkflow:
                 else ""
             ),
         )
+        emit("evaluating_quality", "Menilai akurasi, kelengkapan, dan kualitas draf…")
+        try:
+            quality = OllamaService.evaluate_news_quality(
+                article=article,
+                evidence=information,
+                user_request=request.instructions,
+            )
+        except (AIServiceError, ValueError):
+            quality = None
+            article.warnings.append(
+                "Evaluasi kualitas otomatis tidak tersedia; tinjauan manual diperlukan."
+            )
         emit("finalizing", "Memeriksa atribusi, sitasi, dan format artikel…")
         return NewsGenerationResponse(
             completeness=completeness,
             article=article,
             web_sources=web_sources,
+            quality=quality,
         )
 
     @staticmethod

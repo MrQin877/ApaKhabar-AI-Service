@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">ApaKhabar AI Service Architecture</title>
+  <desc id="desc">Architecture and request flow for document extraction, RAG retrieval, web search, structured clarification, and Qwen news generation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07120d"/>
+      <stop offset="1" stop-color="#0d1912"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000" flood-opacity=".24"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#63d98a"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f2b84b"/>
+    </marker>
+    <style>
+      .title{font:700 30px Inter,Arial,sans-serif;fill:#f4f7f5}.subtitle{font:400 14px Inter,Arial,sans-serif;fill:#9eada3}
+      .lane{fill:#101c15;stroke:#284234;stroke-width:1.5}.laneTitle{font:700 14px Inter,Arial,sans-serif;fill:#7fdf9e;letter-spacing:1.4px}
+      .box{fill:#16231b;stroke:#365443;stroke-width:1.5;rx:14;filter:url(#shadow)}
+      .boxAI{fill:#11281b;stroke:#27ae60;stroke-width:2;rx:14;filter:url(#shadow)}
+      .boxTool{fill:#282113;stroke:#a77825;stroke-width:1.5;rx:14;filter:url(#shadow)}
+      .boxStore{fill:#151f2b;stroke:#426481;stroke-width:1.5;rx:14;filter:url(#shadow)}
+      .head{font:700 15px Inter,Arial,sans-serif;fill:#f3f7f4}.copy{font:400 12px Inter,Arial,sans-serif;fill:#aebbb2}
+      .tiny{font:500 11px Inter,Arial,sans-serif;fill:#839389}.pill{fill:#203128;stroke:#3e624d;rx:10}.pillText{font:600 10px Inter,Arial,sans-serif;fill:#bce7c9}
+      .flow{fill:none;stroke:#63d98a;stroke-width:2.2;marker-end:url(#arrow)}.flowDash{fill:none;stroke:#63d98a;stroke-width:2;stroke-dasharray:6 5;marker-end:url(#arrow)}
+      .approval{fill:none;stroke:#f2b84b;stroke-width:2;stroke-dasharray:6 5;marker-end:url(#arrowAmber)}
+      .label{font:600 11px Inter,Arial,sans-serif;fill:#7fdf9e}.amber{fill:#f5c66d}.note{fill:#1c1a12;stroke:#66542a;stroke-width:1;rx:12}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1040" fill="url(#bg)"/>
+  <text x="52" y="54" class="title">ApaKhabar AI Service Architecture</text>
+  <text x="52" y="80" class="subtitle">Current document-to-information and information-to-news flow • FastAPI + Ollama + Qwen + ChromaDB</text>
+
+  <!-- column lanes -->
+  <rect x="38" y="112" width="220" height="842" rx="18" class="lane"/>
+  <rect x="276" y="112" width="320" height="842" rx="18" class="lane"/>
+  <rect x="614" y="112" width="620" height="842" rx="18" class="lane"/>
+  <rect x="1252" y="112" width="310" height="842" rx="18" class="lane"/>
+  <text x="58" y="144" class="laneTitle">CLIENT &amp; HOST APP</text>
+  <text x="296" y="144" class="laneTitle">FASTAPI ENTRY</text>
+  <text x="634" y="144" class="laneTitle">AI ORCHESTRATION</text>
+  <text x="1272" y="144" class="laneTitle">MODELS &amp; STORES</text>
+
+  <!-- client lane -->
+  <rect x="60" y="178" width="176" height="116" class="box"/>
+  <text x="80" y="207" class="head">Moderator</text>
+  <text x="80" y="231" class="copy">Prompt • upload ≤ 5 files</text>
+  <text x="80" y="250" class="copy">Select documents / info</text>
+  <text x="80" y="269" class="copy">Approve evidence • review</text>
+
+  <rect x="60" y="336" width="176" height="150" class="box"/>
+  <text x="80" y="365" class="head">ApaKhabar Web App</text>
+  <text x="80" y="389" class="copy">React / Inertia UI</text>
+  <text x="80" y="408" class="copy">Laravel backend</text>
+  <text x="80" y="427" class="copy">Chat + choice buttons</text>
+  <rect x="80" y="447" width="124" height="21" class="pill"/><text x="90" y="462" class="pillText">REST / NDJSON stream</text>
+
+  <rect x="60" y="722" width="176" height="174" class="boxStore"/>
+  <text x="80" y="752" class="head">Application Storage</text>
+  <text x="80" y="776" class="copy">MySQL records</text>
+  <text x="80" y="795" class="copy">Document metadata</text>
+  <text x="80" y="814" class="copy">Extracted information</text>
+  <text x="80" y="833" class="copy">Sessions + draft versions</text>
+  <text x="80" y="852" class="copy">Categories + approvals</text>
+  <text x="80" y="877" class="tiny">Original files: local disk or S3</text>
+
+  <!-- FastAPI -->
+  <rect x="300" y="178" width="272" height="112" class="box"/>
+  <text x="320" y="207" class="head">FastAPI Gateway</text>
+  <text x="320" y="231" class="copy">Validation • routing • errors</text>
+  <text x="320" y="251" class="copy">Pydantic request/response schemas</text>
+  <rect x="320" y="263" width="96" height="20" class="pill"/><text x="330" y="277" class="pillText">Swagger / OpenAPI</text>
+
+  <rect x="300" y="324" width="272" height="190" class="box"/>
+  <text x="320" y="353" class="head">Document API</text>
+  <text x="320" y="377" class="copy">/documents/batch-extract</text>
+  <text x="320" y="396" class="copy">/documents/extract-information</text>
+  <text x="320" y="415" class="copy">/documents/index</text>
+  <text x="320" y="445" class="head">Document Normalizer</text>
+  <text x="320" y="468" class="copy">PDF • DOCX • XLSX/XLSM</text>
+  <text x="320" y="487" class="copy">CSV • TXT • JPG/JPEG/PNG</text>
+
+  <rect x="300" y="546" width="272" height="120" class="box"/>
+  <text x="320" y="575" class="head">News API</text>
+  <text x="320" y="599" class="copy">/news/generate</text>
+  <text x="320" y="618" class="copy">/news/generate-stream</text>
+  <text x="320" y="637" class="copy">/news/check-completeness</text>
+
+  <rect x="300" y="704" width="272" height="150" class="box"/>
+  <text x="320" y="733" class="head">RAG API</text>
+  <text x="320" y="757" class="copy">/rag/search</text>
+  <text x="320" y="776" class="copy">/rag/generate-news</text>
+  <text x="320" y="795" class="copy">/rag/documents/{id}</text>
+  <text x="320" y="825" class="tiny">Similarity threshold filters weak hits</text>
+
+  <!-- Orchestration boxes -->
+  <rect x="638" y="178" width="270" height="154" class="box"/>
+  <text x="658" y="207" class="head">Parse + Normalize</text>
+  <text x="658" y="231" class="copy">Native text/table extraction</text>
+  <text x="658" y="250" class="copy">Source metadata: page/sheet/row</text>
+  <rect x="658" y="271" width="107" height="24" class="pill"/><text x="669" y="287" class="pillText">Tesseract OCR</text>
+  <text x="658" y="316" class="tiny">Scanned PDF pages and images</text>
+
+  <rect x="938" y="178" width="272" height="154" class="boxAI"/>
+  <text x="958" y="207" class="head">Information Extraction</text>
+  <text x="958" y="231" class="copy">Distinct Indonesian information</text>
+  <text x="958" y="250" class="copy">Labels • fields • evidence</text>
+  <text x="958" y="269" class="copy">Confidence • source references</text>
+  <rect x="958" y="289" width="132" height="24" class="pill"/><text x="969" y="305" class="pillText">Structured JSON output</text>
+
+  <rect x="638" y="372" width="270" height="200" class="boxAI"/>
+  <text x="658" y="401" class="head">RAG Indexing</text>
+  <text x="658" y="425" class="copy">1. Chunk source-aware elements</text>
+  <text x="658" y="444" class="copy">2. Create local embeddings</text>
+  <text x="658" y="463" class="copy">3. Upsert text + metadata</text>
+  <text x="658" y="493" class="head">RAG Retrieval</text>
+  <text x="658" y="517" class="copy">Embed query → cosine search</text>
+  <text x="658" y="536" class="copy">Top-K relevant source chunks</text>
+  <text x="658" y="559" class="tiny amber">Recommendations require approval</text>
+
+  <rect x="938" y="372" width="272" height="200" class="boxTool"/>
+  <text x="958" y="401" class="head">Agent Tools</text>
+  <text x="958" y="427" class="copy">web_search</text>
+  <text x="958" y="446" class="copy">• Brave Search API</text>
+  <text x="958" y="465" class="copy">• Google News RSS fallback</text>
+  <text x="958" y="495" class="copy">ask_user_choice</text>
+  <text x="958" y="514" class="copy">• 2–4 tappable choices</text>
+  <text x="958" y="533" class="copy">• one clarification round</text>
+  <text x="958" y="558" class="tiny amber">Web sources require moderator approval</text>
+
+  <rect x="638" y="612" width="572" height="244" class="boxAI"/>
+  <text x="658" y="641" class="head">News Creation Workflow / Runtime Skill</text>
+  <text x="658" y="665" class="copy">1. Combine approved documents, information, user facts, and sources</text>
+  <text x="658" y="687" class="copy">2. Decide whether current real-world claims need web discovery</text>
+  <text x="658" y="709" class="copy">3. Check subject ambiguity, completeness, conflicts, and evidence</text>
+  <text x="658" y="731" class="copy">4. Ask only when material; after one clarification round, generate</text>
+  <text x="658" y="753" class="copy">5. Draft grounded Bahasa Indonesia news with category + citations</text>
+  <text x="658" y="775" class="copy">6. Validate output schema; return warnings and sources used</text>
+  <rect x="658" y="798" width="177" height="25" class="pill"/><text x="670" y="815" class="pillText">news-creation/SKILL.md</text>
+  <rect x="848" y="798" width="151" height="25" class="pill"/><text x="860" y="815" class="pillText">completeness.md</text>
+  <rect x="1012" y="798" width="142" height="25" class="pill"/><text x="1024" y="815" class="pillText">generation.md</text>
+
+  <rect x="638" y="885" width="572" height="48" class="note"/>
+  <text x="658" y="907" class="head">Human-in-the-loop boundary</text>
+  <text x="658" y="924" class="tiny">The service returns a draft for moderator review; it does not publish automatically.</text>
+
+  <!-- model/store lane -->
+  <rect x="1276" y="178" width="262" height="174" class="boxAI"/>
+  <text x="1296" y="207" class="head">Ollama Runtime</text>
+  <text x="1296" y="234" class="copy">Qwen generation model</text>
+  <text x="1296" y="253" class="copy">qwen3:4b</text>
+  <text x="1296" y="281" class="copy">Qwen embedding model</text>
+  <text x="1296" y="300" class="copy">qwen3-embedding:0.6b</text>
+  <text x="1296" y="331" class="tiny">Local model API • no LangChain</text>
+
+  <rect x="1276" y="392" width="262" height="142" class="boxStore"/>
+  <text x="1296" y="421" class="head">ChromaDB</text>
+  <text x="1296" y="445" class="copy">Persistent vector collection</text>
+  <text x="1296" y="464" class="copy">Chunk text + embeddings</text>
+  <text x="1296" y="483" class="copy">Document/source metadata</text>
+  <text x="1296" y="512" class="tiny">./data/chroma</text>
+
+  <rect x="1276" y="576" width="262" height="142" class="boxTool"/>
+  <text x="1296" y="605" class="head">External Discovery</text>
+  <text x="1296" y="629" class="copy">Brave Search (configured key)</text>
+  <text x="1296" y="648" class="copy">Google News RSS (fallback)</text>
+  <text x="1296" y="677" class="tiny">Used for current factual topics</text>
+  <text x="1296" y="696" class="tiny">Skipped for explicit fiction</text>
+
+  <rect x="1276" y="758" width="262" height="126" class="box"/>
+  <text x="1296" y="787" class="head">Validated Response</text>
+  <text x="1296" y="811" class="copy">Article or choice tool call</text>
+  <text x="1296" y="830" class="copy">Category • sources • warnings</text>
+  <text x="1296" y="849" class="copy">Streaming progress stages</text>
+  <text x="1296" y="871" class="tiny">Pydantic structured schemas</text>
+
+  <!-- arrows -->
+  <path d="M148 294 V336" class="flow"/><text x="160" y="320" class="label">request</text>
+  <path d="M236 411 H300" class="flow"/>
+  <path d="M436 290 V324" class="flow"/>
+  <path d="M572 418 H638 V256" class="flow"/>
+  <path d="M908 256 H938" class="flow"/>
+  <path d="M1074 178 V160 H1407 V178" class="flow"/>
+  <path d="M773 332 V372" class="flow"/>
+  <path d="M908 472 H1276" class="flow"/>
+  <path d="M1276 486 H1218 V536 H908" class="flowDash"/>
+  <path d="M572 606 H638" class="flow"/>
+  <path d="M1074 572 V612" class="flow"/>
+  <path d="M1210 455 H1240 V647 H1276" class="flow"/>
+  <path d="M1276 682 H1240 V540 H1210" class="flowDash"/>
+  <path d="M1210 744 H1248 V265 H1276" class="flow"/>
+  <path d="M1210 815 H1276" class="flow"/>
+  <path d="M1276 821 H1230 V915 H236 V896" class="flow"/>
+  <path d="M60 809 H44 V486 H60" class="flowDash"/>
+  <path d="M938 547 H920 V591 H550 V546" class="approval"/>
+  <text x="738" y="585" class="label amber">moderator approval / clarification response</text>
+
+  <!-- legend -->
+  <rect x="38" y="976" width="1524" height="42" rx="12" fill="#0d1711" stroke="#284234"/>
+  <circle cx="64" cy="997" r="6" fill="#27ae60"/><text x="78" y="1001" class="tiny">AI processing</text>
+  <circle cx="192" cy="997" r="6" fill="#a77825"/><text x="206" y="1001" class="tiny">Tool / external data</text>
+  <circle cx="362" cy="997" r="6" fill="#426481"/><text x="376" y="1001" class="tiny">Persistent storage</text>
+  <path d="M522 997 h38" class="flow"/><text x="572" y="1001" class="tiny">request / data flow</text>
+  <path d="M718 997 h38" class="approval"/><text x="768" y="1001" class="tiny">human approval boundary</text>
+  <text x="1518" y="1001" text-anchor="end" class="tiny">Current implementation • 17 Sep 2026</text>
+</svg>

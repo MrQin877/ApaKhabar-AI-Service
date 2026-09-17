@@ -188,6 +188,7 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 | POST | `/extract-information` | Extract information from plain text |
 | POST | `/news/check-completeness` | Find missing or conflicting news facts |
 | POST | `/news/generate` | Generate news from supplied information |
+| POST | `/news/evaluate-quality` | Score a saved or edited draft against approved evidence |
 | POST | `/rag/search` | Search indexed evidence |
 | POST | `/rag/generate-news` | Retrieve evidence and generate news |
 | DELETE | `/rag/documents/{document_id}` | Remove a document from the index |

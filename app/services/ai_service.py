@@ -1,3 +1,4 @@
+import json
 import re
 
 from ollama import Client, ResponseError
@@ -5,7 +6,13 @@ from pydantic import BaseModel, ValidationError
 
 from app.core.config import get_settings
 from app.schemas.information import ExtractionResponse
-from app.schemas.news import CompletenessResult, NewsArticle, NewsLanguage
+from app.schemas.news import (
+    CompletenessResult,
+    NewsArticle,
+    NewsLanguage,
+    NewsQualityAssessment,
+    NewsQualityEvaluation,
+)
 
 
 class AIServiceError(RuntimeError):
@@ -171,3 +178,64 @@ field must be {language}.
         if not has_source_reference:
             article.sources_used = []
         return article
+
+    @staticmethod
+    def evaluate_news_quality(
+        article: NewsArticle,
+        evidence: str,
+        user_request: str | None = None,
+    ) -> NewsQualityEvaluation:
+        """Estimate draft quality against the evidence supplied to generation.
+
+        The model supplies dimension judgements and claim checks. Application code
+        calculates the weighted total and blocking rules so model arithmetic cannot
+        change the configured quality formula.
+        """
+        if not evidence.strip():
+            raise ValueError("Evidence cannot be empty.")
+
+        system_prompt = """
+You are a strict Indonesian news quality evaluator. Evaluate the supplied draft
+only against APPROVED EVIDENCE and the USER REQUEST. This is an estimate for a
+human moderator, not a guarantee of correctness.
+
+Return all seven dimensions as scores from 0 to 100 with a concise explanation
+and concrete issues. Do not calculate an overall or weighted score.
+
+Scoring rules:
+- accuracy: factual grounding. Extract the draft's factual claims and compare
+  each with approved evidence. Unsupported and contradicted claims must reduce
+  this score substantially. Style instructions are never factual evidence.
+- completeness: coverage of applicable, available 5W1H facts. Do not penalize a
+  detail that the evidence itself does not contain.
+- relevance: alignment with the user request and approved evidence.
+- readability: clarity, paragraph flow, repetition, and sentence quality.
+- structure: headline, lead, body, inverted-pyramid ordering, category, and
+  source attribution where sources exist.
+- language: formal, natural Bahasa Indonesia, consistent terminology, dates,
+  and numbers. Preserve proper names.
+- safety: defamation risk, unsupported accusations, privacy exposure, hate,
+  sexual/graphic content, dangerous instructions, and inflammatory wording.
+
+For every externally verifiable factual assertion, add a claim_check with one of
+supported, partially_supported, unsupported, or contradicted. A supported claim
+must identify its page, filename, row, URL, or other supplied source marker when
+available. Never manufacture a source. Use warnings for conflicts, serious safety
+concerns, or limitations. Be conservative when evidence is ambiguous.
+""".strip()
+        payload = {
+            "user_request": user_request or "No additional editorial request.",
+            "approved_evidence": evidence,
+            "draft": article.model_dump(mode="json"),
+        }
+        assessment = OllamaService._structured_chat(
+            NewsQualityAssessment,
+            system_prompt,
+            json.dumps(payload, ensure_ascii=False),
+            temperature=0,
+        )
+        settings = get_settings()
+        return NewsQualityEvaluation.from_assessment(
+            NewsQualityAssessment.model_validate(assessment),
+            evaluator_model=settings.ollama_generation_model,
+        )
