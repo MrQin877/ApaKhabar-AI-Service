@@ -33,3 +33,15 @@ class InformationItem(BaseModel):
 
 class ExtractionResponse(BaseModel):
     information: list[InformationItem]
+
+
+class ExtractionContext(BaseModel):
+    mode: Literal["general", "targeted"] = "general"
+    query: str | None = Field(default=None, max_length=2000)
+    keywords: list[str] = Field(default_factory=list, max_length=20)
+
+    def effective_query(self) -> str | None:
+        query = " ".join((self.query or "").split())
+        keywords = [" ".join(value.split()) for value in self.keywords if value.strip()]
+        combined = " ".join(part for part in [query, " ".join(keywords)] if part)
+        return combined or None

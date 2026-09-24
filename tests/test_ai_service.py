@@ -10,6 +10,7 @@ from app.schemas.news import (
     NewsRequest,
     QualityDimension,
 )
+from app.schemas.information import ExtractionContext
 from app.services.ai_service import OllamaService
 from app.agent.news_workflow import NewsCreationWorkflow, load_skill_prompt
 from app.schemas.news import CompletenessResult
@@ -18,6 +19,13 @@ from app.services.web_search_service import WebSearchService
 
 
 class AIServiceTests(unittest.TestCase):
+    def test_targeted_extraction_requires_query(self):
+        with self.assertRaises(ValueError):
+            OllamaService.extract_information(
+                "[source: page=1] Content",
+                ExtractionContext(mode="targeted"),
+            )
+
     def test_news_request_accepts_structured_extraction(self):
         request = NewsRequest.model_validate(
             {
@@ -117,6 +125,51 @@ class AIServiceTests(unittest.TestCase):
         payload = WebSearchService.discovery_input("Ekonomi")
         self.assertEqual(payload.query, "Ekonomi berita terbaru")
         self.assertEqual(payload.freshness, "pw")
+
+    def test_historical_request_uses_background_search_without_freshness(self):
+        payload = WebSearchService.discovery_input(
+            "make the news about Desa Punggul history"
+        )
+        self.assertIn("Desa Punggul", payload.query)
+        self.assertIn("sejarah", payload.query)
+        self.assertIsNone(payload.freshness)
+
+    def test_historical_request_gets_historical_profile_format(self):
+        content_type = NewsCreationWorkflow._infer_content_type(
+            "Buat berita tentang sejarah Desa Punggul"
+        )
+        self.assertEqual(content_type, "historical_profile")
+
+    @patch.object(OllamaService, "check_news_completeness")
+    def test_workflow_passes_historical_format_to_completeness(self, check):
+        check.return_value = CompletenessResult(
+            status="ready", missing=[], conflicts=[], known_facts=[]
+        )
+        with patch.object(OllamaService, "write_news") as write, patch.object(
+            OllamaService, "evaluate_news_quality"
+        ) as evaluate:
+            write.return_value = NewsArticle(
+                headline="Sejarah Desa Punggul",
+                subheadline=None,
+                lead="Desa Punggul memiliki perjalanan sejarah.",
+                body=["Riwayat desa disusun dari sumber yang disetujui."],
+                summary="Profil sejarah Desa Punggul.",
+                labels=["sejarah"],
+                language="id",
+                sources_used=["page=1"],
+                warnings=[],
+                content_type="historical_profile",
+            )
+            evaluate.return_value = self._quality_evaluation()
+            NewsCreationWorkflow.run(
+                NewsRequest(
+                    information="[source: page=1] Desa Punggul dibentuk pada masa X.",
+                    instructions="Buat berita tentang sejarah Desa Punggul",
+                )
+            )
+
+        self.assertEqual(check.call_args.kwargs["content_type"], "historical_profile")
+        self.assertEqual(write.call_args.kwargs["content_type"], "historical_profile")
 
     @patch.object(WebSearchService, "search")
     def test_web_sources_require_moderator_approval(self, search):

@@ -7,6 +7,15 @@ from app.schemas.tools import AskUserChoiceToolCall, WebSearchResult
 
 
 NewsLanguage = Literal["id"]
+NewsContentType = Literal[
+    "news_article",
+    "historical_profile",
+    "announcement",
+    "event_report",
+    "data_report",
+    "regulation_summary",
+    "public_awareness",
+]
 
 
 class MissingInformation(BaseModel):
@@ -45,6 +54,7 @@ class NewsRequest(BaseModel):
     user_facts: list[UserProvidedFact] = Field(default_factory=list, max_length=30)
     clarification_completed: bool = False
     available_categories: list[str] = Field(default_factory=list, max_length=50)
+    content_type: NewsContentType | None = None
 
     @model_validator(mode="after")
     def reject_blank_information(self):
@@ -86,6 +96,7 @@ class NewsArticle(BaseModel):
     sources_used: list[str]
     warnings: list[str]
     category: str | None = None
+    content_type: NewsContentType = "news_article"
 
 
 class QualityDimension(BaseModel):
@@ -232,4 +243,16 @@ class NewsGenerationResponse(BaseModel):
     tool_calls: list[AskUserChoiceToolCall] = Field(default_factory=list, max_length=3)
     web_sources: list[WebSearchResult] = Field(default_factory=list)
     guidance: str | None = None
+    quality: NewsQualityEvaluation | None = None
+
+
+class NewsRevisionRequest(BaseModel):
+    article: NewsArticle
+    evidence: str = Field(min_length=1)
+    instruction: str = Field(min_length=1, max_length=2000)
+    available_categories: list[str] = Field(default_factory=list, max_length=50)
+
+
+class NewsRevisionResponse(BaseModel):
+    article: NewsArticle
     quality: NewsQualityEvaluation | None = None

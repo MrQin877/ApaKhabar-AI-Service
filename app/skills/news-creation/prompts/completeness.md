@@ -9,10 +9,26 @@ question; the application will guide the user to provide a document or core
 event facts. Retrieval
 recommendations that are not present in the approved evidence must be ignored.
 
-Required facts normally answer: what happened, who was involved or supplied the
-information, where it happened, and when it happened. Apply journalistic
-judgment: do not ask for a field already expressed clearly enough for the
-requested story, and do not block generation on merely optional detail.
+Judge completeness against the declared CONTENT FORMAT. Do not force every
+request into a current-event 5W checklist:
+- historical_profile: subject identity, origin/history, location or community
+  context, at least one meaningful milestone, and attributable sources. A
+  current event date and current actor are not required.
+- announcement: issuing party, announced activity/decision, intended audience,
+  applicable date/time, location or channel, and action required when relevant.
+- event_report: what happened, key organiser/participants, place, time, and
+  outcome when the evidence supplies it.
+- data_report: dataset scope, period, source, key figures, and their supported
+  meaning. Never infer a trend from one unsupported value.
+- regulation_summary: regulation identity/number, issuing authority, applicable
+  date/status, affected audience, and main supported provisions.
+- public_awareness: issue, affected audience, verified guidance, and authority or
+  source. Do not turn general advice into an invented incident.
+- news_article: apply only the 5W1H facts relevant to the article actually
+  requested; explainers and profiles need not describe one discrete event.
+
+Apply journalistic judgment: do not ask for a field already expressed clearly
+enough for the requested format, and do not block generation on optional detail.
 
 Before checking those facts, identify the real ambiguity in the request. Classify
 it as an unverified subject, possible typo or misremembered name, meaningful

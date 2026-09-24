@@ -10,8 +10,11 @@ from app.schemas.news import (
     CompletenessResult,
     NewsGenerationResponse,
     NewsLanguage,
+    NewsContentType,
     NewsArticle,
     NewsQualityEvaluation,
+    NewsRevisionRequest,
+    NewsRevisionResponse,
     NewsRequest,
 )
 from app.services.ai_service import AIServiceError, OllamaService
@@ -23,6 +26,7 @@ router = APIRouter(prefix="/news", tags=["news"])
 
 class CompletenessRequest(BaseModel):
     information: str = Field(min_length=1)
+    content_type: NewsContentType = "news_article"
 
 
 class NewsQualityRequest(BaseModel):
@@ -41,7 +45,10 @@ def _service_error(exc: Exception) -> HTTPException:
 @router.post("/check-completeness", response_model=CompletenessResult)
 def check_completeness(request: CompletenessRequest) -> CompletenessResult:
     try:
-        return OllamaService.check_news_completeness(request.information)
+        return OllamaService.check_news_completeness(
+            request.information,
+            content_type=request.content_type,
+        )
     except (AIServiceError, ValueError) as exc:
         raise _service_error(exc) from exc
 
@@ -63,6 +70,26 @@ def evaluate_news_quality(request: NewsQualityRequest) -> NewsQualityEvaluation:
             evidence=request.evidence,
             user_request=request.user_request,
         )
+    except (AIServiceError, ValueError, ValidationError) as exc:
+        raise _service_error(exc) from exc
+
+
+@router.post("/revise", response_model=NewsRevisionResponse)
+def revise_news(request: NewsRevisionRequest) -> NewsRevisionResponse:
+    try:
+        article = OllamaService.revise_news(request)
+        try:
+            quality = OllamaService.evaluate_news_quality(
+                article,
+                evidence=request.evidence,
+                user_request=request.instruction,
+            )
+        except (AIServiceError, ValueError):
+            quality = None
+            article.warnings.append(
+                "Evaluasi kualitas otomatis tidak tersedia; tinjauan manual diperlukan."
+            )
+        return NewsRevisionResponse(article=article, quality=quality)
     except (AIServiceError, ValueError, ValidationError) as exc:
         raise _service_error(exc) from exc
 

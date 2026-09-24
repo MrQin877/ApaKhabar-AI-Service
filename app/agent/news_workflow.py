@@ -7,6 +7,7 @@ from app.schemas.news import (
     MissingInformation,
     NewsGenerationResponse,
     NewsRequest,
+    NewsContentType,
 )
 from app.schemas.tools import (
     AskUserChoice,
@@ -39,6 +40,9 @@ class NewsCreationWorkflow:
         emit = progress or (lambda _stage, _message: None)
         information = request.information_text()
         query = (request.instructions or "").strip()
+        content_type = request.content_type or NewsCreationWorkflow._infer_content_type(
+            query
+        )
         facts = {fact.field: fact.value for fact in request.user_facts}
         has_evidence = "NO APPROVED FACTUAL EVIDENCE" not in information
         web_sources: list[WebSearchResult] = []
@@ -82,10 +86,7 @@ class NewsCreationWorkflow:
                         if search_attempted
                         else ""
                     )
-                    +
-                    "Unggah atau pilih dokumen/informasi, atau jelaskan kejadian "
-                    "nyata dengan menyebutkan apa yang terjadi, siapa yang terlibat, "
-                    "lokasi, dan waktunya. Topik atau kategori saja belum cukup."
+                    + NewsCreationWorkflow._evidence_guidance(content_type)
                 ),
             )
 
@@ -111,6 +112,7 @@ class NewsCreationWorkflow:
                     if request.available_categories
                     else ""
                 ),
+                content_type=content_type,
             )
             if completeness.status != "ready":
                 for missing in completeness.missing:
@@ -154,6 +156,7 @@ class NewsCreationWorkflow:
                 if request.available_categories
                 else ""
             ),
+            content_type=content_type,
         )
         emit("evaluating_quality", "Menilai akurasi, kelengkapan, dan kualitas draf…")
         try:
@@ -189,6 +192,46 @@ class NewsCreationWorkflow:
         return any(
             fact.field.lower() not in editorial_fields and len(fact.value.strip()) >= 12
             for fact in request.user_facts
+        )
+
+    @staticmethod
+    def _infer_content_type(query: str) -> NewsContentType:
+        value = query.lower()
+        patterns: list[tuple[NewsContentType, tuple[str, ...]]] = [
+            ("historical_profile", ("sejarah", "history", "historical", "asal usul", "asal-usul", "profil", "profile")),
+            ("announcement", ("pengumuman", "announcement", "imbauan resmi")),
+            ("regulation_summary", ("peraturan", "regulation", "undang-undang", "surat keputusan", "kebijakan")),
+            ("data_report", ("laporan data", "data report", "statistik", "dataset", "spreadsheet")),
+            ("public_awareness", ("kesadaran", "awareness", "edukasi publik", "panduan publik")),
+            ("event_report", ("laporan acara", "event report", "kegiatan", "acara")),
+        ]
+        for content_type, markers in patterns:
+            if any(marker in value for marker in markers):
+                return content_type
+        return "news_article"
+
+    @staticmethod
+    def _evidence_guidance(content_type: NewsContentType) -> str:
+        if content_type == "historical_profile":
+            return (
+                "Unggah atau pilih sumber sejarah, atau berikan fakta tentang asal-usul, "
+                "tonggak perkembangan, lokasi, dan sumber rujukannya. Saya tidak akan "
+                "memaksa artikel sejarah memakai tanggal dan pelaku kejadian terkini."
+            )
+        if content_type == "data_report":
+            return (
+                "Unggah atau pilih data, lalu sertakan cakupan, periode, angka utama, "
+                "dan sumber datanya. Topik saja belum cukup."
+            )
+        if content_type == "regulation_summary":
+            return (
+                "Unggah atau pilih peraturan, atau berikan judul/nomor, penerbit, tanggal, "
+                "dan ketentuan utamanya. Topik saja belum cukup."
+            )
+        return (
+            "Unggah atau pilih dokumen/informasi, atau jelaskan kejadian nyata dengan "
+            "menyebutkan apa yang terjadi, siapa yang terlibat, lokasi, dan waktunya. "
+            "Topik atau kategori saja belum cukup."
         )
 
     @staticmethod

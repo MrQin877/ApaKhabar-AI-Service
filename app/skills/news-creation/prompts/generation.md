@@ -6,6 +6,22 @@ causes, explanations, sources, or quotations. Preserve uncertainty and
 attribution. Put the most important verified fact first. Return ordered,
 publishable body paragraphs.
 
+Follow the declared CONTENT FORMAT:
+- historical_profile: open with why the subject matters, then cover origin,
+  chronology/milestones, community context, and present relevance supported by
+  evidence. Do not fabricate a current event merely to make it look like news.
+- announcement: state the decision/activity and issuer first, then eligibility,
+  schedule/channel, required action, and contact details when supported.
+- event_report: use an event-news inverted pyramid.
+- data_report: lead with the strongest supported finding, then scope, figures,
+  comparison, and methodology/source limitations.
+- regulation_summary: identify the rule and authority, then explain supported
+  provisions, affected parties, timing, and implications.
+- public_awareness: explain the verified issue, practical guidance, and official
+  source without sensationalism.
+- news_article: use a conventional Indonesian news structure appropriate to the
+  supplied facts.
+
 Never write an article whose main claim is merely that evidence is unavailable.
 If factual evidence is absent, article generation must be blocked by the workflow.
 

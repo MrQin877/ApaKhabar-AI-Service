@@ -2,13 +2,17 @@ from fastapi import APIRouter, HTTPException, Response, status
 
 from app.schemas.news import NewsGenerationResponse
 from app.schemas.rag import (
+    IndexedInformationResponse,
+    InformationIndexRequest,
+    InformationSearchRequest,
+    InformationSearchResponse,
     RagNewsRequest,
     RagNewsResponse,
     RagSearchRequest,
     RagSearchResponse,
 )
 from app.services.ai_service import AIServiceError, OllamaService
-from app.services.rag_service import RagService
+from app.services.rag_service import InformationRagService, RagService
 
 
 router = APIRouter(prefix="/rag", tags=["rag"])
@@ -32,6 +36,34 @@ def search_documents(request: RagSearchRequest) -> RagSearchResponse:
     except (AIServiceError, ValueError) as exc:
         raise _unavailable(exc) from exc
     return RagSearchResponse(query=request.query, results=results)
+
+
+@router.post("/information/index", response_model=IndexedInformationResponse)
+def index_information(request: InformationIndexRequest) -> IndexedInformationResponse:
+    try:
+        indexed = InformationRagService().index(request.items)
+    except (AIServiceError, ValueError) as exc:
+        raise _unavailable(exc) from exc
+    return IndexedInformationResponse(indexed=indexed)
+
+
+@router.post("/information/search", response_model=InformationSearchResponse)
+def search_information(request: InformationSearchRequest) -> InformationSearchResponse:
+    try:
+        results = InformationRagService().search(
+            request.query,
+            owner_id=request.owner_id,
+            top_k=request.top_k,
+        )
+    except (AIServiceError, ValueError) as exc:
+        raise _unavailable(exc) from exc
+    return InformationSearchResponse(query=request.query, results=results)
+
+
+@router.delete("/information/{information_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_information(information_id: str) -> Response:
+    InformationRagService().delete(information_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.post("/generate-news", response_model=RagNewsResponse)

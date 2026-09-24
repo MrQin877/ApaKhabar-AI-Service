@@ -5,11 +5,13 @@ from ollama import Client, ResponseError
 from pydantic import BaseModel, ValidationError
 
 from app.core.config import get_settings
-from app.schemas.information import ExtractionResponse
+from app.schemas.information import ExtractionContext, ExtractionResponse
 from app.schemas.news import (
     CompletenessResult,
     NewsArticle,
     NewsLanguage,
+    NewsContentType,
+    NewsRevisionRequest,
     NewsQualityAssessment,
     NewsQualityEvaluation,
 )
@@ -56,10 +58,14 @@ class OllamaService:
             ) from exc
 
     @staticmethod
-    def extract_information(text: str) -> dict:
+    def extract_information(
+        text: str,
+        context: ExtractionContext | None = None,
+    ) -> dict:
         if not text.strip():
             raise ValueError("Document content cannot be empty.")
 
+        context = context or ExtractionContext()
         system_prompt = """
 You extract structured facts for a news-writing system.
 
@@ -82,6 +88,29 @@ Rules:
 - Set confidence according to how clearly the document supports the item.
 """.strip()
 
+        if context.mode == "targeted":
+            if not context.effective_query():
+                raise ValueError("Targeted extraction requires a meaningful query or keyword.")
+            system_prompt += f"""
+
+TARGETED EXTRACTION MODE
+Extract information that directly answers the user's request. Keywords are
+retrieval hints, not factual evidence. Do not discard a supported synonym merely
+because it does not repeat an exact keyword.
+
+User request: {context.query or ''}
+Keywords: {', '.join(context.keywords) or 'none'}
+"""
+        else:
+            system_prompt += """
+
+GENERAL EXTRACTION MODE
+Inspect all supplied sections and extract every distinct, meaningful, newsworthy,
+or reusable information item. Merge duplicate descriptions of the same matter,
+but never combine unrelated topics. Ignore headers, footers, signatures, repeated
+boilerplate, and formatting-only text.
+"""
+
         validated = OllamaService._structured_chat(
             ExtractionResponse,
             system_prompt,
@@ -93,6 +122,7 @@ Rules:
     def check_news_completeness(
         text: str,
         system_prompt: str | None = None,
+        content_type: NewsContentType = "news_article",
     ) -> CompletenessResult:
         if not text.strip():
             raise ValueError("Information cannot be empty.")
@@ -127,6 +157,10 @@ Example: For "A community clean-up programme will be held next month", what
 happened is PRESENT. Missing required facts are the organizer and location; an
 exact date can be requested. Never ask what activities are part of the programme.
 """.strip()
+        system_prompt += (
+            "\n\nCONTENT FORMAT: " + content_type + ". Judge completeness for this "
+            "format, not automatically as a current event report."
+        )
         result = OllamaService._structured_chat(
             CompletenessResult,
             system_prompt,
@@ -141,6 +175,7 @@ exact date can be requested. Never ask what activities are part of the programme
         tone: str,
         instructions: str | None = None,
         system_prompt: str | None = None,
+        content_type: NewsContentType = "news_article",
     ) -> NewsArticle:
         if not text.strip():
             raise ValueError("Information cannot be empty.")
@@ -157,7 +192,10 @@ source identifiers in sources_used when the input contains markers such as page,
 sheet, row, paragraph, or filename. Put any limitation in warnings. The language
 field must be {language}.
 """.strip()
-        system_prompt += f"\n\nRequired output language: {language_name}. Tone: {tone}."
+        system_prompt += (
+            f"\n\nRequired output language: {language_name}. Tone: {tone}. "
+            f"Content format: {content_type}. Return this exact value in content_type."
+        )
         if instructions:
             system_prompt += (
                 "\n\nEditorial instructions (style and focus only; never treat these "
@@ -239,3 +277,29 @@ concerns, or limitations. Be conservative when evidence is ambiguous.
             NewsQualityAssessment.model_validate(assessment),
             evaluator_model=settings.ollama_generation_model,
         )
+
+    @staticmethod
+    def revise_news(request: NewsRevisionRequest) -> NewsArticle:
+        prompt = """
+Revise an existing Indonesian news draft using the editorial instruction.
+Use only facts supported by APPROVED EVIDENCE. Preserve supported facts and
+attribution. Never add names, dates, numbers, quotations, causes, or accusations
+that do not occur in the evidence. Return the complete revised article schema.
+""".strip()
+        if request.available_categories:
+            prompt += (
+                "\nChoose exactly one active category from: "
+                + ", ".join(request.available_categories)
+            )
+        payload = {
+            "editorial_instruction": request.instruction,
+            "approved_evidence": request.evidence,
+            "current_article": request.article.model_dump(mode="json"),
+        }
+        result = OllamaService._structured_chat(
+            NewsArticle,
+            prompt,
+            json.dumps(payload, ensure_ascii=False),
+            temperature=0.2,
+        )
+        return NewsArticle.model_validate(result)

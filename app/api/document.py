@@ -1,4 +1,4 @@
-from fastapi import APIRouter, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
 
 from app.core.config import get_settings
 from app.schemas.document import (
@@ -7,7 +7,7 @@ from app.schemas.document import (
     DocumentExtractionResponse,
     NormalizedDocument,
 )
-from app.schemas.information import ExtractionResponse
+from app.schemas.information import ExtractionContext, ExtractionResponse
 from app.services.ai_service import AIServiceError, OllamaService
 from app.services.document_service import DocumentService
 from app.schemas.rag import IndexedDocumentResponse
@@ -51,13 +51,26 @@ async def _normalize_upload(file: UploadFile) -> NormalizedDocument:
 @router.post("/extract-information", response_model=DocumentExtractionResponse)
 async def extract_uploaded_document(
     file: UploadFile = File(...),
+    extraction_mode: str = Form(default="general"),
+    extraction_query: str | None = Form(default=None),
+    keywords: list[str] = Form(default=[]),
+    keywords_json: str | None = Form(default=None),
 ) -> DocumentExtractionResponse:
     document = await _normalize_upload(file)
     try:
-        extraction = ExtractionResponse.model_validate(
-            OllamaService.extract_information(document.as_model_text())
+        if keywords_json:
+            import json
+
+            keywords = json.loads(keywords_json)
+        context = ExtractionContext(
+            mode=extraction_mode,
+            query=extraction_query,
+            keywords=keywords,
         )
-    except AIServiceError as exc:
+        extraction = ExtractionResponse.model_validate(
+            OllamaService.extract_information(document.as_model_text(), context)
+        )
+    except (AIServiceError, ValueError) as exc:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=str(exc),
@@ -72,6 +85,10 @@ async def extract_uploaded_document(
 @router.post("/batch-extract", response_model=BatchDocumentExtractionResponse)
 async def batch_extract_uploaded_documents(
     files: list[UploadFile] = File(...),
+    extraction_mode: str = Form(default="general"),
+    extraction_query: str | None = Form(default=None),
+    keywords: list[str] = Form(default=[]),
+    keywords_json: str | None = Form(default=None),
 ) -> BatchDocumentExtractionResponse:
     if not 1 <= len(files) <= MAX_BATCH_FILES:
         raise HTTPException(
@@ -79,15 +96,41 @@ async def batch_extract_uploaded_documents(
             detail=f"Upload between 1 and {MAX_BATCH_FILES} files per request.",
         )
 
+    try:
+        if keywords_json:
+            import json
+
+            keywords = json.loads(keywords_json)
+        context = ExtractionContext(
+            mode=extraction_mode,
+            query=extraction_query,
+            keywords=keywords,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
     results: list[BatchDocumentExtractionItem] = []
     for file in files:
         filename = file.filename or "unnamed"
         try:
             document = await _normalize_upload(file)
+            rag = RagService()
+            chunks_indexed = rag.index_document(document)
+            extraction_text = document.as_model_text()
+            if context.mode == "targeted":
+                retrieved = rag.search(
+                    context.effective_query() or "",
+                    document_ids=[document.document_id],
+                    top_k=max(8, get_settings().rag_top_k),
+                )
+                if not retrieved:
+                    raise ValueError("No document sections matched the extraction request.")
+                extraction_text = "\n\n".join(
+                    f"[source: {chunk.source}] {chunk.content}" for chunk in retrieved
+                )
             extraction = ExtractionResponse.model_validate(
-                OllamaService.extract_information(document.as_model_text())
+                OllamaService.extract_information(extraction_text, context)
             )
-            chunks_indexed = RagService().index_document(document)
             results.append(
                 BatchDocumentExtractionItem(
                     filename=filename,

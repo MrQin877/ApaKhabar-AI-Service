@@ -5,7 +5,7 @@ from ollama import Client, ResponseError
 
 from app.core.config import get_settings
 from app.schemas.document import DocumentElement, NormalizedDocument
-from app.schemas.rag import RetrievedChunk
+from app.schemas.rag import InformationIndexItem, RetrievedChunk, RetrievedInformation
 from app.services.ai_service import AIServiceError
 
 
@@ -164,3 +164,82 @@ class RagService:
         if source.paragraph is not None:
             parts.append(f"paragraph={source.paragraph}")
         return ", ".join(parts)
+
+
+class InformationRagService:
+    COLLECTION_NAME = "apakhabar_information_items"
+
+    def __init__(self) -> None:
+        settings = get_settings()
+        self.settings = settings
+        self.ollama = Client(host=settings.ollama_base_url, timeout=120.0)
+        self.chroma = chromadb.PersistentClient(path=settings.chroma_path)
+        self.collection = self.chroma.get_or_create_collection(
+            name=self.COLLECTION_NAME,
+            metadata={"hnsw:space": "cosine"},
+        )
+
+    def index(self, items: list[InformationIndexItem]) -> int:
+        texts = [item.searchable_text() for item in items]
+        try:
+            response = self.ollama.embed(
+                model=self.settings.ollama_embedding_model,
+                input=texts,
+            )
+        except (ResponseError, ConnectionError, OSError) as exc:
+            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+
+        self.collection.upsert(
+            ids=[item.information_id for item in items],
+            documents=texts,
+            embeddings=response.embeddings,
+            metadatas=[{
+                "information_id": item.information_id,
+                "document_id": item.document_id,
+                "title": item.title,
+                "source": item.source,
+                "owner_id": item.owner_id,
+                "status": "approved",
+            } for item in items],
+        )
+        return len(items)
+
+    def search(self, query: str, owner_id: str, top_k: int = 8) -> list[RetrievedInformation]:
+        cleaned = query.strip()
+        if not cleaned:
+            raise ValueError("Search query cannot be empty.")
+        try:
+            response = self.ollama.embed(
+                model=self.settings.ollama_embedding_model,
+                input=cleaned,
+            )
+        except (ResponseError, ConnectionError, OSError) as exc:
+            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+
+        result = self.collection.query(
+            query_embeddings=[response.embeddings[0]],
+            n_results=top_k,
+            where={"$and": [{"owner_id": owner_id}, {"status": "approved"}]},
+            include=["documents", "metadatas", "distances"],
+        )
+        retrieved: list[RetrievedInformation] = []
+        for content, metadata, distance in zip(
+            result.get("documents", [[]])[0],
+            result.get("metadatas", [[]])[0],
+            result.get("distances", [[]])[0],
+            strict=False,
+        ):
+            if distance is not None and distance > self.settings.rag_max_distance:
+                continue
+            retrieved.append(RetrievedInformation(
+                information_id=str(metadata["information_id"]),
+                document_id=str(metadata["document_id"]),
+                title=str(metadata["title"]),
+                content=content,
+                source=str(metadata["source"]),
+                distance=distance,
+            ))
+        return retrieved
+
+    def delete(self, information_id: str) -> None:
+        self.collection.delete(ids=[information_id])

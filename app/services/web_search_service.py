@@ -1,6 +1,6 @@
 import re
 from html import unescape
-from urllib.parse import quote_plus
+from urllib.parse import quote, quote_plus
 from xml.etree import ElementTree
 
 import requests
@@ -16,6 +16,7 @@ class WebSearchError(RuntimeError):
 class WebSearchService:
     endpoint = "https://api.search.brave.com/res/v1/web/search"
     google_news_endpoint = "https://news.google.com/rss/search"
+    wikipedia_endpoint = "https://id.wikipedia.org/w/api.php"
     fictional_markers = re.compile(
         r"\b(fiksi|fictional|hypothetical|hipotetis|satire|parodi|parody|"
         r"creative concept|konsep kreatif|alternate universe)\b",
@@ -24,6 +25,17 @@ class WebSearchService:
     current_markers = re.compile(
         r"\b(latest|current|recent|today|yesterday|breaking|terbaru|terkini|"
         r"hari ini|kemarin|baru saja|sekarang|202[4-9])\b",
+        re.IGNORECASE,
+    )
+    historical_markers = re.compile(
+        r"\b(sejarah|history|historical|asal[- ]?usul|profil|profile|"
+        r"latar belakang|perkembangan|warisan)\b",
+        re.IGNORECASE,
+    )
+    generation_prefix = re.compile(
+        r"^(?:tolong\s+)?(?:buat(?:kan)?|tulis(?:kan)?|generate|create|write)\s+"
+        r"(?:(?:sebuah|an?|the)\s+)?(?:(?:berita|news|artikel|article)\s+)?"
+        r"(?:tentang|about|mengenai)?\s*",
         re.IGNORECASE,
     )
 
@@ -37,6 +49,16 @@ class WebSearchService:
     def discovery_input(cls, query: str) -> WebSearchInput:
         """Expand a broad real-world topic into a useful current-news query."""
         cleaned = " ".join(query.split())
+        cleaned = cls.generation_prefix.sub("", cleaned).strip(" .,:;-") or cleaned
+        if cls.historical_markers.search(cleaned):
+            subject = cls.historical_markers.sub("", cleaned)
+            subject = re.sub(r"\b(?:about|tentang|mengenai)\b", "", subject, flags=re.I)
+            subject = " ".join(subject.split()).strip(" .,:;-")
+            return WebSearchInput(
+                query=f'"{subject}" sejarah profil' if subject else cleaned,
+                count=7,
+                freshness=None,
+            )
         broad_topic = len(cleaned.split()) <= 3 and not cls.current_markers.search(
             cleaned
         )
@@ -135,4 +157,45 @@ class WebSearchService:
                     else "Google News",
                 )
             )
-        return results
+        if results or not cls.historical_markers.search(payload.query):
+            return results
+        return cls._search_wikipedia(payload)
+
+    @classmethod
+    def _search_wikipedia(cls, payload: WebSearchInput) -> list[WebSearchResult]:
+        """Keyless background-source fallback for historical/profile requests."""
+        settings = get_settings()
+        query = cls.historical_markers.sub("", payload.query.replace('"', ""))
+        query = " ".join(query.split()).strip() or payload.query
+        try:
+            response = requests.get(
+                cls.wikipedia_endpoint,
+                params={
+                    "action": "query",
+                    "generator": "search",
+                    "gsrsearch": query,
+                    "gsrlimit": min(payload.count, 5),
+                    "prop": "extracts",
+                    "exintro": "1",
+                    "explaintext": "1",
+                    "format": "json",
+                    "utf8": "1",
+                },
+                headers={"User-Agent": "ApaKhabar-News-Discovery/1.0"},
+                timeout=settings.web_search_timeout_seconds,
+            )
+            response.raise_for_status()
+        except requests.RequestException as exc:
+            raise WebSearchError("Background source search is unavailable.") from exc
+
+        pages = response.json().get("query", {}).get("pages", {})
+        return [
+            WebSearchResult(
+                title=page.get("title") or "Wikipedia",
+                url=f"https://id.wikipedia.org/wiki/{quote(page.get('title', '').replace(' ', '_'))}",
+                snippet=(page.get("extract") or "")[:1200],
+                source="Wikipedia bahasa Indonesia",
+            )
+            for page in pages.values()
+            if page.get("title") and page.get("extract")
+        ][: payload.count]
