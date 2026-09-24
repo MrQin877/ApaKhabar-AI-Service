@@ -1,6 +1,6 @@
 # ApaKhabar AI Service
 
-ApaKhabar is a local-first FastAPI service that converts documents and plain text into labelled, structured information and creates evidence-grounded news drafts. It uses free local models through Ollama and can optionally retrieve information from multiple or large documents through ChromaDB-based RAG.
+ApaKhabar is a local-first FastAPI service that converts documents and plain text into labelled, structured information and creates evidence-grounded news drafts. Generation can use Ollama or a directly loaded Gemma 4 model. Document retrieval can use Ollama embeddings or the dedicated multilingual EmbeddingGemma model with ChromaDB-based RAG.
 
 ## Features
 
@@ -11,6 +11,7 @@ ApaKhabar is a local-first FastAPI service that converts documents and plain tex
 - English and Bahasa Melayu news generation
 - Local embeddings, persistent vector storage, semantic search, and RAG news generation
 - Local processing without a paid model API
+- Configurable Ollama or Gemma 4 generation provider
 
 ## Architecture
 
@@ -54,6 +55,47 @@ brew install tesseract tesseract-lang
 ```
 
 Verify that `ind` and `eng` appear in `tesseract --list-langs`.
+
+Ollama is required only while either `AI_PROVIDER` or `EMBEDDING_PROVIDER` is
+set to `ollama`.
+
+### Optional: use Gemma 4 for generation
+
+Use Python 3.12 for the broadest compatibility with PyTorch and Transformers.
+Create the environment and install both dependency groups:
+
+```bash
+python3.12 -m venv .venv-gemma
+source .venv-gemma/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+pip install -r requirements-gemma.txt
+```
+
+Authenticate with Hugging Face if the selected model requires account access:
+
+```bash
+pip install huggingface_hub
+hf auth login
+```
+
+Then configure `.env`:
+
+```env
+AI_PROVIDER=gemma
+GEMMA_MODEL=google/gemma-4-E4B-it
+GEMMA_DEVICE=auto
+GEMMA_MAX_NEW_TOKENS=2048
+EMBEDDING_PROVIDER=embedding_gemma
+EMBEDDING_MODEL=google/embeddinggemma-300m
+EMBEDDING_DEVICE=auto
+EMBEDDING_DIMENSIONS=768
+```
+
+Model weights are downloaded to the Hugging Face cache on first use. They are
+not stored in this repository. The first request can therefore take significantly
+longer than later requests. Set `AI_PROVIDER=ollama` to switch back without
+changing application code.
 
 ## 2. Prepare the Python application
 
@@ -197,9 +239,22 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 
 | Variable | Default | Description |
 |---|---:|---|
+| `AI_PROVIDER` | `ollama` | Generation provider: `ollama` or `gemma` |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Local Ollama API |
 | `OLLAMA_GENERATION_MODEL` | `qwen3:4b` | Extraction and writing model |
 | `OLLAMA_EMBEDDING_MODEL` | `qwen3-embedding:0.6b` | RAG embedding model |
+| `GEMMA_MODEL` | `google/gemma-4-E4B-it` | Hugging Face Gemma generation model |
+| `GEMMA_DEVICE` | `auto` | Transformers device map |
+| `GEMMA_MAX_NEW_TOKENS` | `2048` | Maximum generated tokens per response |
+| `GEMMA_TOP_P` | `0.95` | Gemma sampling probability threshold |
+| `GEMMA_TOP_K` | `64` | Gemma sampling candidate limit |
+| `EMBEDDING_PROVIDER` | `ollama` | RAG provider: `ollama` or `embedding_gemma` |
+| `EMBEDDING_MODEL` | `google/embeddinggemma-300m` | Local EmbeddingGemma checkpoint |
+| `EMBEDDING_DEVICE` | `auto` | Chooses CUDA, Apple MPS, or CPU automatically |
+| `EMBEDDING_DIMENSIONS` | `768` | EmbeddingGemma vector dimensions |
+| `EMBEDDING_INDEX_VERSION` | `legacy` | Vector index generation; change deliberately and re-index when embeddings or chunking change |
+| `INTERNAL_API_TOKEN` | empty | Optional shared secret required in `X-ApaKhabar-Service-Token` for internal calls |
+| `API_VERSION` | `v1` | Reported internal API contract version |
 | `CHROMA_PATH` | `./data/chroma` | Persistent vector database directory |
 | `MAX_UPLOAD_MB` | `20` | Maximum accepted upload size |
 | `OCR_LANGUAGES` | `ind+eng` | Tesseract languages used for scans and images |
@@ -208,7 +263,23 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 | `RAG_TOP_K` | `5` | Default retrieval result count |
 | `RAG_MAX_DISTANCE` | `0.75` | Maximum cosine distance accepted as relevant |
 
-If the embedding model changes, delete or migrate the existing Chroma collection and re-index documents because embedding dimensions and vector spaces may differ.
+EmbeddingGemma uses separate Chroma collections so it cannot accidentally query
+existing Qwen vectors. After switching, upload/re-index the documents and approved
+information again. The legacy Ollama collections remain available if you switch
+back; remove them only after confirming the new index works.
+
+## Internal API contract
+
+Laravel should call the versioned `/v1` routes. Legacy unversioned routes remain
+available temporarily so existing local integrations continue to work. Set the
+same strong value as `INTERNAL_API_TOKEN` in this service and
+`APAKHABAR_AI_SERVICE_TOKEN` in Laravel before deployment. When no token is set,
+authentication is disabled for local development.
+
+`EMBEDDING_INDEX_VERSION=legacy` preserves existing Chroma collection names. When
+changing an embedding model, dimensions, or chunking strategy, set a new value
+such as `v2`, restart the service, and re-index approved information. This avoids
+mixing incompatible vectors and keeps the old index available for rollback.
 
 ## Development
 
@@ -233,7 +304,8 @@ model-reported `confidence` is not used as accuracy.
 Core modules:
 
 - `app/services/document_service.py`: file parsing and normalization
-- `app/services/ai_service.py`: Ollama structured extraction, completeness, and writing
+- `app/services/ai_service.py`: provider-neutral structured extraction, completeness, and writing
+- `app/services/model_providers/`: Ollama and Gemma generation adapters
 - `app/services/rag_service.py`: chunking, embedding, indexing, and retrieval
 - `app/schemas/`: request and response contracts
 - `app/api/`: FastAPI routes
@@ -247,7 +319,7 @@ When adding a new file format, add its parser to `DocumentService`, preserve mea
 - Model confidence is a review signal, not a calibrated probability.
 - Verify names, dates, amounts, and quotations against returned evidence.
 - Chroma data is local and persistent; implement user/tenant isolation before multi-user deployment.
-- Add authentication, authorization, rate limiting, malware scanning, and a retention policy before exposing the API publicly.
+- Shared-token authentication is available for Laravel-to-FastAPI calls. Add rate limiting, malware scanning, secret rotation, tenant isolation, and a retention policy before exposing the service publicly.
 - Use a reverse proxy and HTTPS for any non-local deployment.
 
 ## Troubleshooting

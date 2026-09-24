@@ -1,0 +1,8 @@
+# Install the normal service dependencies first: pip install -r requirements.txt
+# Use a Python version supported by the current PyTorch release (3.12 recommended).
+transformers
+torch
+torchvision
+accelerate
+safetensors
+sentence-transformers

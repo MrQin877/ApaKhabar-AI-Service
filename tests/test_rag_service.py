@@ -2,10 +2,38 @@ import unittest
 from types import SimpleNamespace
 
 from app.schemas.document import DocumentElement, SourceReference
-from app.services.rag_service import RagService
+from app.services.rag_service import RagService, _collection_name
 
 
 class RagServiceTests(unittest.TestCase):
+    def test_index_version_creates_isolated_collection(self):
+        legacy = _collection_name(
+            "apakhabar_documents", "ollama", "qwen3-embedding:0.6b"
+        )
+        versioned = _collection_name(
+            "apakhabar_documents", "ollama", "qwen3-embedding:0.6b", "v2"
+        )
+
+        self.assertNotEqual(versioned, legacy)
+        self.assertIn("v2", versioned)
+
+    def test_embedding_gemma_uses_separate_collection(self):
+        name = _collection_name(
+            "apakhabar_documents",
+            "embedding_gemma",
+            "google/embeddinggemma-300m",
+        )
+        self.assertEqual(
+            name,
+            "apakhabar_documents_google_embeddinggemma_300m",
+        )
+
+    def test_ollama_keeps_legacy_collection_name(self):
+        self.assertEqual(
+            _collection_name("apakhabar_documents", "ollama", "qwen"),
+            "apakhabar_documents",
+        )
+
     def test_chunking_keeps_source_markers(self):
         service = RagService.__new__(RagService)
         service.settings = SimpleNamespace(

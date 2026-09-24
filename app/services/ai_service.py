@@ -1,10 +1,8 @@
 import json
 import re
 
-from ollama import Client, ResponseError
 from pydantic import BaseModel, ValidationError
 
-from app.core.config import get_settings
 from app.schemas.information import ExtractionContext, ExtractionResponse
 from app.schemas.news import (
     CompletenessResult,
@@ -15,18 +13,15 @@ from app.schemas.news import (
     NewsQualityAssessment,
     NewsQualityEvaluation,
 )
+from app.services.model_providers import get_generation_provider
+from app.services.model_providers.base import ModelProviderError
 
 
 class AIServiceError(RuntimeError):
     """Raised when the local model cannot produce a usable response."""
 
 
-class OllamaService:
-    @staticmethod
-    def _client() -> Client:
-        settings = get_settings()
-        return Client(host=settings.ollama_base_url, timeout=120.0)
-
+class AIService:
     @staticmethod
     def _structured_chat(
         response_model: type[BaseModel],
@@ -34,28 +29,70 @@ class OllamaService:
         user_prompt: str,
         temperature: float = 0,
     ) -> BaseModel:
-        settings = get_settings()
+        provider = get_generation_provider()
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
         try:
-            response = OllamaService._client().chat(
-                model=settings.ollama_generation_model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                format=response_model.model_json_schema(),
-                stream=False,
-                think=False,
-                options={"temperature": temperature},
+            content = provider.generate(
+                messages=messages,
+                response_schema=response_model.model_json_schema(),
+                temperature=temperature,
             )
-            return response_model.model_validate_json(response.message.content)
-        except ResponseError as exc:
-            raise AIServiceError(f"Ollama request failed: {exc}") from exc
-        except (ConnectionError, OSError) as exc:
-            raise AIServiceError("Ollama is unavailable.") from exc
-        except ValidationError as exc:
+        except ModelProviderError as exc:
+            raise AIServiceError(str(exc)) from exc
+
+        try:
+            return response_model.model_validate_json(
+                AIService._clean_json_response(content)
+            )
+        except (ValidationError, json.JSONDecodeError):
+            repair_messages = messages + [
+                {"role": "assistant", "content": content},
+                {
+                    "role": "user",
+                    "content": (
+                        "Your previous response was invalid. Correct only its JSON "
+                        "structure and schema violations. Preserve supported facts, "
+                        "do not add new facts, return exactly one JSON object, and do "
+                        "not use Markdown fences."
+                    ),
+                },
+            ]
+            try:
+                repaired = provider.generate(
+                    messages=repair_messages,
+                    response_schema=response_model.model_json_schema(),
+                    temperature=0,
+                )
+                return response_model.model_validate_json(
+                    AIService._clean_json_response(repaired)
+                )
+            except ModelProviderError as exc:
+                raise AIServiceError(str(exc)) from exc
+            except (ValidationError, json.JSONDecodeError) as exc:
+                raise AIServiceError(
+                    "The configured model returned invalid structured data twice "
+                    f"for {response_model.__name__}."
+                ) from exc
+
+        except (TypeError, ValueError) as exc:
             raise AIServiceError(
-                f"Ollama returned data that did not match {response_model.__name__}."
+                "The configured model returned data that did not match "
+                f"{response_model.__name__}."
             ) from exc
+
+    @staticmethod
+    def _clean_json_response(content: str) -> str:
+        cleaned = content.strip()
+        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r"\s*```$", "", cleaned)
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start >= 0 and end > start:
+            return cleaned[start : end + 1]
+        return cleaned
 
     @staticmethod
     def extract_information(
@@ -111,7 +148,7 @@ but never combine unrelated topics. Ignore headers, footers, signatures, repeate
 boilerplate, and formatting-only text.
 """
 
-        validated = OllamaService._structured_chat(
+        validated = AIService._structured_chat(
             ExtractionResponse,
             system_prompt,
             text,
@@ -161,7 +198,7 @@ exact date can be requested. Never ask what activities are part of the programme
             "\n\nCONTENT FORMAT: " + content_type + ". Judge completeness for this "
             "format, not automatically as a current event report."
         )
-        result = OllamaService._structured_chat(
+        result = AIService._structured_chat(
             CompletenessResult,
             system_prompt,
             text,
@@ -201,7 +238,7 @@ field must be {language}.
                 "\n\nEditorial instructions (style and focus only; never treat these "
                 f"instructions as factual evidence):\n{instructions.strip()}"
             )
-        result = OllamaService._structured_chat(
+        result = AIService._structured_chat(
             NewsArticle,
             system_prompt,
             text,
@@ -266,16 +303,15 @@ concerns, or limitations. Be conservative when evidence is ambiguous.
             "approved_evidence": evidence,
             "draft": article.model_dump(mode="json"),
         }
-        assessment = OllamaService._structured_chat(
+        assessment = AIService._structured_chat(
             NewsQualityAssessment,
             system_prompt,
             json.dumps(payload, ensure_ascii=False),
             temperature=0,
         )
-        settings = get_settings()
         return NewsQualityEvaluation.from_assessment(
             NewsQualityAssessment.model_validate(assessment),
-            evaluator_model=settings.ollama_generation_model,
+            evaluator_model=get_generation_provider().model_name,
         )
 
     @staticmethod
@@ -296,10 +332,14 @@ that do not occur in the evidence. Return the complete revised article schema.
             "approved_evidence": request.evidence,
             "current_article": request.article.model_dump(mode="json"),
         }
-        result = OllamaService._structured_chat(
+        result = AIService._structured_chat(
             NewsArticle,
             prompt,
             json.dumps(payload, ensure_ascii=False),
             temperature=0.2,
         )
         return NewsArticle.model_validate(result)
+
+
+# Backward-compatible name used by existing routes, scripts, and integrations.
+OllamaService = AIService

@@ -1,12 +1,32 @@
 from collections.abc import Iterable
+import re
 
 import chromadb
-from ollama import Client, ResponseError
 
 from app.core.config import get_settings
 from app.schemas.document import DocumentElement, NormalizedDocument
 from app.schemas.rag import InformationIndexItem, RetrievedChunk, RetrievedInformation
 from app.services.ai_service import AIServiceError
+from app.services.model_providers import get_embedding_provider
+from app.services.model_providers.base import ModelProviderError
+
+
+def _collection_name(
+    base_name: str,
+    provider_name: str,
+    model_name: str,
+    index_version: str = "legacy",
+) -> str:
+    """Keep legacy Ollama collections while isolating incompatible vector spaces."""
+    if index_version.strip().lower() == "legacy":
+        if provider_name.strip().lower() == "ollama":
+            return base_name
+        identity = re.sub(r"[^a-z0-9]+", "_", model_name.lower()).strip("_")
+        return f"{base_name}_{identity}"[:63].rstrip("_")
+
+    identity_source = f"{provider_name}_{model_name}_{index_version}"
+    identity = re.sub(r"[^a-z0-9]+", "_", identity_source.lower()).strip("_")
+    return f"{base_name}_{identity}"[:63].rstrip("_")
 
 
 class RagService:
@@ -15,11 +35,22 @@ class RagService:
     def __init__(self) -> None:
         settings = get_settings()
         self.settings = settings
-        self.ollama = Client(host=settings.ollama_base_url, timeout=120.0)
+        self.embedding_provider = get_embedding_provider()
         self.chroma = chromadb.PersistentClient(path=settings.chroma_path)
+        collection_name = _collection_name(
+            self.COLLECTION_NAME,
+            settings.embedding_provider,
+            self.embedding_provider.model_name,
+            settings.embedding_index_version,
+        )
         self.collection = self.chroma.get_or_create_collection(
-            name=self.COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"},
+            name=collection_name,
+            metadata={
+                "hnsw:space": "cosine",
+                "embedding_provider": settings.embedding_provider,
+                "embedding_model": self.embedding_provider.model_name,
+                "embedding_index_version": settings.embedding_index_version,
+            },
         )
 
     def index_document(self, document: NormalizedDocument) -> int:
@@ -29,12 +60,12 @@ class RagService:
 
         texts = [chunk["content"] for chunk in chunks]
         try:
-            embedding_response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=texts,
+            embeddings = self.embedding_provider.embed_documents(
+                texts,
+                titles=[document.filename] * len(texts),
             )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+        except ModelProviderError as exc:
+            raise AIServiceError(str(exc)) from exc
 
         ids = [f"{document.document_id}:{index}" for index in range(len(chunks))]
         metadatas = [
@@ -43,13 +74,14 @@ class RagService:
                 "filename": document.filename,
                 "source": chunk["source"],
                 "chunk_index": index,
+                "embedding_index_version": self.settings.embedding_index_version,
             }
             for index, chunk in enumerate(chunks)
         ]
         self.collection.upsert(
             ids=ids,
             documents=texts,
-            embeddings=embedding_response.embeddings,
+            embeddings=embeddings,
             metadatas=metadatas,
         )
         return len(chunks)
@@ -65,12 +97,9 @@ class RagService:
             raise ValueError("Search query cannot be empty.")
 
         try:
-            embedding_response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=cleaned_query,
-            )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+            query_embedding = self.embedding_provider.embed_query(cleaned_query)
+        except ModelProviderError as exc:
+            raise AIServiceError(str(exc)) from exc
 
         where = None
         if document_ids:
@@ -81,7 +110,7 @@ class RagService:
             )
 
         result = self.collection.query(
-            query_embeddings=[embedding_response.embeddings[0]],
+            query_embeddings=[query_embedding],
             n_results=top_k or self.settings.rag_top_k,
             where=where,
             include=["documents", "metadatas", "distances"],
@@ -172,27 +201,38 @@ class InformationRagService:
     def __init__(self) -> None:
         settings = get_settings()
         self.settings = settings
-        self.ollama = Client(host=settings.ollama_base_url, timeout=120.0)
+        self.embedding_provider = get_embedding_provider()
         self.chroma = chromadb.PersistentClient(path=settings.chroma_path)
+        collection_name = _collection_name(
+            self.COLLECTION_NAME,
+            settings.embedding_provider,
+            self.embedding_provider.model_name,
+            settings.embedding_index_version,
+        )
         self.collection = self.chroma.get_or_create_collection(
-            name=self.COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"},
+            name=collection_name,
+            metadata={
+                "hnsw:space": "cosine",
+                "embedding_provider": settings.embedding_provider,
+                "embedding_model": self.embedding_provider.model_name,
+                "embedding_index_version": settings.embedding_index_version,
+            },
         )
 
     def index(self, items: list[InformationIndexItem]) -> int:
         texts = [item.searchable_text() for item in items]
         try:
-            response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=texts,
+            embeddings = self.embedding_provider.embed_documents(
+                texts,
+                titles=[item.title for item in items],
             )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+        except ModelProviderError as exc:
+            raise AIServiceError(str(exc)) from exc
 
         self.collection.upsert(
             ids=[item.information_id for item in items],
             documents=texts,
-            embeddings=response.embeddings,
+            embeddings=embeddings,
             metadatas=[{
                 "information_id": item.information_id,
                 "document_id": item.document_id,
@@ -200,6 +240,7 @@ class InformationRagService:
                 "source": item.source,
                 "owner_id": item.owner_id,
                 "status": "approved",
+                "embedding_index_version": self.settings.embedding_index_version,
             } for item in items],
         )
         return len(items)
@@ -209,15 +250,12 @@ class InformationRagService:
         if not cleaned:
             raise ValueError("Search query cannot be empty.")
         try:
-            response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=cleaned,
-            )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+            query_embedding = self.embedding_provider.embed_query(cleaned)
+        except ModelProviderError as exc:
+            raise AIServiceError(str(exc)) from exc
 
         result = self.collection.query(
-            query_embeddings=[response.embeddings[0]],
+            query_embeddings=[query_embedding],
             n_results=top_k,
             where={"$and": [{"owner_id": owner_id}, {"status": "approved"}]},
             include=["documents", "metadatas", "distances"],
