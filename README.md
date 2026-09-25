@@ -97,6 +97,87 @@ not stored in this repository. The first request can therefore take significantl
 longer than later requests. Set `AI_PROVIDER=ollama` to switch back without
 changing application code.
 
+### Optional: use llama.cpp on Apple Silicon
+
+Install the native runtime:
+
+```bash
+brew install llama.cpp
+```
+
+Start a Q4-quantized Gemma 4 E2B server. The first run downloads the GGUF
+model into the Hugging Face cache:
+
+```bash
+llama-server \
+  -hf ggml-org/gemma-4-E2B-it-GGUF:Q4_0 \
+  --alias apakhabar-gemma \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --ctx-size 8192 \
+  --n-gpu-layers 99 \
+  --parallel 1 \
+  --jinja \
+  --reasoning off
+```
+
+`--reasoning off` is important for this service: it makes Gemma return the
+visible extraction or article result directly instead of spending the response
+token budget on a separate reasoning trace.
+
+Configure FastAPI in `.env`:
+
+```env
+AI_PROVIDER=llama_cpp
+LLAMA_CPP_BASE_URL=http://127.0.0.1:8080/v1
+LLAMA_CPP_API_KEY=
+LLAMA_CPP_MODEL=apakhabar-gemma
+LLAMA_CPP_TIMEOUT_SECONDS=180
+LLAMA_CPP_MAX_TOKENS=4096
+```
+
+Keep EmbeddingGemma as the RAG embedding provider. Verify the connection with
+`GET /health/model` before testing extraction and news generation.
+
+RAG search uses hybrid reranking: EmbeddingGemma supplies semantic candidates,
+while normalized Indonesian keyword coverage recovers exact names, regulation
+numbers, dates, and codes. `RAG_SEMANTIC_WEIGHT` and `RAG_KEYWORD_WEIGHT` control
+the combined score; only approved information items are eligible for the
+information-library search.
+
+### Optional: use vLLM for cloud GPU generation
+
+vLLM runs as a separate model server. Keep FastAPI responsible for extraction,
+RAG, orchestration, and quality evaluation; send only generation requests to
+vLLM. Standard vLLM deployment requires a supported Linux accelerator. The
+included Compose file expects an NVIDIA GPU and keeps the Hugging Face model
+cache in a persistent volume.
+
+Accept the Gemma model licence on Hugging Face, then export secrets without
+committing them:
+
+```bash
+export HF_TOKEN=<hugging-face-token>
+export VLLM_API_KEY=<strong-internal-key>
+docker compose -f deploy/vllm/docker-compose.yml up -d
+```
+
+Configure FastAPI when it runs directly on the same host:
+
+```env
+AI_PROVIDER=vllm
+VLLM_BASE_URL=http://localhost:8002/v1
+VLLM_API_KEY=<same-internal-key>
+VLLM_MODEL=google/gemma-4-E2B-it
+VLLM_TIMEOUT_SECONDS=180
+VLLM_MAX_TOKENS=2048
+```
+
+When FastAPI and vLLM share a Compose network, use
+`VLLM_BASE_URL=http://vllm:8000/v1`. Confirm connectivity through
+`GET /health/model`. Pin the vLLM container version or digest before production
+deployment instead of relying on the example's `latest` tag.
+
 ## 2. Prepare the Python application
 
 ```bash
@@ -225,6 +306,7 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 |---|---|---|
 | GET | `/health` | Check the application |
 | GET | `/health/ollama` | Check Ollama and configured models |
+| GET | `/health/model` | Check the configured remote vLLM model server |
 | POST | `/documents/extract-information` | Upload and extract labelled information |
 | POST | `/documents/index` | Add a document to the RAG index |
 | POST | `/extract-information` | Extract information from plain text |
@@ -239,7 +321,7 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 
 | Variable | Default | Description |
 |---|---:|---|
-| `AI_PROVIDER` | `ollama` | Generation provider: `ollama` or `gemma` |
+| `AI_PROVIDER` | `ollama` | Generation provider: `ollama`, `gemma`, `llama_cpp`, or `vllm` |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Local Ollama API |
 | `OLLAMA_GENERATION_MODEL` | `qwen3:4b` | Extraction and writing model |
 | `OLLAMA_EMBEDDING_MODEL` | `qwen3-embedding:0.6b` | RAG embedding model |
@@ -248,6 +330,16 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 | `GEMMA_MAX_NEW_TOKENS` | `2048` | Maximum generated tokens per response |
 | `GEMMA_TOP_P` | `0.95` | Gemma sampling probability threshold |
 | `GEMMA_TOP_K` | `64` | Gemma sampling candidate limit |
+| `VLLM_BASE_URL` | `http://localhost:8002/v1` | Self-hosted vLLM OpenAI-compatible API |
+| `VLLM_API_KEY` | empty | Private API key configured on the vLLM server |
+| `VLLM_MODEL` | `google/gemma-4-E2B-it` | Model name exposed by vLLM |
+| `VLLM_TIMEOUT_SECONDS` | `180` | Maximum generation request duration |
+| `VLLM_MAX_TOKENS` | `2048` | Maximum output tokens requested from vLLM |
+| `LLAMA_CPP_BASE_URL` | `http://localhost:8080/v1` | Local llama-server OpenAI-compatible API |
+| `LLAMA_CPP_API_KEY` | empty | Optional llama-server API key |
+| `LLAMA_CPP_MODEL` | `apakhabar-gemma` | Model alias exposed by llama-server |
+| `LLAMA_CPP_TIMEOUT_SECONDS` | `180` | Maximum llama.cpp generation duration |
+| `LLAMA_CPP_MAX_TOKENS` | `2048` | Maximum output tokens requested from llama.cpp |
 | `EMBEDDING_PROVIDER` | `ollama` | RAG provider: `ollama` or `embedding_gemma` |
 | `EMBEDDING_MODEL` | `google/embeddinggemma-300m` | Local EmbeddingGemma checkpoint |
 | `EMBEDDING_DEVICE` | `auto` | Chooses CUDA, Apple MPS, or CPU automatically |
@@ -262,6 +354,9 @@ curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
 | `RAG_CHUNK_OVERLAP` | `150` | Repeated characters between chunks |
 | `RAG_TOP_K` | `5` | Default retrieval result count |
 | `RAG_MAX_DISTANCE` | `0.75` | Maximum cosine distance accepted as relevant |
+| `RAG_SEMANTIC_WEIGHT` | `0.7` | Semantic contribution to hybrid retrieval |
+| `RAG_KEYWORD_WEIGHT` | `0.3` | Exact-keyword contribution to hybrid retrieval |
+| `RAG_CANDIDATE_MULTIPLIER` | `4` | Candidate pool size before reranking |
 
 EmbeddingGemma uses separate Chroma collections so it cannot accidentally query
 existing Qwen vectors. After switching, upload/re-index the documents and approved
@@ -298,8 +393,18 @@ python -m compileall -q app tests
 
 Measure the project objectives with the labelled evaluation workflow in
 [`docs/MODEL_EVALUATION_AND_TUNING.md`](docs/MODEL_EVALUATION_AND_TUNING.md). It
-calculates field-level extraction F1 and the human-reviewed news acceptance rate;
-model-reported `confidence` is not used as accuracy.
+calculates field-level extraction F1, retrieval Hit@K/Recall@K/MRR, and the
+human-reviewed news acceptance rate; model-reported `confidence` is not used as
+accuracy.
+
+Run retrieval evaluation after replacing the example document IDs with IDs from
+the indexed Chroma collection:
+
+```bash
+python scripts/evaluate_model.py retrieval \
+  --dataset evaluation/data/retrieval_test.jsonl \
+  --output evaluation/results/retrieval.json
+```
 
 Core modules:
 

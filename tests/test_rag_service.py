@@ -2,10 +2,37 @@ import unittest
 from types import SimpleNamespace
 
 from app.schemas.document import DocumentElement, SourceReference
-from app.services.rag_service import RagService, _collection_name
+from app.services.rag_service import (
+    RagService,
+    _collection_name,
+    _combined_score,
+    _keyword_score,
+    _match_type,
+)
 
 
 class RagServiceTests(unittest.TestCase):
+    def test_keyword_score_prefers_exact_regulation_identifier(self):
+        exact = _keyword_score(
+            "Peraturan Desa Nomor 12 Tahun 2026",
+            "Peraturan Desa Nomor 12 Tahun 2026 mengatur pelayanan publik.",
+        )
+        unrelated = _keyword_score(
+            "Peraturan Desa Nomor 12 Tahun 2026",
+            "Kegiatan olahraga masyarakat berlangsung pada hari Minggu.",
+        )
+
+        self.assertGreater(exact, unrelated)
+        self.assertEqual(exact, 1.0)
+
+    def test_combined_score_rewards_semantic_and_keyword_match(self):
+        semantic_only = _combined_score(0.3, 0.0, 0.7, 0.3)
+        hybrid = _combined_score(0.3, 0.8, 0.7, 0.3)
+
+        self.assertGreater(hybrid, semantic_only)
+        self.assertEqual(_match_type(0.3, 0.8), "hybrid")
+        self.assertEqual(_match_type(None, 0.8), "keyword")
+
     def test_index_version_creates_isolated_collection(self):
         legacy = _collection_name(
             "apakhabar_documents", "ollama", "qwen3-embedding:0.6b"

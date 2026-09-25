@@ -17,9 +17,18 @@ def get_generation_provider() -> GenerationProvider:
         from app.services.model_providers.gemma_provider import GemmaProvider
 
         return GemmaProvider()
+    if provider in {"vllm", "openai_compatible"}:
+        from app.services.model_providers.vllm_provider import VllmProvider
+
+        return VllmProvider()
+    if provider in {"llama_cpp", "llamacpp"}:
+        from app.services.model_providers.llama_cpp_provider import LlamaCppProvider
+
+        return LlamaCppProvider()
 
     raise ValueError(
-        f"Unsupported AI_PROVIDER '{settings.ai_provider}'. Use 'ollama' or 'gemma'."
+        f"Unsupported AI_PROVIDER '{settings.ai_provider}'. "
+        "Use 'ollama', 'gemma', 'llama_cpp', or 'vllm'."
     )
 
 

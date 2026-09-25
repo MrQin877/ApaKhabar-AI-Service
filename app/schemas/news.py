@@ -86,16 +86,16 @@ class NewsRequest(BaseModel):
 
 
 class NewsArticle(BaseModel):
-    headline: str = Field(min_length=1)
-    subheadline: str | None
-    lead: str = Field(min_length=1)
-    body: list[str] = Field(min_length=1)
-    summary: str = Field(min_length=1)
-    labels: list[str]
+    headline: str = Field(min_length=1, max_length=200)
+    subheadline: str | None = Field(default=None, max_length=300)
+    lead: str = Field(min_length=1, max_length=1200)
+    body: list[str] = Field(min_length=1, max_length=10)
+    summary: str = Field(min_length=1, max_length=1200)
+    labels: list[str] = Field(max_length=10)
     language: NewsLanguage = "id"
-    sources_used: list[str]
-    warnings: list[str]
-    category: str | None = None
+    sources_used: list[str] = Field(max_length=20)
+    warnings: list[str] = Field(max_length=20)
+    category: str | None = Field(default=None, max_length=100)
     content_type: NewsContentType = "news_article"
 
 

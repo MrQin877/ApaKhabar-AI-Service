@@ -97,6 +97,33 @@ def score_extraction(expected: Counter, actual: Counter) -> ExtractionScore:
     )
 
 
+def score_retrieval(
+    relevant_ids: set[str],
+    ranked_ids: list[str],
+) -> dict[str, Any]:
+    """Score one ranked retrieval result using standard top-k metrics."""
+    if not relevant_ids:
+        raise ValueError("relevant_ids cannot be empty")
+    matched = relevant_ids.intersection(ranked_ids)
+    first_relevant_rank = next(
+        (
+            rank
+            for rank, item_id in enumerate(ranked_ids, start=1)
+            if item_id in relevant_ids
+        ),
+        None,
+    )
+    return {
+        "hit": bool(matched),
+        "recall": round(len(matched) / len(relevant_ids), 4),
+        "reciprocal_rank": round(
+            1 / first_relevant_rank if first_relevant_rank else 0.0,
+            4,
+        ),
+        "matched_ids": sorted(matched),
+    }
+
+
 NEWS_WEIGHTS = {
     "factual_grounding": 40,
     "fact_coverage": 25,

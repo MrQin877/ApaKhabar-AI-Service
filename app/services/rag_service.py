@@ -11,6 +11,70 @@ from app.services.model_providers import get_embedding_provider
 from app.services.model_providers.base import ModelProviderError
 
 
+_TOKEN_PATTERN = re.compile(r"[^\W_]+", re.UNICODE)
+_STOP_WORDS = {
+    "ada",
+    "adalah",
+    "atau",
+    "dan",
+    "dari",
+    "di",
+    "dengan",
+    "ini",
+    "itu",
+    "ke",
+    "pada",
+    "tentang",
+    "untuk",
+    "yang",
+}
+
+
+def _tokens(value: str) -> set[str]:
+    return {
+        token
+        for token in _TOKEN_PATTERN.findall(value.casefold())
+        if len(token) > 1 and token not in _STOP_WORDS
+    }
+
+
+def _keyword_score(query: str, content: str) -> float:
+    query_tokens = _tokens(query)
+    if not query_tokens:
+        return 0.0
+    content_tokens = _tokens(content)
+    coverage = len(query_tokens & content_tokens) / len(query_tokens)
+    normalized_query = " ".join(query.casefold().split())
+    normalized_content = " ".join(content.casefold().split())
+    phrase_bonus = 0.15 if normalized_query in normalized_content else 0.0
+    return min(1.0, coverage + phrase_bonus)
+
+
+def _combined_score(
+    distance: float | None,
+    keyword_score: float,
+    semantic_weight: float,
+    keyword_weight: float,
+) -> float:
+    semantic_score = 0.0 if distance is None else max(0.0, 1.0 - distance / 2.0)
+    total_weight = semantic_weight + keyword_weight
+    if total_weight <= 0:
+        return 0.0
+    return round(
+        (semantic_score * semantic_weight + keyword_score * keyword_weight)
+        / total_weight,
+        6,
+    )
+
+
+def _match_type(distance: float | None, keyword_score: float) -> str:
+    if distance is not None and keyword_score > 0:
+        return "hybrid"
+    if keyword_score > 0:
+        return "keyword"
+    return "semantic"
+
+
 def _collection_name(
     base_name: str,
     provider_name: str,
@@ -109,38 +173,86 @@ class RagService:
                 else {"document_id": {"$in": document_ids}}
             )
 
+        requested = top_k or self.settings.rag_top_k
+        candidate_count = max(
+            requested,
+            requested * self.settings.rag_candidate_multiplier,
+        )
         result = self.collection.query(
             query_embeddings=[query_embedding],
-            n_results=top_k or self.settings.rag_top_k,
+            n_results=candidate_count,
             where=where,
             include=["documents", "metadatas", "distances"],
         )
-
-        ids = result.get("ids", [[]])[0]
-        documents = result.get("documents", [[]])[0]
-        metadatas = result.get("metadatas", [[]])[0]
-        distances = result.get("distances", [[]])[0]
-        retrieved: list[RetrievedChunk] = []
+        candidates: dict[str, dict] = {}
         for chunk_id, content, metadata, distance in zip(
-            ids,
-            documents,
-            metadatas,
-            distances,
+            result.get("ids", [[]])[0],
+            result.get("documents", [[]])[0],
+            result.get("metadatas", [[]])[0],
+            result.get("distances", [[]])[0],
             strict=False,
         ):
-            if distance is not None and distance > self.settings.rag_max_distance:
+            candidates[chunk_id] = {
+                "content": content,
+                "metadata": metadata,
+                "distance": distance,
+            }
+
+        keyword_result = self.collection.get(
+            where=where,
+            include=["documents", "metadatas"],
+        )
+        for chunk_id, content, metadata in zip(
+            keyword_result.get("ids", []),
+            keyword_result.get("documents", []),
+            keyword_result.get("metadatas", []),
+            strict=False,
+        ):
+            score = _keyword_score(cleaned_query, content)
+            if score <= 0:
                 continue
+            candidate = candidates.setdefault(
+                chunk_id,
+                {"content": content, "metadata": metadata, "distance": None},
+            )
+            candidate["keyword_score"] = score
+
+        retrieved: list[RetrievedChunk] = []
+        for chunk_id, candidate in candidates.items():
+            distance = candidate["distance"]
+            keyword_score = candidate.get(
+                "keyword_score",
+                _keyword_score(cleaned_query, candidate["content"]),
+            )
+            if (
+                distance is not None
+                and distance > self.settings.rag_max_distance
+                and keyword_score <= 0
+            ):
+                continue
+            metadata = candidate["metadata"]
             retrieved.append(
                 RetrievedChunk(
                     chunk_id=chunk_id,
                     document_id=str(metadata["document_id"]),
                     filename=str(metadata["filename"]),
                     source=str(metadata["source"]),
-                    content=content,
+                    content=candidate["content"],
                     distance=distance,
+                    retrieval_score=_combined_score(
+                        distance,
+                        keyword_score,
+                        self.settings.rag_semantic_weight,
+                        self.settings.rag_keyword_weight,
+                    ),
+                    match_type=_match_type(distance, keyword_score),
                 )
             )
-        return retrieved
+        retrieved.sort(
+            key=lambda item: item.retrieval_score or 0,
+            reverse=True,
+        )
+        return retrieved[:requested]
 
     def delete_document(self, document_id: str) -> None:
         self.collection.delete(where={"document_id": document_id})
@@ -254,30 +366,86 @@ class InformationRagService:
         except ModelProviderError as exc:
             raise AIServiceError(str(exc)) from exc
 
+        candidate_count = max(
+            top_k,
+            top_k * self.settings.rag_candidate_multiplier,
+        )
+        where = {"$and": [{"owner_id": owner_id}, {"status": "approved"}]}
         result = self.collection.query(
             query_embeddings=[query_embedding],
-            n_results=top_k,
-            where={"$and": [{"owner_id": owner_id}, {"status": "approved"}]},
+            n_results=candidate_count,
+            where=where,
             include=["documents", "metadatas", "distances"],
         )
-        retrieved: list[RetrievedInformation] = []
-        for content, metadata, distance in zip(
+        candidates: dict[str, dict] = {}
+        for information_id, content, metadata, distance in zip(
+            result.get("ids", [[]])[0],
             result.get("documents", [[]])[0],
             result.get("metadatas", [[]])[0],
             result.get("distances", [[]])[0],
             strict=False,
         ):
-            if distance is not None and distance > self.settings.rag_max_distance:
+            candidates[information_id] = {
+                "content": content,
+                "metadata": metadata,
+                "distance": distance,
+            }
+
+        keyword_result = self.collection.get(
+            where=where,
+            include=["documents", "metadatas"],
+        )
+        for information_id, content, metadata in zip(
+            keyword_result.get("ids", []),
+            keyword_result.get("documents", []),
+            keyword_result.get("metadatas", []),
+            strict=False,
+        ):
+            score = _keyword_score(cleaned, content)
+            if score <= 0:
                 continue
-            retrieved.append(RetrievedInformation(
-                information_id=str(metadata["information_id"]),
-                document_id=str(metadata["document_id"]),
-                title=str(metadata["title"]),
-                content=content,
-                source=str(metadata["source"]),
-                distance=distance,
-            ))
-        return retrieved
+            candidate = candidates.setdefault(
+                information_id,
+                {"content": content, "metadata": metadata, "distance": None},
+            )
+            candidate["keyword_score"] = score
+
+        retrieved: list[RetrievedInformation] = []
+        for candidate in candidates.values():
+            distance = candidate["distance"]
+            keyword_score = candidate.get(
+                "keyword_score",
+                _keyword_score(cleaned, candidate["content"]),
+            )
+            if (
+                distance is not None
+                and distance > self.settings.rag_max_distance
+                and keyword_score <= 0
+            ):
+                continue
+            metadata = candidate["metadata"]
+            retrieved.append(
+                RetrievedInformation(
+                    information_id=str(metadata["information_id"]),
+                    document_id=str(metadata["document_id"]),
+                    title=str(metadata["title"]),
+                    content=candidate["content"],
+                    source=str(metadata["source"]),
+                    distance=distance,
+                    retrieval_score=_combined_score(
+                        distance,
+                        keyword_score,
+                        self.settings.rag_semantic_weight,
+                        self.settings.rag_keyword_weight,
+                    ),
+                    match_type=_match_type(distance, keyword_score),
+                )
+            )
+        retrieved.sort(
+            key=lambda item: item.retrieval_score or 0,
+            reverse=True,
+        )
+        return retrieved[:top_k]
 
     def delete(self, information_id: str) -> None:
         self.collection.delete(ids=[information_id])

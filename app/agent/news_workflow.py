@@ -158,6 +158,12 @@ class NewsCreationWorkflow:
             ),
             content_type=content_type,
         )
+        article.content_type = content_type
+        article.category = NewsCreationWorkflow._resolve_category(
+            article.category,
+            article.labels,
+            request.available_categories,
+        )
         emit("evaluating_quality", "Menilai akurasi, kelengkapan, dan kualitas draf…")
         try:
             quality = OllamaService.evaluate_news_quality(
@@ -192,6 +198,32 @@ class NewsCreationWorkflow:
         return any(
             fact.field.lower() not in editorial_fields and len(fact.value.strip()) >= 12
             for fact in request.user_facts
+        )
+
+    @staticmethod
+    def _resolve_category(
+        model_category: str | None,
+        labels: list[str],
+        available_categories: list[str],
+    ) -> str | None:
+        if not available_categories:
+            return model_category
+
+        by_name = {category.casefold(): category for category in available_categories}
+        if model_category and model_category.casefold() in by_name:
+            return by_name[model_category.casefold()]
+
+        for label in labels:
+            if label.casefold() in by_name:
+                return by_name[label.casefold()]
+
+        return next(
+            (
+                category
+                for category in available_categories
+                if category.casefold() in {"lainnya", "other"}
+            ),
+            available_categories[0],
         )
 
     @staticmethod

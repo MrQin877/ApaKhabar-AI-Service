@@ -19,6 +19,24 @@ from app.services.web_search_service import WebSearchService
 
 
 class AIServiceTests(unittest.TestCase):
+    def test_category_uses_matching_model_label(self):
+        category = NewsCreationWorkflow._resolve_category(
+            None,
+            ["Pendidikan"],
+            ["Ekonomi", "Pendidikan", "Lainnya"],
+        )
+
+        self.assertEqual(category, "Pendidikan")
+
+    def test_category_falls_back_to_other(self):
+        category = NewsCreationWorkflow._resolve_category(
+            "Kategori tidak aktif",
+            ["Tidak cocok"],
+            ["Ekonomi", "Lainnya"],
+        )
+
+        self.assertEqual(category, "Lainnya")
+
     def test_targeted_extraction_requires_query(self):
         with self.assertRaises(ValueError):
             OllamaService.extract_information(

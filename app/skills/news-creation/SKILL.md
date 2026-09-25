@@ -9,15 +9,22 @@ Create a publishable draft only from approved sources and user-provided facts.
 
 ## Workflow
 
-1. Normalize newly uploaded documents and extract distinct Indonesian information items.
-2. Index document chunks for retrieval. Retrieval results are recommendations only.
-3. Wait for moderator approval before adding a recommended item to evidence.
-4. Check approved evidence for required facts and contradictions.
-5. Resolve subject identity, existence, or possible typo ambiguity before asking factual 5W questions. State the unsupported/unclear point explicitly and offer concrete intent choices.
-6. When materially important facts are absent, ask at most three short structured questions in Indonesian and wait for answers. Prefer 2-4 supported choices; use free text only when real discrete choices are impossible.
-7. Mark answers as `user_provided`; never attribute them to a document.
-8. Generate a draft only when completeness status is `ready`.
-9. Preserve source identifiers and report limitations in warnings.
+1. Classify the request as extraction, retrieval, generation, or revision.
+2. Inspect the prompt, conversation state, selected documents, and approved information before choosing a tool.
+3. Normalize newly uploaded documents and extract distinct Indonesian information items.
+4. Index document chunks for retrieval. Treat retrieval results as recommendations only.
+5. Wait for moderator approval before adding a recommended item to evidence.
+6. Check approved evidence for required facts, source support, contradictions, and freshness.
+7. Resolve subject identity, existence, or possible typo ambiguity before asking factual 5W questions. State the unsupported point explicitly and offer concrete intent choices.
+8. If materially important facts are absent, ask one clarification round containing at most three short structured questions. Prefer 2-4 supported choices; use free text only when discrete choices are impossible.
+9. After that one answer round, use reasonable disclosed defaults and continue. Never open another clarification round for the same request.
+10. Mark answers as `user_provided`; never attribute them to a document.
+11. Generate or revise the draft, then validate citations, language, structure, and quality before returning it.
+12. Preserve source identifiers and report limitations in warnings.
+
+## Observable Work Log
+
+Emit short user-visible activity summaries for completed or active operations, such as request classification, source inspection, retrieval, evidence comparison, drafting, and quality validation. Include tool names and useful counts when available. Do not reveal private chain-of-thought, hidden deliberation, raw prompts, or secrets. Stream draft text separately from the work log.
 
 ## Invariants
 
@@ -25,7 +32,7 @@ Create a publishable draft only from approved sources and user-provided facts.
 - Never interpret an editorial instruction as a fact.
 - Never invent a missing name, date, location, amount, quotation, or event.
 - Do not ask about low-stakes ambiguity; use a reasonable disclosed assumption.
-- Ask one UI-visible question at a time and never repeat an answered question.
+- Use at most one clarification round per request and never repeat an answered question.
 - Never ask what happened until the request establishes a real event or an explicit fictional/speculative mode.
 - Never publish automatically; return a draft for moderator review.
 - Keep documentary evidence distinguishable from user-provided facts.

@@ -1,10 +1,20 @@
 import unittest
 from collections import Counter
 
-from evaluation.metrics import score_extraction, score_news_rating
+from evaluation.metrics import score_extraction, score_news_rating, score_retrieval
 
 
 class EvaluationMetricTests(unittest.TestCase):
+    def test_retrieval_metrics_use_rank_and_relevant_set(self):
+        score = score_retrieval(
+            {"document-a", "document-b"},
+            ["document-x", "document-b", "document-y"],
+        )
+
+        self.assertTrue(score["hit"])
+        self.assertEqual(score["recall"], 0.5)
+        self.assertEqual(score["reciprocal_rank"], 0.5)
+
     def test_extraction_precision_recall_and_f1(self):
         expected = Counter({("location", "kuala lumpur"): 1, ("amount", "100"): 1})
         actual = Counter({("location", "kuala lumpur"): 1, ("amount", "200"): 1})

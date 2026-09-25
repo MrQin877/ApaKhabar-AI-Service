@@ -228,6 +228,10 @@ fact first. Body must contain an ordered list of publishable paragraphs. Include
 source identifiers in sources_used when the input contains markers such as page,
 sheet, row, paragraph, or filename. Put any limitation in warnings. The language
 field must be {language}.
+
+Keep the result concise and complete. Write 3-7 body paragraphs, with no paragraph
+longer than 120 words. Do not repeat facts to increase length. Finish every JSON
+field and close the JSON object before the output limit.
 """.strip()
         system_prompt += (
             f"\n\nRequired output language: {language_name}. Tone: {tone}. "

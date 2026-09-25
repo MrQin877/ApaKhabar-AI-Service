@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from app.schemas.news import NewsGenerationResponse, NewsLanguage
@@ -22,6 +24,8 @@ class RetrievedChunk(BaseModel):
     source: str
     content: str
     distance: float | None = None
+    retrieval_score: float | None = None
+    match_type: Literal["semantic", "keyword", "hybrid"] = "semantic"
 
 
 class RagSearchResponse(BaseModel):
@@ -81,6 +85,8 @@ class RetrievedInformation(BaseModel):
     content: str
     source: str
     distance: float | None = None
+    retrieval_score: float | None = None
+    match_type: Literal["semantic", "keyword", "hybrid"] = "semantic"
 
 
 class InformationSearchResponse(BaseModel):

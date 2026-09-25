@@ -16,6 +16,16 @@ class Settings(BaseSettings):
     gemma_max_new_tokens: int = Field(default=2048, gt=0)
     gemma_top_p: float = Field(default=0.95, gt=0, le=1)
     gemma_top_k: int = Field(default=64, gt=0)
+    vllm_base_url: str = "http://localhost:8002/v1"
+    vllm_api_key: str | None = None
+    vllm_model: str = "google/gemma-4-E2B-it"
+    vllm_timeout_seconds: int = Field(default=180, gt=0, le=900)
+    vllm_max_tokens: int = Field(default=2048, gt=0)
+    llama_cpp_base_url: str = "http://localhost:8080/v1"
+    llama_cpp_api_key: str | None = None
+    llama_cpp_model: str = "apakhabar-gemma"
+    llama_cpp_timeout_seconds: int = Field(default=180, gt=0, le=900)
+    llama_cpp_max_tokens: int = Field(default=4096, gt=0)
     embedding_provider: str = "ollama"
     embedding_model: str = "google/embeddinggemma-300m"
     embedding_device: str = "auto"
@@ -29,6 +39,9 @@ class Settings(BaseSettings):
     rag_chunk_overlap: int = Field(default=150, ge=0)
     rag_top_k: int = Field(default=5, gt=0)
     rag_max_distance: float = Field(default=0.75, ge=0, le=2)
+    rag_semantic_weight: float = Field(default=0.7, ge=0, le=1)
+    rag_keyword_weight: float = Field(default=0.3, ge=0, le=1)
+    rag_candidate_multiplier: int = Field(default=4, ge=1, le=20)
     brave_search_api_key: str | None = None
     web_search_timeout_seconds: int = Field(default=15, gt=0, le=60)
 
