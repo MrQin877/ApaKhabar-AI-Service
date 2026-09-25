@@ -7,6 +7,8 @@ import fitz
 from docx import Document
 from openpyxl import load_workbook
 
+from app.core.config import get_settings
+
 from app.schemas.document import (
     DocumentElement,
     NormalizedDocument,
@@ -23,7 +25,7 @@ class EmptyDocumentError(ValueError):
 
 
 class DocumentService:
-    SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".csv", ".txt"}
+    SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".xlsm", ".csv", ".txt", ".jpg", ".jpeg", ".png"}
 
     @classmethod
     def normalize(
@@ -44,6 +46,10 @@ class DocumentService:
             ".pdf": cls._pdf_elements,
             ".docx": cls._docx_elements,
             ".xlsx": cls._xlsx_elements,
+            ".xlsm": cls._xlsx_elements,
+            ".jpg": cls._image_elements,
+            ".jpeg": cls._image_elements,
+            ".png": cls._image_elements,
             ".csv": cls._csv_elements,
             ".txt": cls._text_elements,
         }
@@ -66,8 +72,17 @@ class DocumentService:
         elements: list[DocumentElement] = []
         try:
             with fitz.open(stream=data, filetype="pdf") as document:
+                if len(document) > get_settings().ocr_max_pages:
+                    raise UnsupportedDocumentError("Document exceeds configured page limit")
                 for page_number, page in enumerate(document, start=1):
-                    for block in page.get_text("blocks"):
+                    blocks = page.get_text("blocks")
+                    if not any(str(block[4]).strip() for block in blocks):
+                        try:
+                            textpage = page.get_textpage_ocr(language=get_settings().ocr_language, dpi=200, full=True)
+                            blocks = page.get_text("blocks", textpage=textpage)
+                        except RuntimeError as exc:
+                            raise UnsupportedDocumentError("OCR unavailable. Install Tesseract and the configured language data.") from exc
+                    for block in blocks:
                         text = " ".join(block[4].split())
                         if text:
                             elements.append(
@@ -83,6 +98,17 @@ class DocumentService:
         except (fitz.FileDataError, RuntimeError) as exc:
             raise UnsupportedDocumentError("The PDF is invalid or damaged.") from exc
         return elements
+
+    @staticmethod
+    def _image_elements(data: bytes, filename: str) -> list[DocumentElement]:
+        try:
+            with fitz.open(stream=data) as image:
+                pdf = image.convert_to_pdf()
+            return DocumentService._pdf_elements(pdf, filename)
+        except UnsupportedDocumentError:
+            raise
+        except Exception as exc:
+            raise UnsupportedDocumentError("Image is invalid or OCR is unavailable") from exc
 
     @staticmethod
     def _docx_elements(data: bytes, filename: str) -> list[DocumentElement]:

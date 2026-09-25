@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
-from app.services.ai_service import AIServiceError, OllamaService
+from app.services.ai_service import AIServiceError, AIService
 
 router = APIRouter()
 
@@ -12,7 +12,7 @@ class DocumentRequest(BaseModel):
 @router.post("/extract-information")
 def extract_information(req: DocumentRequest):
     try:
-        return OllamaService.extract_information(req.content)
+        return AIService.extract_information(req.content)
     except ValueError as exc:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
