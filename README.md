@@ -167,14 +167,23 @@ Approved knowledge uses a separate Chroma collection keyed by embedding provider
 
 Configure `WEB_SEARCH_URL` for a trusted search adapter accepting `POST {"query": "...", "limit": 5}` and returning `{"results": [{"title": "...", "url": "https://...", "snippet": "..."}]}`. `WEB_SEARCH_API_KEY`, when set, is sent as a bearer token. Set Laravel's `APAKHABAR_AI_WEB_DISCOVERY=true` to enable requests. No provider is configured by default. Web snippets require explicit moderator approval and remain limited evidence; the adapter should provide useful, attributable excerpts.
 
-## Verification
+## Verification & FYP Evaluation
+
+To ensure the reliability of the AI system for the Final Year Project, a formal evaluation pipeline has been implemented using Ragas and LangSmith.
 
 ```sh
+# 1. Run unit/integration tests (does not require a model server)
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+
+# 2. Generate test drafts using your local llama.cpp Gemma model
 python scripts/evaluate_editorial.py --mode agent --output /tmp/agent-evaluation.json
-python scripts/evaluate_editorial.py --mode legacy --output /tmp/legacy-evaluation.json
+
+# 3. Grade the drafts automatically using the Ragas library (Accuracy/Faithfulness)
+python scripts/evaluate_with_ragas.py
 ```
 
-Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require the configured local models and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
+The Ragas evaluation script will output a `fyp_evaluation_metrics.csv` file containing formal metrics suitable for the FYP thesis report. 
 
-See [the architecture and evaluation notes](docs/agent-architecture.md) for implementation boundaries and acceptance cases.
+If LangSmith environment variables (`LANGCHAIN_TRACING_V2`, etc.) are configured in your `.env` file, the evaluation script will also generate a full visual Trace Tree in the LangSmith dashboard, detailing the step-by-step reasoning and Reflection loops of the LangGraph agent.
+
+
