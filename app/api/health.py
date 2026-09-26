@@ -46,3 +46,21 @@ def ollama_health() -> dict[str, object]:
         "generation_model": settings.ollama_generation_model,
         "embedding_model": settings.ollama_embedding_model,
     }
+
+
+@router.get('/models')
+def models_health():
+    """Capability probe must be explicitly called: no model inference on basic health."""
+    from app.providers.models import GenerationModel, ModelError
+    from pydantic import BaseModel
+    class Probe(BaseModel):
+        ok: bool
+    try:
+        model = GenerationModel()
+        probe = model.structured(Probe, 'Return JSON with ok=true.', 'Check structured output.')
+        if not probe.ok:
+            raise ModelError('Structured output probe was unsuccessful')
+        return {'status': 'ok', 'model': model.name, 'structured_output': True,
+                'tool_dispatch': 'validated_action_schema'}
+    except ModelError as exc:
+        raise HTTPException(503, str(exc)) from exc

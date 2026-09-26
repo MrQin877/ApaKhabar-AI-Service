@@ -1,272 +1,134 @@
 # ApaKhabar AI Service
 
-ApaKhabar is a local-first FastAPI service that converts documents and plain text into labelled, structured information and creates evidence-grounded news drafts. It uses free local models through Ollama and can optionally retrieve information from multiple or large documents through ChromaDB-based RAG.
+A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
 
-## Features
+## Setup
 
-- PDF, DOCX, XLSX, CSV, and TXT ingestion
-- Page, paragraph, sheet, and row source references
-- Schema-validated extraction with labels, evidence, and confidence
-- Missing-information and conflict checks before news generation
-- English and Bahasa Melayu news generation
-- Local embeddings, persistent vector storage, semantic search, and RAG news generation
-- Local processing without a paid model API
+Use Python 3.12 or newer. Use `.venv` for the local environment, including the embedding model dependencies.
 
-## Architecture
-
-```text
-Upload or text
-    -> validate and normalize
-    -> direct extraction OR chunk/embed/index
-    -> retrieve relevant evidence when using RAG
-    -> completeness check
-    -> ask for missing required facts OR generate news
-```
-
-RAG is intended for large or multiple documents. Use direct extraction for one small document or a short plain-text submission.
-
-## Requirements
-
-- macOS, Windows, or Linux
-- Python 3.11 or newer
-- Ollama
-- At least 8 GB memory; 16 GB is recommended
-- Sufficient disk space for local models (approximately 4 GB for the recommended pair)
-
-## 1. Install and prepare Ollama
-
-Install Ollama from <https://ollama.com/download>, start it, and download the models:
-
-```bash
-ollama pull qwen3:4b
-ollama pull qwen3-embedding:0.6b
-ollama list
-```
-
-The expected local API address is `http://localhost:11434`.
-
-## 2. Prepare the Python application
-
-```bash
-git clone <repository-url>
-cd ApaKhabar-AI-Service
-python3 -m venv .venv
+```sh
+python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
 pip install -r requirements.txt
-cp .env.example .env
+pip install -r requirements-embedding.txt  # only for local EmbeddingGemma
+cp .env.example .env                     # only for a new installation
+uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
-On Windows PowerShell, activate the environment with:
+Keep an existing `.env`; the implementation reads the existing `AI_PROVIDER`, `LLAMA_CPP_*`, and `EMBEDDING_*` settings. Start your llama.cpp server separately with the configured model alias and URL. The service does not download or start generation models. Local EmbeddingGemma loads an already cached model through Sentence Transformers with `local_files_only=True`; provision the model separately. Alternatively use an embedding HTTP server or Ollama.
 
-```powershell
-.venv\Scripts\Activate.ps1
+For image and scanned-PDF OCR, install Tesseract and its language data. Set `OCR_LANGUAGE=ind+eng` for Indonesian/English documents if both language packs are installed. Without OCR support, image-only inputs fail with an explicit error. DOCX, XLSX/XLSM, CSV, TXT, and text PDFs do not require OCR. Legacy binary DOC/XLS formats are not supported.
+
+Configure the **same nonempty** `APAKHABAR_AI_SERVICE_TOKEN` in Laravel and Python for a shared deployment. Laravel supplies `X-ApaKhabar-Service-Token`; never expose this token to the browser. Owner IDs and approval assertions are accepted only from this trusted backend. An empty token is for isolated local development. Python is not a public end-user authentication service.
+
+Laravel settings:
+
+```dotenv
+APAKHABAR_AI_URL=http://127.0.0.1:8001
+APAKHABAR_AI_TIMEOUT=1200
+APAKHABAR_AI_WEB_DISCOVERY=false
 ```
 
-Review `.env` before starting the server. Do not commit that file.
+The web frontend uses Laravel's authenticated progress proxy. Run a concurrent PHP server/worker setup for live polling; a single PHP development worker may queue polling behind generation. Generation is synchronous per request; it can take several model calls. Laravel's document queue continues to handle uploads.
 
-## 3. Run the service
+## Editorial workflow
 
-```bash
-uvicorn app.main:app --reload
+1. Validate the request and identify explicit user facts and requested format.
+2. Plan up to three research tasks when approved-library retrieval or optional web discovery is available.
+3. Execute research through a bounded ReAct loop: choose a typed action, execute an allowlisted tool, inspect observations, and adapt or finish.
+4. Pause for moderator approval of web recommendations. Rejected web results are never drafting evidence.
+5. Check completeness and conflicts. Pause for at most one clarification round.
+6. Write or revise a draft using approved evidence and explicit user facts.
+7. Reflect against the evidence and revise at most twice. Retain the best reviewed candidate.
+8. Return the draft, sources, findings, weighted quality score, actual events, skill hashes, and execution metrics. Laravel saves a draft version; publication remains a human action.
+
+No sufficient facts after clarification produces `insufficient_evidence`, not an invented article. Scores are model estimates, not measured accuracy. Source IDs, category membership, tool schemas, access scope, and loop bounds also have deterministic checks.
+
+## Agent Skills
+
+Five bundled skills live under `skills/`:
+
+- `document-extraction`
+- `evidence-research`
+- `indonesian-news-writing`
+- `editorial-review`
+- `draft-revision`
+
+Each has standard YAML `name` and `description` frontmatter in `SKILL.md`, plus optional Markdown references. The registry exposes metadata for discovery, activates instructions at the relevant workflow stage, and reads references on demand. SHA-256 hashes identify the exact content used. Files must remain within the configured skill root; arbitrary script execution is not supported. Only maintained application skills belong here, never uploaded documents.
+
+Skills supply procedures; Python code enforces source approval, ownership, limits, and available operations. To change behavior, edit the relevant skill and restart the service. Start a new run after changing a skill used by a paused run; version mismatches fail rather than silently mixing instructions.
+
+## API
+
+All non-health endpoints require the service header when configured. Swagger is at `/docs` (also protected when a token is configured).
+
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /health` | Lightweight process health |
+| `GET /health/models` | Explicit structured-generation capability probe (one model call, with at most one schema repair) |
+| `GET /agent/skills` | Skill metadata and hashes |
+| `POST /news/generate` | Laravel-compatible agent generation |
+| `POST /agent/runs` | Start an editorial run |
+| `GET /agent/runs/{run_id}?owner_id=...` | Run state and persisted progress events |
+| `POST /agent/runs/{run_id}/resume` | Resume clarification or web-source approval |
+| `POST /documents/upload` | Normalize a document |
+| `POST /documents/extract-information` | Extract a single document |
+| `POST /documents/batch-extract` | Multipart `files`, `extraction_mode`, `extraction_query`, `keywords_json` |
+| `POST /extract-information` | Extract plain text |
+| `POST /summarize` | Direct summary without agent overhead |
+| `POST /rag/information/index` | Index explicitly approved, active, non-archived records |
+| `POST /rag/information/search` | Owner- and eligibility-filtered approved knowledge search |
+| `DELETE /rag/information/{id}?owner_id=...` | Remove approved knowledge |
+
+Generation accepts either a string of supplied facts or Laravel's `information: {information: [...]}` object. Additional fields include `owner_id`, `session_id`, `run_id`, `eligible_information_ids`, `instructions`, `user_facts`, `language`, `tone`, `content_format`, `current_draft`, `available_categories`, `default_category`, `clarification_completed`, and `allow_web`.
+
+```json
+{
+  "run_id": "example-001",
+  "owner_id": "7",
+  "information": "Desa Makmur mengumumkan lokakarya komputer untuk 30 peserta di balai desa pada 20 Oktober 2026.",
+  "instructions": "Buat pengumuman singkat.",
+  "language": "id",
+  "available_categories": ["Pendidikan", "Lainnya"],
+  "default_category": "Lainnya"
+}
 ```
 
-Open:
+For library research, pass the currently eligible `eligible_information_ids` determined by Laravel. An empty list means **no library access**, never all records. Provided structured information with stable IDs is also checked against that allowlist. The search API requires `information_ids` refreshed from Laravel; `[]` returns no matches. The information index API requires `review_status: "approved"`, `is_active: true`, `archived: false`, plus `owner_id` and record identifiers. Index writes are idempotent per owner and information ID. Pending extracted candidates are not indexed.
 
-- API documentation: <http://127.0.0.1:8000/docs>
-- Application health: <http://127.0.0.1:8000/health>
-- Ollama/model health: <http://127.0.0.1:8000/health/ollama>
+A paused result has `status: awaiting_answers` or `awaiting_approval`. Resume with:
 
-## Main workflows
-
-### Upload and inspect a document
-
-```bash
-curl -X POST http://127.0.0.1:8000/documents/upload \
-  -F "file=@report.pdf"
+```json
+{
+  "owner_id": "7",
+  "answers": [{"field": "location", "value": "Balai desa"}],
+  "approved_web_source_ids": [],
+  "eligible_information_ids": ["42"]
+}
 ```
 
-This returns normalized elements and source locations without calling the generation model.
+The trusted caller must refresh eligible IDs on every resume. Revoked documentary sources are removed from the checkpoint's evidence before execution continues. A retry with the same run ID and original input returns the saved result; a different input returns 409. Completed results are historical snapshots, not a current authorization decision. Laravel must validate current editorial eligibility before publishing.
 
-### Upload and extract labelled information
+## Persistence and migration
 
-```bash
-curl -X POST http://127.0.0.1:8000/documents/extract-information \
-  -F "file=@report.pdf"
+SQLite checkpoints and run/event records are stored below `data/agent/`. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
+
+Approved knowledge uses a separate Chroma collection keyed by embedding provider/model/dimensions. Existing raw-document vectors are never silently considered approved. Reindex approved Laravel information into the new collection with `php artisan ai:reindex-approved` from the Laravel project (optionally `--owner=7`); do not delete the old collection to migrate. The AI server and embedding provider must be available. Changing embedding configuration requires reindexing.
+
+`AGENT_ENABLED=false` restores the legacy fixed `/news/generate` path for debugging. Legacy `/rag/search` and `/rag/generate-news` are disabled (410) in agent mode because they query raw documents. Use approved-information endpoints instead. `/documents/index` remains an isolated legacy raw-document indexing endpoint, not an approval operation. `/health/ollama` remains available only as an Ollama-specific diagnostic.
+
+## Optional web discovery
+
+Configure `WEB_SEARCH_URL` for a trusted search adapter accepting `POST {"query": "...", "limit": 5}` and returning `{"results": [{"title": "...", "url": "https://...", "snippet": "..."}]}`. `WEB_SEARCH_API_KEY`, when set, is sent as a bearer token. Set Laravel's `APAKHABAR_AI_WEB_DISCOVERY=true` to enable requests. No provider is configured by default. Web snippets require explicit moderator approval and remain limited evidence; the adapter should provide useful, attributable excerpts.
+
+## Verification
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+python scripts/evaluate_editorial.py --mode agent --output /tmp/agent-evaluation.json
+python scripts/evaluate_editorial.py --mode legacy --output /tmp/legacy-evaluation.json
 ```
 
-The response includes information type, title, summary, labels, fields, supporting evidence, and model-reported confidence.
+Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require the configured local models and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
 
-### Extract information from plain text
-
-```bash
-curl -X POST http://127.0.0.1:8000/extract-information \
-  -H "Content-Type: application/json" \
-  -d '{"content":"The council announced a health programme in Kuala Lumpur on 15 September 2026."}'
-```
-
-### Check whether enough information is available
-
-```bash
-curl -X POST http://127.0.0.1:8000/news/check-completeness \
-  -H "Content-Type: application/json" \
-  -d '{"information":"A community programme will be held next month."}'
-```
-
-When required facts are absent, the response contains targeted questions. Collect the user's answers, merge them into the information text, and check again.
-
-### Generate news directly
-
-```bash
-curl -X POST http://127.0.0.1:8000/news/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "information":"Universiti Example announced on 1 September 2026 that it will organize a free AI workshop for 120 students at Dewan Kuala Lumpur on 15 September 2026.",
-    "language":"en",
-    "tone":"formal"
-  }'
-```
-
-Use `"language":"ms"` for Bahasa Melayu. If required information is missing or conflicting, `article` is `null` and the completeness result explains what is needed.
-
-## RAG workflow
-
-### 1. Index a document
-
-```bash
-curl -X POST http://127.0.0.1:8000/documents/index \
-  -F "file=@background-report.pdf"
-```
-
-Save the returned `document_id`. The service extracts source-aware elements, chunks them, creates local embeddings, and stores them in ChromaDB.
-
-### 2. Search indexed documents
-
-```bash
-curl -X POST http://127.0.0.1:8000/rag/search \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query":"What programme was announced and when?",
-    "document_ids":["<document-id>"],
-    "top_k":5
-  }'
-```
-
-Omit `document_ids` to search all indexed documents.
-
-### 3. Generate news from retrieved evidence
-
-```bash
-curl -X POST http://127.0.0.1:8000/rag/generate-news \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query":"Write news about the announced AI programme",
-    "document_ids":["<document-id>"],
-    "top_k":5,
-    "language":"ms",
-    "tone":"formal"
-  }'
-```
-
-The response contains both retrieved chunks and the news result so users can inspect the evidence.
-
-### 4. Remove an indexed document
-
-```bash
-curl -X DELETE http://127.0.0.1:8000/rag/documents/<document-id>
-```
-
-## API summary
-
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/health` | Check the application |
-| GET | `/health/ollama` | Check Ollama and configured models |
-| POST | `/documents/upload` | Normalize an uploaded file |
-| POST | `/documents/extract-information` | Upload and extract labelled information |
-| POST | `/documents/index` | Add a document to the RAG index |
-| POST | `/extract-information` | Extract information from plain text |
-| POST | `/summarize` | Summarize plain text |
-| POST | `/news/check-completeness` | Find missing or conflicting news facts |
-| POST | `/news/generate` | Generate news from supplied information |
-| POST | `/rag/search` | Search indexed evidence |
-| POST | `/rag/generate-news` | Retrieve evidence and generate news |
-| DELETE | `/rag/documents/{document_id}` | Remove a document from the index |
-
-## Configuration
-
-| Variable | Default | Description |
-|---|---:|---|
-| `OLLAMA_BASE_URL` | `http://localhost:11434` | Local Ollama API |
-| `OLLAMA_GENERATION_MODEL` | `qwen3:4b` | Extraction and writing model |
-| `OLLAMA_EMBEDDING_MODEL` | `qwen3-embedding:0.6b` | RAG embedding model |
-| `CHROMA_PATH` | `./data/chroma` | Persistent vector database directory |
-| `UPLOAD_PATH` | `./data/uploads` | Reserved upload directory |
-| `MAX_UPLOAD_MB` | `20` | Maximum accepted upload size |
-| `RAG_CHUNK_SIZE` | `1000` | Approximate characters in each chunk |
-| `RAG_CHUNK_OVERLAP` | `150` | Repeated characters between chunks |
-| `RAG_TOP_K` | `5` | Default retrieval result count |
-| `RAG_MAX_DISTANCE` | `0.75` | Maximum cosine distance accepted as relevant |
-
-If the embedding model changes, delete or migrate the existing Chroma collection and re-index documents because embedding dimensions and vector spaces may differ.
-
-## Development
-
-Run automated tests:
-
-```bash
-source .venv/bin/activate
-python -m unittest discover -s tests -v
-```
-
-Compile-check the application:
-
-```bash
-python -m compileall -q app tests
-```
-
-Core modules:
-
-- `app/services/document_service.py`: file parsing and normalization
-- `app/services/ai_service.py`: Ollama structured extraction, completeness, and writing
-- `app/services/rag_service.py`: chunking, embedding, indexing, and retrieval
-- `app/schemas/`: request and response contracts
-- `app/api/`: FastAPI routes
-
-When adding a new file format, add its parser to `DocumentService`, preserve meaningful source coordinates, add its extension to `SUPPORTED_EXTENSIONS`, and create a test fixture.
-
-## Operational and safety notes
-
-- Treat uploaded document content as untrusted data, not model instructions.
-- Do not publish drafts automatically; require human editorial approval.
-- Model confidence is a review signal, not a calibrated probability.
-- Verify names, dates, amounts, and quotations against returned evidence.
-- Chroma data is local and persistent; implement user/tenant isolation before multi-user deployment.
-- Add authentication, authorization, rate limiting, malware scanning, and a retention policy before exposing the API publicly.
-- Use a reverse proxy and HTTPS for any non-local deployment.
-
-## Troubleshooting
-
-### Ollama health returns 503
-
-Start Ollama, run `ollama list`, and confirm that model names match `.env` exactly.
-
-### Model responses are slow
-
-Use `qwen3:4b`, close memory-heavy applications, reduce input size, or reduce `RAG_TOP_K`.
-
-### No relevant RAG results
-
-Confirm the document was indexed, search with a more specific query, or cautiously increase `RAG_MAX_DISTANCE`. High distance values can admit irrelevant text.
-
-### Scanned PDF returns no text
-
-The current PDF parser reads text layers. Add an OCR pipeline for image-only PDFs before production use.
-
-### Swagger works but another frontend cannot connect
-
-Configure FastAPI CORS for the exact trusted frontend origins. Avoid unrestricted origins in production.
-
-## Current scope
-
-This version is suitable for local development, demonstrations, and controlled evaluation. Public production deployment still requires authentication, tenant isolation, background jobs, stronger file inspection/OCR, monitoring, and editorial governance.
+See [the architecture and evaluation notes](docs/agent-architecture.md) for implementation boundaries and acceptance cases.

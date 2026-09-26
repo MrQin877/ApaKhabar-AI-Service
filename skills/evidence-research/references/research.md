@@ -1,0 +1,1 @@
+Search the central topic first, then refine using supported names and places. Inspect relevant results. When sources disagree, report both claims and their provenance. Do not repeatedly issue identical queries. Search the web only if enabled and the topic requires external facts. Never treat a search snippet as verified evidence.

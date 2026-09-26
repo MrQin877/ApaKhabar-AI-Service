@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
 
-from app.services.ai_service import AIServiceError, OllamaService
+from app.services.ai_service import AIServiceError, AIService
 
 router = APIRouter()
 
@@ -13,7 +13,7 @@ class DocumentRequest(BaseModel):
 @router.post("/summarize")
 def summarize_document(req: DocumentRequest):
     try:
-        summary = OllamaService.summarize(req.content)
+        summary = AIService.summarize(req.content)
         return {"summary": summary}
     except ValueError as exc:
         raise HTTPException(

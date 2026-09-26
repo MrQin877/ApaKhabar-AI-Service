@@ -4,10 +4,12 @@ from pydantic import BaseModel, Field, ValidationError
 from app.schemas.news import (
     CompletenessResult,
     NewsGenerationResponse,
-    NewsLanguage,
     NewsRequest,
 )
-from app.services.ai_service import AIServiceError, OllamaService
+from app.services.ai_service import AIServiceError, AIService
+from app.core.config import get_settings
+from app.api.agent import execute
+from app.services.agent_service import AgentService
 
 
 router = APIRouter(prefix="/news", tags=["news"])
@@ -27,23 +29,26 @@ def _service_error(exc: Exception) -> HTTPException:
 @router.post("/check-completeness", response_model=CompletenessResult)
 def check_completeness(request: CompletenessRequest) -> CompletenessResult:
     try:
-        return OllamaService.check_news_completeness(request.information)
+        return AIService.check_news_completeness(request.information)
     except (AIServiceError, ValueError) as exc:
         raise _service_error(exc) from exc
 
 
 @router.post("/generate", response_model=NewsGenerationResponse)
 def generate_news(request: NewsRequest) -> NewsGenerationResponse:
+    if get_settings().agent_enabled:
+        return execute(lambda: AgentService().run(request))
+    information = request.information if isinstance(request.information, str) else request.information.model_dump_json()
     try:
-        completeness = OllamaService.check_news_completeness(request.information)
+        completeness = AIService.check_news_completeness(information)
         if completeness.status != "ready":
             return NewsGenerationResponse(
                 completeness=completeness,
                 article=None,
             )
 
-        article = OllamaService.write_news(
-            text=request.information,
+        article = AIService.write_news(
+            text=information,
             language=request.language,
             tone=request.tone,
         )

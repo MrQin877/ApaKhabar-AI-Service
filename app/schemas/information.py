@@ -22,6 +22,7 @@ class Evidence(BaseModel):
 
 
 class InformationItem(BaseModel):
+    information_id: str | None = None
     type: InformationType
     title: str = Field(min_length=1)
     summary: str = Field(min_length=1)

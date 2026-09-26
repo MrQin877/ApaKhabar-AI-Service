@@ -34,7 +34,7 @@ class NormalizedDocument(BaseModel):
         lines: list[str] = []
         for element in self.elements:
             source = element.source
-            location = []
+            location = [f"filename={source.filename}"]
             if source.page is not None:
                 location.append(f"page={source.page}")
             if source.sheet is not None:

@@ -1,0 +1,8 @@
+department,expense_category,amount_myr,date,approved_by
+IT,Hardware,45000,2023-01-15,Ahmad
+IT,Software Licenses,12000,2023-01-20,Ahmad
+Marketing,Digital Ads,25000,2023-02-01,Sarah
+Marketing,Event Hosting,18000,2023-02-15,Sarah
+HR,Training Seminar,8500,2023-03-10,Kumar
+HR,Team Building,15000,2023-03-22,Kumar
+Operations,Office Supplies,3200,2023-03-25,Mei Ling

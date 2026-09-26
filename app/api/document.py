@@ -1,10 +1,17 @@
-from fastapi import APIRouter, File, HTTPException, UploadFile, status
+import json
+from typing import Literal
+
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
+from starlette.concurrency import run_in_threadpool
 
 from app.core.config import get_settings
 from app.schemas.document import DocumentExtractionResponse, NormalizedDocument
-from app.schemas.information import ExtractionResponse
-from app.services.ai_service import AIServiceError, OllamaService
+from app.services.ai_service import AIServiceError
 from app.services.document_service import DocumentService
+from app.services.extraction_service import extract_document
+from app.services import extraction_progress
+from functools import partial
+from uuid import UUID
 from app.schemas.rag import IndexedDocumentResponse
 from app.services.rag_service import RagService
 
@@ -30,7 +37,8 @@ async def _normalize_upload(file: UploadFile) -> NormalizedDocument:
         )
 
     try:
-        return DocumentService.normalize(
+        return await run_in_threadpool(
+            DocumentService.normalize,
             data=data,
             filename=file.filename or "unnamed",
             media_type=file.content_type,
@@ -53,10 +61,8 @@ async def extract_uploaded_document(
 ) -> DocumentExtractionResponse:
     document = await _normalize_upload(file)
     try:
-        extraction = ExtractionResponse.model_validate(
-            OllamaService.extract_information(document.as_model_text())
-        )
-    except AIServiceError as exc:
+        extraction = await run_in_threadpool(extract_document, document)
+    except (AIServiceError, ValueError) as exc:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=str(exc),
@@ -74,8 +80,8 @@ async def index_uploaded_document(
 ) -> IndexedDocumentResponse:
     document = await _normalize_upload(file)
     try:
-        chunks_indexed = RagService().index_document(document)
-    except AIServiceError as exc:
+        chunks_indexed = await run_in_threadpool(lambda: RagService().index_document(document))
+    except (AIServiceError, ValueError) as exc:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=str(exc),
@@ -86,3 +92,45 @@ async def index_uploaded_document(
         filename=document.filename,
         chunks_indexed=chunks_indexed,
     )
+
+
+@router.post('/batch-extract')
+async def batch_extract(
+    files: list[UploadFile] = File(...),
+    extraction_mode: Literal['general', 'targeted'] = Form('general'),
+    extraction_query: str = Form(''),
+    keywords_json: str = Form('[]'),
+    progress_id: UUID | None = Form(None),
+):
+    try:
+        keywords = json.loads(keywords_json)
+        if not isinstance(keywords, list) or any(not isinstance(k, str) for k in keywords):
+            raise ValueError()
+        if extraction_mode == 'targeted' and not extraction_query.strip() and not keywords:
+            raise ValueError()
+    except (ValueError, TypeError) as exc:
+        raise HTTPException(422, 'Targeted extraction requires a query or a JSON string list of keywords') from exc
+    if len(files) > 20:
+        raise HTTPException(422, 'At most 20 files per batch')
+    report = partial(extraction_progress.record, str(progress_id) if progress_id else None)
+    results = []
+    for file in files:
+        try:
+            report('reading', 'Membaca dokumen dan mengenali teks (OCR bila diperlukan)')
+            document = await _normalize_upload(file)
+            query = ' '.join([extraction_query, *keywords]) if extraction_mode == 'targeted' else ''
+            extraction = await run_in_threadpool(extract_document, document, query, report)
+            # Pending extractions never enter the approved evidence index.
+            results.append({'status': 'ready', 'document': document.model_dump(), 'extraction': extraction.model_dump(), 'chunks_indexed': 0})
+        except (HTTPException, AIServiceError, ValueError) as exc:
+            report('failed', 'Ekstraksi gagal; periksa format dokumen atau layanan AI')
+            results.append({'status': 'failed', 'filename': file.filename, 'error': str(getattr(exc, 'detail', exc))})
+    return {'results': results}
+
+
+@router.get('/progress/{progress_id}')
+def extraction_status(progress_id: UUID):
+    try:
+        return extraction_progress.inspect(str(progress_id))
+    except KeyError as exc:
+        raise HTTPException(404, 'Extraction has not started') from exc

@@ -1,0 +1,2 @@
+# Optional local EmbeddingGemma runtime; Python 3.12 is recommended.
+sentence-transformers==6.1.0
