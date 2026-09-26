@@ -1,3 +1,49 @@
+## Setup & Configuration
+
+### Prerequisites
+- Python 3.10+
+- `llama.cpp` server (or Ollama) running locally for generation.
+- (Optional) `Tesseract OCR` for extracting text from images/PDFs.
+
+### Installation
+1. Clone the repository and navigate to the root directory.
+2. Create and activate a Python virtual environment:
+   ```sh
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+3. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   pip install -r requirements-embedding.txt
+   ```
+
+### Configuration (.env)
+Copy `.env.example` to `.env` and adjust the variables.
+```sh
+cp .env.example .env
+```
+Key configurations include:
+- **`AI_PROVIDER`**: Set to `llama_cpp` (default) or `ollama`.
+- **`LLAMA_CPP_BASE_URL`**: URL to your local LLM (e.g., `http://127.0.0.1:8080/v1`).
+- **`EMBEDDING_PROVIDER`**: Default is `embedding_gemma`. Requires local HF model caching.
+- **`APAKHABAR_AI_SERVICE_TOKEN`**: Must match the token in your Laravel `.env` file to authorize API calls.
+
+### Databases (Agent SQLite & ChromaDB)
+The service automatically initializes its databases upon startup based on the `.env` paths:
+- **Agent Checkpoints (SQLite)**: Automatically created at `./data/agent/checkpoints.sqlite`.
+- **Vector Search (ChromaDB)**: Automatically created at `./data/chroma`. No separate ChromaDB server installation is required (runs in embedded mode).
+
+Ensure the `data/` directory is writable.
+
+### Running the Server
+Start the FastAPI service using Uvicorn:
+```sh
+uvicorn app.main:app --host 127.0.0.1 --port 8001
+```
+The API documentation will be available at `http://127.0.0.1:8001/docs`.
+
+---
 # ApaKhabar AI Service
 
 A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
