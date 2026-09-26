@@ -9,6 +9,9 @@ from app.schemas.document import DocumentExtractionResponse, NormalizedDocument
 from app.services.ai_service import AIServiceError
 from app.services.document_service import DocumentService
 from app.services.extraction_service import extract_document
+from app.services import extraction_progress
+from functools import partial
+from uuid import UUID
 from app.schemas.rag import IndexedDocumentResponse
 from app.services.rag_service import RagService
 
@@ -97,6 +100,7 @@ async def batch_extract(
     extraction_mode: Literal['general', 'targeted'] = Form('general'),
     extraction_query: str = Form(''),
     keywords_json: str = Form('[]'),
+    progress_id: UUID | None = Form(None),
 ):
     try:
         keywords = json.loads(keywords_json)
@@ -108,14 +112,25 @@ async def batch_extract(
         raise HTTPException(422, 'Targeted extraction requires a query or a JSON string list of keywords') from exc
     if len(files) > 20:
         raise HTTPException(422, 'At most 20 files per batch')
+    report = partial(extraction_progress.record, str(progress_id) if progress_id else None)
     results = []
     for file in files:
         try:
+            report('reading', 'Membaca dokumen dan mengenali teks (OCR bila diperlukan)')
             document = await _normalize_upload(file)
             query = ' '.join([extraction_query, *keywords]) if extraction_mode == 'targeted' else ''
-            extraction = await run_in_threadpool(extract_document, document, query)
+            extraction = await run_in_threadpool(extract_document, document, query, report)
             # Pending extractions never enter the approved evidence index.
             results.append({'status': 'ready', 'document': document.model_dump(), 'extraction': extraction.model_dump(), 'chunks_indexed': 0})
         except (HTTPException, AIServiceError, ValueError) as exc:
+            report('failed', 'Ekstraksi gagal; periksa format dokumen atau layanan AI')
             results.append({'status': 'failed', 'filename': file.filename, 'error': str(getattr(exc, 'detail', exc))})
     return {'results': results}
+
+
+@router.get('/progress/{progress_id}')
+def extraction_status(progress_id: UUID):
+    try:
+        return extraction_progress.inspect(str(progress_id))
+    except KeyError as exc:
+        raise HTTPException(404, 'Extraction has not started') from exc

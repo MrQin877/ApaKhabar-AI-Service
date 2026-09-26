@@ -32,6 +32,7 @@ class EditorialState(TypedDict, total=False):
     best_article: dict | None
     best_quality: dict | None
     revisions: int
+    review_improved: bool
     guidance: str | None
     status: str
 
@@ -43,7 +44,25 @@ class EditorialWorkflow:
     def call(self, state, schema, prompt, data):
         if time.time() > state['deadline']:
             raise ModelError('Agent execution time budget exceeded')
-        return self.model.structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False))
+        labels = {
+            'RequestUnderstanding': 'Memahami permintaan',
+            'ExecutionPlan': 'Merencanakan penelitian sumber',
+            'ToolAction': 'Memeriksa kebutuhan penelitian',
+            'CompletenessResult': 'Memeriksa kelengkapan fakta',
+            'NewsArticle': 'Memperbaiki draf' if state.get('revisions') else 'Menyusun draf',
+            'Reflection': 'Meninjau klaim dan kualitas draf',
+        }
+        label = labels.get(schema.__name__, 'Memproses permintaan')
+        started = time.monotonic()
+        self.event('stage_started', label, payload={'stage': schema.__name__})
+        try:
+            result = self.model.structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False))
+        except Exception:
+            self.event('stage_failed', label, payload={'stage': schema.__name__})
+            raise
+        self.event('stage_completed', label, payload={
+            'stage': schema.__name__, 'elapsed_seconds': round(time.monotonic() - started, 2)})
+        return result
 
     def skill(self, name, state):
         active = self.registry.activate(name)
@@ -75,7 +94,9 @@ class EditorialWorkflow:
                 if quote.strip() and quote in request.instructions:
                     sources[f'user:prompt:{i}'] = {'quote': quote, 'kind': 'user_assertion'}
         steps = []
-        if request.eligible_information_ids or (request.allow_web and self.settings.web_search_url):
+        supplied_ids = {key.removeprefix('information:') for key in sources if key.startswith('information:')}
+        missing_ids = set(request.eligible_information_ids) - supplied_ids
+        if missing_ids or (request.allow_web and self.settings.web_search_url):
             result = self.call(state, ExecutionPlan,
                 'Plan at most three evidence-gathering tasks. Each step uses skill evidence-research. '
                 'Do not plan writing, review, approval, or publication; these are mandatory downstream stages.',
@@ -221,7 +242,7 @@ Follow requested language, tone, format, active categories, and instructions. Th
         old = state.get('best_quality')
         better = old is None or (not blocked, score) > (not old['publish_blocked'], old['quality_score'])
         self.event('reflection', 'Draf ditinjau terhadap bukti', payload={'quality_score': score, 'publish_blocked': blocked})
-        return {'quality': quality, 'best_quality': quality if better else old,
+        return {'quality': quality, 'review_improved': better, 'best_quality': quality if better else old,
                 'best_article': state['article'] if better else state['best_article'],
                 'skills': {**state['skills'], active['name']: active['version']}}
 
@@ -249,7 +270,7 @@ Follow requested language, tone, format, active categories, and instructions. Th
         graph.add_conditional_edges('check', lambda s: 'clarify' if s['completeness']['status'] != 'ready' and s['clarification_rounds'] == 0 else 'write')
         graph.add_edge('clarify', 'check')
         graph.add_edge('write', 'reflect')
-        graph.add_conditional_edges('reflect', lambda s: 'revise' if s.get('quality') and s['revisions'] < self.settings.agent_max_revisions and
+        graph.add_conditional_edges('reflect', lambda s: 'revise' if s.get('quality') and s['revisions'] < self.settings.agent_max_revisions and s.get('review_improved', True) and
             (s['quality']['needs_revision'] or s['quality']['publish_blocked'] or s['quality']['quality_score'] < self.settings.agent_quality_target) else 'finish')
         graph.add_edge('revise', 'write')
         graph.add_edge('finish', END)

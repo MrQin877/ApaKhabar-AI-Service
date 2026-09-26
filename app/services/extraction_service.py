@@ -3,7 +3,7 @@ from app.schemas.information import ExtractionResponse
 from app.services.ai_service import AIService
 
 
-def extract_document(document, query=''):
+def extract_document(document, query='', progress=None):
     from app.schemas.document import NormalizedDocument
     chunks, current = [], ''
     for element in document.elements:
@@ -21,11 +21,17 @@ def extract_document(document, query=''):
     if len(chunks) > 50:
         raise ValueError('Document exceeds 50 extraction chunks; split it into smaller documents')
     items, seen = [], set()
-    for chunk in chunks:
+    for index, chunk in enumerate(chunks, 1):
+        if progress:
+            progress('extracting', f'Mengekstrak fakta: bagian {index} dari {len(chunks)}',
+                     completed_chunks=index - 1, total_chunks=len(chunks))
         result = ExtractionResponse.model_validate(AIService.extract_information(chunk, query))
         for item in result.information:
             key = (item.type, item.title.casefold(), item.summary.casefold())
             if key not in seen:
                 items.append(item)
                 seen.add(key)
+    if progress:
+        progress('completed', 'Ekstraksi selesai; menyimpan hasil untuk ditinjau',
+                 completed_chunks=len(chunks), total_chunks=len(chunks), information_count=len(items))
     return ExtractionResponse(information=items)

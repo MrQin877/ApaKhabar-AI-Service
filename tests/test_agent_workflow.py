@@ -159,7 +159,7 @@ class AgentTests(unittest.TestCase):
         result = self.service().run(run_id='bad-approval', resume=ResumeRequest(owner_id='local', approved_web_source_ids=['web:one']))
         self.assertEqual(result.status, 'completed')
 
-    def test_reflection_never_exceeds_revision_budget(self):
+    def test_reflection_stops_when_revision_does_not_improve(self):
         model = ScriptedModel()
         original = model.structured
         def always_bad(schema, *args):
@@ -170,9 +170,10 @@ class AgentTests(unittest.TestCase):
             return result
         model.structured = always_bad
         result = self.service(model).run(NewsRequest(information='A workshop.'))
-        self.assertEqual(model.reviews, 3)
+        self.assertEqual(model.reviews, 2)
         self.assertTrue(result.quality['publish_blocked'])
-        self.assertEqual(result.metrics['revisions'], 2)
+        self.assertEqual(result.metrics['revisions'], 1)
+        self.assertTrue(result.article.warnings)
 
     def test_resume_can_retry_model_failure_after_clarification(self):
         self.service(ScriptedModel(missing=True)).run(NewsRequest(information='A workshop.', run_id='resume-failure'))
@@ -188,6 +189,45 @@ class AgentTests(unittest.TestCase):
             self.service(model).run(run_id='resume-failure', resume=resume)
         result = self.service().run(run_id='resume-failure', resume=resume)
         self.assertEqual(result.status, 'completed')
+
+    def test_supplied_eligible_sources_skip_redundant_research(self):
+        model = ScriptedModel()
+        result = self.service(model).run(NewsRequest(
+            eligible_information_ids=['42'], information={'information': [{
+                'information_id': '42', 'type': 'General', 'title': 'Workshop',
+                'summary': 'A workshop.', 'labels': [], 'fields': {}, 'evidence': [], 'confidence': .9}]}))
+        self.assertEqual(result.status, 'completed')
+        self.assertNotIn('ExecutionPlan', [name for name, _ in model.calls])
+        self.assertNotIn('ToolAction', [name for name, _ in model.calls])
+
+    def test_started_event_is_readable_before_model_returns(self):
+        model = ScriptedModel()
+        service = self.service(model)
+        original = model.structured
+        def inspect_during_call(schema, *args):
+            events = self.service().inspect('live', 'local')['events']
+            self.assertEqual(events[-1]['event_type'], 'stage_started')
+            self.assertEqual(events[-1]['payload']['stage'], schema.__name__)
+            return original(schema, *args)
+        model.structured = inspect_during_call
+        result = service.run(NewsRequest(information='A workshop.', run_id='live'))
+        completed = [event for event in result.events if event['event_type'] == 'stage_completed']
+        self.assertEqual(len(completed), len(model.calls))
+        self.assertTrue(all(event['payload']['elapsed_seconds'] >= 0 for event in completed))
+
+    def test_improving_but_incomplete_reviews_still_obey_revision_budget(self):
+        model = ScriptedModel()
+        original = model.structured
+        def improving_review(schema, *args):
+            result = original(schema, *args)
+            if schema is Reflection:
+                result.needs_revision = True
+                result.dimensions.accuracy = 40 + model.reviews * 5
+            return result
+        model.structured = improving_review
+        result = self.service(model).run(NewsRequest(information='A workshop.'))
+        self.assertEqual(model.reviews, 3)
+        self.assertEqual(result.metrics['revisions'], 2)
 
     def test_skill_discovery_and_path_boundary(self):
         registry = SkillRegistry(self.settings.agent_skills_path)

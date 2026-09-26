@@ -80,7 +80,8 @@ class ContractTests(unittest.TestCase):
     def test_extraction_rejects_invented_quote_location(self, chat):
         chat.return_value = ExtractionResponse(information=[{'type': 'General', 'title': 'Title', 'summary': 'Summary', 'labels': [], 'fields': {}, 'confidence': .9,
             'evidence': [{'source': 'page=2', 'quote': 'Real text'}]}])
-        self.assertEqual(OllamaService.extract_information('[source: page=1] Real text')['information'], [])
+        with self.assertRaises(ModelError):
+            OllamaService.extract_information('[source: page=1] Real text')
 
 
 if __name__ == '__main__':

@@ -39,7 +39,9 @@ Rules:
 - Write a concise title and a one-to-two sentence summary.
 - Add short topical labels such as education, finance, health, or emergency.
 - Put type-specific factual values in fields.
-- Add brief supporting quotes and their supplied source markers to evidence.
+- Add brief verbatim supporting quotes and their supplied source markers to evidence.
+- Copy the complete marker inside [source: ...] into evidence.source, including filename= and page=.
+- Each quote must come from the cited page/location. Split evidence across pages rather than joining pages in one quote.
 - Use null for an individual value that is unknown; do not guess it.
 - Set confidence according to how clearly the document supports the item.
 """.strip()
@@ -63,12 +65,34 @@ Rules:
             marker = blocks[i].strip()
             located[marker] = located.get(marker, "") + " " + " ".join(blocks[i + 1].split())
         normalized = " ".join(source_text.split())
+        # Accept only explicit, unambiguous presentation variants of a supplied marker.
+        # Never recover a wrong/missing page by searching the entire document.
+        aliases = {}
+        for marker in located:
+            for alias in (marker, marker.removeprefix('filename=')):
+                aliases.setdefault(alias, set()).add(marker)
         retained = []
         for item in validated.information:
-            item.evidence = [e for e in item.evidence if " ".join(e.quote.split()) in
-                (located.get(e.source, "") if located else normalized)]
-            if item.evidence:
+            verified = []
+            for evidence in item.evidence:
+                source = evidence.source.strip()
+                if source.startswith('[source:') and source.endswith(']'):
+                    source = source[len('[source:'):-1].strip()
+                candidates = aliases.get(source, set())
+                if located and len(candidates) != 1:
+                    continue
+                canonical = next(iter(candidates)) if located else source
+                quote = " ".join(evidence.quote.split())
+                if quote and quote in (located[canonical] if located else normalized):
+                    verified.append(evidence.model_copy(update={'source': canonical}))
+            item.evidence = verified
+            if verified:
                 retained.append(item)
+        if validated.information and not retained:
+            raise AIServiceError(
+                'The model returned information, but none of its evidence matched the cited source. '
+                'Extraction needs another attempt; this does not mean the document contains no information.'
+            )
         validated.information = retained
         return validated.model_dump()
 

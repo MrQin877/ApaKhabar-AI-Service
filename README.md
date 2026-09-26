@@ -4,7 +4,7 @@ A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chr
 
 ## Setup
 
-Use Python 3.12 or newer. The existing `.venv-gemma` environment can be used when it already contains your local embedding model dependencies.
+Use Python 3.12 or newer. Use `.venv` for the local environment, including the embedding model dependencies.
 
 ```sh
 python3.12 -m venv .venv

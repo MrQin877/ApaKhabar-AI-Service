@@ -41,3 +41,22 @@ Automated acceptance tests cover typed provider responses, bounded schema repair
 The fixed Indonesian examples in `evaluation/editorial_cases.json` exercise complete announcements, missing details, conflicting dates, source-text injection, and timeless profiles. `scripts/evaluate_editorial.py` runs them through agent or fixed-pipeline mode and saves outputs, elapsed time, and model calls. Human evaluation should record unsupported claim rate, supported fact coverage, relevance, Indonesian language quality, and appropriate abstention. Compare the modes on the same model/settings. The fixture is an initial regression set, not a statistically sufficient accuracy benchmark.
 
 Local verification during restructuring: unit tests use scripted models, and the installed EmbeddingGemma adapter was exercised locally. Live generation requires the separate llama.cpp server; its absence is not a successful model-compatibility or article-quality evaluation.
+
+## Live progress and latency
+
+Model calls record `stage_started`, `stage_completed` (with duration), or `stage_failed` before/after inference. These are operational steps, not private model reasoning. Sources already supplied in full skip the evidence planning/tool loop unless web discovery is enabled or eligible sources are missing. Reflection stops on a non-improving revision while preserving the best draft and unresolved warnings; improving revisions still obey the configured budget.
+
+The Laravel chat submits `POST /admin/ai-assistant/generate-async` and immediately receives HTTP 202. `GenerateIntelligentNews` runs `NewsGenerationService` on the `generation` queue; the legacy synchronous endpoint delegates to the same service. The authenticated progress endpoint combines queue state with Python's persisted events. A terminal response is returned only after Laravel saves the draft or clarification, then the browser navigates to it. Request IDs prevent duplicate dispatch; a cache lock prevents duplicate execution. Progress survives a page reload in the same browser tab using a user/session-scoped sessionStorage key. Local queue status is retained for 24 hours; shared cache storage is required across multiple hosts.
+
+Document jobs pass an opaque UUID to batch extraction. `/documents/progress/{uuid}` exposes reading/OCR and actual completed/total extraction chunks; Laravel enforces document ownership before proxying it. Progress records contain no document text and expire after 24 hours as new records are written. A successful extraction with zero results completes rather than repeating model calls. Per-file extraction failures are surfaced directly; transport failures retain bounded queue retries.
+
+After updating both repositories, restart FastAPI and run `composer dev` in the Laravel repository (restart an existing dev command). It now starts separate document and generation workers. For a process manager, run both:
+
+```sh
+php artisan queue:work --queue=documents,default --tries=5 --timeout=1250
+php artisan queue:work --queue=generation --tries=1 --timeout=1250
+```
+
+Use an asynchronous Laravel queue, `APAKHABAR_AI_TIMEOUT=1200`, and queue `retry_after=1500` (including environment overrides such as `DB_QUEUE_RETRY_AFTER`). HTTP calls are capped at 1200 seconds, jobs at 1250 seconds, and overlap locks at 1300 seconds. Keep retry_after larger than job timeout to avoid duplicate processing. Clear cached configuration after changing these values, and restart workers. Start the configured model server separately. A queued display means a job is waiting for a worker; disconnected progress means polling could not reach the service, not proof that inference stopped.
+
+Verification: Python tests exercise progress visibility during inference and chunk extraction, redundant-research avoidance, revision stopping and safety flags. Laravel tests exercise immediate queue submission, polling ownership, terminal outcomes, duplicate dispatch/execution, and empty extraction. Real latency still depends on document length, OCR, model speed, and concurrent requests; tests with scripted models are not a speed benchmark.
