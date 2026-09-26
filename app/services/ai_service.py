@@ -1,9 +1,9 @@
 import re
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.core.config import get_settings
-from app.schemas.information import ExtractionResponse
+from app.schemas.information import ExtractionResponse, InformationItem
 from app.schemas.news import CompletenessResult, NewsArticle, NewsLanguage
 
 
@@ -11,6 +11,11 @@ from app.providers.models import GenerationModel, ModelError
 from app.skills.registry import SkillRegistry
 
 AIServiceError = ModelError
+
+
+class ExtractionChunkResponse(ExtractionResponse):
+    # Bound one model response; the combined document response can contain more items.
+    information: list[InformationItem] = Field(max_length=5)
 
 
 class AIService:
@@ -34,12 +39,16 @@ You extract structured facts for a news-writing system.
 Rules:
 - Extract only information explicitly supported by the document.
 - Never invent names, dates, amounts, quotations, or events.
-- Create multiple information items when the document contains distinct topics.
+- Return at most five concise items for genuinely distinct topics, not one item per table row.
+- For attendance or registration tables, extract one event-level summary per distinct event. Interpret the row count from the [source: ... section=table-summary] line as the number of attendees, and state it naturally (e.g. "1000 people attended the event"). Do not use technical terms like "data rows" in your summary. Report the count in fields (e.g. "total_attendees": 1000). Do not list individual attendee names, emails, or phone numbers in the title, summary, or fields.
+- Lines with section=table-summary contain a pre-computed row count calculated deterministically by the system. Use this count verbatim as the attendance total. Sample rows shown after the summary are for understanding the structure only; do not treat the sample names as the only attendees. To cite the count, use the exact section=table-summary sentence as evidence.
+- Do not infer whole-document attendance totals from a chunk. Counts must be explicitly supplied or deterministically calculated elsewhere.
+- Keep each summary to two sentences, fields to at most eight relevant scalar values, and evidence to at most two short verbatim quotes (under 200 characters each).
 - Use only the information types allowed by the response schema.
 - Write a concise title and a one-to-two sentence summary.
 - Add short topical labels such as education, finance, health, or emergency.
 - Put type-specific factual values in fields.
-- Add brief verbatim supporting quotes and their supplied source markers to evidence.
+- Add brief verbatim supporting quotes and their supplied source markers to evidence. Quotes must be strictly verbatim; do not alter or combine text from different rows.
 - Copy the complete marker inside [source: ...] into evidence.source, including filename= and page=.
 - Each quote must come from the cited page/location. Split evidence across pages rather than joining pages in one quote.
 - Use null for an individual value that is unknown; do not guess it.
@@ -54,7 +63,7 @@ Rules:
         source_text = text
         text = json.dumps({"document": text, "extraction_query": query}, ensure_ascii=False)
         validated = AIService._structured_chat(
-            ExtractionResponse,
+            ExtractionChunkResponse,
             system_prompt,
             text,
         )
@@ -102,23 +111,25 @@ Rules:
             raise ValueError("Information cannot be empty.")
 
         system_prompt = """
-You check whether supplied information is sufficient for a factual news draft.
+You extract structured facts for a news-writing system.
 
-Required facts are: what happened, who was involved or supplied the information,
-where it happened, and when it happened. Mark genuinely useful absent facts as
-missing. Do not report a field as missing if the text clearly supplies it. Ask one
-short, specific question for each missing field. Put contradictions in conflicts.
-Set status to has_conflicts when conflicts exist, needs_information when required
-facts are missing, otherwise ready. Recommended details must not prevent ready.
-List only facts explicitly supported by the supplied information in known_facts.
-Do not demand more detail for a fact that is already usable: an event name such as
-"community clean-up programme" answers what happened. A relative date such as
-"next month" supplies partial timing but may justify asking for the exact date.
-Do not mark what happened missing merely because its programme details are absent.
-
-Example: For "A community clean-up programme will be held next month", what
-happened is PRESENT. Missing required facts are the organizer and location; an
-exact date can be requested. Never ask what activities are part of the programme.
+Rules:
+- Extract only information explicitly supported by the document.
+- Never invent names, dates, amounts, quotations, or events.
+- Return at most five concise items for genuinely distinct topics, not one item per table row.
+- For attendance or registration tables, extract one event-level summary per distinct event. Interpret the row count from the [source: ... section=table-summary] line as the number of attendees, and state it naturally (e.g. "1000 people attended the event"). Do not use technical terms like "data rows" in your summary. Report the count in fields (e.g. "total_attendees": 1000). Do not list individual attendee names, emails, or phone numbers in the title, summary, or fields.
+- Lines with section=table-summary contain a pre-computed row count calculated deterministically by the system. Use this count verbatim as the attendance total. Sample rows shown after the summary are for understanding the structure only; do not treat the sample names as the only attendees. To cite the count, use the exact section=table-summary sentence as evidence.
+- Do not infer whole-document attendance totals from a chunk. Counts must be explicitly supplied or deterministically calculated elsewhere.
+- Keep each summary to two sentences, fields to at most eight relevant scalar values, and evidence to at most two short verbatim quotes (under 200 characters each).
+- Use only the information types allowed by the response schema.
+- Write a concise title and a one-to-two sentence summary.
+- Add short topical labels such as education, finance, health, or emergency.
+- Put type-specific factual values in fields.
+- Add brief verbatim supporting quotes and their supplied source markers to evidence. Quotes must be strictly verbatim; do not alter or combine text from different rows.
+- Copy the complete marker inside [source: ...] into evidence.source, including filename= and page=.
+- Each quote must come from the cited page/location. Split evidence across pages rather than joining pages in one quote.
+- Use null for an individual value that is unknown; do not guess it.
+- Set confidence according to how clearly the document supports the item.
 """.strip()
         result = AIService._structured_chat(
             CompletenessResult,
