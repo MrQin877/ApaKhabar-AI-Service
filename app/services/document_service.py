@@ -144,7 +144,7 @@ class DocumentService:
                                 filename=filename,
                                 row=row_index,
                             ),
-                            metadata={"table": table_index},
+                            metadata={"table": table_index, "cells": values},
                         )
                     )
         return elements
@@ -175,6 +175,7 @@ class DocumentService:
                                     sheet=worksheet.title,
                                     row=row_index,
                                 ),
+                                metadata={"cells": values},
                             )
                         )
         finally:
@@ -185,7 +186,11 @@ class DocumentService:
     def _csv_elements(data: bytes, filename: str) -> list[DocumentElement]:
         text = DocumentService._decode_text(data)
         elements: list[DocumentElement] = []
-        for row_index, row in enumerate(csv.reader(io.StringIO(text)), start=1):
+        try:
+            dialect = csv.Sniffer().sniff(text[:8192], delimiters=",;\t")
+        except csv.Error:
+            dialect = csv.excel
+        for row_index, row in enumerate(csv.reader(io.StringIO(text), dialect), start=1):
             values = [value.strip() for value in row]
             if any(values):
                 elements.append(
@@ -193,6 +198,7 @@ class DocumentService:
                         element_type="table_row",
                         content=" | ".join(values),
                         source=SourceReference(filename=filename, row=row_index),
+                        metadata={"cells": values},
                     )
                 )
         return elements

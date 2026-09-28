@@ -31,7 +31,7 @@ class ExtractionProgressTests(unittest.TestCase):
                 with self.assertRaises(KeyError):
                     extraction_progress.inspect('other-id')
 
-    def test_large_table_is_summarized_with_count_and_samples(self):
+    def test_large_table_fallback_preserves_all_rows(self):
         from app.schemas.document import NormalizedDocument, DocumentElement, SourceReference
         for sheet in (None, 'Attendance'):
             elements = [DocumentElement(element_type='table_row', content='event_id | event_name | attendee_name',
@@ -41,19 +41,11 @@ class ExtractionProgressTests(unittest.TestCase):
             document = NormalizedDocument(document_id='test', filename='attendance', media_type='text/csv', character_count=22000, elements=elements)
             with patch('app.services.extraction_service.AIService.extract_information', return_value={'information': []}) as model:
                 extract_document(document)
-            # Large table should be summarized into a single compact chunk
-            self.assertEqual(model.call_count, 1)
-            chunk_text = model.call_args_list[0].args[0]
-            # Header row is preserved
+            chunk_text = '\n'.join(call.args[0] for call in model.call_args_list)
             self.assertIn('event_id | event_name | attendee_name', chunk_text)
-            # Pre-computed row count is injected
-            self.assertIn('section=table-summary]', chunk_text)
-            self.assertIn('Total data rows in this table section', chunk_text)
-            self.assertIn('100', chunk_text)  # 101 elements - 1 header = 100 data rows
-            # Sample rows are included
-            self.assertIn('Person 2', chunk_text)
-            # Not all rows are sent
-            self.assertNotIn('Person 99', chunk_text)
+            for row in range(2, 102):
+                self.assertIn(f'Person {row}', chunk_text)
+            self.assertNotIn('representative samples', chunk_text)
 
     def test_small_table_is_sent_verbatim(self):
         from app.schemas.document import NormalizedDocument, DocumentElement, SourceReference

@@ -1,5 +1,6 @@
 """Bounded Plan-and-Execute + ReAct + Reflection editorial graph."""
 import json
+from app.services.editorial_brief import build_brief, coverage_issues, natural_dates, WRITING_RULES, deduplicate_narrative
 import time
 from typing import TypedDict, Any
 from langgraph.graph import StateGraph, START, END
@@ -205,15 +206,23 @@ List known_facts only from sources. Missing optional facts must not block a usef
                 raise ValueError('Skill reference changed; start a new run')
             active['instructions'] += '\n' + reference['content']
             resources['indonesian-news-writing/references/formats.md'] = reference['version']
-        article = self.call(state, NewsArticle, active['instructions'] + '''
+        brief = build_brief(state['sources'])
+        self.event('fact_analysis', 'Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan')
+        article = self.call(state, NewsArticle, active['instructions'] + '\n' + WRITING_RULES + '''
 Use only the supplied sources. sources_used must contain exact keys from sources, not filenames invented by you.
 Omit unavailable details and add warnings. Unresolved conflicting claims must be attributed or omitted.
 Follow requested language, tone, format, active categories, and instructions. The current draft is not evidence.''',
-            {'sources': state['sources'], 'instructions': request.instructions, 'language': request.language,
+            {'editorial_brief': brief, 'sources': state['sources'], 'instructions': request.instructions, 'language': request.language,
              'tone': request.tone, 'format': request.content_format, 'categories': request.available_categories,
              'default_category': request.default_category, 'completeness': state['completeness'],
              'current_draft': state.get('article') or (request.current_draft.model_dump() if request.current_draft else None),
              'review': state.get('quality')})
+        if request.language == 'id':
+            for field in ('headline', 'subheadline', 'lead', 'summary'):
+                if getattr(article, field):
+                    setattr(article, field, natural_dates(getattr(article, field)))
+            article.body = [natural_dates(p) for p in article.body]
+        article = deduplicate_narrative(article, brief)
         invalid = [s for s in article.sources_used if s not in state['sources']]
         article.sources_used = [s for s in article.sources_used if s in state['sources']]
         if invalid:
@@ -229,18 +238,24 @@ Follow requested language, tone, format, active categories, and instructions. Th
         if not state.get('article'):
             return {}
         active = self.skill('editorial-review', state)
-        review = self.call(state, Reflection, active['instructions'] + '\nCheck every factual claim, including headlines. source_ids must be exact source keys.',
+        review = self.call(state, Reflection, active['instructions'] + '\nCheck every factual claim, including headlines. source_ids must be exact source keys. Check coverage of table activities and results, duplicated date/location context, and visit-versus-person units. Request revision when important findings are missing or prose repeats facts.',
                            {'draft': state['article'], 'sources': state['sources'], 'completeness': state['completeness']})
+        editorial_issues = coverage_issues(state['article'], build_brief(state['sources']))
+        if editorial_issues:
+            review.needs_revision = True
+            review.improvements.extend(editorial_issues)
+            review.warnings.extend(editorial_issues)
         dims = review.dimensions.model_dump()
         weights = {'accuracy': .30, 'completeness': .20, 'relevance': .15, 'readability': .10, 'structure': .10, 'language': .10, 'safety': .05}
         score = round(sum(dims[k] * w for k, w in weights.items()), 2)
         unsupported = any(not c.supported or not c.source_ids or any(s not in state['sources'] for s in c.source_ids) for c in review.claim_checks)
         blocked = unsupported or any(s not in state['sources'] for s in state['article']['sources_used']) or not review.claim_checks or not state['article']['sources_used'] or state['article']['language'] != state['request']['language']
         blocked = blocked or any('unknown sources' in w for w in state['article']['warnings']) or bool(state['completeness']['conflicts'])
-        quality = {**review.model_dump(), 'quality_score': score, 'quality_label': 'needs_review' if blocked or score < self.settings.agent_quality_target else 'good',
-                   'publish_blocked': blocked, 'evaluation_version': 'agent-editorial-v1', 'evaluator_model': self.model.name}
+        blocked = blocked or any(issue.startswith('Unsupported unique-person') for issue in editorial_issues)
+        quality = {**review.model_dump(), 'quality_score': score, 'quality_label': 'needs_review' if editorial_issues or blocked or score < self.settings.agent_quality_target else 'good',
+                   'editorial_issues': editorial_issues, 'publish_blocked': blocked, 'evaluation_version': 'agent-editorial-v1', 'evaluator_model': self.model.name}
         old = state.get('best_quality')
-        better = old is None or (not blocked, score) > (not old['publish_blocked'], old['quality_score'])
+        better = old is None or (not blocked, -len(editorial_issues), score) > (not old['publish_blocked'], -len(old.get('editorial_issues', [])), old['quality_score'])
         self.event('reflection', 'Draf ditinjau terhadap bukti', payload={'quality_score': score, 'publish_blocked': blocked})
         return {'quality': quality, 'review_improved': better, 'best_quality': quality if better else old,
                 'best_article': state['article'] if better else state['best_article'],
