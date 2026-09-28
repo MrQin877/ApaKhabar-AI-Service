@@ -40,8 +40,7 @@ Rules:
 - Extract only information explicitly supported by the document.
 - Never invent names, dates, amounts, quotations, or events.
 - Return at most five concise items for genuinely distinct topics, not one item per table row.
-- For attendance or registration tables, extract one event-level summary per distinct event. Interpret the row count from the [source: ... section=table-summary] line as the number of attendees, and state it naturally (e.g. "1000 people attended the event"). Do not use technical terms like "data rows" in your summary. Report the count in fields (e.g. "total_attendees": 1000). Do not list individual attendee names, emails, or phone numbers in the title, summary, or fields.
-- Lines with section=table-summary contain a pre-computed row count calculated deterministically by the system. Use this count verbatim as the attendance total. Sample rows shown after the summary are for understanding the structure only; do not treat the sample names as the only attendees. To cite the count, use the exact section=table-summary sentence as evidence.
+- Record/visit/registration counts are not unique people or proof of attendance. Never equate them.
 - Do not infer whole-document attendance totals from a chunk. Counts must be explicitly supplied or deterministically calculated elsewhere.
 - Keep each summary to two sentences, fields to at most eight relevant scalar values, and evidence to at most two short verbatim quotes (under 200 characters each).
 - Use only the information types allowed by the response schema.
@@ -110,27 +109,10 @@ Rules:
         if not text.strip():
             raise ValueError("Information cannot be empty.")
 
-        system_prompt = """
-You extract structured facts for a news-writing system.
-
-Rules:
-- Extract only information explicitly supported by the document.
-- Never invent names, dates, amounts, quotations, or events.
-- Return at most five concise items for genuinely distinct topics, not one item per table row.
-- For attendance or registration tables, extract one event-level summary per distinct event. Interpret the row count from the [source: ... section=table-summary] line as the number of attendees, and state it naturally (e.g. "1000 people attended the event"). Do not use technical terms like "data rows" in your summary. Report the count in fields (e.g. "total_attendees": 1000). Do not list individual attendee names, emails, or phone numbers in the title, summary, or fields.
-- Lines with section=table-summary contain a pre-computed row count calculated deterministically by the system. Use this count verbatim as the attendance total. Sample rows shown after the summary are for understanding the structure only; do not treat the sample names as the only attendees. To cite the count, use the exact section=table-summary sentence as evidence.
-- Do not infer whole-document attendance totals from a chunk. Counts must be explicitly supplied or deterministically calculated elsewhere.
-- Keep each summary to two sentences, fields to at most eight relevant scalar values, and evidence to at most two short verbatim quotes (under 200 characters each).
-- Use only the information types allowed by the response schema.
-- Write a concise title and a one-to-two sentence summary.
-- Add short topical labels such as education, finance, health, or emergency.
-- Put type-specific factual values in fields.
-- Add brief verbatim supporting quotes and their supplied source markers to evidence. Quotes must be strictly verbatim; do not alter or combine text from different rows.
-- Copy the complete marker inside [source: ...] into evidence.source, including filename= and page=.
-- Each quote must come from the cited page/location. Split evidence across pages rather than joining pages in one quote.
-- Use null for an individual value that is unknown; do not guess it.
-- Set confidence according to how clearly the document supports the item.
-""".strip()
+        system_prompt = """Check whether the supplied facts support a useful article.
+Return CompletenessResult, not extracted information. List known facts, conflicts and at most three material missing facts.
+Do not demand event dates for timeless topics. Do not ask for information already provided in structured fields or table summaries.
+Never invent facts or treat record/visit counts as unique people. Optional details must not block writing."""
         result = AIService._structured_chat(
             CompletenessResult,
             system_prompt,
@@ -159,6 +141,8 @@ source identifiers in sources_used when the input contains markers such as page,
 sheet, row, paragraph, or filename. Put any limitation in warnings. The language
 field must be {language}.
 """.strip()
+        from app.services.editorial_brief import WRITING_RULES, natural_dates
+        system_prompt += '\n' + WRITING_RULES
         result = AIService._structured_chat(
             NewsArticle,
             system_prompt,
@@ -166,6 +150,11 @@ field must be {language}.
             temperature=0.2,
         )
         article = NewsArticle.model_validate(result)
+        if language == 'id':
+            for field in ('headline', 'subheadline', 'lead', 'summary'):
+                if getattr(article, field):
+                    setattr(article, field, natural_dates(getattr(article, field)))
+            article.body = [natural_dates(p) for p in article.body]
         if not re.search(r"\[source:\s*[^\]]+\]", text, re.IGNORECASE):
             article.sources_used = []
         return article
