@@ -22,9 +22,11 @@ class RunConflict(ValueError):
 
 
 class AgentService:
-    def __init__(self, settings=None, model=None, knowledge_factory=KnowledgeService):
+    def __init__(self, settings=None, model=None, knowledge_factory=KnowledgeService, evaluator=None):
         self.settings = settings or get_settings()
         self.model = model or GenerationModel(self.settings)
+        from app.providers.evaluator import build_evaluator
+        self.evaluator = evaluator or (build_evaluator(self.settings) if self.settings.evaluator_enabled else self.model)
         self.registry = SkillRegistry(self.settings.agent_skills_path)
         self.tools = EditorialTools(self.settings, self.registry, knowledge_factory)
         Path(self.settings.agent_db_path).parent.mkdir(parents=True, exist_ok=True)
@@ -100,7 +102,7 @@ class AgentService:
         try:
             with SqliteSaver.from_conn_string(self.settings.agent_db_path) as saver:
                 workflow = EditorialWorkflow(self.model, self.registry, self.tools, self.settings,
-                    lambda kind, label, **kwargs: self.event(key, kind, label, **kwargs))
+                    lambda kind, label, **kwargs: self.event(key, kind, label, **kwargs), evaluator=self.evaluator)
                 graph = workflow.build(saver)
                 config = {'configurable': {'thread_id': key}, 'recursion_limit': 100}
                 snapshot = graph.get_state(config)

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Current AI architecture" id="ai-architecture">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ApaKhabar — current implementation&#10;One LangGraph workflow, multiple editorial roles, two model endpoints" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="350" y="20" width="900" height="65" />
+        </mxCell>
+        <mxCell id="ui" value="User / AI Assistant&#10;Upload • ask • analyse • request draft" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="130" width="310" height="90" />
+        </mxCell>
+        <mxCell id="laravel" value="Laravel application + queue workers&#10;Intent / sessions / approved sources&#10;Documents queue and generation queue" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="130" width="310" height="90" />
+        </mxCell>
+        <mxCell id="extract" value="Document extraction pipeline&#10;Parse files / OCR when needed&#10;Structured facts and table summaries" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="300" width="310" height="90" />
+        </mxCell>
+        <mxCell id="data" value="Evidence storage / retrieval&#10;Original files + information records&#10;Embeddings / knowledge search" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="460" width="310" height="90" />
+        </mxCell>
+        <mxCell id="plan" value="1. PLAN → EXECUTE&#10;Understand request; plan up to 3 research tasks&#10;Research can be skipped if evidence supplied" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="300" width="310" height="90" />
+        </mxCell>
+        <mxCell id="react" value="2. ReAct-style research loop&#10;Choose validated action → execute tool&#10;Observe result/error → next action or finish" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="470" width="310" height="105" />
+        </mxCell>
+        <mxCell id="tools" value="Allowed tools / skill resources&#10;search_information • inspect_source&#10;read_skill • optional web_search" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="870" y="470" width="330" height="105" />
+        </mxCell>
+        <mxCell id="approve" value="Source approval + completeness check&#10;Pause for web-source approval if needed&#10;Clarify missing facts, then resume" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="650" width="310" height="105" />
+        </mxCell>
+        <mxCell id="write" value="3. Writer&#10;Evidence brief → draft / revised draft&#10;Generation model" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="830" width="310" height="90" />
+        </mxCell>
+        <mxCell id="judge" value="4. REFLECTION&#10;Judge draft against supplied evidence&#10;Claim checks + quality dimensions&#10;Code checks coverage / sources / units" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="1000" width="310" height="110" />
+        </mxCell>
+        <mxCell id="revision" value="Revision decision&#10;Revise within limits while improving&#10;Otherwise retain best draft" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1000" width="310" height="110" />
+        </mxCell>
+        <mxCell id="finish" value="Draft + quality result&#10;User reviews / edits → confirms publish&#10;Reuse Web / Facebook / Instagram publishers" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460" y="1210" width="310" height="110" />
+        </mxCell>
+        <mxCell id="writerModel" value="Generation model endpoint&#10;llama.cpp :8080&#10;alias: apakhabar-gemma&#10;Planning / research / checks / writing" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1280" y="300" width="330" height="120" />
+        </mxCell>
+        <mxCell id="judgeModel" value="Separate judge endpoint&#10;llama.cpp :8082&#10;alias: apakhabar-judge&#10;Enabled by current .env configuration" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1280" y="1000" width="330" height="110" />
+        </mxCell>
+        <mxCell id="state" value="Durable orchestration&#10;LangGraph SQLite checkpoints&#10;Run records + progress events&#10;Pause / resume at node boundaries" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="870" y="700" width="330" height="120" />
+        </mxCell>
+        <mxCell id="notes" value="Implementation notes&#10;• Roles are nodes in one graph, not independent agent services.&#10;• Judge evaluates drafts against evidence; this is not a measured accuracy percentage.&#10;• Judge unavailable: preserve draft and block publication.&#10;• Extracted-information quality in Laravel uses evidence/completeness/confidence heuristics.&#10;• MCP is not required: editorial tools are dispatched directly in Python." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="870" y="1210" width="740" height="170" />
+        </mxCell>
+        <mxCell id="e19" value="request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="ui" target="laravel">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e20" value="upload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="laravel" target="extract">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e21" value="facts / evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="extract" target="data">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e22" value="draft request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="laravel" target="plan">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e23" value="research tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="plan" target="react">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e24" value="action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="react" target="tools">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e25" value="observation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="tools" target="react">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e26" value="eligible evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="data" target="tools">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e27" value="research complete / skipped" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="react" target="approve">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e28" value="sufficient evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="approve" target="write">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e29" value="draft + sources" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="write" target="judge">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e30" value="review findings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="judge" target="revision">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e31" value="revise" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="revision" target="write">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e32" value="stop / keep best" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;" edge="1" parent="1" source="revision" target="finish">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e33" value="model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;dashed=1;" edge="1" parent="1" source="writerModel" target="plan">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e34" value="model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;dashed=1;" edge="1" parent="1" source="writerModel" target="react">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e35" value="model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;dashed=1;" edge="1" parent="1" source="writerModel" target="write">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e36" value="model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;dashed=1;" edge="1" parent="1" source="judgeModel" target="judge">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e37" value="checkpoint / resume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;dashed=1;" edge="1" parent="1" source="state" target="approve">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

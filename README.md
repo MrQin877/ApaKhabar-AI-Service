@@ -132,3 +132,7 @@ python scripts/evaluate_editorial.py --mode legacy --output /tmp/legacy-evaluati
 Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require the configured local models and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
 
 See [the architecture and evaluation notes](docs/agent-architecture.md) for implementation boundaries and acceptance cases.
+
+## Separate quality judge
+
+See [separate judge and DeepEval setup](docs/separate-judge.md) for local Qwen evaluation, Windows/macOS startup, and labelled offline calibration tests.

@@ -1,0 +1,108 @@
+# Separate judge and DeepEval
+
+The writer still plans, researches and writes. With `EVALUATOR_ENABLED=true`, only
+the Reflection step uses the configured judge. The judge sees source evidence,
+the draft and completeness findings, not the writer's earlier quality score.
+Existing deterministic table checks still run after model evaluation.
+
+The app does not require DeepEval. DeepEval is an optional offline benchmark
+runner, isolated from production dependencies. Both use the separate judge.
+
+## Start locally (Windows or macOS)
+
+Install llama.cpp and keep the existing writer server running on port 8080.
+From the AI Service repository, in another terminal:
+
+```sh
+python scripts/start_judge.py
+```
+
+This downloads `Qwen/Qwen3-4B-GGUF:Q4_K_M` on first use, starts it on port 8082
+with alias `apakhabar-judge`, and keeps it running in the foreground. The Python
+launcher works in Windows PowerShell without Bash. GPU configuration is optional:
+set `JUDGE_GPU_LAYERS=0` for CPU execution. Larger contexts and two loaded models
+require more memory. This small model is a starting candidate, not a validated
+expert evaluator. Replace `JUDGE_HF_MODEL` to test another model.
+
+After the judge is listening, add to the AI Service `.env` and restart Uvicorn:
+
+```dotenv
+EVALUATOR_ENABLED=true
+EVALUATOR_PROVIDER=llama_cpp
+EVALUATOR_BASE_URL=http://127.0.0.1:8082/v1
+EVALUATOR_MODEL=apakhabar-judge
+EVALUATOR_TIMEOUT_SECONDS=180
+EVALUATOR_MAX_TOKENS=4096
+```
+
+For Ollama use `EVALUATOR_PROVIDER=ollama`, the Ollama server root URL (without
+`/v1`), and an installed model name different from the writer. Different aliases
+alone do not prove different underlying weights; provision a genuinely different
+model. The application rejects identical configured writer/judge model names.
+
+Existing saved scores are not re-evaluated automatically. Generate a new draft
+to verify the new evaluator metadata. The UI identifies the evaluator and displays
+scores out of 100, not as probabilities of accuracy. A judge outage retains the
+draft with `evaluation_unavailable` and blocks publishing. It does not silently
+fall back to self-review. The numeric zero stored for compatibility is not a
+measured score and is hidden by the badge. Regenerate after restoring the judge.
+
+## Run DeepEval locally
+
+Use a separate Python environment so evaluation dependencies cannot change the
+working AI Service environment:
+
+```sh
+python -m venv .venv-eval
+# macOS/Linux:
+.venv-eval/bin/python -m pip install -r requirements-evaluation.txt
+.venv-eval/bin/python scripts/evaluate_news_deepeval.py
+```
+
+Windows PowerShell:
+
+```powershell
+.\.venv-eval\Scripts\python.exe -m pip install -r requirements-evaluation.txt
+.\.venv-eval\Scripts\python.exe scripts/evaluate_news_deepeval.py
+```
+
+The runner explicitly supplies the local judge to every metric and writes
+`evaluation/results/judge_report.json`. It does not call the hosted evaluation
+dashboard. Model execution errors are recorded separately from failed quality
+checks. A nonzero exit code means execution failed or the judge disagreed with
+at least one expected label; it must not be reported as a passing benchmark.
+
+`evaluation/judge_calibration.json` contains synthetic examples: one supported
+draft and deliberately flawed drafts with a wrong count, invented income effect,
+and planned assistance misrepresented as completed. These are calibration cases,
+not measured production accuracy. Edit/add cases using the same JSON fields:
+`id`, `prompt`, `sources`, `reference`, `draft`, `expected_pass`.
+
+For presentation evidence, have two people label a larger diverse dataset, resolve
+disagreements, and reserve a held-out subset before tuning. Report judge agreement,
+missed errors and false alarms as well as writing scores. Compare generations from
+the old and new flows against the same references. Do not tune on the held-out
+set or treat the evaluator's own scores as independent ground truth.
+
+References: https://deepeval.com/guides/guides-using-custom-llms and
+https://huggingface.co/Qwen/Qwen3-4B-GGUF
+
+## Initial smoke results (29 September 2026)
+
+DeepEval 3.9.9 with Qwen3-4B Q4_K_M completed all four calibration cases.
+Agreement was 3/4 (75% on these four examples only). It rejected the wrong total
+and invented income claim, but scored the planned-as-completed example 0.8,
+which incorrectly passed the 0.8 threshold despite its explanation noticing the
+contradiction. Do not present this as validated reliability or change the cutoff
+solely to make this tiny set pass. Collect independent labels and more held-out
+cases; evaluate a stronger judge if needed.
+
+A separate live full graph test completed with Gemma writing and apakhabar-judge
+assessing five claims. The returned editorial score was 94/100. That is a smoke
+test of routing and structured output, not a measurement of factual accuracy.
+
+The direct claim-level Reflection check also missed the planned-versus-completed
+error in a separate call. Consequently the separate evaluator remains disabled
+by default, and the working `.env` has not been switched. The local judge server
+can be used for further experiments, but should not be described as independently
+validated. Human review and deterministic checks remain necessary.

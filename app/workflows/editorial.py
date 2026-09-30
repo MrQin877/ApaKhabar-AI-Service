@@ -39,7 +39,8 @@ class EditorialState(TypedDict, total=False):
 
 
 class EditorialWorkflow:
-    def __init__(self, model, registry, tools, settings, event=lambda *args, **kwargs: None):
+    def __init__(self, model, registry, tools, settings, event=lambda *args, **kwargs: None, evaluator=None):
+        self.evaluator = evaluator or model
         self.model, self.registry, self.tools, self.settings, self.event = model, registry, tools, settings, event
 
     def call(self, state, schema, prompt, data):
@@ -57,7 +58,7 @@ class EditorialWorkflow:
         started = time.monotonic()
         self.event('stage_started', label, payload={'stage': schema.__name__})
         try:
-            result = self.model.structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False))
+            result = (self.evaluator if schema is Reflection else self.model).structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False))
         except Exception:
             self.event('stage_failed', label, payload={'stage': schema.__name__})
             raise
@@ -238,8 +239,19 @@ Follow requested language, tone, format, active categories, and instructions. Th
         if not state.get('article'):
             return {}
         active = self.skill('editorial-review', state)
-        review = self.call(state, Reflection, active['instructions'] + '\nCheck every factual claim, including headlines. source_ids must be exact source keys. Check coverage of table activities and results, duplicated date/location context, and visit-versus-person units. Request revision when important findings are missing or prose repeats facts.',
-                           {'draft': state['article'], 'sources': state['sources'], 'completeness': state['completeness']})
+        try:
+            review = self.call(state, Reflection, active['instructions'] + '\nCheck every factual claim, including headlines. source_ids must be exact source keys. Check coverage of table activities and results, duplicated date/location context, and visit-versus-person units. Request revision when important findings are missing or prose repeats facts.',
+                               {'draft': state['article'], 'sources': state['sources'], 'completeness': state['completeness']})
+        except ModelError:
+            if self.evaluator is self.model:
+                raise
+            # Preserve the draft but never substitute a self-review or a passing score.
+            quality = {'dimensions': {k: 0 for k in ['accuracy', 'completeness', 'relevance', 'readability', 'structure', 'language', 'safety']},
+                       'claim_checks': [], 'improvements': [], 'warnings': ['Evaluation unavailable. Retry evaluation before publishing; zero is a placeholder, not a measured quality score.'],
+                       'needs_revision': False, 'quality_score': 0, 'quality_label': 'evaluation_unavailable',
+                       'publish_blocked': True, 'evaluation_version': 'separate-judge-v1' if self.evaluator is not self.model else 'agent-editorial-v1',
+                       'evaluator_model': self.evaluator.name}
+            return {'quality': quality, 'best_quality': quality, 'best_article': state['article'], 'review_improved': False}
         editorial_issues = coverage_issues(state['article'], build_brief(state['sources']))
         if editorial_issues:
             review.needs_revision = True
@@ -253,7 +265,7 @@ Follow requested language, tone, format, active categories, and instructions. Th
         blocked = blocked or any('unknown sources' in w for w in state['article']['warnings']) or bool(state['completeness']['conflicts'])
         blocked = blocked or any(issue.startswith('Unsupported unique-person') for issue in editorial_issues)
         quality = {**review.model_dump(), 'quality_score': score, 'quality_label': 'needs_review' if editorial_issues or blocked or score < self.settings.agent_quality_target else 'good',
-                   'editorial_issues': editorial_issues, 'publish_blocked': blocked, 'evaluation_version': 'agent-editorial-v1', 'evaluator_model': self.model.name}
+                   'editorial_issues': editorial_issues, 'publish_blocked': blocked, 'evaluation_version': 'separate-judge-v1' if self.evaluator is not self.model else 'agent-editorial-v1', 'evaluator_model': self.evaluator.name}
         old = state.get('best_quality')
         better = old is None or (not blocked, -len(editorial_issues), score) > (not old['publish_blocked'], -len(old.get('editorial_issues', [])), old['quality_score'])
         self.event('reflection', 'Draf ditinjau terhadap bukti', payload={'quality_score': score, 'publish_blocked': blocked})

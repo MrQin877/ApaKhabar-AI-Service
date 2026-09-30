@@ -4,6 +4,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from app.api.agent import router as agent_router
+from app.api.assistant import router as assistant_router
 from app.api.ai import router as ai_router
 from app.api.document import router as document_router
 from app.api.extraction import router as extraction_router
@@ -32,5 +33,5 @@ def root():
 
 
 for router in (document_router, ai_router, extraction_router, health_router,
-               news_router, rag_router, agent_router, knowledge_router):
+               news_router, rag_router, agent_router, knowledge_router, assistant_router):
     app.include_router(router)
