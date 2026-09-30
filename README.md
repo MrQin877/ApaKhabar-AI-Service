@@ -34,6 +34,18 @@ cp .env.example .env                     # only for a new installation
 uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
+Windows PowerShell setup (new installation):
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-embedding.txt # only for local EmbeddingGemma
+# Run only if .env does not already exist:
+Copy-Item .env.example .env
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
+```
+
 Keep an existing `.env`; the implementation reads the existing `AI_PROVIDER`, `LLAMA_CPP_*`, and `EMBEDDING_*` settings. Start your llama.cpp server separately with the configured model alias and URL. The service does not download or start generation models. Local EmbeddingGemma loads an already cached model through Sentence Transformers with `local_files_only=True`; provision the model separately. Alternatively use an embedding HTTP server or Ollama.
 
 For image and scanned-PDF OCR, install Tesseract and its language data. Set `OCR_LANGUAGE=ind+eng` for Indonesian/English documents if both language packs are installed. Without OCR support, image-only inputs fail with an explicit error. DOCX, XLSX/XLSM, CSV, TXT, and text PDFs do not require OCR. Legacy binary DOC/XLS formats are not supported.
@@ -79,7 +91,7 @@ Skills supply procedures; Python code enforces source approval, ownership, limit
 
 ## API
 
-All non-health endpoints require the service header when configured. Swagger is at `/docs` (also protected when a token is configured).
+When a service token is configured, every endpoint except `/` and `/health` requires the service header, including `/health/models` and `/health/ollama`. Swagger is at `/docs` (also protected when a token is configured).
 
 | Endpoint | Purpose |
 | --- | --- |
@@ -136,7 +148,7 @@ The trusted caller must refresh eligible IDs on every resume. Revoked documentar
 
 ## Persistence and migration
 
-SQLite checkpoints and run/event records are stored below `data/agent/`. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
+SQLite checkpoints and run/event records are stored below `data/agent/`. Storage is initialized when the relevant services are used, not guaranteed to be fully initialized by starting Uvicorn. Chroma runs embedded at `CHROMA_PATH` (default `./data/chroma`), so no separate Chroma server is required. Keep the configured data/upload directories writable. These stores are separate from Laravel's application database. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
 
 Approved knowledge uses a separate Chroma collection keyed by embedding provider/model/dimensions. Existing raw-document vectors are never silently considered approved. Reindex approved Laravel information into the new collection with `php artisan ai:reindex-approved` from the Laravel project (optionally `--owner=7`); do not delete the old collection to migrate. The AI server and embedding provider must be available. Changing embedding configuration requires reindexing.
 
@@ -147,6 +159,8 @@ Approved knowledge uses a separate Chroma collection keyed by embedding provider
 Configure `WEB_SEARCH_URL` for a trusted search adapter accepting `POST {"query": "...", "limit": 5}` and returning `{"results": [{"title": "...", "url": "https://...", "snippet": "..."}]}`. `WEB_SEARCH_API_KEY`, when set, is sent as a bearer token. Set Laravel's `APAKHABAR_AI_WEB_DISCOVERY=true` to enable requests. No provider is configured by default. Web snippets require explicit moderator approval and remain limited evidence; the adapter should provide useful, attributable excerpts.
 
 ## Verification
+
+The implemented evaluation runners are `scripts/evaluate_editorial.py` and the optional `scripts/evaluate_news_deepeval.py`. This checkout does not contain `scripts/evaluate_with_ragas.py` or an implemented Ragas evaluation pipeline. Do not claim a Ragas metrics CSV is produced. LangSmith tracing is not a verified evaluation deliverable here; setting environment variables alone does not establish complete tracing, instrument direct HTTP model calls, or expose private reasoning.
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
