@@ -8,6 +8,12 @@ Existing deterministic table checks still run after model evaluation.
 The app does not require DeepEval. DeepEval is an optional offline benchmark
 runner, isolated from production dependencies. Both use the separate judge.
 
+## Evaluation scope
+
+Production Reflection reviews the **draft against supplied sources**. It does not independently audit every extracted information item against the original file. Laravel extraction-quality scores use evidence, completeness, and model-confidence heuristics. DeepEval currently runs synthetic draft calibration cases, not extraction benchmarks. A draft score is neither an extraction accuracy score nor a percentage of factual correctness.
+
+The workflow computes the final weighted score from judge dimensions: accuracy 30%, completeness 20%, relevance 15%, readability 10%, structure 10%, language 10%, safety 5%. Deterministic checks can still require review or block publication.
+
 ## Start locally (Windows or macOS)
 
 Install llama.cpp and keep the existing writer server running on port 8080.
@@ -102,7 +108,8 @@ assessing five claims. The returned editorial score was 94/100. That is a smoke
 test of routing and structured output, not a measurement of factual accuracy.
 
 The direct claim-level Reflection check also missed the planned-versus-completed
-error in a separate call. Consequently the separate evaluator remains disabled
-by default, and the working `.env` has not been switched. The local judge server
-can be used for further experiments, but should not be described as independently
-validated. Human review and deterministic checks remain necessary.
+error in a separate call. The separate evaluator remains disabled by default in application settings.
+The local `.env` inspected on 1 October 2026 enables it; restart Uvicorn after
+configuration changes, and use returned evaluator metadata to confirm routing.
+Enabling the judge does not resolve the calibration limitation or make it
+independently validated. Human review and deterministic checks remain necessary.

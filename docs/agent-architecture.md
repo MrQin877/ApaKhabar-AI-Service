@@ -1,5 +1,11 @@
 # Agent architecture
 
+## Implementation overview
+
+Four roles (Planner, Researcher, Writer, Reviewer) run in one nine-node LangGraph workflow. The generation model serves the first three; Reflection uses a separate judge when `EVALUATOR_ENABLED=true`, otherwise the generation model. An additional embedding model supports retrieval. Neither A2A nor MCP is used: roles share graph state and tools use direct Python dispatch.
+
+See the [code map](architecture_and_agentic_patterns.md) for methods, model routing, and skill activation, and the [draw.io diagram](architecture/apakhabar-current-ai.drawio) for an editable overview. Judge setup and calibration limitations are documented [separately](separate-judge.md).
+
 ## Ownership
 
 Laravel remains the source of truth for user authorization, source review, document lifecycle, active categories, drafts, and publication. It sends the owner's currently eligible information IDs with every new or resumed run. Python never changes source review or publication status.
@@ -60,3 +66,9 @@ php artisan queue:work --queue=generation --tries=1 --timeout=1250
 Use an asynchronous Laravel queue, `APAKHABAR_AI_TIMEOUT=1200`, and queue `retry_after=1500` (including environment overrides such as `DB_QUEUE_RETRY_AFTER`). HTTP calls are capped at 1200 seconds, jobs at 1250 seconds, and overlap locks at 1300 seconds. Keep retry_after larger than job timeout to avoid duplicate processing. Clear cached configuration after changing these values, and restart workers. Start the configured model server separately. A queued display means a job is waiting for a worker; disconnected progress means polling could not reach the service, not proof that inference stopped.
 
 Verification: Python tests exercise progress visibility during inference and chunk extraction, redundant-research avoidance, revision stopping and safety flags. Laravel tests exercise immediate queue submission, polling ownership, terminal outcomes, duplicate dispatch/execution, and empty extraction. Real latency still depends on document length, OCR, model speed, and concurrent requests; tests with scripted models are not a speed benchmark.
+
+## Idle, sleep, and health checks
+
+Inactivity does not intentionally stop the service. Laptop sleep suspends local execution and may interrupt connections or cause timeouts after wake. A queue `RUNNING` line only confirms the job started. Check document status, progress, and error details before retrying; avoid dispatching duplicates while an existing job is active.
+
+`GET /health` confirms the FastAPI process responds; it does not probe generation, judge, embeddings, or OCR. `GET /health/models` performs a generation capability call, not a judge check. Check each configured llama.cpp server's `/health` separately. Server health alone does not prove a document can be fully extracted. For local demonstrations, `caffeinate -i` on macOS prevents idle system sleep while that command runs; it does not make a sleeping or powered-off laptop a background server.

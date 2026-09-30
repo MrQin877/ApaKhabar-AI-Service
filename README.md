@@ -2,6 +2,26 @@
 
 A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
 
+## Architecture at a glance
+
+The editorial graph has **four roles in one LangGraph workflow**, not four independently running agent services:
+
+| Role | Implementation | Model |
+| --- | --- | --- |
+| Planner | `EditorialWorkflow.plan()` | Generation model |
+| Researcher | `EditorialWorkflow.research()`; bounded ReAct-style tool loop | Generation model |
+| Writer | `EditorialWorkflow.write()`; drafting and revision | Generation model |
+| Reviewer | `EditorialWorkflow.reflect()` | Separate judge when enabled; otherwise generation model |
+
+There are nine graph nodes, including approval, completeness checks, clarification, revision routing, and finish. Two editorial models are used when `EVALUATOR_ENABLED=true`; an additional embedding model supports retrieval. Defaults leave the separate judge disabled, so enable it explicitly and restart the service. Model aliases identify configured endpoints, not proof of different model weights.
+
+The service uses **neither A2A nor MCP**. Roles share LangGraph state, tools are called through a Python dispatcher, Laravel communicates with FastAPI over HTTP, and model adapters call llama.cpp or Ollama over HTTP.
+
+- [Code map and agent patterns](docs/architecture_and_agentic_patterns.md)
+- [Architecture, evidence boundaries, and operations](docs/agent-architecture.md)
+- [Separate judge and offline DeepEval](docs/separate-judge.md)
+- [Editable draw.io diagram](docs/architecture/apakhabar-current-ai.drawio) — open with draw.io using File → Open From → Device; no MCP needed.
+
 ## Setup
 
 Use Python 3.12 or newer. Use `.venv` for the local environment, including the embedding model dependencies.
@@ -29,7 +49,7 @@ APAKHABAR_AI_TIMEOUT=1200
 APAKHABAR_AI_WEB_DISCOVERY=false
 ```
 
-The web frontend uses Laravel's authenticated progress proxy. Run a concurrent PHP server/worker setup for live polling; a single PHP development worker may queue polling behind generation. Generation is synchronous per request; it can take several model calls. Laravel's document queue continues to handle uploads.
+The web frontend uses Laravel's authenticated progress proxy. Run a concurrent PHP server/worker setup for live polling; a single PHP development worker may queue polling behind generation. Python generation is synchronous per HTTP request and can take several model calls. Laravel submits UI generation asynchronously through its `generation` queue; uploads are processed on the separate `documents` queue.
 
 ## Editorial workflow
 
@@ -67,10 +87,12 @@ All non-health endpoints require the service header when configured. Swagger is 
 | `GET /health` | Lightweight process health |
 | `GET /health/models` | Explicit structured-generation capability probe (one model call, with at most one schema repair) |
 | `GET /agent/skills` | Skill metadata and hashes |
+| `POST /assistant/respond` | Classify conversation intent and answer from supplied information; does not itself save, extract, or publish |
 | `POST /news/generate` | Laravel-compatible agent generation |
 | `POST /agent/runs` | Start an editorial run |
 | `GET /agent/runs/{run_id}?owner_id=...` | Run state and persisted progress events |
 | `POST /agent/runs/{run_id}/resume` | Resume clarification or web-source approval |
+| `GET /documents/progress/{progress_id}` | Extraction progress, proxied through Laravel ownership checks |
 | `POST /documents/upload` | Normalize a document |
 | `POST /documents/extract-information` | Extract a single document |
 | `POST /documents/batch-extract` | Multipart `files`, `extraction_mode`, `extraction_query`, `keywords_json` |
@@ -79,6 +101,10 @@ All non-health endpoints require the service header when configured. Swagger is 
 | `POST /rag/information/index` | Index explicitly approved, active, non-archived records |
 | `POST /rag/information/search` | Owner- and eligibility-filtered approved knowledge search |
 | `DELETE /rag/information/{id}?owner_id=...` | Remove approved knowledge |
+
+`/assistant/respond` distinguishes conversation, question, analysis, storage, extraction, and explicit draft requests. Uploading a file does not by itself authorize draft generation.
+
+The Python `NewsArticle` API still uses `headline`, `subheadline`, `lead`, `body`, and `summary`. The Laravel draft database/editor uses `title`, continuous `content`, and `excerpt`; its integration maps the API fields and merges lead/body. Do not remove Python response fields solely because the database columns changed. Moderator review and explicit publishing confirmation remain in Laravel.
 
 Generation accepts either a string of supplied facts or Laravel's `information: {information: [...]}` object. Additional fields include `owner_id`, `session_id`, `run_id`, `eligible_information_ids`, `instructions`, `user_facts`, `language`, `tone`, `content_format`, `current_draft`, `available_categories`, `default_category`, `clarification_completed`, and `allow_web`.
 
