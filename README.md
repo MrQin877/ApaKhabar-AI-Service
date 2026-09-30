@@ -20,7 +20,6 @@ The service uses **neither A2A nor MCP**. Roles share LangGraph state, tools are
 - [Code map and agent patterns](docs/architecture_and_agentic_patterns.md)
 - [Architecture, evidence boundaries, and operations](docs/agent-architecture.md)
 - [Separate judge and offline DeepEval](docs/separate-judge.md)
-- [Editable draw.io diagram](docs/architecture/apakhabar-current-ai.drawio) — open with draw.io using File → Open From → Device; no MCP needed.
 
 ## Setup
 
