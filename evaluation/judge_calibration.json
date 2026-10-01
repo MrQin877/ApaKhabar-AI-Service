@@ -1,0 +1,42 @@
+[
+  {
+    "id": "supported",
+    "prompt": "Buat berita singkat berdasarkan sumber. Tandai simulasi.",
+    "sources": [
+      "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber."
+    ],
+    "reference": "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber.",
+    "draft": "SIMULASI: Pelatihan digital Desa Sukamaju diikuti 60 peserta pada 28 September 2026 di balai desa. Tiga kelas masing-masing menampung 20 peserta. Sebanyak 48 peserta menyelesaikan tugas; 12 lainnya dijadwalkan mengikuti pendampingan karena tugasnya belum selesai.",
+    "expected_pass": true
+  },
+  {
+    "id": "wrong_total",
+    "prompt": "Buat berita singkat berdasarkan sumber. Tandai simulasi.",
+    "sources": [
+      "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber."
+    ],
+    "reference": "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber.",
+    "draft": "SIMULASI: Pelatihan digital Desa Sukamaju diikuti 90 peserta pada 28 September 2026 di balai desa. Tiga kelas masing-masing menampung 20 peserta. Sebanyak 48 peserta menyelesaikan tugas; 12 lainnya dijadwalkan mengikuti pendampingan karena tugasnya belum selesai.",
+    "expected_pass": false
+  },
+  {
+    "id": "invented_impact",
+    "prompt": "Buat berita singkat berdasarkan sumber. Tandai simulasi.",
+    "sources": [
+      "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber."
+    ],
+    "reference": "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber.",
+    "draft": "SIMULASI: Pelatihan digital Desa Sukamaju diikuti 60 peserta pada 28 September 2026 di balai desa. Tiga kelas masing-masing menampung 20 peserta. Sebanyak 48 peserta menyelesaikan tugas; 12 lainnya dijadwalkan mengikuti pendampingan karena tugasnya belum selesai. Pendapatan peserta meningkat 50 persen setelah pelatihan.",
+    "expected_pass": false
+  },
+  {
+    "id": "planned_as_completed",
+    "prompt": "Buat berita singkat berdasarkan sumber. Tandai simulasi.",
+    "sources": [
+      "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber."
+    ],
+    "reference": "DATA SIMULASI: Pelatihan digital Desa Sukamaju pada 28 September 2026 di balai desa. Ada 60 peserta unik dalam tiga kelas dengan 20 peserta per kelas. Sebanyak 48 peserta menyelesaikan tugas dan 12 belum selesai. Dua belas peserta yang sama dijadwalkan pendampingan; pendampingan belum dilaksanakan. Tidak ada data pendapatan atau kutipan narasumber.",
+    "draft": "SIMULASI: Pelatihan digital Desa Sukamaju diikuti 60 peserta pada 28 September 2026 di balai desa. Tiga kelas masing-masing menampung 20 peserta. Sebanyak 48 peserta menyelesaikan tugas; 12 lainnya telah selesai mengikuti pendampingan karena tugasnya belum selesai.",
+    "expected_pass": false
+  }
+]

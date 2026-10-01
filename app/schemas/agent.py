@@ -1,3 +1,4 @@
+from app.schemas.news import HistoricalSource
 from typing import Literal
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -49,6 +50,7 @@ class ResumeRequest(BaseModel):
     owner_id: str = Field(min_length=1)
     answers: list[dict[str, str]] = Field(default_factory=list)
     approved_web_source_ids: list[str] = Field(default_factory=list)
+    historical_sources: list[HistoricalSource] = Field(default_factory=list, max_length=3)
     # The trusted Laravel caller refreshes eligibility from its database on resume.
     eligible_information_ids: list[str] = Field(default_factory=list)
 

@@ -1,52 +1,25 @@
-## Setup & Configuration
-
-### Prerequisites
-- Python 3.10+
-- `llama.cpp` server (or Ollama) running locally for generation.
-- (Optional) `Tesseract OCR` for extracting text from images/PDFs.
-
-### Installation
-1. Clone the repository and navigate to the root directory.
-2. Create and activate a Python virtual environment:
-   ```sh
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
-3. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   pip install -r requirements-embedding.txt
-   ```
-
-### Configuration (.env)
-Copy `.env.example` to `.env` and adjust the variables.
-```sh
-cp .env.example .env
-```
-Key configurations include:
-- **`AI_PROVIDER`**: Set to `llama_cpp` (default) or `ollama`.
-- **`LLAMA_CPP_BASE_URL`**: URL to your local LLM (e.g., `http://127.0.0.1:8080/v1`).
-- **`EMBEDDING_PROVIDER`**: Default is `embedding_gemma`. Requires local HF model caching.
-- **`APAKHABAR_AI_SERVICE_TOKEN`**: Must match the token in your Laravel `.env` file to authorize API calls.
-
-### Databases (Agent SQLite & ChromaDB)
-The service automatically initializes its databases upon startup based on the `.env` paths:
-- **Agent Checkpoints (SQLite)**: Automatically created at `./data/agent/checkpoints.sqlite`.
-- **Vector Search (ChromaDB)**: Automatically created at `./data/chroma`. No separate ChromaDB server installation is required (runs in embedded mode).
-
-Ensure the `data/` directory is writable.
-
-### Running the Server
-Start the FastAPI service using Uvicorn:
-```sh
-uvicorn app.main:app --host 127.0.0.1 --port 8001
-```
-The API documentation will be available at `http://127.0.0.1:8001/docs`.
-
----
 # ApaKhabar AI Service
 
 A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
+
+## Architecture at a glance
+
+The editorial graph has **four roles in one LangGraph workflow**, not four independently running agent services:
+
+| Role | Implementation | Model |
+| --- | --- | --- |
+| Planner | `EditorialWorkflow.plan()` | Generation model |
+| Researcher | `EditorialWorkflow.research()`; bounded ReAct-style tool loop | Generation model |
+| Writer | `EditorialWorkflow.write()`; drafting and revision | Generation model |
+| Reviewer | `EditorialWorkflow.reflect()` | Separate judge when enabled; otherwise generation model |
+
+There are nine graph nodes, including approval, completeness checks, clarification, revision routing, and finish. Two editorial models are used when `EVALUATOR_ENABLED=true`; an additional embedding model supports retrieval. Defaults leave the separate judge disabled, so enable it explicitly and restart the service. Model aliases identify configured endpoints, not proof of different model weights.
+
+The service uses **neither A2A nor MCP**. Roles share LangGraph state, tools are called through a Python dispatcher, Laravel communicates with FastAPI over HTTP, and model adapters call llama.cpp or Ollama over HTTP.
+
+- [Code map and agent patterns](docs/architecture_and_agentic_patterns.md)
+- [Architecture, evidence boundaries, and operations](docs/agent-architecture.md)
+- [Separate judge and offline DeepEval](docs/separate-judge.md)
 
 ## Setup
 
@@ -59,6 +32,18 @@ pip install -r requirements.txt
 pip install -r requirements-embedding.txt  # only for local EmbeddingGemma
 cp .env.example .env                     # only for a new installation
 uvicorn app.main:app --host 127.0.0.1 --port 8001
+```
+
+Windows PowerShell setup (new installation):
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-embedding.txt # only for local EmbeddingGemma
+# Run only if .env does not already exist:
+Copy-Item .env.example .env
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
 Keep an existing `.env`; the implementation reads the existing `AI_PROVIDER`, `LLAMA_CPP_*`, and `EMBEDDING_*` settings. Start your llama.cpp server separately with the configured model alias and URL. The service does not download or start generation models. Local EmbeddingGemma loads an already cached model through Sentence Transformers with `local_files_only=True`; provision the model separately. Alternatively use an embedding HTTP server or Ollama.
@@ -75,7 +60,7 @@ APAKHABAR_AI_TIMEOUT=1200
 APAKHABAR_AI_WEB_DISCOVERY=false
 ```
 
-The web frontend uses Laravel's authenticated progress proxy. Run a concurrent PHP server/worker setup for live polling; a single PHP development worker may queue polling behind generation. Generation is synchronous per request; it can take several model calls. Laravel's document queue continues to handle uploads.
+The web frontend uses Laravel's authenticated progress proxy. Run a concurrent PHP server/worker setup for live polling; a single PHP development worker may queue polling behind generation. Python generation is synchronous per HTTP request and can take several model calls. Laravel submits UI generation asynchronously through its `generation` queue; uploads are processed on the separate `documents` queue.
 
 ## Editorial workflow
 
@@ -106,17 +91,19 @@ Skills supply procedures; Python code enforces source approval, ownership, limit
 
 ## API
 
-All non-health endpoints require the service header when configured. Swagger is at `/docs` (also protected when a token is configured).
+When a service token is configured, every endpoint except `/` and `/health` requires the service header, including `/health/models` and `/health/ollama`. Swagger is at `/docs` (also protected when a token is configured).
 
 | Endpoint | Purpose |
 | --- | --- |
 | `GET /health` | Lightweight process health |
 | `GET /health/models` | Explicit structured-generation capability probe (one model call, with at most one schema repair) |
 | `GET /agent/skills` | Skill metadata and hashes |
+| `POST /assistant/respond` | Classify conversation intent and answer from supplied information; does not itself save, extract, or publish |
 | `POST /news/generate` | Laravel-compatible agent generation |
 | `POST /agent/runs` | Start an editorial run |
 | `GET /agent/runs/{run_id}?owner_id=...` | Run state and persisted progress events |
 | `POST /agent/runs/{run_id}/resume` | Resume clarification or web-source approval |
+| `GET /documents/progress/{progress_id}` | Extraction progress, proxied through Laravel ownership checks |
 | `POST /documents/upload` | Normalize a document |
 | `POST /documents/extract-information` | Extract a single document |
 | `POST /documents/batch-extract` | Multipart `files`, `extraction_mode`, `extraction_query`, `keywords_json` |
@@ -125,6 +112,10 @@ All non-health endpoints require the service header when configured. Swagger is 
 | `POST /rag/information/index` | Index explicitly approved, active, non-archived records |
 | `POST /rag/information/search` | Owner- and eligibility-filtered approved knowledge search |
 | `DELETE /rag/information/{id}?owner_id=...` | Remove approved knowledge |
+
+`/assistant/respond` distinguishes conversation, question, analysis, storage, extraction, and explicit draft requests. Uploading a file does not by itself authorize draft generation.
+
+The Python `NewsArticle` API still uses `headline`, `subheadline`, `lead`, `body`, and `summary`. The Laravel draft database/editor uses `title`, continuous `content`, and `excerpt`; its integration maps the API fields and merges lead/body. Do not remove Python response fields solely because the database columns changed. Moderator review and explicit publishing confirmation remain in Laravel.
 
 Generation accepts either a string of supplied facts or Laravel's `information: {information: [...]}` object. Additional fields include `owner_id`, `session_id`, `run_id`, `eligible_information_ids`, `instructions`, `user_facts`, `language`, `tone`, `content_format`, `current_draft`, `available_categories`, `default_category`, `clarification_completed`, and `allow_web`.
 
@@ -157,7 +148,7 @@ The trusted caller must refresh eligible IDs on every resume. Revoked documentar
 
 ## Persistence and migration
 
-SQLite checkpoints and run/event records are stored below `data/agent/`. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
+SQLite checkpoints and run/event records are stored below `data/agent/`. Storage is initialized when the relevant services are used, not guaranteed to be fully initialized by starting Uvicorn. Chroma runs embedded at `CHROMA_PATH` (default `./data/chroma`), so no separate Chroma server is required. Keep the configured data/upload directories writable. These stores are separate from Laravel's application database. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
 
 Approved knowledge uses a separate Chroma collection keyed by embedding provider/model/dimensions. Existing raw-document vectors are never silently considered approved. Reindex approved Laravel information into the new collection with `php artisan ai:reindex-approved` from the Laravel project (optionally `--owner=7`); do not delete the old collection to migrate. The AI server and embedding provider must be available. Changing embedding configuration requires reindexing.
 
@@ -167,23 +158,24 @@ Approved knowledge uses a separate Chroma collection keyed by embedding provider
 
 Configure `WEB_SEARCH_URL` for a trusted search adapter accepting `POST {"query": "...", "limit": 5}` and returning `{"results": [{"title": "...", "url": "https://...", "snippet": "..."}]}`. `WEB_SEARCH_API_KEY`, when set, is sent as a bearer token. Set Laravel's `APAKHABAR_AI_WEB_DISCOVERY=true` to enable requests. No provider is configured by default. Web snippets require explicit moderator approval and remain limited evidence; the adapter should provide useful, attributable excerpts.
 
-## Verification & FYP Evaluation
+## Verification
 
-To ensure the reliability of the AI system for the Final Year Project, a formal evaluation pipeline has been implemented using Ragas and LangSmith.
+The implemented evaluation runners are `scripts/evaluate_editorial.py` and the optional `scripts/evaluate_news_deepeval.py`. This checkout does not contain `scripts/evaluate_with_ragas.py` or an implemented Ragas evaluation pipeline. Do not claim a Ragas metrics CSV is produced. LangSmith tracing is not a verified evaluation deliverable here; setting environment variables alone does not establish complete tracing, instrument direct HTTP model calls, or expose private reasoning.
 
 ```sh
-# 1. Run unit/integration tests (does not require a model server)
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
-
-# 2. Generate test drafts using your local llama.cpp Gemma model
 python scripts/evaluate_editorial.py --mode agent --output /tmp/agent-evaluation.json
-
-# 3. Grade the drafts automatically using the Ragas library (Accuracy/Faithfulness)
-python scripts/evaluate_with_ragas.py
+python scripts/evaluate_editorial.py --mode legacy --output /tmp/legacy-evaluation.json
 ```
 
-The Ragas evaluation script will output a `fyp_evaluation_metrics.csv` file containing formal metrics suitable for the FYP thesis report. 
+Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require the configured local models and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
 
-If LangSmith environment variables (`LANGCHAIN_TRACING_V2`, etc.) are configured in your `.env` file, the evaluation script will also generate a full visual Trace Tree in the LangSmith dashboard, detailing the step-by-step reasoning and Reflection loops of the LangGraph agent.
+See [the architecture and evaluation notes](docs/agent-architecture.md) for implementation boundaries and acceptance cases.
 
+## Separate quality judge
 
+See [separate judge and DeepEval setup](docs/separate-judge.md) for local Qwen evaluation, Windows/macOS startup, and labelled offline calibration tests.
+
+## Historical context and article length
+
+The Laravel integration automatically supplies relevant approved historical information and published-news context. References are visible in the conversation. The writer distinguishes prior results from current plans. Generated content is limited to 250 words (title/excerpt excluded), including revisions; see [implementation details and retrieval limitations](docs/agent-architecture.md#automatic-background-context-and-concise-drafts).

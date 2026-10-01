@@ -6,3 +6,6 @@ data/uploads/
 data/chroma/
 data/agent/
 .venv-gemma/
+
+.venv-eval/
+evaluation/results/
