@@ -1,3 +1,4 @@
+from app.services.article_length import enforce_word_limit, word_count
 """Bounded Plan-and-Execute + ReAct + Reflection editorial graph."""
 import json
 from app.services.editorial_brief import build_brief, coverage_issues, natural_dates, WRITING_RULES, deduplicate_narrative
@@ -75,7 +76,7 @@ class EditorialWorkflow:
 
     def plan(self, state):
         request = NewsRequest.model_validate(state['request'])
-        sources = {}
+        sources = {item.source_id: item.model_dump() for item in request.historical_sources}
         if isinstance(request.information, str):
             if request.information.strip():
                 sources['provided:information'] = {'content': request.information, 'kind': 'caller_provided_facts'}
@@ -166,6 +167,7 @@ Stop research when evidence is sufficient. A tool error is an observation: adapt
         request = NewsRequest.model_validate(state['request'])
         completeness = self.call(state, CompletenessResult,
             '''Check whether evidence suffices for the requested format. Ask at most three material questions, in the requested language.
+Historical sources are background: differences between different years/events are not inherently conflicts. Never use past attendance as current attendance.
 Do not demand event dates for timeless profiles or general guidance. Flag contradictions.
 Provide selectable options only for editorial preferences or explicitly supported alternatives; never invent factual choices.
 List known_facts only from sources. Missing optional facts must not block a useful draft.''',
@@ -210,6 +212,8 @@ List known_facts only from sources. Missing optional facts must not block a usef
         brief = build_brief(state['sources'])
         self.event('fact_analysis', 'Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan')
         article = self.call(state, NewsArticle, active['instructions'] + '\n' + WRITING_RULES + '''
+Write at most 250 words across lead and body combined, excluding title and summary.
+Use historical_background only when relevant to the current topic, identify its year/event, and distinguish past results from future plans. recorded_at is the record date, not necessarily the event date. Never add counts across events as unique people. Prefer current facts; do not force a comparison when evidence is insufficient.
 Use only the supplied sources. sources_used must contain exact keys from sources, not filenames invented by you.
 Omit unavailable details and add warnings. Unresolved conflicting claims must be attributed or omitted.
 Follow requested language, tone, format, active categories, and instructions. The current draft is not evidence.''',
@@ -224,6 +228,11 @@ Follow requested language, tone, format, active categories, and instructions. Th
                     setattr(article, field, natural_dates(getattr(article, field)))
             article.body = [natural_dates(p) for p in article.body]
         article = deduplicate_narrative(article, brief)
+        if word_count(article) > 250:
+            article = self.call(state, NewsArticle,
+                'Condense this draft to at most 250 words total in lead and body. Preserve important facts, source IDs, units, simulation labels and past-versus-planned distinctions. Do not invent facts. Title and summary are excluded from the count.',
+                {'draft': article.model_dump(), 'sources': state['sources']})
+        article = enforce_word_limit(article)
         invalid = [s for s in article.sources_used if s not in state['sources']]
         article.sources_used = [s for s in article.sources_used if s in state['sources']]
         if invalid:

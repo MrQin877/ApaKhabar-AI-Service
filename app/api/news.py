@@ -1,3 +1,5 @@
+from app.providers.models import ModelError
+from app.services.article_length import enforce_word_limit
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, Field, ValidationError
 
@@ -54,7 +56,7 @@ def generate_news(request: NewsRequest) -> NewsGenerationResponse:
         )
         return NewsGenerationResponse(
             completeness=completeness,
-            article=article,
+            article=enforce_word_limit(article),
         )
-    except (AIServiceError, ValueError, ValidationError) as exc:
+    except (AIServiceError, ModelError, ValueError, ValidationError) as exc:
         raise _service_error(exc) from exc

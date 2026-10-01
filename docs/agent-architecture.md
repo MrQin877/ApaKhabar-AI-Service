@@ -72,3 +72,11 @@ Verification: Python tests exercise progress visibility during inference and chu
 Inactivity does not intentionally stop the service. Laptop sleep suspends local execution and may interrupt connections or cause timeouts after wake. A queue `RUNNING` line only confirms the job started. Check document status, progress, and error details before retrying; avoid dispatching duplicates while an existing job is active.
 
 `GET /health` confirms the FastAPI process responds; it does not probe generation, judge, embeddings, or OCR. `GET /health/models` performs a generation capability call, not a judge check. Check each configured llama.cpp server's `/health` separately. Server health alone does not prove a document can be fully extracted. For local demonstrations, `caffeinate -i` on macOS prevents idle system sleep while that command runs; it does not make a sleeping or powered-off laptop a background server.
+
+## Automatic background context and concise drafts
+
+Laravel now selects up to three relevant background records from the owner's approved active information and active published news. Retrieval ranks topic-word overlap against the prompt and selected source titles, requires title overlap, and scans the latest 200 eligible records of each type. This is bounded lexical retrieval, not a new semantic index; synonyms or older records outside that window can be missed. No match means no added context.
+
+The trusted backend supplies `historical_sources` with `history:information:ID` or `history:news:ID`, title, content, and record timestamp. Python includes them as attributed background for writing and reflection. Record timestamps are not event dates. On resume the backend refreshes this list; omitted historical sources are removed. Past attendance must not become current attendance, and unique-person counts must not be added across events.
+
+Generated article content (lead plus body, excluding title and summary) is capped at 250 whitespace-separated words. An overlong draft gets one condensation call; if still overlong, a sentence-boundary limit and warning apply before reflection. A single sentence that cannot fit fails rather than being cut mid-claim. Revisions follow the same limit. This limit applies to generated output, not a restriction on a moderator's manual edits.

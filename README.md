@@ -175,3 +175,7 @@ See [the architecture and evaluation notes](docs/agent-architecture.md) for impl
 ## Separate quality judge
 
 See [separate judge and DeepEval setup](docs/separate-judge.md) for local Qwen evaluation, Windows/macOS startup, and labelled offline calibration tests.
+
+## Historical context and article length
+
+The Laravel integration automatically supplies relevant approved historical information and published-news context. References are visible in the conversation. The writer distinguishes prior results from current plans. Generated content is limited to 250 words (title/excerpt excluded), including revisions; see [implementation details and retrieval limitations](docs/agent-architecture.md#automatic-background-context-and-concise-drafts).

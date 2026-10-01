@@ -120,7 +120,11 @@ class AgentService:
                     values = snapshot.values
                     previous_sources = values.get('sources', {})
                     sources = {k: v for k, v in previous_sources.items() if not k.startswith('information:') or k.removeprefix('information:') in eligible}
+                    # Historical context must be re-authorized by Laravel on each resume.
+                    sources = {k: v for k, v in sources.items() if not k.startswith('history:')}
+                    sources.update({item.source_id: item.model_dump() for item in resume.historical_sources})
                     updated_request = dict(values['request'])
+                    updated_request['historical_sources'] = [item.model_dump() for item in resume.historical_sources]
                     updated_request['eligible_information_ids'] = sorted(eligible)
                     if isinstance(updated_request['information'], dict):
                         updated_request['information'] = {'information': [item for item in updated_request['information']['information']
@@ -128,7 +132,7 @@ class AgentService:
                         if not updated_request['information']['information'] and not updated_request['instructions'] and not updated_request['user_facts']:
                             updated_request['instructions'] = 'Continue using only eligible evidence, or report insufficient evidence.'
                     update = {'sources': sources, 'request': updated_request, 'deadline': time.time() + self.settings.agent_max_seconds}
-                    if not pause and len(sources) != len(previous_sources) and values.get('article'):
+                    if not pause and sources != previous_sources and values.get('article'):
                         # A failed run may already hold a draft. Recheck it from current evidence.
                         update.update(article=None, quality=None, best_article=None, best_quality=None)
                         graph.update_state(config, update, as_node='approval')
