@@ -157,7 +157,7 @@ class AgentService:
                     events=self.events(key), skills_used=[{'name': n, 'version': v} for n, v in result.get('skills', {}).items()],
                     plan=result.get('plan', []) + [{'task': 'Write or revise draft', 'skill': 'indonesian-news-writing'}, {'task': 'Review evidence and revise within limits', 'skill': 'editorial-review'}],
                     web_sources=result.get('pending_web', []), guidance=result.get('guidance'),
-                    metrics={'elapsed_seconds': round(time.monotonic() - started, 3), 'model_calls': getattr(self.model, 'call_count', 0) - initial_calls, 'tool_calls': result.get('tool_count', 0), 'revisions': result.get('revisions', 0)})
+                    metrics={'elapsed_seconds': round(time.monotonic() - started, 3), 'model_calls': getattr(self.model, 'call_count', 0) - initial_calls, 'tool_calls': result.get('tool_count', 0), 'revisions': result.get('revisions', 0), 'replans': result.get('replans', 0)})
                 with self.db() as db:
                     db.execute('UPDATE runs SET status=?,response=?,lease=0 WHERE id=?', (status, response.model_dump_json(), key))
                 return response

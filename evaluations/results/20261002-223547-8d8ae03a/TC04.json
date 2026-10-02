@@ -1,0 +1,1310 @@
+{
+  "case": {
+    "id": "TC04",
+    "mode": "draft",
+    "files": [
+      "TC04_Attendance_Without_Participant_IDs.csv"
+    ],
+    "prompt": "Buatkan berita berdasarkan data layanan dalam dokumen ini.",
+    "review_checklist": [
+      "64 service records; only record_id and service columns. Unique participants cannot be determined.",
+      "Explicitly disclose unknown unique count or ask for it. No invented identities, outcomes or demographics."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "949def0b-40ee-4d8a-91ea-6eabeaa1454f",
+        "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+        "media_type": "application/octet-stream",
+        "character_count": 2019,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "record_id | service",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "record_id",
+                "service"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC001 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC001",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC002 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC002",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC003 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC003",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC004 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC004",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC005 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC005",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC006 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC006",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC007 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC007",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC008 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC008",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC009 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC009",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC010 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC010",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC011 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC011",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC012 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC012",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC013 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC013",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC014 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC014",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC015 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC015",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC016 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC016",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC017 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC017",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC018 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC018",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC019 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC019",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC020 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC020",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC021 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 22,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC021",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC022 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 23,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC022",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC023 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 24,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC023",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC024 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 25,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC024",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC025 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 26,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC025",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC026 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 27,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC026",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC027 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 28,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC027",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC028 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 29,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC028",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC029 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 30,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC029",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC030 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 31,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC030",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC031 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 32,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC031",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC032 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 33,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC032",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC033 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 34,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC033",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC034 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 35,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC034",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC035 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 36,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC035",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC036 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 37,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC036",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC037 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 38,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC037",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC038 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 39,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC038",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC039 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 40,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC039",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC040 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 41,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC040",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC041 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 42,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC041",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC042 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 43,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC042",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC043 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 44,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC043",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC044 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 45,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC044",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC045 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 46,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC045",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC046 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 47,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC046",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC047 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 48,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC047",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC048 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 49,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC048",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC049 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 50,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC049",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC050 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 51,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC050",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC051 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 52,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC051",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC052 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 53,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC052",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC053 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 54,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC053",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC054 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 55,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC054",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC055 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 56,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC055",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC056 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 57,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC056",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC057 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 58,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC057",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC058 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 59,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC058",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC059 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 60,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC059",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC060 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 61,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC060",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC061 | Pemeriksaan Tekanan Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 62,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC061",
+                "Pemeriksaan Tekanan Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC062 | Pemeriksaan Gula Darah",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 63,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC062",
+                "Pemeriksaan Gula Darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC063 | Pemeriksaan Kolesterol",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 64,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC063",
+                "Pemeriksaan Kolesterol"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "REC064 | Konsultasi Kesehatan",
+            "source": {
+              "filename": "TC04_Attendance_Without_Participant_IDs.csv",
+              "page": null,
+              "sheet": null,
+              "row": 65,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "REC064",
+                "Konsultasi Kesehatan"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC04_Attendance_Without_Participant_IDs.csv",
+            "summary": "Ringkasan data TC04_Attendance_Without_Participant_IDs.csv: 64 catatan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 64,
+                "record_unit": "catatan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": null,
+                "columns": {
+                  "record_id": {
+                    "label": "record_id",
+                    "missing": 0,
+                    "distinct_values": 64
+                  },
+                  "service": {
+                    "label": "service",
+                    "missing": 0,
+                    "distinct_values": 4,
+                    "counts": {
+                      "Pemeriksaan Tekanan Darah": 16,
+                      "Pemeriksaan Gula Darah": 16,
+                      "Pemeriksaan Kolesterol": 16,
+                      "Konsultasi Kesehatan": 16
+                    }
+                  }
+                },
+                "duplicate_rows": 0,
+                "source_row_ranges": [
+                  [
+                    2,
+                    65
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC04_Attendance_Without_Participant_IDs.csv, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 64, \"record_unit\": \"catatan\", \"unique_person_count\": null, \"distinct_visit_id_count\": null, \"columns\": {\"record_id\": {\"label\": \"record_id\", \"missing\": 0, \"distinct_values\": 64}, \"service\": {\"label\": \"service\", \"missing\": 0, \"distinct_values\": 4, \"counts\": {\"Pemeriksaan Tekanan Darah\": 16, \"Pemeriksaan Gula Darah\": 16, \"Pemeriksaan Kolesterol\": 16, \"Konsultasi Kesehatan\": 16}}}, \"duplicate_rows\": 0, \"source_row_ranges\": [[2, 65]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "unique_person_count",
+          "importance": "required",
+          "question": "Berapa jumlah orang unik yang tercatat dalam data ini?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Terdapat 64 catatan tercatat.",
+        "Terdapat 4 jenis layanan yang tercatat, yaitu Pemeriksaan Tekanan Darah, Pemeriksaan Gula Darah, Pemeriksaan Kolesterol, dan Konsultasi Kesehatan.",
+        "Setiap jenis layanan tercatat sebanyak 16 kali."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-82128dca58364b0786ca55acb5db9932",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951762.691015,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.49
+        },
+        "timestamp": 1790951763.181576,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951763.182292,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951763.1836941,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.85
+        },
+        "timestamp": 1790951765.033269,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951765.0341911,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.349,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 2.36
+}

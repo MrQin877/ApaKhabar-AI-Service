@@ -1,0 +1,834 @@
+{
+  "case": {
+    "id": "TC13",
+    "mode": "draft",
+    "files": [
+      "TC13_Laporan_Pelatihan_Digital.pdf",
+      "TC13_Ringkasan_Kehadiran.xlsx"
+    ],
+    "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM dari kedua dokumen ini.",
+    "review_checklist": [
+      "Identify PDF 40 vs XLSX 36 conflict; ask clarification or omit disputed total. Never choose either or average to 38."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "76618f28-ffc4-4a60-8988-b2696ed87cad",
+        "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 567,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN KEGIATAN",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pelatihan Digital UMKM",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Kegiatan Pelatihan Digital UMKM",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tanggal 20 September 2026",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Waktu 09.00-12.00 WITA",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tempat Balai Desa Suka Maju",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Penyelenggara Pemerintah Desa Suka Maju",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pelaksanaan kegiatan",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemerintah Desa Suka Maju telah menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "di Balai Desa Suka Maju. Kegiatan berlangsung pukul 09.00-12.00 WITA dan dihadiri oleh 40 peserta.",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Materi pelatihan meliputi fotografi produk dan pemasaran daring. Peserta mengikuti penjelasan materi",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "serta praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Data fiktif untuk pengujian sistem.",
+            "source": {
+              "filename": "TC13_Laporan_Pelatihan_Digital.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital UMKM",
+            "summary": "Pemerintah Desa Suka Maju menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026 di Balai Desa Suka Maju. Kegiatan ini berlangsung dari pukul 09.00 hingga 12.00 WITA dan dihadiri oleh 40 peserta.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "date": "20 September 2026",
+              "time": "09.00-12.00 WITA",
+              "location": "Balai Desa Suka Maju",
+              "participant_count": 40
+            },
+            "evidence": [
+              {
+                "source": "filename=TC13_Laporan_Pelatihan_Digital.pdf, page=1",
+                "quote": "Pemerintah Desa Suka Maju telah menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026 di Balai Desa Suka Maju. Kegiatan berlangsung pukul 09.00-12.00 WITA dan dihadiri oleh 40 peserta."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Materi Pelatihan",
+            "summary": "Materi pelatihan yang disampaikan meliputi fotografi produk dan pemasaran daring. Peserta mendapatkan penjelasan materi serta praktik pengambilan foto produk.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "topics": [
+                "fotografi produk",
+                "pemasaran daring"
+              ]
+            },
+            "evidence": [
+              {
+                "source": "filename=TC13_Laporan_Pelatihan_Digital.pdf, page=1",
+                "quote": "Materi pelatihan meliputi fotografi produk dan pemasaran daring. Peserta mengikuti penjelasan materi serta praktik pengambilan foto produk."
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "document_id": "d23b890b-e870-41d7-89dd-a5fe56da0edd",
+        "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+        "media_type": "application/octet-stream",
+        "character_count": 263,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "RINGKASAN KEHADIRAN | ",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "RINGKASAN KEHADIRAN",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Informasi | Keterangan",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Informasi",
+                "Keterangan"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Kegiatan | Pelatihan Digital UMKM",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Kegiatan",
+                "Pelatihan Digital UMKM"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tanggal | 2026-09-20 00:00:00",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tanggal",
+                "2026-09-20 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Waktu | 09.00-12.00 WITA",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Waktu",
+                "09.00-12.00 WITA"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tempat | Balai Desa Suka Maju",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tempat",
+                "Balai Desa Suka Maju"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Penyelenggara | Pemerintah Desa Suka Maju",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Penyelenggara",
+                "Pemerintah Desa Suka Maju"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Jumlah peserta hadir | 36",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Jumlah peserta hadir",
+                "36"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Data fiktif untuk pengujian sistem. | ",
+            "source": {
+              "filename": "TC13_Ringkasan_Kehadiran.xlsx",
+              "page": null,
+              "sheet": "Ringkasan Kehadiran",
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Data fiktif untuk pengujian sistem.",
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital UMKM",
+            "summary": "A digital training session for MSMEs was held on September 20, 2026, from 09:00 to 12:00 WITA. The event was organized by the Village Government of Suka Maju.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "date": "2026-09-20 00:00:00",
+              "time": "09.00-12.00 WITA",
+              "location": "Balai Desa Suka Maju",
+              "organizer": "Pemerintah Desa Suka Maju",
+              "participant_count": 36
+            },
+            "evidence": [
+              {
+                "source": "filename=TC13_Ringkasan_Kehadiran.xlsx, sheet=Ringkasan Kehadiran, row=5",
+                "quote": "Kegiatan | Pelatihan Digital UMKM"
+              },
+              {
+                "source": "filename=TC13_Ringkasan_Kehadiran.xlsx, sheet=Ringkasan Kehadiran, row=6",
+                "quote": "Tanggal | 2026-09-20 00:00:00"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "ready",
+      "missing": [],
+      "conflicts": [],
+      "known_facts": [
+        "Pemerintah Desa Suka Maju menyelenggarakan Pelatihan Digital UMKM.",
+        "Pelatihan ini dilaksanakan pada 20 September 2026.",
+        "Kegiatan berlangsung dari pukul 09.00 hingga 12.00 WITA.",
+        "Lokasi kegiatan adalah Balai Desa Suka Maju.",
+        "Pelatihan ini dihadiri oleh 40 peserta (berdasarkan dokumen 1) atau 36 peserta (berdasarkan dokumen 2).",
+        "Materi pelatihan meliputi fotografi produk dan pemasaran daring.",
+        "Peserta mendapatkan penjelasan materi serta praktik pengambilan foto produk."
+      ]
+    },
+    "article": {
+      "headline": "Pemerintah Desa Suka Maju Gelar Pelatihan Digital UMKM",
+      "subheadline": null,
+      "lead": "Pemerintah Desa Suka Maju menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026 di Balai Desa Suka Maju. Kegiatan ini berlangsung dari pukul 09.00 hingga 12.00 WITA dan bertujuan untuk meningkatkan keterampilan pelaku UMKM.",
+      "body": [
+        "Pelatihan Digital UMKM ini diselenggarakan oleh Pemerintah Desa Suka Maju dan berlangsung dari pukul 09.00 hingga 12.00 WITA. Kegiatan ini dihadiri oleh 40 peserta.",
+        "Materi pelatihan yang disampaikan meliputi fotografi produk dan pemasaran daring. Peserta mendapatkan penjelasan materi serta praktik pengambilan foto produk.",
+        "Kegiatan ini merupakan sesi pelatihan digital yang diselenggarakan oleh Pemerintah Desa Suka Maju untuk mendukung pengembangan UMKM di wilayah tersebut."
+      ],
+      "summary": "Pelatihan Digital UMKM yang diadakan oleh Pemerintah Desa Suka Maju pada 20 September 2026 di Balai Desa Suka Maju telah dilaksanakan dari pukul 09.00 hingga 12.00 WITA. Kegiatan ini dihadiri oleh 40 peserta dan mencakup materi fotografi produk serta pemasaran daring.",
+      "labels": [
+        "education"
+      ],
+      "language": "id",
+      "sources_used": [
+        "provided:0",
+        "provided:1",
+        "provided:2"
+      ],
+      "warnings": [
+        "Terdapat perbedaan jumlah peserta yang tercatat antara dokumen yang berbeda (40 peserta dan 36 peserta)."
+      ],
+      "category": null
+    },
+    "run_id": "eval-7aa0a978b975463d9e291ab0241968a4",
+    "status": "completed",
+    "quality": {
+      "dimensions": {
+        "accuracy": 70.0,
+        "completeness": 85.0,
+        "relevance": 80.0,
+        "readability": 85.0,
+        "structure": 80.0,
+        "language": 90.0,
+        "safety": 95.0
+      },
+      "claim_checks": [
+        {
+          "claim": "Kegiatan ini dihadiri oleh 40 peserta.",
+          "supported": true,
+          "source_ids": [
+            "provided:0"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini dihadiri oleh 36 peserta.",
+          "supported": true,
+          "source_ids": [
+            "provided:2"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Materi pelatihan meliputi fotografi produk dan pemasaran daring.",
+          "supported": true,
+          "source_ids": [
+            "provided:1"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini diadakan di Balai Desa Suka Maju.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:2"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini diadakan pada 20 September 2026.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:2"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini diadakan dari pukul 09.00 hingga 12.00 WITA.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:2"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini diselenggarakan oleh Pemerintah Desa Suka Maju.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:2"
+          ],
+          "issue": ""
+        }
+      ],
+      "improvements": [
+        "Tentukan jumlah peserta yang akurat dengan menyoroti perbedaan antara 40 dan 36 peserta.",
+        "Tambahan informasi tentang organisasi kegiatan (Pemerintah Desa Suka Maju) dalam bagian lead atau body.",
+        "Tambahan penjelasan tentang materi pelatihan dalam bagian lead atau body."
+      ],
+      "warnings": [
+        "Terdapat perbedaan jumlah peserta yang tercatat antara dokumen yang berbeda (40 peserta dan 36 peserta)."
+      ],
+      "needs_revision": false,
+      "evidence_gaps": [],
+      "quality_score": 80.25,
+      "quality_label": "good",
+      "editorial_issues": [],
+      "publish_blocked": false,
+      "evaluation_version": "separate-judge-v1",
+      "evaluator_model": "apakhabar-judge"
+    },
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951842.88799,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.46
+        },
+        "timestamp": 1790951843.3504179,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951843.351338,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951843.352889,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.03
+        },
+        "timestamp": 1790951845.381423,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951845.3824482,
+        "sequence": 6
+      },
+      {
+        "event_type": "fact_analysis",
+        "label": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "content": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951845.383517,
+        "sequence": 7
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle"
+        },
+        "timestamp": 1790951845.384098,
+        "sequence": 8
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle",
+          "elapsed_seconds": 4.41
+        },
+        "timestamp": 1790951849.794826,
+        "sequence": 9
+      },
+      {
+        "event_type": "draft",
+        "label": "Draf disusun dari bukti yang tersedia",
+        "content": "Draf disusun dari bukti yang tersedia",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951849.795956,
+        "sequence": 10
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection"
+        },
+        "timestamp": 1790951849.7968051,
+        "sequence": 11
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection",
+          "elapsed_seconds": 8.37
+        },
+        "timestamp": 1790951858.165788,
+        "sequence": 12
+      },
+      {
+        "event_type": "reflection",
+        "label": "Draf ditinjau terhadap bukti",
+        "content": "Draf ditinjau terhadap bukti",
+        "tool_name": null,
+        "payload": {
+          "quality_score": 75.75,
+          "publish_blocked": false
+        },
+        "timestamp": 1790951858.166806,
+        "sequence": 13
+      },
+      {
+        "event_type": "revision",
+        "label": "Memperbaiki temuan tinjauan",
+        "content": "Memperbaiki temuan tinjauan",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951858.1680708,
+        "sequence": 14
+      },
+      {
+        "event_type": "fact_analysis",
+        "label": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "content": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951858.1692748,
+        "sequence": 15
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memperbaiki draf",
+        "content": "Memperbaiki draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle"
+        },
+        "timestamp": 1790951858.1697779,
+        "sequence": 16
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memperbaiki draf",
+        "content": "Memperbaiki draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle",
+          "elapsed_seconds": 4.59
+        },
+        "timestamp": 1790951862.759736,
+        "sequence": 17
+      },
+      {
+        "event_type": "draft",
+        "label": "Draf disusun dari bukti yang tersedia",
+        "content": "Draf disusun dari bukti yang tersedia",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951862.76084,
+        "sequence": 18
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection"
+        },
+        "timestamp": 1790951862.7623522,
+        "sequence": 19
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection",
+          "elapsed_seconds": 8.25
+        },
+        "timestamp": 1790951871.00816,
+        "sequence": 20
+      },
+      {
+        "event_type": "reflection",
+        "label": "Draf ditinjau terhadap bukti",
+        "content": "Draf ditinjau terhadap bukti",
+        "tool_name": null,
+        "payload": {
+          "quality_score": 80.25,
+          "publish_blocked": false
+        },
+        "timestamp": 1790951871.0095081,
+        "sequence": 21
+      },
+      {
+        "event_type": "completed",
+        "label": "Draf siap untuk tinjauan moderator",
+        "content": "Draf siap untuk tinjauan moderator",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951871.010672,
+        "sequence": 22
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      },
+      {
+        "name": "indonesian-news-writing",
+        "version": "98480f03f9e852d49a80ec290304aa2d537bf2ce5b5d74ed040c0cdb17541bed"
+      },
+      {
+        "name": "editorial-review",
+        "version": "00b4d87102c9edd6fbbcdefa5bca3afcf9eb57ba5c949557b95416c500c80432"
+      },
+      {
+        "name": "draft-revision",
+        "version": "6b8396ab1af8035cfe42cdfa3e3bf91c5b03b8040c8003af37f7095068df1a9a"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 28.129,
+      "model_calls": 4,
+      "tool_calls": 0,
+      "revisions": 1,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 36.26
+}

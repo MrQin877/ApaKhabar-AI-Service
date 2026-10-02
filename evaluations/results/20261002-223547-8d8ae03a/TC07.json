@@ -1,0 +1,304 @@
+{
+  "case": {
+    "id": "TC07",
+    "mode": "draft",
+    "files": [
+      "TC07_Waste_Collection.csv"
+    ],
+    "prompt": "Buatkan berita berdasarkan data kegiatan dalam dokumen ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "400 kg collected across three sessions (120 + 150 + 130).",
+      "40 volunteer participations (12 + 15 + 13), not 40 unique volunteers. Explicitly state unique volunteer attendance cannot be determined because people may join multiple sessions.",
+      "No invented waste categories, recycling results or environmental improvements."
+    ],
+    "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "bb925bc4-4f0c-45b0-8661-120e89bec45b",
+        "filename": "TC07_Waste_Collection.csv",
+        "media_type": "application/octet-stream",
+        "character_count": 227,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "session_id | activity | waste_collected_kg | volunteer_attendance",
+            "source": {
+              "filename": "TC07_Waste_Collection.csv",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "session_id",
+                "activity",
+                "waste_collected_kg",
+                "volunteer_attendance"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "S01 | Gotong Royong Pembersihan Sungai Desa | 120 | 12",
+            "source": {
+              "filename": "TC07_Waste_Collection.csv",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "S01",
+                "Gotong Royong Pembersihan Sungai Desa",
+                "120",
+                "12"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "S02 | Gotong Royong Pembersihan Sungai Desa | 150 | 15",
+            "source": {
+              "filename": "TC07_Waste_Collection.csv",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "S02",
+                "Gotong Royong Pembersihan Sungai Desa",
+                "150",
+                "15"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "S03 | Gotong Royong Pembersihan Sungai Desa | 130 | 13",
+            "source": {
+              "filename": "TC07_Waste_Collection.csv",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "S03",
+                "Gotong Royong Pembersihan Sungai Desa",
+                "130",
+                "13"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC07_Waste_Collection.csv",
+            "summary": "Ringkasan data TC07_Waste_Collection.csv: 3 catatan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 3,
+                "record_unit": "catatan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": null,
+                "columns": {
+                  "session_id": {
+                    "label": "session_id",
+                    "missing": 0,
+                    "distinct_values": 3
+                  },
+                  "activity": {
+                    "label": "activity",
+                    "missing": 0,
+                    "distinct_values": 1,
+                    "counts": {
+                      "Gotong Royong Pembersihan Sungai Desa": 3
+                    }
+                  },
+                  "waste_collected_kg": {
+                    "label": "waste_collected_kg",
+                    "missing": 0,
+                    "distinct_values": 3,
+                    "counts": {
+                      "120": 1,
+                      "150": 1,
+                      "130": 1
+                    },
+                    "minimum": "120",
+                    "maximum": "150"
+                  },
+                  "volunteer_attendance": {
+                    "label": "volunteer_attendance",
+                    "missing": 0,
+                    "distinct_values": 3,
+                    "counts": {
+                      "12": 1,
+                      "15": 1,
+                      "13": 1
+                    },
+                    "minimum": "12",
+                    "maximum": "15"
+                  }
+                },
+                "duplicate_rows": 0,
+                "source_row_ranges": [
+                  [
+                    2,
+                    4
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC07_Waste_Collection.csv, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 3, \"record_unit\": \"catatan\", \"unique_person_count\": null, \"distinct_visit_id_count\": null, \"columns\": {\"session_id\": {\"label\": \"session_id\", \"missing\": 0, \"distinct_values\": 3}, \"activity\": {\"label\": \"activity\", \"missing\": 0, \"distinct_values\": 1, \"counts\": {\"Gotong Royong Pembersihan Sungai Desa\": 3}}, \"waste_collected_kg\": {\"label\": \"waste_collected_kg\", \"missing\": 0, \"distinct_values\": 3, \"counts\": {\"120\": 1, \"150\": 1, \"130\": 1}, \"minimum\": \"120\", \"maximum\": \"150\"}, \"volunteer_attendance\": {\"label\": \"volunteer_attendance\", \"missing\": 0, \"distinct_values\": 3, \"counts\": {\"12\": 1, \"15\": 1, \"13\": 1}, \"minimum\": \"12\", \"maximum\": \"15\"}}, \"duplicate_rows\": 0, \"source_row_ranges\": [[2, 4]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "unique_person_count",
+          "importance": "required",
+          "question": "Berapa jumlah orang unik yang terlibat dalam kegiatan ini?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Terdapat 3 catatan kegiatan yang tercatat.",
+        "Aktivitas yang tercatat adalah 'Gotong Royong Pembersihan Sungai Desa' sebanyak 3 kali.",
+        "Total berat sampah yang terkumpul bervariasi antara 120 kg hingga 150 kg.",
+        "Jumlah relawan yang hadir bervariasi antara 12 hingga 15 orang."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-3b7e61234b884f6fa658e51f330dff2a",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951776.0034401,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.45
+        },
+        "timestamp": 1790951776.455688,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951776.456609,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951776.4580102,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.11
+        },
+        "timestamp": 1790951778.571486,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951778.572257,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.575,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 2.58
+}

@@ -1,0 +1,12 @@
+{
+  "id": "TC14",
+  "mode": "draft",
+  "files": [
+    "TC14_Rencana_Lokakarya_Kewirausahaan.docx"
+  ],
+  "prompt": "Tolong buatkan pengumuman untuk warga tentang lokakarya kewirausahaan berdasarkan dokumen ini.",
+  "review_checklist": [
+    "Do not invent missing date or venue; ask clarification or disclose missing details."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

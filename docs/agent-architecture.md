@@ -2,7 +2,7 @@
 
 ## Implementation overview
 
-Four roles (Planner, Researcher, Writer, Reviewer) run in one nine-node LangGraph workflow. The generation model serves the first three; Reflection uses a separate judge when `EVALUATOR_ENABLED=true`, otherwise the generation model. An additional embedding model supports retrieval. Neither A2A nor MCP is used: roles share graph state and tools use direct Python dispatch.
+Four roles (Planner, Researcher, Writer, Reviewer) run in one ten-node LangGraph workflow. The generation model serves the first three; Reflection uses a separate judge when `EVALUATOR_ENABLED=true`, otherwise the generation model. An additional embedding model supports retrieval. Neither A2A nor MCP is used: roles share graph state and tools use direct Python dispatch.
 
 See the [code map](architecture_and_agentic_patterns.md) for methods, model routing, and skill activation, and the [draw.io diagram](architecture/apakhabar-current-ai.drawio) for an editable overview. Judge setup and calibration limitations are documented [separately](separate-judge.md).
 
@@ -80,3 +80,11 @@ Laravel now selects up to three relevant background records from the owner's app
 The trusted backend supplies `historical_sources` with `history:information:ID` or `history:news:ID`, title, content, and record timestamp. Python includes them as attributed background for writing and reflection. Record timestamps are not event dates. On resume the backend refreshes this list; omitted historical sources are removed. Past attendance must not become current attendance, and unique-person counts must not be added across events.
 
 Generated article content (lead plus body, excluding title and summary) is capped at 250 whitespace-separated words. An overlong draft gets one condensation call; if still overlong, a sentence-boundary limit and warning apply before reflection. A single sentence that cannot fit fails rather than being cut mid-claim. Revisions follow the same limit. This limit applies to generated output, not a restriction on a moderator's manual edits.
+
+### Bounded replanning
+
+The reviewer can return up to three `evidence_gaps` for material missing evidence. `after_review()` routes these to `replan()` only when eligible library information or permitted web search exists, tool calls remain, the deadline has not passed, and a revision slot remains. Wording problems and omitted facts already present in the evidence use ordinary revision.
+
+Replanning runs at most once per run, creates up to three replacement research tasks, and consumes one existing revision slot. It preserves the original tool count, observations (including duplicate-action protection), and execution deadline. Research returns through source approval and completeness checking before rewriting and review. New web results require approval; earlier decisions are not prompted again. The new evidence cycle resets the best-candidate comparison so an older score is not reused against changed evidence. Unresolved findings remain visible for moderator review; publication is unchanged.
+
+The service reports `metrics.replans` and emits a `replanning` progress event with a short action summary. No private reasoning is exposed. This is bounded evidence recovery, not unrestricted autonomous research; it cannot retrieve outside the caller's eligible source scope. Regression tests are in `tests/test_replanning.py`.

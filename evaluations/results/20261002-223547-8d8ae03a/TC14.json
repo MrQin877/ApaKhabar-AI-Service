@@ -1,0 +1,519 @@
+{
+  "case": {
+    "id": "TC14",
+    "mode": "draft",
+    "files": [
+      "TC14_Rencana_Lokakarya_Kewirausahaan.docx"
+    ],
+    "prompt": "Tolong buatkan pengumuman untuk warga tentang lokakarya kewirausahaan berdasarkan dokumen ini.",
+    "review_checklist": [
+      "Do not invent missing date or venue; ask clarification or disclose missing details."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "a13cfab8-e399-4f35-bc90-19f01c1734bf",
+        "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+        "media_type": "application/octet-stream",
+        "character_count": 635,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "Rencana Lokakarya Kewirausahaan Warga",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 1
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan untuk warga yang ingin memulai usaha atau mengembangkan usaha kecil. Kegiatan ini bertujuan memberikan pengetahuan dasar tentang pengelolaan usaha.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 2
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Penyelenggara",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 3
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 4
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Materi lokakarya",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 5
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Mengenali peluang usaha dan menyusun rencana usaha sederhana.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 6
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Menghitung biaya produksi dan menentukan harga jual.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 7
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Mencatat pemasukan serta pengeluaran usaha.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 8
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Memasarkan produk melalui media sosial.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 9
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Sasaran peserta",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 10
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Warga yang berminat berwirausaha dan pelaku usaha kecil di Desa Suka Maju.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 11
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Data fiktif untuk pengujian sistem.",
+            "source": {
+              "filename": "TC14_Rencana_Lokakarya_Kewirausahaan.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 12
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Rencana Lokakarya Kewirausahaan Warga",
+            "summary": "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan untuk warga yang ingin memulai atau mengembangkan usaha kecil. Kegiatan ini bertujuan memberikan pengetahuan dasar tentang pengelolaan usaha.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "organizer": "Pemerintah Desa Suka Maju",
+              "purpose": "memberikan pengetahuan dasar tentang pengelolaan usaha",
+              "target_audience": "Warga yang berminat berwirausaha dan pelaku usaha kecil di Desa Suka Maju"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC14_Rencana_Lokakarya_Kewirausahaan.docx, paragraph=2",
+                "quote": "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan untuk warga yang ingin memulai usaha atau mengembangkan usaha kecil. Kegiatan ini bertujuan memberikan pengetahuan dasar tentang pengelolaan usaha."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Materi Lokakarya Kewirausahaan",
+            "summary": "Materi lokakarya mencakup beberapa aspek penting dalam memulai usaha, mulai dari identifikasi peluang hingga pemasaran produk. Peserta akan belajar cara menghitung biaya, menentukan harga, dan mencatat transaksi usaha.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "topics": [
+                "Mengenali peluang usaha dan menyusun rencana usaha sederhana",
+                "Menghitung biaya produksi dan menentukan harga jual",
+                "Mencatat pemasukan serta pengeluaran usaha",
+                "Memasarkan produk melalui media sosial"
+              ]
+            },
+            "evidence": [
+              {
+                "source": "filename=TC14_Rencana_Lokakarya_Kewirausahaan.docx, paragraph=6",
+                "quote": "Mengenali peluang usaha dan menyusun rencana usaha sederhana."
+              },
+              {
+                "source": "filename=TC14_Rencana_Lokakarya_Kewirausahaan.docx, paragraph=7",
+                "quote": "Menghitung biaya produksi dan menentukan harga jual."
+              },
+              {
+                "source": "filename=TC14_Rencana_Lokakarya_Kewirausahaan.docx, paragraph=8",
+                "quote": "Mencatat pemasukan serta pengeluaran usaha."
+              },
+              {
+                "source": "filename=TC14_Rencana_Lokakarya_Kewirausahaan.docx, paragraph=9",
+                "quote": "Memasarkan produk melalui media sosial."
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "ready",
+      "missing": [],
+      "conflicts": [],
+      "known_facts": [
+        "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan.",
+        "Lokakarya ini ditujukan untuk warga yang ingin memulai atau mengembangkan usaha kecil.",
+        "Tujuan kegiatan adalah memberikan pengetahuan dasar tentang pengelolaan usaha.",
+        "Materi lokakarya mencakup: Mengenali peluang usaha dan menyusun rencana usaha sederhana, Menghitung biaya produksi dan menentukan harga jual, Mencatat pemasukan serta pengeluaran usaha, dan Memasarkan produk melalui media sosial."
+      ]
+    },
+    "article": {
+      "headline": "Pemerintah Desa Suka Maju Rencanakan Lokakarya Kewirausahaan untuk Warga",
+      "subheadline": null,
+      "lead": "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan yang bertujuan memberikan pengetahuan dasar tentang pengelolaan usaha bagi warga yang berminat memulai atau mengembangkan usaha kecil.",
+      "body": [
+        "Lokakarya ini dirancang untuk memberikan pengetahuan dasar mengenai berbagai aspek penting dalam memulai usaha. Materi yang akan dibahas mencakup cara mengenali peluang usaha dan menyusun rencana usaha sederhana.",
+        "Peserta juga akan mendapatkan pembelajaran mengenai perhitungan biaya produksi dan penentuan harga jual produk.",
+        "Selain itu, lokakarya ini akan membahas cara mencatat pemasukan serta pengeluaran usaha, serta strategi pemasaran produk melalui media sosial."
+      ],
+      "summary": "Pengumuman mengenai rencana penyelenggaraan lokakarya kewirausahaan oleh Pemerintah Desa Suka Maju untuk warga yang ingin memulai atau mengembangkan usaha kecil, dengan fokus pada pengetahuan dasar pengelolaan usaha.",
+      "labels": [
+        "education"
+      ],
+      "language": "id",
+      "sources_used": [
+        "provided:0",
+        "provided:1"
+      ],
+      "warnings": [
+        "Informasi ini merupakan rencana kegiatan, bukan laporan kegiatan yang telah dilaksanakan."
+      ],
+      "category": null
+    },
+    "run_id": "eval-3c39ab58aab84882ba47d004fb32f511",
+    "status": "completed",
+    "quality": {
+      "dimensions": {
+        "accuracy": 95.0,
+        "completeness": 100.0,
+        "relevance": 90.0,
+        "readability": 95.0,
+        "structure": 90.0,
+        "language": 95.0,
+        "safety": 100.0
+      },
+      "claim_checks": [
+        {
+          "claim": "Pemerintah Desa Suka Maju berencana menyelenggarakan lokakarya kewirausahaan untuk warga yang ingin memulai usaha atau mengembangkan usaha kecil.",
+          "supported": true,
+          "source_ids": [
+            "provided:0"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Lokakarya ini ditujukan untuk warga yang ingin memulai atau mengembangkan usaha kecil.",
+          "supported": true,
+          "source_ids": [
+            "provided:0"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Tujuan kegiatan adalah memberikan pengetahuan dasar tentang pengelolaan usaha.",
+          "supported": true,
+          "source_ids": [
+            "provided:0"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Materi lokakarya mencakup: Mengenali peluang usaha dan menyusun rencana usaha sederhana, Menghitung biaya produksi dan menentukan harga jual, Mencatat pemasukan serta pengeluaran usaha, dan Memasarkan produk melalui media sosial.",
+          "supported": true,
+          "source_ids": [
+            "provided:1"
+          ],
+          "issue": ""
+        }
+      ],
+      "improvements": [],
+      "warnings": [
+        "Informasi ini merupakan rencana kegiatan, bukan laporan kegiatan yang telah dilaksanakan."
+      ],
+      "needs_revision": false,
+      "evidence_gaps": [],
+      "quality_score": 95.0,
+      "quality_label": "good",
+      "editorial_issues": [],
+      "publish_blocked": false,
+      "evaluation_version": "separate-judge-v1",
+      "evaluator_model": "apakhabar-judge"
+    },
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951877.240157,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.47
+        },
+        "timestamp": 1790951877.710186,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951877.7110112,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951877.71252,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.72
+        },
+        "timestamp": 1790951879.433918,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951879.434931,
+        "sequence": 6
+      },
+      {
+        "event_type": "fact_analysis",
+        "label": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "content": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951879.437716,
+        "sequence": 7
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle"
+        },
+        "timestamp": 1790951879.438237,
+        "sequence": 8
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle",
+          "elapsed_seconds": 3.58
+        },
+        "timestamp": 1790951883.0218549,
+        "sequence": 9
+      },
+      {
+        "event_type": "draft",
+        "label": "Draf disusun dari bukti yang tersedia",
+        "content": "Draf disusun dari bukti yang tersedia",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951883.023076,
+        "sequence": 10
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection"
+        },
+        "timestamp": 1790951883.02425,
+        "sequence": 11
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection",
+          "elapsed_seconds": 5.92
+        },
+        "timestamp": 1790951888.9453819,
+        "sequence": 12
+      },
+      {
+        "event_type": "reflection",
+        "label": "Draf ditinjau terhadap bukti",
+        "content": "Draf ditinjau terhadap bukti",
+        "tool_name": null,
+        "payload": {
+          "quality_score": 95.0,
+          "publish_blocked": false
+        },
+        "timestamp": 1790951888.946256,
+        "sequence": 13
+      },
+      {
+        "event_type": "completed",
+        "label": "Draf siap untuk tinjauan moderator",
+        "content": "Draf siap untuk tinjauan moderator",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951888.947167,
+        "sequence": 14
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      },
+      {
+        "name": "indonesian-news-writing",
+        "version": "98480f03f9e852d49a80ec290304aa2d537bf2ce5b5d74ed040c0cdb17541bed"
+      },
+      {
+        "name": "indonesian-news-writing/references/formats.md",
+        "version": "b7c0dcf29683080d152a24409d4039b1c76c6aa2f489998c702822dc6ac8f72b"
+      },
+      {
+        "name": "editorial-review",
+        "version": "00b4d87102c9edd6fbbcdefa5bca3afcf9eb57ba5c949557b95416c500c80432"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 11.714,
+      "model_calls": 3,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 17.94
+}

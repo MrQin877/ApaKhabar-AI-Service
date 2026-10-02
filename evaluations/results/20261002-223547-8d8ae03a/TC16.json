@@ -1,0 +1,1065 @@
+{
+  "case": {
+    "id": "TC16",
+    "mode": "draft",
+    "files": [
+      "TC16_Pelatihan_Digital_UMKM.xlsx"
+    ],
+    "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM, termasuk partisipasi warga dan biaya kegiatan, berdasarkan file Excel ini.",
+    "review_checklist": [
+      "12 registered; 9 attended; 3 absent; attendance 75%; total expenses Rp1.400.000."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "85a8c229-13d5-4f23-8bf7-b62759631ce6",
+        "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+        "media_type": "application/octet-stream",
+        "character_count": 1157,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "Pelatihan Digital UMKM |  | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pelatihan Digital UMKM",
+                "",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tanggal | 2026-09-20 00:00:00 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tanggal",
+                "2026-09-20 00:00:00",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tempat | Balai Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tempat",
+                "Balai Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Penyelenggara | Pemerintah Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Penyelenggara",
+                "Pemerintah Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Keterangan | Data fiktif untuk pengujian | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Keterangan",
+                "Data fiktif untuk pengujian",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "participant_id | Nama peserta | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "participant_id",
+                "Nama peserta",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P01 | Peserta 01 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P01",
+                "Peserta 01",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P02 | Peserta 02 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P02",
+                "Peserta 02",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P03 | Peserta 03 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P03",
+                "Peserta 03",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P04 | Peserta 04 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P04",
+                "Peserta 04",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P05 | Peserta 05 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P05",
+                "Peserta 05",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P06 | Peserta 06 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P06",
+                "Peserta 06",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P07 | Peserta 07 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P07",
+                "Peserta 07",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P08 | Peserta 08 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P08",
+                "Peserta 08",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P09 | Peserta 09 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P09",
+                "Peserta 09",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P10 | Peserta 10 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P10",
+                "Peserta 10",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P11 | Peserta 11 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P11",
+                "Peserta 11",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P12 | Peserta 12 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Registrations",
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P12",
+                "Peserta 12",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Pelatihan Digital UMKM |  | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pelatihan Digital UMKM",
+                "",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tanggal | 2026-09-20 00:00:00 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tanggal",
+                "2026-09-20 00:00:00",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tempat | Balai Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tempat",
+                "Balai Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Penyelenggara | Pemerintah Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Penyelenggara",
+                "Pemerintah Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Keterangan | Data fiktif untuk pengujian | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Keterangan",
+                "Data fiktif untuk pengujian",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "participant_id | Status kehadiran | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "participant_id",
+                "Status kehadiran",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P01 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P01",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P02 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P02",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P03 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P03",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P04 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P04",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P05 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P05",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P06 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P06",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P07 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P07",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P08 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P08",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P09 | Hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P09",
+                "Hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P10 | Tidak hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P10",
+                "Tidak hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P11 | Tidak hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P11",
+                "Tidak hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "P12 | Tidak hadir | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Attendance",
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "P12",
+                "Tidak hadir",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Pelatihan Digital UMKM |  | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pelatihan Digital UMKM",
+                "",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tanggal | 2026-09-20 00:00:00 | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tanggal",
+                "2026-09-20 00:00:00",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tempat | Balai Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Tempat",
+                "Balai Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Penyelenggara | Pemerintah Desa Suka Maju | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Penyelenggara",
+                "Pemerintah Desa Suka Maju",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Keterangan | Data fiktif untuk pengujian | ",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Keterangan",
+                "Data fiktif untuk pengujian",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "expense_id | Uraian | Biaya (Rp)",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "expense_id",
+                "Uraian",
+                "Biaya (Rp)"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "E01 | Sewa tempat | 500000",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "E01",
+                "Sewa tempat",
+                "500000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "E02 | Bahan pelatihan | 300000",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "E02",
+                "Bahan pelatihan",
+                "300000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "E03 | Konsumsi | 450000",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "E03",
+                "Konsumsi",
+                "450000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "E04 | Perlengkapan | 150000",
+            "source": {
+              "filename": "TC16_Pelatihan_Digital_UMKM.xlsx",
+              "page": null,
+              "sheet": "Budget",
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "E04",
+                "Perlengkapan",
+                "150000"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital UMKM",
+            "summary": "The Digital UMKM training took place on 2026-09-20 at Balai Desa Suka Maju, organized by Pemerintah Desa Suka Maju. The event involved 12 participants, with attendance recorded for most participants.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "date": "2026-09-20 00:00:00",
+              "location": "Balai Desa Suka Maju",
+              "organizer": "Pemerintah Desa Suka Maju",
+              "participant_count": 12
+            },
+            "evidence": [
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Registrations, row=4",
+                "quote": "Tanggal | 2026-09-20 00:00:00"
+              },
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Registrations, row=5",
+                "quote": "Tempat | Balai Desa Suka Maju"
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Finance",
+            "title": "Training Budget Details",
+            "summary": "The training incurred total expenses across four categories: Sewa tempat, Bahan pelatihan, Konsumsi, and Perlengkapan. The total calculated expense is Rp1,450,000.",
+            "labels": [
+              "finance"
+            ],
+            "fields": {
+              "total_expense": 1450000,
+              "sewa_tempat": 500000,
+              "bahan_pelatihan": 300000,
+              "konsumsi": 450000,
+              "perlengkapan": 150000
+            },
+            "evidence": [
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Budget, row=10",
+                "quote": "E01 | Sewa tempat | 500000"
+              },
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Budget, row=11",
+                "quote": "E02 | Bahan pelatihan | 300000"
+              },
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Budget, row=12",
+                "quote": "E03 | Konsumsi | 450000"
+              },
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Budget, row=13",
+                "quote": "E04 | Perlengkapan | 150000"
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Participant Attendance Status",
+            "summary": "Out of 12 registered participants, 8 participants were marked as 'Hadir' (Present), while 4 participants were marked as 'Tidak hadir' (Absent).",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "present_count": 8,
+              "absent_count": 4,
+              "total_registered": 12
+            },
+            "evidence": [
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Attendance, row=10",
+                "quote": "P01 | Hadir"
+              },
+              {
+                "source": "filename=TC16_Pelatihan_Digital_UMKM.xlsx, sheet=Attendance, row=19",
+                "quote": "P10 | Tidak hadir"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "present_count",
+          "importance": "required",
+          "question": "Berapa jumlah peserta yang hadir dalam pelatihan digital UMKM tersebut?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Pelatihan Digital UMKM dilaksanakan pada tanggal 2026-09-20 di Balai Desa Suka Maju.",
+        "Kegiatan ini diselenggarakan oleh Pemerintah Desa Suka Maju.",
+        "Pelatihan tersebut melibatkan 12 peserta terdaftar.",
+        "Total biaya kegiatan adalah Rp1.450.000, yang terdiri dari sewa tempat (Rp500.000), bahan pelatihan (Rp300.000), konsumsi (Rp450.000), dan perlengkapan (Rp150.000)."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-3cbc4ab6a4f240caa57f725409cb144d",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951900.315511,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.47
+        },
+        "timestamp": 1790951900.7843451,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951900.785152,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951900.78674,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.56
+        },
+        "timestamp": 1790951903.34477,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951903.345793,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 3.037,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 12.97
+}

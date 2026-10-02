@@ -1,0 +1,1127 @@
+{
+  "case": {
+    "id": "TC03",
+    "mode": "draft",
+    "files": [
+      "TC03_Health_Screening.csv"
+    ],
+    "prompt": "Buatkan berita berdasarkan data pemeriksaan kesehatan dalam dokumen ini.",
+    "review_checklist": [
+      "50 service records; 28 distinct participant_id values; 32 blood-pressure checks; 18 glucose checks.",
+      "Multiple services per participant. Never call 50 unique people. No invented diagnoses, outcomes, ages or demographics."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "ee2a55ef-2f15-406b-bd13-72e77920f346",
+        "filename": "TC03_Health_Screening.csv",
+        "media_type": "application/octet-stream",
+        "character_count": 1931,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "visit_id | participant_id | service",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "visit_id",
+                "participant_id",
+                "service"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V001 | P001 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V001",
+                "P001",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V002 | P002 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V002",
+                "P002",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V003 | P003 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V003",
+                "P003",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V004 | P004 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V004",
+                "P004",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V005 | P005 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V005",
+                "P005",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V006 | P006 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V006",
+                "P006",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V007 | P007 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V007",
+                "P007",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V008 | P008 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V008",
+                "P008",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V009 | P009 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V009",
+                "P009",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V010 | P010 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V010",
+                "P010",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V011 | P011 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V011",
+                "P011",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V012 | P012 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V012",
+                "P012",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V013 | P013 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V013",
+                "P013",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V014 | P014 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V014",
+                "P014",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V015 | P015 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V015",
+                "P015",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V016 | P016 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V016",
+                "P016",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V017 | P017 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V017",
+                "P017",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V018 | P018 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V018",
+                "P018",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V019 | P019 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V019",
+                "P019",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V020 | P020 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V020",
+                "P020",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V021 | P021 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 22,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V021",
+                "P021",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V022 | P022 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 23,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V022",
+                "P022",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V023 | P001 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 24,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V023",
+                "P001",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V024 | P002 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 25,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V024",
+                "P002",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V025 | P003 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 26,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V025",
+                "P003",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V026 | P004 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 27,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V026",
+                "P004",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V027 | P005 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 28,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V027",
+                "P005",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V028 | P006 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 29,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V028",
+                "P006",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V029 | P007 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 30,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V029",
+                "P007",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V030 | P008 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 31,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V030",
+                "P008",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V031 | P009 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 32,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V031",
+                "P009",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V032 | P010 | Pemeriksaan tekanan darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 33,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V032",
+                "P010",
+                "Pemeriksaan tekanan darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V033 | P011 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 34,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V033",
+                "P011",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V034 | P012 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 35,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V034",
+                "P012",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V035 | P013 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 36,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V035",
+                "P013",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V036 | P014 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 37,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V036",
+                "P014",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V037 | P015 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 38,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V037",
+                "P015",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V038 | P016 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 39,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V038",
+                "P016",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V039 | P017 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 40,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V039",
+                "P017",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V040 | P018 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 41,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V040",
+                "P018",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V041 | P019 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 42,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V041",
+                "P019",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V042 | P020 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 43,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V042",
+                "P020",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V043 | P021 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 44,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V043",
+                "P021",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V044 | P022 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 45,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V044",
+                "P022",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V045 | P023 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 46,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V045",
+                "P023",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V046 | P024 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 47,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V046",
+                "P024",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V047 | P025 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 48,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V047",
+                "P025",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V048 | P026 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 49,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V048",
+                "P026",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V049 | P027 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 50,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V049",
+                "P027",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "V050 | P028 | Pemeriksaan gula darah",
+            "source": {
+              "filename": "TC03_Health_Screening.csv",
+              "page": null,
+              "sheet": null,
+              "row": 51,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "V050",
+                "P028",
+                "Pemeriksaan gula darah"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC03_Health_Screening.csv",
+            "summary": "Ringkasan data TC03_Health_Screening.csv: 50 kunjungan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 50,
+                "record_unit": "kunjungan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": 50,
+                "columns": {
+                  "visit_id": {
+                    "label": "visit_id",
+                    "missing": 0,
+                    "distinct_values": 50
+                  },
+                  "participant_id": {
+                    "label": "participant_id",
+                    "missing": 0,
+                    "distinct_values": 28
+                  },
+                  "service": {
+                    "label": "service",
+                    "missing": 0,
+                    "distinct_values": 2,
+                    "counts": {
+                      "Pemeriksaan tekanan darah": 32,
+                      "Pemeriksaan gula darah": 18
+                    }
+                  }
+                },
+                "duplicate_rows": 0,
+                "source_row_ranges": [
+                  [
+                    2,
+                    51
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC03_Health_Screening.csv, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 50, \"record_unit\": \"kunjungan\", \"unique_person_count\": null, \"distinct_visit_id_count\": 50, \"columns\": {\"visit_id\": {\"label\": \"visit_id\", \"missing\": 0, \"distinct_values\": 50}, \"participant_id\": {\"label\": \"participant_id\", \"missing\": 0, \"distinct_values\": 28}, \"service\": {\"label\": \"service\", \"missing\": 0, \"distinct_values\": 2, \"counts\": {\"Pemeriksaan tekanan darah\": 32, \"Pemeriksaan gula darah\": 18}}}, \"duplicate_rows\": 0, \"source_row_ranges\": [[2, 51]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "unique_person_count",
+          "importance": "required",
+          "question": "Berapa jumlah orang unik yang tercatat dalam data pemeriksaan kesehatan ini?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Terdapat 50 kunjungan tercatat dalam data TC03_Health_Screening.csv.",
+        "Terdapat 50 ID kunjungan yang berbeda (distinct_visit_id_count: 50).",
+        "Terdapat 28 ID peserta yang berbeda (distinct_participant_id_count: 28).",
+        "Jenis layanan yang tercatat adalah 'Pemeriksaan tekanan darah' sebanyak 32 kali dan 'Pemeriksaan gula darah' sebanyak 18 kali."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-a6c8c443e4464d6ca1219a1e69182388",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951759.863252,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.49
+        },
+        "timestamp": 1790951760.354794,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951760.355708,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951760.357177,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.32
+        },
+        "timestamp": 1790951762.677085,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951762.677989,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.821,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 2.83
+}

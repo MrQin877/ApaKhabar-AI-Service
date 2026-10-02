@@ -1,0 +1,286 @@
+{
+  "case": {
+    "id": "TC10_PDF",
+    "mode": "draft",
+    "files": [
+      "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf"
+    ],
+    "prompt": "Buatkan pengumuman tentang kegiatan kerja bakti warga berdasarkan dokumen ini.",
+    "review_checklist": [
+      "Extract announcement details accurately through OCR; preserve planned-event wording."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "8914b3ad-2132-4446-8350-ad67c583ec6c",
+        "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 334,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "KEGIATAN KERJA BAKTI WARGA",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Diberitahukan kepada warga bahwa akan dilaksanakan",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "kegiatan kerja bakti bersama.",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Hari/Tanggal : Minggu, 25 Oktober 2026",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Waktu : 07.00 WITA",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Titik Kumpul : Kantor Desa",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Perlengkapan: Membawa sarung tangan",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Mohon memperhatikan waktu dan titik kumpul yang tercantum pada pengumuman ini.",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Terima kasih atas perhatian warga.",
+            "source": {
+              "filename": "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Community Work Activity Announcement",
+            "summary": "A community work activity is being announced for residents. The event is scheduled for Sunday, October 25, 2026, starting at 07:00 WITA at the Village Office.",
+            "labels": [
+              "community"
+            ],
+            "fields": {
+              "date": "Sunday, October 25, 2026",
+              "time": "07.00 WITA",
+              "location": "Kantor Desa",
+              "required_equipment": "sarung tangan"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC10_Pengumuman_Kerja_Bakti_Scanned.pdf, page=1",
+                "quote": "Hari/Tanggal : Minggu, 25 Oktober 2026"
+              },
+              {
+                "source": "filename=TC10_Pengumuman_Kerja_Bakti_Scanned.pdf, page=1",
+                "quote": "Waktu : 07.00 WITA"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "details",
+          "importance": "required",
+          "question": "Apa detail lain yang perlu disertakan dalam pengumuman ini selain tanggal, waktu, dan lokasi?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Kegiatan yang diumumkan adalah kerja bakti warga.",
+        "Tanggal kegiatan adalah Minggu, 25 Oktober 2026.",
+        "Waktu kegiatan adalah pukul 07.00 WITA.",
+        "Lokasi kegiatan adalah Kantor Desa.",
+        "Peralatan yang diperlukan adalah sarung tangan."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-bf1e1cecbd6d48d790ace69e2b7dea4e",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951795.758511,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.46
+        },
+        "timestamp": 1790951796.221666,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951796.22261,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951796.2240262,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.76
+        },
+        "timestamp": 1790951797.983544,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951797.9852512,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.233,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 5.35
+}

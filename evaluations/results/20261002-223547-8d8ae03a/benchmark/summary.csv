@@ -1,0 +1,2 @@
+case,status,extraction_score,response_score,reason
+TC04,evaluation_error,,,Generation provider llama_cpp failed (ConnectionError)

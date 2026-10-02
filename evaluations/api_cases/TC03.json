@@ -1,0 +1,13 @@
+{
+  "id": "TC03",
+  "mode": "draft",
+  "files": [
+    "TC03_Health_Screening.csv"
+  ],
+  "prompt": "Buatkan berita berdasarkan data pemeriksaan kesehatan dalam dokumen ini.",
+  "review_checklist": [
+    "50 service records; 28 distinct participant_id values; 32 blood-pressure checks; 18 glucose checks.",
+    "Multiple services per participant. Never call 50 unique people. No invented diagnoses, outcomes, ages or demographics."
+  ],
+  "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+}

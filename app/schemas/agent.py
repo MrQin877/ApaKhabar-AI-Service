@@ -44,6 +44,7 @@ class Reflection(BaseModel):
     improvements: list[str]
     warnings: list[str]
     needs_revision: bool
+    evidence_gaps: list[str] = Field(default_factory=list, max_length=3, description="Material missing evidence that requires additional research, not wording changes or facts already in the sources.")
 
 
 class ResumeRequest(BaseModel):

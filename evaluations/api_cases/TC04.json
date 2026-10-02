@@ -1,0 +1,13 @@
+{
+  "id": "TC04",
+  "mode": "draft",
+  "files": [
+    "TC04_Attendance_Without_Participant_IDs.csv"
+  ],
+  "prompt": "Buatkan berita berdasarkan data layanan dalam dokumen ini.",
+  "review_checklist": [
+    "64 service records; only record_id and service columns. Unique participants cannot be determined.",
+    "Explicitly disclose unknown unique count or ask for it. No invented identities, outcomes or demographics."
+  ],
+  "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+}

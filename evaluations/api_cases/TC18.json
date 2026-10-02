@@ -1,0 +1,12 @@
+{
+  "id": "TC18",
+  "mode": "draft",
+  "files": [
+    "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf"
+  ],
+  "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM, kegiatan peserta, dan hasil tugas praktik berdasarkan dokumen ini.",
+  "review_checklist": [
+    "One event; 25 attendees; 18 completions; product photography and online marketing; no summed duplicates or repeated date/venue."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

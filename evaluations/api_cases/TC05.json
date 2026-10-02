@@ -1,0 +1,13 @@
+{
+  "id": "TC05",
+  "mode": "draft",
+  "files": [
+    "TC05_Population_Summary.xlsx"
+  ],
+  "prompt": "Buatkan berita berdasarkan data penduduk dalam dokumen ini.",
+  "review_checklist": [
+    "Male 1226; female 1305; total 2531 across all 12 areas; reference date 30 September 2026.",
+    "No omitted or duplicate areas; no invented growth, earlier-year comparisons or trends."
+  ],
+  "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+}
