@@ -1,0 +1,353 @@
+{
+  "case": {
+    "id": "TC01",
+    "mode": "draft",
+    "files": [
+      "TC01_Event_Announcement.pdf"
+    ],
+    "prompt": "Buatkan berita berdasarkan informasi dalam dokumen ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "Planned event, not completed. Organiser Pemerintah Desa Suka Maju; 18 Oktober 2026; 09.00–12.00 WITA; Balai Desa Suka Maju; capacity 30; registration deadline 15 Oktober 2026.",
+      "Capacity is not attendance. No invented speakers, attendance, completed activities or results."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "b99a6eec-88cd-456f-a853-4fc175bfb6ce",
+        "filename": "TC01_Event_Announcement.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 724,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "PENGUMUMAN KEGIATAN PELATIHAN DIGITAL",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemerintah Desa Suka Maju akan menyelenggarakan kegiatan pelatihan digital bagi warga",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "desa. Kegiatan ini bertujuan untuk memberikan kesempatan kepada masyarakat untuk",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "meningkatkan pengetahuan dan keterampilan dalam pemanfaatan teknologi digital.",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Penyelenggara Pemerintah Desa Suka Maju",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tanggal 18 Oktober 2026",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Waktu 09.00 - 12.00 WITA",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tempat Balai Desa Suka Maju",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Kapasitas Maksimal 30 peserta",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Batas Pendaftaran 15 Oktober 2026",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Warga yang berminat mengikuti kegiatan ini diharapkan melakukan pendaftaran sebelum",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "batas waktu yang telah ditentukan. Informasi lebih lanjut dapat diperoleh melalui",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen ini merupakan data fiktif yang disiapkan khusus untuk pengujian sistem.",
+            "source": {
+              "filename": "TC01_Event_Announcement.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital",
+            "summary": "Pemerintah Desa Suka Maju akan menyelenggarakan kegiatan pelatihan digital untuk warga. Kegiatan ini bertujuan meningkatkan pengetahuan dan keterampilan masyarakat dalam pemanfaatan teknologi digital.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "date": "18 Oktober 2026",
+              "time": "09.00 - 12.00 WITA",
+              "location": "Balai Desa Suka Maju",
+              "capacity": "30 peserta",
+              "registration_deadline": "15 Oktober 2026"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC01_Event_Announcement.pdf, page=1",
+                "quote": "Kegiatan ini bertujuan untuk memberikan kesempatan kepada masyarakat untuk meningkatkan pengetahuan dan keterampilan dalam pemanfaatan teknologi digital."
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "headline",
+          "importance": "required",
+          "question": "Apa judul berita yang diinginkan untuk pelatihan digital ini?",
+          "options": [],
+          "selection_type": "single"
+        },
+        {
+          "field": "lead_paragraph_focus",
+          "importance": "required",
+          "question": "Apakah ada fokus utama (misalnya, manfaat spesifik, siapa yang diundang) yang ingin ditekankan dalam paragraf pembuka?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Pemerintah Desa Suka Maju akan menyelenggarakan kegiatan pelatihan digital untuk warga.",
+        "Tujuan kegiatan adalah meningkatkan pengetahuan dan keterampilan masyarakat dalam pemanfaatan teknologi digital.",
+        "Tanggal kegiatan: 18 Oktober 2026.",
+        "Waktu kegiatan: 09.00 - 12.00 WITA.",
+        "Lokasi kegiatan: Balai Desa Suka Maju.",
+        "Kapasitas peserta: 30 peserta.",
+        "Batas waktu pendaftaran: 15 Oktober 2026."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-8d0f5bc83d284109a18e65ae6ca3c2ef",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951750.415328,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.52
+        },
+        "timestamp": 1790951750.933154,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951750.934098,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951750.93574,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.72
+        },
+        "timestamp": 1790951753.659894,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951753.660762,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 3.255,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 6.5
+}

@@ -1,0 +1,385 @@
+{
+  "case": {
+    "id": "TC02",
+    "mode": "draft",
+    "files": [
+      "TC02_Completed_Activity.docx"
+    ],
+    "prompt": "Buatkan berita berdasarkan dokumen kegiatan ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "Completed activity: 24 attendees, 2 facilitators, 20 practical-task completions. Facilitators are separate from participants.",
+      "Organic waste sorting and eco-enzyme preparation. No claim all 24 completed; no repeated date/location/count; no invented awards, feedback or environmental impact."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "86794ec3-733d-453f-8de0-ec4bb6491542",
+        "filename": "TC02_Completed_Activity.docx",
+        "media_type": "application/octet-stream",
+        "character_count": 995,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN KEGIATAN DESA",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 1
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Praktik Pembuatan Eco-Enzyme dari Limbah Dapur",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 2
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Ringkasan Kegiatan",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 4
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Kegiatan praktik pembuatan eco-enzyme dari limbah dapur telah dilaksanakan pada 10 Oktober 2026 di Balai Warga Desa Suka Maju. Kegiatan ini diikuti oleh 24 peserta dan dipandu oleh 2 fasilitator dari kelompok lingkungan desa.",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 5
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dalam kegiatan tersebut, peserta mempelajari pemilahan limbah organik rumah tangga dan langkah-langkah dasar pembuatan eco-enzyme. Sesi dilanjutkan dengan praktik langsung menggunakan bahan yang telah disiapkan.",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 6
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dari seluruh peserta yang hadir, 20 peserta berhasil menyelesaikan tugas praktik berupa pembuatan satu wadah campuran eco-enzyme sesuai panduan fasilitator.",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 7
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan Pelaksanaan",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 8
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen ini merupakan laporan kegiatan yang telah selesai dilaksanakan.",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 9
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "table_row",
+            "content": "Keterangan | Data",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Keterangan",
+                "Data"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Tanggal pelaksanaan | 10 Oktober 2026",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Tanggal pelaksanaan",
+                "10 Oktober 2026"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Jumlah peserta hadir | 24 orang",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Jumlah peserta hadir",
+                "24 orang"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Jumlah fasilitator | 2 orang",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Jumlah fasilitator",
+                "2 orang"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Materi utama | Pemilahan limbah organik dan pembuatan eco-enzyme",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Materi utama",
+                "Pemilahan limbah organik dan pembuatan eco-enzyme"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Peserta yang menyelesaikan tugas praktik | 20 orang",
+            "source": {
+              "filename": "TC02_Completed_Activity.docx",
+              "page": null,
+              "sheet": null,
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "table": 1,
+              "cells": [
+                "Peserta yang menyelesaikan tugas praktik",
+                "20 orang"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Eco-Enzyme Making Activity Summary",
+            "summary": "An activity on making eco-enzyme from kitchen waste was held on October 10, 2026, at Suka Maju Village Community Hall. Participants learned about sorting organic household waste and the basic steps for making eco-enzyme, followed by hands-on practice.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "date": "10 Oktober 2026",
+              "location": "Balai Warga Desa Suka Maju",
+              "participants_present": 24,
+              "facilitators": 2,
+              "main_material": "Pemilahan limbah organik dan pembuatan eco-enzyme",
+              "participants_completing_practice": 20
+            },
+            "evidence": [
+              {
+                "source": "filename=TC02_Completed_Activity.docx, paragraph=5",
+                "quote": "Kegiatan praktik pembuatan eco-enzyme dari limbah dapur telah dilaksanakan pada 10 Oktober 2026 di Balai Warga Desa Suka Maju. Kegiatan ini diikuti oleh 24 peserta dan dipandu oleh 2 fasilitator dari kelompok lingkungan desa."
+              },
+              {
+                "source": "filename=TC02_Completed_Activity.docx, row=5",
+                "quote": "Materi utama | Pemilahan limbah organik dan pembuatan eco-enzyme"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "news_article_content",
+          "importance": "required",
+          "question": "Apa fokus utama berita yang ingin disampaikan kepada warga desa mengenai kegiatan pembuatan eco-enzyme ini?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Kegiatan pembuatan eco-enzyme dari limbah dapur dilaksanakan pada 10 Oktober 2026.",
+        "Lokasi kegiatan adalah Balai Warga Desa Suka Maju.",
+        "Kegiatan diikuti oleh 24 peserta dan dipandu oleh 2 fasilitator dari kelompok lingkungan desa.",
+        "Materi utama kegiatan adalah pemilahan limbah organik dan pembuatan eco-enzyme.",
+        "20 peserta menyelesaikan sesi praktik."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-a64af574ddb842b297bb049518c2d938",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951757.315271,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.5
+        },
+        "timestamp": 1790951757.8188381,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951757.819743,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951757.821633,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.03
+        },
+        "timestamp": 1790951759.848313,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951759.849149,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.54,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 6.19
+}

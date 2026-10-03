@@ -1,0 +1,12 @@
+{
+  "id": "TC15",
+  "mode": "analysis",
+  "files": [
+    "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv"
+  ],
+  "prompt": "Tolong rangkum data pendaftaran pelatihan digital dari file ini.",
+  "review_checklist": [
+    "100 raw rows; 90 distinct registrations; 90 unique participants; 10 registrations repeated twice; registration is not attendance."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

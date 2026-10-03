@@ -1,0 +1,1025 @@
+{
+  "case": {
+    "id": "TC12",
+    "mode": "historical",
+    "files": [
+      "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+      "TC12_Laporan_Dampak_Gunung_Api_2026.pdf"
+    ],
+    "prompt": "Ekstrak informasi penting dari laporan tahun 2025 ini, terutama lokasi kejadian, penyebab, dan persentase pencemaran udara.",
+    "review_checklist": [
+      "First extract and summarise only 2025, then index as approved TEST evidence. Second request supplies only 2026 facts, with previous IDs eligible for research.",
+      "Retrieve 2025 via tool, not injected historical text. Inspect tool events and sources_used to confirm retrieval.",
+      "2025: Desa Suka Maju, eastern slope and residents gardens, Gunung Aruna, 35%. 2026: Desa Punggul, southern slope and village vegetation, Gunung Aruna, 50%.",
+      "Difference is 15 percentage points (relative difference approximately 42.86%); different locations mean this is not established same-location year-over-year deterioration. Preserve fictional-source label."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics.",
+    "second_prompt": "Buatkan berita tentang dampak aktivitas gunung api pada tahun 2026 ini. Tolong cari juga laporan tahun 2025 yang berkaitan dan bandingkan persentase pencemaran udaranya.",
+    "turns": [
+      {
+        "files": [
+          "TC12_Laporan_Dampak_Gunung_Api_2025.pdf"
+        ],
+        "prompt": "Ekstrak informasi penting dari laporan tahun 2025 ini, terutama lokasi kejadian, penyebab, dan persentase pencemaran udara."
+      },
+      {
+        "files": [
+          "TC12_Laporan_Dampak_Gunung_Api_2026.pdf"
+        ],
+        "prompt": "Buatkan berita tentang dampak aktivitas gunung api pada tahun 2026 ini. Tolong cari juga laporan tahun 2025 yang berkaitan dan bandingkan persentase pencemaran udaranya."
+      }
+    ]
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "672a4d7c-0afb-46f3-bf16-093a73b30b65",
+        "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 617,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN DAMPAK AKTIVITAS GUNUNG API - 2025",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Desa Suka Maju",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pada 17 September 2025, aktivitas Gunung Aruna menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Suka Maju. Kondisi tersebut memicu kebakaran pada sebagian pohon dan semak di area terdampak.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Ringkasan Pemantauan",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tahun 2025",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Desa Desa Suka Maju",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Sumber kejadian Aktivitas Gunung Aruna",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Area terdampak Lereng timur dan kebun warga",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Persentase pencemaran udara 35%",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemantauan mencatat tingkat pencemaran udara sebesar 35%. Laporan ini tidak memuat perbandingan dengan tahun lain.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen ini merupakan data uji fiktif untuk evaluasi sistem.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Emergency",
+            "title": "Impact of Mount Aruna Activity on Suka Maju Village",
+            "summary": "On September 17, 2025, the activity of Mount Aruna caused heat and volcanic material to reach the vegetation around Suka Maju Village, leading to fires in some trees and shrubs in the affected area.",
+            "labels": [
+              "emergency"
+            ],
+            "fields": {
+              "event_date": "17 September 2025",
+              "affected_area": "Desa Suka Maju",
+              "impact_description": "panas dan material vulkanik mencapai area vegetasi",
+              "secondary_impact": "kebakaran pada sebagian pohon dan semak"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2025.pdf, page=1",
+                "quote": "Pada 17 September 2025, aktivitas Gunung Aruna menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Suka Maju. Kondisi tersebut memicu kebakaran pada sebagian pohon dan semak di area terdampak."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Health",
+            "title": "Air Quality Monitoring Data",
+            "summary": "Monitoring recorded an air pollution level of 35% during the year 2025. This report does not include comparisons with other years.",
+            "labels": [
+              "health"
+            ],
+            "fields": {
+              "monitoring_year": "2025",
+              "air_pollution_percentage": "35%"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2025.pdf, page=1",
+                "quote": "Pemantauan mencatat tingkat pencemaran udara sebesar 35%. Laporan ini tidak memuat perbandingan dengan tahun lain."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Emergency",
+            "title": "Affected Areas of Mount Aruna Activity",
+            "summary": "The areas affected by the activity of Mount Aruna include the eastern slope and residents' gardens.",
+            "labels": [
+              "emergency"
+            ],
+            "fields": {
+              "affected_areas": [
+                "Lereng timur",
+                "kebun warga"
+              ]
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2025.pdf, page=1",
+                "quote": "Area terdampak Lereng timur dan kebun warga"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "document_id": "02e37993-a90d-4cff-a398-ad7ca5229f97",
+        "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 626,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN DAMPAK AKTIVITAS GUNUNG API - 2026",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Desa Punggul",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pada 21 September 2026, aktivitas Gunung Aruna menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Punggul. Kondisi tersebut memicu kebakaran pada sebagian pohon dan semak di area terdampak.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Ringkasan Pemantauan",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tahun 2026",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Desa Desa Punggul",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Sumber kejadian Aktivitas Gunung Aruna",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Area terdampak Lereng selatan dan area vegetasi desa",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Persentase pencemaran udara 50%",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pemantauan mencatat tingkat pencemaran udara sebesar 50%. Laporan ini tidak memuat perbandingan dengan tahun sebelumnya.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen ini merupakan data uji fiktif untuk evaluasi sistem.",
+            "source": {
+              "filename": "TC12_Laporan_Dampak_Gunung_Api_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Emergency",
+            "title": "Impact of Mount Aruna Activity on Punggul Village",
+            "summary": "On September 21, 2026, the activity of Mount Aruna caused heat and volcanic material to reach the vegetation around Punggul Village, leading to fires in some trees and shrubs in the affected area.",
+            "labels": [
+              "emergency"
+            ],
+            "fields": {
+              "event_date": "21 September 2026",
+              "affected_area": "Desa Punggul",
+              "impact_description": "panas dan material vulkanik mencapai area vegetasi",
+              "secondary_impact": "kebakaran pada sebagian pohon dan semak"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2026.pdf, page=1",
+                "quote": "Pada 21 September 2026, aktivitas Gunung Aruna menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Punggul. Kondisi tersebut memicu kebakaran pada sebagian pohon dan semak di area terdampak."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Health",
+            "title": "Air Quality Monitoring in 2026",
+            "summary": "Monitoring recorded an air pollution level of 50% during the year 2026. This report does not include a comparison with the previous year.",
+            "labels": [
+              "health"
+            ],
+            "fields": {
+              "year": "2026",
+              "air_pollution_percentage": "50%",
+              "comparison_available": "null"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2026.pdf, page=1",
+                "quote": "Pemantauan mencatat tingkat pencemaran udara sebesar 50%. Laporan ini tidak memuat perbandingan dengan tahun sebelumnya."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Emergency",
+            "title": "Affected Areas of Mount Aruna Activity",
+            "summary": "The areas affected by the activity of Mount Aruna include the southern slope and the village vegetation area.",
+            "labels": [
+              "emergency"
+            ],
+            "fields": {
+              "source_activity": "Aktivitas Gunung Aruna",
+              "affected_locations": [
+                "Lereng selatan",
+                "area vegetasi desa"
+              ]
+            },
+            "evidence": [
+              {
+                "source": "filename=TC12_Laporan_Dampak_Gunung_Api_2026.pdf, page=1",
+                "quote": "Area terdampak Lereng selatan dan area vegetasi desa"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "turns": [
+    {
+      "prompt": "Ekstrak informasi penting dari laporan tahun 2025 ini, terutama lokasi kejadian, penyebab, dan persentase pencemaran udara.",
+      "result": {
+        "intent": "extract_information",
+        "answer": "Berikut adalah informasi penting yang diekstrak dari laporan tahun 2025:\n\n*   **Lokasi Kejadian:** Desa Suka Maju (terdampak oleh aktivitas Gunung Aruna).\n*   **Penyebab:** Aktivitas Gunung Aruna yang menyebabkan panas dan material vulkanik mencapai vegetasi.\n*   **Persentase Pencemaran Udara:** Tingkat pencemaran udara yang tercatat adalah 35% selama tahun 2025.\n\nInformasi tambahan:\n*   **Tanggal Kejadian:** 17 September 2025.\n*   **Dampak Sekunder:** Kebakaran pada sebagian pohon dan semak di area terdampak.\n*   **Area Terdampak Lain:** Lereng timur dan kebun warga.",
+        "source_ids": []
+      }
+    },
+    {
+      "prompt": "Buatkan berita tentang dampak aktivitas gunung api pada tahun 2026 ini. Tolong cari juga laporan tahun 2025 yang berkaitan dan bandingkan persentase pencemaran udaranya.",
+      "result": {
+        "completeness": {
+          "status": "has_conflicts",
+          "missing": [
+            {
+              "field": "air_pollution_percentage_2025",
+              "importance": "required",
+              "question": "Apakah ada laporan yang tersedia mengenai persentase pencemaran udara pada tahun 2025 untuk dibandingkan dengan data tahun 2026?",
+              "options": [],
+              "selection_type": "single"
+            }
+          ],
+          "conflicts": [
+            "The request asks to compare 2026 air pollution data with 2025 data, but only 2026 data is provided."
+          ],
+          "known_facts": [
+            "Aktivitas Gunung Aruna pada 21 September 2026 menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Punggul, memicu kebakaran pada sebagian pohon dan semak.",
+            "Pemantauan tahun 2026 mencatat tingkat pencemaran udara sebesar 50%. Laporan tersebut tidak memuat perbandingan dengan tahun sebelumnya.",
+            "Area yang terdampak aktivitas Gunung Aruna meliputi lereng selatan dan area vegetasi desa."
+          ]
+        },
+        "article": null,
+        "run_id": "eval-c4f29a81fab545fdbd0e1d1bf7229dd8",
+        "status": "awaiting_answers",
+        "quality": null,
+        "events": [
+          {
+            "event_type": "stage_started",
+            "label": "Memahami permintaan",
+            "content": "Memahami permintaan",
+            "tool_name": null,
+            "payload": {
+              "stage": "RequestUnderstanding"
+            },
+            "timestamp": 1790951828.9859672,
+            "sequence": 1
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Memahami permintaan",
+            "content": "Memahami permintaan",
+            "tool_name": null,
+            "payload": {
+              "stage": "RequestUnderstanding",
+              "elapsed_seconds": 0.46
+            },
+            "timestamp": 1790951829.442621,
+            "sequence": 2
+          },
+          {
+            "event_type": "stage_started",
+            "label": "Merencanakan penelitian sumber",
+            "content": "Merencanakan penelitian sumber",
+            "tool_name": null,
+            "payload": {
+              "stage": "ExecutionPlan"
+            },
+            "timestamp": 1790951829.443512,
+            "sequence": 3
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Merencanakan penelitian sumber",
+            "content": "Merencanakan penelitian sumber",
+            "tool_name": null,
+            "payload": {
+              "stage": "ExecutionPlan",
+              "elapsed_seconds": 1.37
+            },
+            "timestamp": 1790951830.812288,
+            "sequence": 4
+          },
+          {
+            "event_type": "planning",
+            "label": "Rencana editorial disiapkan",
+            "content": "Rencana editorial disiapkan",
+            "tool_name": null,
+            "payload": {
+              "steps": [
+                {
+                  "task": "evidence-research",
+                  "skill": "evidence-research"
+                },
+                {
+                  "task": "evidence-research",
+                  "skill": "evidence-research"
+                },
+                {
+                  "task": "evidence-research",
+                  "skill": "evidence-research"
+                }
+              ]
+            },
+            "timestamp": 1790951830.813261,
+            "sequence": 5
+          },
+          {
+            "event_type": "stage_started",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction"
+            },
+            "timestamp": 1790951830.816244,
+            "sequence": 6
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction",
+              "elapsed_seconds": 0.61
+            },
+            "timestamp": 1790951831.425817,
+            "sequence": 7
+          },
+          {
+            "event_type": "step_completed",
+            "label": "Langkah penelitian selesai",
+            "content": "Langkah penelitian selesai",
+            "tool_name": null,
+            "payload": {},
+            "timestamp": 1790951831.426659,
+            "sequence": 8
+          },
+          {
+            "event_type": "stage_started",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction"
+            },
+            "timestamp": 1790951831.427781,
+            "sequence": 9
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction",
+              "elapsed_seconds": 0.28
+            },
+            "timestamp": 1790951831.70931,
+            "sequence": 10
+          },
+          {
+            "event_type": "step_completed",
+            "label": "Langkah penelitian selesai",
+            "content": "Langkah penelitian selesai",
+            "tool_name": null,
+            "payload": {},
+            "timestamp": 1790951831.710243,
+            "sequence": 11
+          },
+          {
+            "event_type": "stage_started",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction"
+            },
+            "timestamp": 1790951831.711248,
+            "sequence": 12
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Memeriksa kebutuhan penelitian",
+            "content": "Memeriksa kebutuhan penelitian",
+            "tool_name": null,
+            "payload": {
+              "stage": "ToolAction",
+              "elapsed_seconds": 0.28
+            },
+            "timestamp": 1790951831.995318,
+            "sequence": 13
+          },
+          {
+            "event_type": "step_completed",
+            "label": "Langkah penelitian selesai",
+            "content": "Langkah penelitian selesai",
+            "tool_name": null,
+            "payload": {},
+            "timestamp": 1790951831.996028,
+            "sequence": 14
+          },
+          {
+            "event_type": "stage_started",
+            "label": "Memeriksa kelengkapan fakta",
+            "content": "Memeriksa kelengkapan fakta",
+            "tool_name": null,
+            "payload": {
+              "stage": "CompletenessResult"
+            },
+            "timestamp": 1790951831.9972758,
+            "sequence": 15
+          },
+          {
+            "event_type": "stage_completed",
+            "label": "Memeriksa kelengkapan fakta",
+            "content": "Memeriksa kelengkapan fakta",
+            "tool_name": null,
+            "payload": {
+              "stage": "CompletenessResult",
+              "elapsed_seconds": 2.7
+            },
+            "timestamp": 1790951834.699662,
+            "sequence": 16
+          },
+          {
+            "event_type": "completeness",
+            "label": "Kelengkapan dan konflik diperiksa",
+            "content": "Kelengkapan dan konflik diperiksa",
+            "tool_name": null,
+            "payload": {},
+            "timestamp": 1790951834.700639,
+            "sequence": 17
+          }
+        ],
+        "skills_used": [
+          {
+            "name": "evidence-research",
+            "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+          }
+        ],
+        "plan": [
+          {
+            "task": "evidence-research",
+            "skill": "evidence-research"
+          },
+          {
+            "task": "evidence-research",
+            "skill": "evidence-research"
+          },
+          {
+            "task": "evidence-research",
+            "skill": "evidence-research"
+          },
+          {
+            "task": "Write or revise draft",
+            "skill": "indonesian-news-writing"
+          },
+          {
+            "task": "Review evidence and revise within limits",
+            "skill": "editorial-review"
+          }
+        ],
+        "web_sources": [],
+        "guidance": null,
+        "metrics": {
+          "elapsed_seconds": 5.722,
+          "model_calls": 6,
+          "tool_calls": 0,
+          "revisions": 0,
+          "replans": 0
+        }
+      }
+    }
+  ],
+  "test_approval": "Simulated approval for isolated API test only",
+  "result": {
+    "completeness": {
+      "status": "has_conflicts",
+      "missing": [
+        {
+          "field": "air_pollution_percentage_2025",
+          "importance": "required",
+          "question": "Apakah ada laporan yang tersedia mengenai persentase pencemaran udara pada tahun 2025 untuk dibandingkan dengan data tahun 2026?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [
+        "The request asks to compare 2026 air pollution data with 2025 data, but only 2026 data is provided."
+      ],
+      "known_facts": [
+        "Aktivitas Gunung Aruna pada 21 September 2026 menyebabkan panas dan material vulkanik mencapai area vegetasi di sekitar Desa Punggul, memicu kebakaran pada sebagian pohon dan semak.",
+        "Pemantauan tahun 2026 mencatat tingkat pencemaran udara sebesar 50%. Laporan tersebut tidak memuat perbandingan dengan tahun sebelumnya.",
+        "Area yang terdampak aktivitas Gunung Aruna meliputi lereng selatan dan area vegetasi desa."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-c4f29a81fab545fdbd0e1d1bf7229dd8",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951828.9859672,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.46
+        },
+        "timestamp": 1790951829.442621,
+        "sequence": 2
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Merencanakan penelitian sumber",
+        "content": "Merencanakan penelitian sumber",
+        "tool_name": null,
+        "payload": {
+          "stage": "ExecutionPlan"
+        },
+        "timestamp": 1790951829.443512,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Merencanakan penelitian sumber",
+        "content": "Merencanakan penelitian sumber",
+        "tool_name": null,
+        "payload": {
+          "stage": "ExecutionPlan",
+          "elapsed_seconds": 1.37
+        },
+        "timestamp": 1790951830.812288,
+        "sequence": 4
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": [
+            {
+              "task": "evidence-research",
+              "skill": "evidence-research"
+            },
+            {
+              "task": "evidence-research",
+              "skill": "evidence-research"
+            },
+            {
+              "task": "evidence-research",
+              "skill": "evidence-research"
+            }
+          ]
+        },
+        "timestamp": 1790951830.813261,
+        "sequence": 5
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction"
+        },
+        "timestamp": 1790951830.816244,
+        "sequence": 6
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction",
+          "elapsed_seconds": 0.61
+        },
+        "timestamp": 1790951831.425817,
+        "sequence": 7
+      },
+      {
+        "event_type": "step_completed",
+        "label": "Langkah penelitian selesai",
+        "content": "Langkah penelitian selesai",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951831.426659,
+        "sequence": 8
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction"
+        },
+        "timestamp": 1790951831.427781,
+        "sequence": 9
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction",
+          "elapsed_seconds": 0.28
+        },
+        "timestamp": 1790951831.70931,
+        "sequence": 10
+      },
+      {
+        "event_type": "step_completed",
+        "label": "Langkah penelitian selesai",
+        "content": "Langkah penelitian selesai",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951831.710243,
+        "sequence": 11
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction"
+        },
+        "timestamp": 1790951831.711248,
+        "sequence": 12
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kebutuhan penelitian",
+        "content": "Memeriksa kebutuhan penelitian",
+        "tool_name": null,
+        "payload": {
+          "stage": "ToolAction",
+          "elapsed_seconds": 0.28
+        },
+        "timestamp": 1790951831.995318,
+        "sequence": 13
+      },
+      {
+        "event_type": "step_completed",
+        "label": "Langkah penelitian selesai",
+        "content": "Langkah penelitian selesai",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951831.996028,
+        "sequence": 14
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951831.9972758,
+        "sequence": 15
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.7
+        },
+        "timestamp": 1790951834.699662,
+        "sequence": 16
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951834.700639,
+        "sequence": 17
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "evidence-research",
+        "skill": "evidence-research"
+      },
+      {
+        "task": "evidence-research",
+        "skill": "evidence-research"
+      },
+      {
+        "task": "evidence-research",
+        "skill": "evidence-research"
+      },
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 5.722,
+      "model_calls": 6,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "cleanup_errors": [],
+  "duration_seconds": 28.49
+}

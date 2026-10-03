@@ -1,0 +1,271 @@
+{
+  "case": {
+    "id": "TC08",
+    "mode": "draft",
+    "files": [
+      "TC08_Scholarship_Selection.pdf"
+    ],
+    "prompt": "Buatkan berita berdasarkan informasi dalam dokumen ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "50 applicants and 20 selected recipients; never claim all 50 received scholarships.",
+      "Include both criteria: household income and school enrolment.",
+      "Announcement scheduled for 20 October 2026. Before that date, use planned wording. Passage of the date alone does not prove announcement or distribution occurred.",
+      "No invented scholarship amount, recipient names, payment dates or completed distribution."
+    ],
+    "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring.",
+    "temporal_review_note": "Judge planned vs completed wording using actual run date and source evidence; do not inject a fabricated current date."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "42e729be-1dd2-4be1-9f7f-bae33be7900e",
+        "filename": "TC08_Scholarship_Selection.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 192,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "Catatan Seleksi Beasiswa Desa",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pendaftar: 50 orang",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Penerima terpilih: 20 orang",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dasar penilaian:",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "- Pendapatan rumah tangga",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "- Status terdaftar sebagai siswa di sekolah",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Pengumuman hasil: 20 Oktober 2026",
+            "source": {
+              "filename": "TC08_Scholarship_Selection.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Scholarship Selection Overview",
+            "summary": "The selection process for the village scholarship involved 50 applicants, with 20 recipients chosen. The criteria for selection included household income and student registration status.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "applicants": 50,
+              "selected_recipients": 20,
+              "assessment_criteria": [
+                "Pendapatan rumah tangga",
+                "Status terdaftar sebagai siswa di sekolah"
+              ],
+              "announcement_date": "20 Oktober 2026"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC08_Scholarship_Selection.pdf, page=1",
+                "quote": "Pendaftar: 50 orang"
+              },
+              {
+                "source": "filename=TC08_Scholarship_Selection.pdf, page=1",
+                "quote": "Penerima terpilih: 20 orang"
+              },
+              {
+                "source": "filename=TC08_Scholarship_Selection.pdf, page=1",
+                "quote": "Dasar penilaian:\n- Pendapatan rumah tangga\n- Status terdaftar sebagai siswa di sekolah"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "announcement_date",
+          "importance": "required",
+          "question": "Kapan pengumuman mengenai seleksi beasiswa ini dikeluarkan?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Jumlah pendaftar untuk beasiswa desa adalah 50 orang.",
+        "Jumlah penerima terpilih adalah 20 orang.",
+        "Kriteria seleksi meliputi pendapatan rumah tangga dan status terdaftar sebagai siswa di sekolah."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-1a71511613f345c2b48adde4cb204d98",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951781.7698371,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.45
+        },
+        "timestamp": 1790951782.2229152,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951782.2236722,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951782.225145,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.59
+        },
+        "timestamp": 1790951783.8164532,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951783.817297,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.055,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 5.25
+}

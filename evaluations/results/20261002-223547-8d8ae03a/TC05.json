@@ -1,0 +1,512 @@
+{
+  "case": {
+    "id": "TC05",
+    "mode": "draft",
+    "files": [
+      "TC05_Population_Summary.xlsx"
+    ],
+    "prompt": "Buatkan berita berdasarkan data penduduk dalam dokumen ini.",
+    "review_checklist": [
+      "Male 1226; female 1305; total 2531 across all 12 areas; reference date 30 September 2026.",
+      "No omitted or duplicate areas; no invented growth, earlier-year comparisons or trends."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "5b348ef6-ca01-4cb0-b0b0-453f9bc920cb",
+        "filename": "TC05_Population_Summary.xlsx",
+        "media_type": "application/octet-stream",
+        "character_count": 533,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "Wilayah | Laki-laki | Perempuan | Tanggal Referensi",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Wilayah",
+                "Laki-laki",
+                "Perempuan",
+                "Tanggal Referensi"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun A | 120 | 130 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun A",
+                "120",
+                "130",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun B | 90 | 110 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun B",
+                "90",
+                "110",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun C | 105 | 98 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun C",
+                "105",
+                "98",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun D | 87 | 96 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun D",
+                "87",
+                "96",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun E | 112 | 121 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun E",
+                "112",
+                "121",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun F | 76 | 84 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun F",
+                "76",
+                "84",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun G | 99 | 107 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun G",
+                "99",
+                "107",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun H | 134 | 128 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun H",
+                "134",
+                "128",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun I | 81 | 89 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun I",
+                "81",
+                "89",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun J | 118 | 125 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun J",
+                "118",
+                "125",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun K | 95 | 102 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun K",
+                "95",
+                "102",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Dusun L | 109 | 115 | 2026-09-30 00:00:00",
+            "source": {
+              "filename": "TC05_Population_Summary.xlsx",
+              "page": null,
+              "sheet": "Data Penduduk",
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Dusun L",
+                "109",
+                "115",
+                "2026-09-30 00:00:00"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC05_Population_Summary.xlsx — Data Penduduk",
+            "summary": "Ringkasan data TC05_Population_Summary.xlsx — Data Penduduk: 12 catatan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 12,
+                "record_unit": "catatan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": null,
+                "columns": {
+                  "wilayah": {
+                    "label": "Wilayah",
+                    "missing": 0,
+                    "distinct_values": 12,
+                    "counts": {
+                      "Dusun A": 1,
+                      "Dusun B": 1,
+                      "Dusun C": 1,
+                      "Dusun D": 1,
+                      "Dusun E": 1,
+                      "Dusun F": 1,
+                      "Dusun G": 1,
+                      "Dusun H": 1,
+                      "Dusun I": 1,
+                      "Dusun J": 1,
+                      "Dusun K": 1,
+                      "Dusun L": 1
+                    }
+                  },
+                  "laki_laki": {
+                    "label": "Laki-laki",
+                    "missing": 0,
+                    "distinct_values": 12,
+                    "counts": {
+                      "120": 1,
+                      "90": 1,
+                      "105": 1,
+                      "87": 1,
+                      "112": 1,
+                      "76": 1,
+                      "99": 1,
+                      "134": 1,
+                      "81": 1,
+                      "118": 1,
+                      "95": 1,
+                      "109": 1
+                    },
+                    "minimum": "76",
+                    "maximum": "134"
+                  },
+                  "perempuan": {
+                    "label": "Perempuan",
+                    "missing": 0,
+                    "distinct_values": 12,
+                    "counts": {
+                      "130": 1,
+                      "110": 1,
+                      "98": 1,
+                      "96": 1,
+                      "121": 1,
+                      "84": 1,
+                      "107": 1,
+                      "128": 1,
+                      "89": 1,
+                      "125": 1,
+                      "102": 1,
+                      "115": 1
+                    },
+                    "minimum": "84",
+                    "maximum": "130"
+                  },
+                  "tanggal_referensi": {
+                    "label": "Tanggal Referensi",
+                    "missing": 0,
+                    "distinct_values": 1,
+                    "counts": {
+                      "2026-09-30 00:00:00": 12
+                    }
+                  }
+                },
+                "duplicate_rows": 0,
+                "source_row_ranges": [
+                  [
+                    2,
+                    13
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC05_Population_Summary.xlsx, sheet=Data Penduduk, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 12, \"record_unit\": \"catatan\", \"unique_person_count\": null, \"distinct_visit_id_count\": null, \"columns\": {\"wilayah\": {\"label\": \"Wilayah\", \"missing\": 0, \"distinct_values\": 12, \"counts\": {\"Dusun A\": 1, \"Dusun B\": 1, \"Dusun C\": 1, \"Dusun D\": 1, \"Dusun E\": 1, \"Dusun F\": 1, \"Dusun G\": 1, \"Dusun H\": 1, \"Dusun I\": 1, \"Dusun J\": 1, \"Dusun K\": 1, \"Dusun L\": 1}}, \"laki_laki\": {\"label\": \"Laki-laki\", \"missing\": 0, \"distinct_values\": 12, \"counts\": {\"120\": 1, \"90\": 1, \"105\": 1, \"87\": 1, \"112\": 1, \"76\": 1, \"99\": 1, \"134\": 1, \"81\": 1, \"118\": 1, \"95\": 1, \"109\": 1}, \"minimum\": \"76\", \"maximum\": \"134\"}, \"perempuan\": {\"label\": \"Perempuan\", \"missing\": 0, \"distinct_values\": 12, \"counts\": {\"130\": 1, \"110\": 1, \"98\": 1, \"96\": 1, \"121\": 1, \"84\": 1, \"107\": 1, \"128\": 1, \"89\": 1, \"125\": 1, \"102\": 1, \"115\": 1}, \"minimum\": \"84\", \"maximum\": \"130\"}, \"tanggal_referensi\": {\"label\": \"Tanggal Referensi\", \"missing\": 0, \"distinct_values\": 1, \"counts\": {\"2026-09-30 00:00:00\": 12}}}, \"duplicate_rows\": 0, \"source_row_ranges\": [[2, 13]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "unique_person_count",
+          "importance": "required",
+          "question": "Berapa jumlah orang unik yang tercatat dalam data ini?",
+          "options": [],
+          "selection_type": "single"
+        },
+        {
+          "field": "distinct_visit_id_count",
+          "importance": "required",
+          "question": "Berapa jumlah ID kunjungan yang berbeda?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Terdapat 12 catatan tercatat.",
+        "Data mencakup distribusi penduduk berdasarkan wilayah (Dusun A hingga Dusun L), jumlah laki-laki, dan jumlah perempuan.",
+        "Tanggal referensi data adalah 2026-09-30 00:00:00."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-d1098bb520f644bcb061d5fbe7bede35",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951765.050931,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.49
+        },
+        "timestamp": 1790951765.541389,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951765.542332,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951765.543812,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.63
+        },
+        "timestamp": 1790951768.170888,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951768.1718001,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 3.127,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 3.14
+}

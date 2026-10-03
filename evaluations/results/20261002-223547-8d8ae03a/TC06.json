@@ -1,0 +1,332 @@
+{
+  "case": {
+    "id": "TC06",
+    "mode": "draft",
+    "files": [
+      "TC06_Budget_Report.xlsx"
+    ],
+    "prompt": "Buatkan berita berdasarkan catatan anggaran kegiatan dalam dokumen ini untuk warga desa.",
+    "review_checklist": [
+      "Allocation Rp10.000.000; spending Rp6.500.000 (2.000.000 + 3.000.000 + 1.500.000); remainder Rp3.500.000.",
+      "Use neutral sisa anggaran; no invented expenses, use of remaining funds, misuse or inefficiency."
+    ],
+    "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "4da0cb5c-93b1-4435-a2d2-e908da91044e",
+        "filename": "TC06_Budget_Report.xlsx",
+        "media_type": "application/octet-stream",
+        "character_count": 266,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "Kegiatan | Lomba Layang-Layang Desa | ",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Kegiatan",
+                "Lomba Layang-Layang Desa",
+                ""
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Jenis | Catatan | Jumlah (Rp)",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Jenis",
+                "Catatan",
+                "Jumlah (Rp)"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Alokasi | Anggaran kegiatan | 10000000",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Alokasi",
+                "Anggaran kegiatan",
+                "10000000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Pengeluaran | Tempat kegiatan | 2000000",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pengeluaran",
+                "Tempat kegiatan",
+                "2000000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Pengeluaran | Bahan dan perlengkapan | 3000000",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pengeluaran",
+                "Bahan dan perlengkapan",
+                "3000000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Pengeluaran | Konsumsi | 1500000",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Pengeluaran",
+                "Konsumsi",
+                "1500000"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "Catatan | Rekap pengeluaran yang tercatat | ",
+            "source": {
+              "filename": "TC06_Budget_Report.xlsx",
+              "page": null,
+              "sheet": "Catatan anggaran",
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "Catatan",
+                "Rekap pengeluaran yang tercatat",
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Finance",
+            "title": "Budget Allocation for Kite Festival",
+            "summary": "The total budget allocated for the Kite Festival activity is 10,000,000 Indonesian Rupiah. This budget covers various expenditures for the event.",
+            "labels": [
+              "finance"
+            ],
+            "fields": {
+              "activity": "Lomba Layang-Layang Desa",
+              "total_budget_idr": 10000000
+            },
+            "evidence": [
+              {
+                "source": "filename=TC06_Budget_Report.xlsx, sheet=Catatan anggaran, row=3",
+                "quote": "Alokasi | Anggaran kegiatan | 10000000"
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Finance",
+            "title": "Expenditure Breakdown for Kite Festival",
+            "summary": "Expenditures for the Kite Festival include costs for the venue, materials and equipment, and consumption. These specific amounts are detailed in the budget report.",
+            "labels": [
+              "finance"
+            ],
+            "fields": {
+              "venue_cost_idr": 2000000,
+              "materials_cost_idr": 3000000,
+              "consumption_cost_idr": 1500000
+            },
+            "evidence": [
+              {
+                "source": "filename=TC06_Budget_Report.xlsx, sheet=Catatan anggaran, row=4",
+                "quote": "Pengeluaran | Tempat kegiatan | 2000000"
+              },
+              {
+                "source": "filename=TC06_Budget_Report.xlsx, sheet=Catatan anggaran, row=5",
+                "quote": "Pengeluaran | Bahan dan perlengkapan | 3000000"
+              },
+              {
+                "source": "filename=TC06_Budget_Report.xlsx, sheet=Catatan anggaran, row=6",
+                "quote": "Pengeluaran | Konsumsi | 1500000"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "event_name",
+          "importance": "required",
+          "question": "Apa nama kegiatan yang dibahas dalam catatan anggaran ini?",
+          "options": [],
+          "selection_type": "single"
+        },
+        {
+          "field": "location",
+          "importance": "required",
+          "question": "Di desa mana kegiatan ini dilaksanakan?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Total anggaran yang dialokasikan untuk kegiatan Lomba Layang-Layang Desa adalah 10.000.000 Rupiah.",
+        "Rincian pengeluaran meliputi: biaya tempat kegiatan sebesar 2.000.000 Rupiah, biaya bahan dan perlengkapan sebesar 3.000.000 Rupiah, dan biaya konsumsi sebesar 1.500.000 Rupiah."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-7d2d89013c2d42388c2cc3bd841d14b4",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951773.190185,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.46
+        },
+        "timestamp": 1790951773.6521542,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951773.652919,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951773.65438,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.34
+        },
+        "timestamp": 1790951775.9897962,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951775.990462,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.806,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 7.82
+}

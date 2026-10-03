@@ -1,0 +1,263 @@
+{
+  "case": {
+    "id": "TC09",
+    "mode": "draft",
+    "files": [
+      "TC09_Service_Interruption.txt"
+    ],
+    "prompt": "Buatkan berita berdasarkan catatan layanan dalam dokumen ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "Scheduled water interruption: 12 October 2026, 08.00–14.00 WITA; scheduled duration six hours.",
+      "Both Dusun Timur and Dusun Tengah affected; reason scheduled pipe maintenance.",
+      "Use planned wording before event. Do not claim restoration occurred or guarantee restoration at 14.00; no invented affected areas or alternative supplies."
+    ],
+    "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring.",
+    "temporal_review_note": "Judge planned vs completed wording using actual run date and source evidence; do not inject a fabricated current date."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "ed405dc5-9dbf-48ae-9570-5d12e4a4aabe",
+        "filename": "TC09_Service_Interruption.txt",
+        "media_type": "application/octet-stream",
+        "character_count": 201,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "Catatan layanan air",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 1
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Gangguan terjadwal: penghentian sementara pasokan air",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 3
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Tanggal: 12 Oktober 2026",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 4
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Waktu: 08.00-14.00 WITA",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 5
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Wilayah terdampak: Dusun Timur, Dusun Tengah",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 6
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Keperluan: pemeliharaan pipa terjadwal",
+            "source": {
+              "filename": "TC09_Service_Interruption.txt",
+              "page": null,
+              "sheet": null,
+              "row": null,
+              "paragraph": 7
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Emergency",
+            "title": "Scheduled Water Service Interruption",
+            "summary": "A scheduled temporary suspension of water supply is planned for maintenance purposes. This interruption will affect specific areas on a designated date and time.",
+            "labels": [
+              "water",
+              "maintenance"
+            ],
+            "fields": {
+              "event_type": "Gangguan terjadwal: penghentian sementara pasokan air",
+              "date": "12 Oktober 2026",
+              "time": "08.00-14.00 WITA",
+              "affected_areas": "Dusun Timur, Dusun Tengah",
+              "reason": "pemeliharaan pipa terjadwal"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC09_Service_Interruption.txt, paragraph=3",
+                "quote": "Gangguan terjadwal: penghentian sementara pasokan air"
+              },
+              {
+                "source": "filename=TC09_Service_Interruption.txt, paragraph=4",
+                "quote": "Tanggal: 12 Oktober 2026"
+              },
+              {
+                "source": "filename=TC09_Service_Interruption.txt, paragraph=5",
+                "quote": "Waktu: 08.00-14.00 WITA"
+              },
+              {
+                "source": "filename=TC09_Service_Interruption.txt, paragraph=7",
+                "quote": "Keperluan: pemeliharaan pipa terjadwal"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "headline",
+          "importance": "required",
+          "question": "Apa judul berita yang diinginkan untuk artikel ini?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Jenis gangguan: Gangguan terjadwal: penghentian sementara pasokan air.",
+        "Tanggal gangguan: 12 Oktober 2026.",
+        "Waktu gangguan: 08.00-14.00 WITA.",
+        "Area terdampak: Dusun Timur, Dusun Tengah.",
+        "Alasan: Pemeliharaan pipa terjadwal."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-380617bbe4a74553a0cd068f6d86e3e8",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951787.606088,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.51
+        },
+        "timestamp": 1790951788.116858,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951788.11778,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951788.119149,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.86
+        },
+        "timestamp": 1790951789.9765172,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951789.977429,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.377,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 6.16
+}

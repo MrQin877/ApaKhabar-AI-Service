@@ -1,0 +1,8 @@
+{
+  "case_id": "TC04",
+  "status": "evaluation_error",
+  "reason": "Generation provider llama_cpp failed (ConnectionError)",
+  "extraction": null,
+  "response": null,
+  "source_report": "/Users/mrqin877/Documents/Fold/Help/BIT/Final Year Project/FYP 1/ApaKhabar-AI-Service/evaluations/results/20261002-223547-8d8ae03a/TC04.json"
+}

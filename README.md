@@ -70,7 +70,7 @@ The web frontend uses Laravel's authenticated progress proxy. Run a concurrent P
 4. Pause for moderator approval of web recommendations. Rejected web results are never drafting evidence.
 5. Check completeness and conflicts. Pause for at most one clarification round.
 6. Write or revise a draft using approved evidence and explicit user facts.
-7. Reflect against the evidence and revise at most twice. Retain the best reviewed candidate.
+7. Reflect against the evidence and revise within the configured budget (default: twice). Material missing evidence can trigger one replanning/research cycle using the remaining tool and revision budgets, followed by source approval, completeness checking, rewriting, and review. Writing-only feedback stays in the revision loop.
 8. Return the draft, sources, findings, weighted quality score, actual events, skill hashes, and execution metrics. Laravel saves a draft version; publication remains a human action.
 
 No sufficient facts after clarification produces `insufficient_evidence`, not an invented article. Scores are model estimates, not measured accuracy. Source IDs, category membership, tool schemas, access scope, and loop bounds also have deterministic checks.

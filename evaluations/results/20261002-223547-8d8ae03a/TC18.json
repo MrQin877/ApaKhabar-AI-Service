@@ -1,0 +1,2142 @@
+{
+  "case": {
+    "id": "TC18",
+    "mode": "draft",
+    "files": [
+      "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf"
+    ],
+    "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM, kegiatan peserta, dan hasil tugas praktik berdasarkan dokumen ini.",
+    "review_checklist": [
+      "One event; 25 attendees; 18 completions; product photography and online marketing; no summed duplicates or repeated date/venue."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "2efad6da-319b-4c31-b162-16c9bb4f1d96",
+        "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 11569,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM 1",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Kompilasi catatan kegiatan. Seluruh catatan berikut merujuk pada satu kegiatan yang sama. Data fiktif untuk pengujian sistem.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 001 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 002 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 003 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 004 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 005 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 006 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 007 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 008 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 009 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 010 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 011 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 012 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 013 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 014 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 015 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 016 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 017 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 018 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 019 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 020 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 021 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 022 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 023 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 024 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM 2",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 025 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 026 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 027 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 028 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 029 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 030 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 031 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 032 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 033 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 034 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 035 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 036 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 037 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 038 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 039 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 040 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 041 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 042 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 043 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 044 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 045 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 046 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 047 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 048 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 049 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 050 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 051 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM 3",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 052 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 053 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 054 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 055 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 056 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 057 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 058 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 059 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 060 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 061 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 062 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 063 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 064 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 065 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 066 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 067 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 068 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 069 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 070 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 071 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 072 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 073 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 074 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 075 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 076 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 077 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 078 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM 4",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 079 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 080 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 081 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 082 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 083 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 084 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 085 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 086 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 087 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 088 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 089 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 090 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 091 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 092 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 093 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 094 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 095 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 096 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 097 - Sebanyak 18 peserta Pelatihan Digital UMKM menyelesaikan tugas praktik.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 098 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 099 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 100 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 101 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 102 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 103 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 104 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 105 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 106 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 4,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Laporan Pelatihan Digital UMKM 5",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 107 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 108 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 109 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 110 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 111 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 112 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 113 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 114 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 115 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 116 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 117 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 118 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 119 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 120 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 121 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 122 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 123 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 124 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 125 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 126 - Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 127 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 128 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 129 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan 130 - Pelatihan Digital UMKM dihadiri oleh 25 peserta.",
+            "source": {
+              "filename": "TC18_Laporan_Pelatihan_Digital_130_Entri.pdf",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital UMKM",
+            "summary": "The Digital UMKM Training was organized by the Government of Suka Maju Village and took place on September 20, 2026. The training covered product photography and online marketing.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "organizer": "Pemerintah Desa Suka Maju",
+              "date": "20 September 2026",
+              "location": "Balai Desa Suka Maju",
+              "participants": 25,
+              "materials_covered": [
+                "fotografi produk",
+                "pemasaran daring"
+              ]
+            },
+            "evidence": [
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=1",
+                "quote": "Catatan 001 - Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=1",
+                "quote": "Catatan 002 - Pelatihan Digital UMKM dilaksanakan pada 20 September 2026."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=1",
+                "quote": "Catatan 003 - Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=1",
+                "quote": "Catatan 004 - Pelatihan Digital UMKM dihadiri oleh 25 peserta."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=1",
+                "quote": "Catatan 005 - Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Digital UMKM Training Overview",
+            "summary": "The Digital UMKM Training covers product photography and online marketing. This training is organized by the Government of Suka Maju and is scheduled for September 20, 2026.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "organization": "Pemerintah Desa Suka Maju",
+              "date": "20 September 2026",
+              "location": "Balai Desa Suka Maju",
+              "participants": 25,
+              "materials_covered": "fotografi produk dan pemasaran daring"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=3",
+                "quote": "Materi Pelatihan Digital UMKM mencakup fotografi produk dan pemasaran daring."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=3",
+                "quote": "Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=3",
+                "quote": "Pelatihan Digital UMKM dilaksanakan pada 20 September 2026."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Training Content Details",
+            "summary": "Participants in the Digital UMKM Training receive explanations and practical sessions on product photography. The training focuses on both material explanation and hands-on practice.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "content_focus": "penjelasan materi dan praktik pengambilan foto produk"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=3",
+                "quote": "Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=4",
+                "quote": "Dalam Pelatihan Digital UMKM, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Training Logistics",
+            "summary": "The Digital UMKM Training was held at the Suka Maju Village Hall. The event was attended by 25 participants.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "location": "Balai Desa Suka Maju",
+              "attendance_count": 25
+            },
+            "evidence": [
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=3",
+                "quote": "Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=4",
+                "quote": "Lokasi Pelatihan Digital UMKM adalah Balai Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=4",
+                "quote": "Pelatihan Digital UMKM dihadiri oleh 25 peserta."
+              }
+            ],
+            "confidence": 1.0
+          },
+          {
+            "information_id": null,
+            "type": "Event",
+            "title": "Pelatihan Digital UMKM",
+            "summary": "The Digital UMKM Training was organized by the Suka Maju Village Government and took place on September 20, 2026. The training covered product photography and online marketing.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "organizer": "Pemerintah Desa Suka Maju",
+              "date": "20 September 2026",
+              "location": "Balai Desa Suka Maju",
+              "participants": 25,
+              "materials_covered": "fotografi produk dan pemasaran daring"
+            },
+            "evidence": [
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=5",
+                "quote": "Pelatihan Digital UMKM merupakan kegiatan yang diselenggarakan oleh Pemerintah Desa Suka Maju."
+              },
+              {
+                "source": "filename=TC18_Laporan_Pelatihan_Digital_130_Entri.pdf, page=5",
+                "quote": "Pelatihan Digital UMKM dilaksanakan pada 20 September 2026."
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "ready",
+      "missing": [],
+      "conflicts": [],
+      "known_facts": [
+        "Pelatihan Digital UMKM diselenggarakan oleh Pemerintah Desa Suka Maju.",
+        "Pelatihan ini dilaksanakan pada 20 September 2026.",
+        "Lokasi pelatihan adalah Balai Desa Suka Maju.",
+        "Pelatihan ini diikuti oleh 25 peserta.",
+        "Materi pelatihan mencakup fotografi produk dan pemasaran daring.",
+        "Peserta mengikuti penjelasan materi dan praktik pengambilan foto produk."
+      ]
+    },
+    "article": {
+      "headline": "Pemerintah Desa Suka Maju Gelar Pelatihan Digital UMKM, Peserta Pelajari Fotografi Produk dan Pemasaran Daring",
+      "subheadline": null,
+      "lead": "Pemerintah Desa Suka Maju menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026 di Balai Desa Suka Maju. Kegiatan ini diikuti oleh 25 peserta yang mendapatkan materi mengenai fotografi produk dan pemasaran daring.",
+      "body": [
+        "Pelatihan Digital UMKM ini dilaksanakan pada 20 September 2026 dan diselenggarakan oleh Pemerintah Desa Suka Maju. Acara tersebut bertempat di Balai Desa Suka Maju.",
+        "Selama pelatihan, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk. Materi yang dibahas mencakup fotografi produk dan pemasaran daring.",
+        "Kegiatan ini dihadiri oleh 25 peserta yang mengikuti sesi penjelasan materi dan praktik pengambilan foto produk."
+      ],
+      "summary": "Pelatihan Digital UMKM yang diselenggarakan oleh Pemerintah Desa Suka Maju pada 20 September 2026 di Balai Desa Suka Maju diikuti oleh 25 peserta. Materi yang disampaikan meliputi fotografi produk dan pemasaran daring, di mana peserta mendapatkan penjelasan materi dan praktik pengambilan foto produk.",
+      "labels": [
+        "education"
+      ],
+      "language": "id",
+      "sources_used": [
+        "provided:0",
+        "provided:1",
+        "provided:2",
+        "provided:3",
+        "provided:4"
+      ],
+      "warnings": [
+        "Tidak ada informasi mengenai hasil tugas praktik yang spesifik selain kegiatan praktik pengambilan foto produk."
+      ],
+      "category": null
+    },
+    "run_id": "eval-f6310b7dd233481fa5c9c91d69b15fd3",
+    "status": "completed",
+    "quality": {
+      "dimensions": {
+        "accuracy": 95.0,
+        "completeness": 90.0,
+        "relevance": 85.0,
+        "readability": 90.0,
+        "structure": 85.0,
+        "language": 95.0,
+        "safety": 100.0
+      },
+      "claim_checks": [
+        {
+          "claim": "Pemerintah Desa Suka Maju menyelenggarakan Pelatihan Digital UMKM pada 20 September 2026 di Balai Desa Suka Maju.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:1",
+            "provided:2",
+            "provided:3",
+            "provided:4"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini diikuti oleh 25 peserta yang mendapatkan materi mengenai fotografi produk dan pemasaran daring.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:1",
+            "provided:2",
+            "provided:3",
+            "provided:4"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Pelatihan Digital UMKM ini dilaksanakan pada 20 September 2026 dan diselenggarakan oleh Pemerintah Desa Suka Maju.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:1",
+            "provided:2",
+            "provided:3",
+            "provided:4"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Selama pelatihan, peserta mengikuti penjelasan materi dan praktik pengambilan foto produk.",
+          "supported": true,
+          "source_ids": [
+            "provided:2",
+            "provided:3",
+            "provided:4"
+          ],
+          "issue": ""
+        },
+        {
+          "claim": "Kegiatan ini dihadiri oleh 25 peserta yang mengikuti sesi penjelasan materi dan praktik pengambilan foto produk.",
+          "supported": true,
+          "source_ids": [
+            "provided:0",
+            "provided:1",
+            "provided:2",
+            "provided:3",
+            "provided:4"
+          ],
+          "issue": ""
+        }
+      ],
+      "improvements": [
+        "Tidak ada informasi spesifik mengenai hasil tugas praktik yang spesifik selain kegiatan praktik pengambilan foto produk."
+      ],
+      "warnings": [
+        "Tidak ada informasi mengenai hasil tugas praktik yang spesifik selain kegiatan praktik pengambilan foto produk."
+      ],
+      "needs_revision": false,
+      "evidence_gaps": [],
+      "quality_score": 91.25,
+      "quality_label": "good",
+      "editorial_issues": [],
+      "publish_blocked": false,
+      "evaluation_version": "separate-judge-v1",
+      "evaluator_model": "apakhabar-judge"
+    },
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951932.2799602,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.46
+        },
+        "timestamp": 1790951932.742826,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951932.7438478,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951932.745579,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 1.9
+        },
+        "timestamp": 1790951934.650389,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951934.651377,
+        "sequence": 6
+      },
+      {
+        "event_type": "fact_analysis",
+        "label": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "content": "Fakta utama, kegiatan, dan hasil dirangkum sebelum penulisan",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951934.652447,
+        "sequence": 7
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle"
+        },
+        "timestamp": 1790951934.653425,
+        "sequence": 8
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Menyusun draf",
+        "content": "Menyusun draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "NewsArticle",
+          "elapsed_seconds": 4.73
+        },
+        "timestamp": 1790951939.385726,
+        "sequence": 9
+      },
+      {
+        "event_type": "draft",
+        "label": "Draf disusun dari bukti yang tersedia",
+        "content": "Draf disusun dari bukti yang tersedia",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951939.386821,
+        "sequence": 10
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection"
+        },
+        "timestamp": 1790951939.388103,
+        "sequence": 11
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Meninjau klaim dan kualitas draf",
+        "content": "Meninjau klaim dan kualitas draf",
+        "tool_name": null,
+        "payload": {
+          "stage": "Reflection",
+          "elapsed_seconds": 9.04
+        },
+        "timestamp": 1790951948.429975,
+        "sequence": 12
+      },
+      {
+        "event_type": "reflection",
+        "label": "Draf ditinjau terhadap bukti",
+        "content": "Draf ditinjau terhadap bukti",
+        "tool_name": null,
+        "payload": {
+          "quality_score": 91.25,
+          "publish_blocked": false
+        },
+        "timestamp": 1790951948.431059,
+        "sequence": 13
+      },
+      {
+        "event_type": "completed",
+        "label": "Draf siap untuk tinjauan moderator",
+        "content": "Draf siap untuk tinjauan moderator",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951948.432062,
+        "sequence": 14
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      },
+      {
+        "name": "indonesian-news-writing",
+        "version": "98480f03f9e852d49a80ec290304aa2d537bf2ce5b5d74ed040c0cdb17541bed"
+      },
+      {
+        "name": "editorial-review",
+        "version": "00b4d87102c9edd6fbbcdefa5bca3afcf9eb57ba5c949557b95416c500c80432"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 16.159,
+      "model_calls": 3,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 42.34
+}

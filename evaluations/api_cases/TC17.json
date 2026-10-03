@@ -1,0 +1,12 @@
+{
+  "id": "TC17",
+  "mode": "analysis",
+  "files": [
+    "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv"
+  ],
+  "prompt": "Tolong rangkum hasil survei kebutuhan pelatihan warga, terutama pemasaran, keuangan, dan pengemasan, berdasarkan file ini.",
+  "review_checklist": [
+    "150 respondents; marketing 120 (80%); finance 90 (60%); packaging 90 (60%); 300 selections; multiple choices allowed."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

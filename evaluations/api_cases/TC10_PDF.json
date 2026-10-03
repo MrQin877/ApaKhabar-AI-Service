@@ -1,0 +1,12 @@
+{
+  "id": "TC10_PDF",
+  "mode": "draft",
+  "files": [
+    "TC10_Pengumuman_Kerja_Bakti_Scanned.pdf"
+  ],
+  "prompt": "Buatkan pengumuman tentang kegiatan kerja bakti warga berdasarkan dokumen ini.",
+  "review_checklist": [
+    "Extract announcement details accurately through OCR; preserve planned-event wording."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

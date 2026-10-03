@@ -1,0 +1,16 @@
+{
+  "id": "TC08",
+  "mode": "draft",
+  "files": [
+    "TC08_Scholarship_Selection.pdf"
+  ],
+  "prompt": "Buatkan berita berdasarkan informasi dalam dokumen ini untuk disampaikan kepada warga desa.",
+  "review_checklist": [
+    "50 applicants and 20 selected recipients; never claim all 50 received scholarships.",
+    "Include both criteria: household income and school enrolment.",
+    "Announcement scheduled for 20 October 2026. Before that date, use planned wording. Passage of the date alone does not prove announcement or distribution occurred.",
+    "No invented scholarship amount, recipient names, payment dates or completed distribution."
+  ],
+  "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring.",
+  "temporal_review_note": "Judge planned vs completed wording using actual run date and source evidence; do not inject a fabricated current date."
+}

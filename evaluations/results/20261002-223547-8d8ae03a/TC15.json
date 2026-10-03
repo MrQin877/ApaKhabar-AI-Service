@@ -1,0 +1,1803 @@
+{
+  "case": {
+    "id": "TC15",
+    "mode": "analysis",
+    "files": [
+      "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv"
+    ],
+    "prompt": "Tolong rangkum data pendaftaran pelatihan digital dari file ini.",
+    "review_checklist": [
+      "100 raw rows; 90 distinct registrations; 90 unique participants; 10 registrations repeated twice; registration is not attendance."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "3d01921d-1bc3-4beb-bdf4-09720f1c802c",
+        "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+        "media_type": "application/octet-stream",
+        "character_count": 1132,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "registration_id | participant_id",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "registration_id",
+                "participant_id"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R049 | P049",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R049",
+                "P049"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R061 | P061",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R061",
+                "P061"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R001 | P001",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R001",
+                "P001"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R075 | P075",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R075",
+                "P075"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R039 | P039",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R039",
+                "P039"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R082 | P082",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R082",
+                "P082"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R020 | P020",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R020",
+                "P020"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R025 | P025",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R025",
+                "P025"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R024 | P024",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R024",
+                "P024"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R086 | P086",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R086",
+                "P086"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R002 | P002",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R002",
+                "P002"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R085 | P085",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R085",
+                "P085"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R077 | P077",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R077",
+                "P077"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R023 | P023",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R023",
+                "P023"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R014 | P014",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R014",
+                "P014"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R033 | P033",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R033",
+                "P033"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R016 | P016",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R016",
+                "P016"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R055 | P055",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R055",
+                "P055"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R072 | P072",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R072",
+                "P072"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R028 | P028",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R028",
+                "P028"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R022 | P022",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 22,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R022",
+                "P022"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R076 | P076",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 23,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R076",
+                "P076"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R057 | P057",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 24,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R057",
+                "P057"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R019 | P019",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 25,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R019",
+                "P019"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R064 | P064",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 26,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R064",
+                "P064"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R087 | P087",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 27,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R087",
+                "P087"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R018 | P018",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 28,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R018",
+                "P018"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R006 | P006",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 29,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R006",
+                "P006"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R038 | P038",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 30,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R038",
+                "P038"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R017 | P017",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 31,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R017",
+                "P017"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R058 | P058",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 32,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R058",
+                "P058"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R062 | P062",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 33,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R062",
+                "P062"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R043 | P043",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 34,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R043",
+                "P043"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R070 | P070",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 35,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R070",
+                "P070"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R053 | P053",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 36,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R053",
+                "P053"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R004 | P004",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 37,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R004",
+                "P004"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R056 | P056",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 38,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R056",
+                "P056"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R011 | P011",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 39,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R011",
+                "P011"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R007 | P007",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 40,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R007",
+                "P007"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R010 | P010",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 41,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R010",
+                "P010"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R068 | P068",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 42,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R068",
+                "P068"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R080 | P080",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 43,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R080",
+                "P080"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R090 | P090",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 44,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R090",
+                "P090"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R081 | P081",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 45,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R081",
+                "P081"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R069 | P069",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 46,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R069",
+                "P069"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R073 | P073",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 47,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R073",
+                "P073"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R012 | P012",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 48,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R012",
+                "P012"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R035 | P035",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 49,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R035",
+                "P035"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R009 | P009",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 50,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R009",
+                "P009"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R013 | P013",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 51,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R013",
+                "P013"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R073 | P073",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 52,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R073",
+                "P073"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R032 | P032",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 53,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R032",
+                "P032"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R046 | P046",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 54,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R046",
+                "P046"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R052 | P052",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 55,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R052",
+                "P052"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R050 | P050",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 56,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R050",
+                "P050"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R026 | P026",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 57,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R026",
+                "P026"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R064 | P064",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 58,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R064",
+                "P064"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R042 | P042",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 59,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R042",
+                "P042"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R079 | P079",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 60,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R079",
+                "P079"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R065 | P065",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 61,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R065",
+                "P065"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R055 | P055",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 62,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R055",
+                "P055"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R037 | P037",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 63,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R037",
+                "P037"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R074 | P074",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 64,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R074",
+                "P074"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R047 | P047",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 65,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R047",
+                "P047"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R084 | P084",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 66,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R084",
+                "P084"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R011 | P011",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 67,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R011",
+                "P011"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R063 | P063",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 68,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R063",
+                "P063"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R071 | P071",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 69,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R071",
+                "P071"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R059 | P059",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 70,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R059",
+                "P059"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R078 | P078",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 71,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R078",
+                "P078"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R054 | P054",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 72,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R054",
+                "P054"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R066 | P066",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 73,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R066",
+                "P066"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R040 | P040",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 74,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R040",
+                "P040"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R029 | P029",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 75,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R029",
+                "P029"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R041 | P041",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 76,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R041",
+                "P041"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R083 | P083",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 77,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R083",
+                "P083"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R082 | P082",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 78,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R082",
+                "P082"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R030 | P030",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 79,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R030",
+                "P030"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R045 | P045",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 80,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R045",
+                "P045"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R034 | P034",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 81,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R034",
+                "P034"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R051 | P051",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 82,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R051",
+                "P051"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R036 | P036",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 83,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R036",
+                "P036"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R046 | P046",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 84,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R046",
+                "P046"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R060 | P060",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 85,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R060",
+                "P060"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R044 | P044",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 86,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R044",
+                "P044"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R015 | P015",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 87,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R015",
+                "P015"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R028 | P028",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 88,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R028",
+                "P028"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R048 | P048",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 89,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R048",
+                "P048"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R089 | P089",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 90,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R089",
+                "P089"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R019 | P019",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 91,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R019",
+                "P019"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R088 | P088",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 92,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R088",
+                "P088"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R008 | P008",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 93,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R008",
+                "P008"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R003 | P003",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 94,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R003",
+                "P003"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R031 | P031",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 95,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R031",
+                "P031"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R021 | P021",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 96,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R021",
+                "P021"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R005 | P005",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 97,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R005",
+                "P005"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R037 | P037",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 98,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R037",
+                "P037"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R067 | P067",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 99,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R067",
+                "P067"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R002 | P002",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 100,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R002",
+                "P002"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R027 | P027",
+            "source": {
+              "filename": "TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+              "page": null,
+              "sheet": null,
+              "row": 101,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R027",
+                "P027"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC15_Registrasi_Pelatihan_Digital_100_Rows.csv",
+            "summary": "Ringkasan data TC15_Registrasi_Pelatihan_Digital_100_Rows.csv: 100 catatan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 100,
+                "record_unit": "catatan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": null,
+                "columns": {
+                  "registration_id": {
+                    "label": "registration_id",
+                    "missing": 0,
+                    "distinct_values": 90
+                  },
+                  "participant_id": {
+                    "label": "participant_id",
+                    "missing": 0,
+                    "distinct_values": 90
+                  }
+                },
+                "duplicate_rows": 10,
+                "source_row_ranges": [
+                  [
+                    2,
+                    101
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC15_Registrasi_Pelatihan_Digital_100_Rows.csv, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 100, \"record_unit\": \"catatan\", \"unique_person_count\": null, \"distinct_visit_id_count\": null, \"columns\": {\"registration_id\": {\"label\": \"registration_id\", \"missing\": 0, \"distinct_values\": 90}, \"participant_id\": {\"label\": \"participant_id\", \"missing\": 0, \"distinct_values\": 90}}, \"duplicate_rows\": 10, \"source_row_ranges\": [[2, 101]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "intent": "extract_information",
+    "answer": "Data pendaftaran pelatihan digital dari file 'TC15_Registrasi_Pelatihan_Digital_100_Rows.csv' menunjukkan total 100 catatan. Dari data tersebut, terdapat 90 nilai unik untuk `registration_id` dan 90 nilai unik untuk `participant_id`. Terdapat 10 baris duplikat dalam sumber data. Perlu diperhatikan bahwa jumlah catatan/kunjungan bukan merupakan jumlah orang unik, dan distribusi tiap kolom dihitung terpisah.",
+    "source_ids": []
+  },
+  "duration_seconds": 1.43
+}

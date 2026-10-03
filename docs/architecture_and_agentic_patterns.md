@@ -13,7 +13,7 @@ The application implements four editorial roles within **one** `EditorialWorkflo
 | Writer | `write()` | Generation |
 | Reviewer | `reflect()` | Judge when enabled; otherwise generation |
 
-`build()` registers nine nodes: `plan`, `research`, `approval`, `check`, `clarify`, `write`, `reflect`, `revise`, `finish`.
+`build()` registers ten nodes: `plan`, `research`, `approval`, `check`, `clarify`, `write`, `reflect`, `replan`, `revise`, `finish`.
 
 ### Plan and Execute
 
@@ -67,3 +67,11 @@ The application chooses skills explicitly:
 - `app/api/agent.py`: synchronous run/resume calls and persisted state inspection. Laravel queue workers provide asynchronous UI execution.
 
 The Python article schema remains structured (`headline`, `lead`, `body`, etc.). Laravel maps it to unified draft `title`/`content`/`excerpt` fields. Extraction-quality badges in Laravel use evidence/completeness/confidence heuristics; the separate judge currently reviews drafts, not an independently evaluated extraction output.
+
+### Bounded replanning
+
+The reviewer can return up to three `evidence_gaps` for material missing evidence. `after_review()` routes these to `replan()` only when eligible library information or permitted web search exists, tool calls remain, the deadline has not passed, and a revision slot remains. Wording problems and omitted facts already present in the evidence use ordinary revision.
+
+Replanning runs at most once per run, creates up to three replacement research tasks, and consumes one existing revision slot. It preserves the original tool count, observations (including duplicate-action protection), and execution deadline. Research returns through source approval and completeness checking before rewriting and review. New web results require approval; earlier decisions are not prompted again. The new evidence cycle resets the best-candidate comparison so an older score is not reused against changed evidence. Unresolved findings remain visible for moderator review; publication is unchanged.
+
+The service reports `metrics.replans` and emits a `replanning` progress event with a short action summary. No private reasoning is exposed. This is bounded evidence recovery, not unrestricted autonomous research; it cannot retrieve outside the caller's eligible source scope. Regression tests are in `tests/test_replanning.py`.

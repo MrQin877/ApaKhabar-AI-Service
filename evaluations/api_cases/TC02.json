@@ -1,0 +1,13 @@
+{
+  "id": "TC02",
+  "mode": "draft",
+  "files": [
+    "TC02_Completed_Activity.docx"
+  ],
+  "prompt": "Buatkan berita berdasarkan dokumen kegiatan ini untuk disampaikan kepada warga desa.",
+  "review_checklist": [
+    "Completed activity: 24 attendees, 2 facilitators, 20 practical-task completions. Facilitators are separate from participants.",
+    "Organic waste sorting and eco-enzyme preparation. No claim all 24 completed; no repeated date/location/count; no invented awards, feedback or environmental impact."
+  ],
+  "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+}
