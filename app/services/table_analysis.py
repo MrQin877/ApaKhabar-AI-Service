@@ -19,6 +19,31 @@ COUNT_KEYS = {'count', 'total_count', 'service_count', 'visit_count', 'jumlah',
 MISSING_IDS = {'', 'na', 'n/a', 'null', 'none', 'unknown', '-', 'tidak diketahui'}
 
 
+def population_counts(rows, keys):
+    roles = ({'laki_laki', 'male', 'men'}, {'perempuan', 'female', 'women'},
+             {'wilayah', 'dusun', 'area', 'region'})
+    matches = [[k for k in keys if k in aliases] for aliases in roles]
+    if not all(len(m) == 1 for m in matches):
+        return None
+    male, female, area = [m[0] for m in matches]
+    result = {'row_semantics': 'population_summary', 'population_totals': None,
+              'limitations': ['Data adalah rekap penduduk per wilayah, bukan daftar peserta layanan.']}
+    areas = [r[area].strip().casefold() for _, r in rows]
+    dates = [k for k in keys if k in {'tanggal_referensi', 'reference_date', 'year', 'tahun'}]
+    valid = (all(areas) and len(set(areas)) == len(areas)
+             and not any(re.search(r'\b(total|subtotal|jumlah|keseluruhan)\b', a) for a in areas)
+             and all(len({r[k].strip() for _, r in rows}) == 1 and rows[0][1][k].strip() for k in dates)
+             and all(re.fullmatch(r'\d+', r[k].strip()) for _, r in rows for k in (male, female)))
+    if valid:
+        men = sum(int(r[male]) for _, r in rows)
+        women = sum(int(r[female]) for _, r in rows)
+        result['population_totals'] = {'male': men, 'female': women, 'total': men + women, 'area_count': len(areas)}
+        result['limitations'].append('Total penduduk menjumlahkan kategori laki-laki dan perempuan pada wilayah berbeda dalam periode yang sama; bukan jumlah peserta unik berdasarkan ID.')
+    else:
+        result['limitations'].append('Rekap memiliki wilayah berulang, baris total, periode berbeda, atau angka tidak lengkap; total penduduk tidak dihitung untuk menghindari hitung ganda.')
+    return result
+
+
 def semantic_counts(rows, keys):
     person_keys = [k for k in keys if k in PERSON_KEYS]
     service_keys = [k for k in keys if k in SERVICE_KEYS]
@@ -26,6 +51,10 @@ def semantic_counts(rows, keys):
     result = {'unique_person_count': None, 'known_unique_person_count': None,
               'person_id_column': None, 'missing_person_id_rows': None,
               'service_totals': None, 'row_semantics': 'records', 'limitations': []}
+    population = population_counts(rows, keys)
+    if population is not None:
+        result.update(population)
+        return result
     if count_keys:
         result['row_semantics'] = 'ambiguous_aggregate'
         if len(count_keys) == len(service_keys) == 1:
@@ -123,6 +152,9 @@ def analyze_tables(document):
             evidence = Evidence(source=marker, quote='Perhitungan seluruh baris sumber: ' + json.dumps(fields['table_analysis'], ensure_ascii=False))
             people = (f"{semantics['unique_person_count']} orang unik berdasarkan ID."
                       if semantics['unique_person_count'] is not None else 'Jumlah orang unik belum diketahui.')
+            if semantics.get('population_totals'):
+                totals = semantics['population_totals']
+                people = f"Jumlah penduduk {totals['total']}: {totals['male']} laki-laki dan {totals['female']} perempuan di {totals['area_count']} wilayah."
             items.append(InformationItem(type='General', title=title,
                 summary=f'{title}: {len(rows)} {unit} tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber. {people}',
                 labels=['ringkasan data'], fields=fields, evidence=[evidence], confidence=0.95))

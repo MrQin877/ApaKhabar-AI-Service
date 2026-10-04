@@ -122,8 +122,10 @@ class AgentService:
                     sources = {k: v for k, v in previous_sources.items() if not k.startswith('information:') or k.removeprefix('information:') in eligible}
                     # Historical context must be re-authorized by Laravel on each resume.
                     sources = {k: v for k, v in sources.items() if not k.startswith('history:')}
-                    sources.update({item.source_id: item.model_dump() for item in resume.historical_sources})
+                    if resume.include_historical_context:
+                        sources.update({item.source_id: item.model_dump() for item in resume.historical_sources})
                     updated_request = dict(values['request'])
+                    updated_request['include_historical_context'] = resume.include_historical_context
                     updated_request['historical_sources'] = [item.model_dump() for item in resume.historical_sources]
                     updated_request['eligible_information_ids'] = sorted(eligible)
                     if isinstance(updated_request['information'], dict):

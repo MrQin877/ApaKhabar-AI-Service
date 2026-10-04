@@ -24,8 +24,14 @@ def build_brief(sources):
             brief['supporting_facts'].append({'source_id': source_id, 'facts': source})
             continue
         unit = analysis['record_unit']
-        brief['required_totals'].append({'source_id': source_id, 'label': 'Jumlah ' + unit,
-            'count': analysis['record_count'], 'unit': unit})
+        population = analysis.get('population_totals')
+        if population:
+            for key, label in [('male', 'Laki-laki'), ('female', 'Perempuan'), ('total', 'Jumlah penduduk')]:
+                brief['required_totals'].append({'source_id': source_id, 'label': label,
+                    'count': population[key], 'unit': 'orang', 'kind': 'population'})
+        else:
+            brief['required_totals'].append({'source_id': source_id, 'label': 'Jumlah ' + unit,
+                'count': analysis['record_count'], 'unit': unit})
         if analysis.get('unique_person_count') is not None:
             brief['required_totals'].append({'source_id': source_id, 'label': 'Jumlah peserta unik',
                 'count': analysis['unique_person_count'], 'unit': 'orang', 'kind': 'unique_people'})
@@ -41,7 +47,7 @@ def build_brief(sources):
             label = stats['label'].replace('_', ' ')
             counts = stats.get('counts', {})
             if analysis.get('row_semantics', 'records') != 'records':
-                counts = {}  # Aggregate rows are not individual service occurrences.
+                counts = counts if re.search(r'tanggal|date|tahun|year', key) and len(counts) == 1 else {}  # Aggregate rows are not individual service occurrences.
             role = ('results' if re.search(r'hasil|result|outcome|tindak_lanjut|follow_up', key)
                     else 'activities' if re.search(r'jenis|layanan|service|activity|aktivitas|produk|product', key)
                     else 'context' if len(counts) == 1 else 'supporting_facts')
@@ -75,9 +81,9 @@ def coverage_issues(article, brief):
                    for n in number_forms for sentence in candidates):
             issues.append(f"Include supported total: {fact['label']} = {number} {fact['unit']} ({fact['source_id']}).")
     for fact in brief['required_totals']:
-        supported_people = any(f.get('kind') == 'unique_people' and f['count'] == fact['count']
+        supported_people = any(f.get('kind') in {'unique_people', 'population'} and f['count'] == fact['count']
                                and f['source_id'] in article['sources_used'] for f in brief['required_totals'])
-        if fact['source_id'] in article['sources_used'] and fact.get('kind') != 'unique_people' and not supported_people and 'column' not in fact and re.search(r'\b' + str(fact['count']) + r'\s+(?:orang|peserta|warga|people|persons)\b', text):
+        if fact['source_id'] in article['sources_used'] and fact.get('kind') not in {'unique_people', 'population'} and not supported_people and 'column' not in fact and re.search(r'\b' + str(fact['count']) + r'\s+(?:orang|peserta|warga|people|persons)\b', text):
             issues.append('Unsupported unique-person count: source establishes records/visits, not distinct people.')
         if 'column' not in fact and len(re.findall(r'\b' + str(fact['count']) + r'\s+' + re.escape(fact['unit']) + r'\b', text)) > 1:
             issues.append('State the overall record/visit total once; other paragraphs should describe activities and results without repeating that total.')

@@ -23,7 +23,7 @@ class ContextAndLengthTests(unittest.TestCase):
             settings = Settings(_env_file=None, agent_db_path=str(Path(tmp) / 'checkpoint.sqlite'))
             model = ScriptedModel(missing=True)
             service = AgentService(settings, model=model)
-            request = NewsRequest(information='Pelatihan direncanakan tahun 2026.', run_id='history', historical_sources=[{'source_id': 'history:news:1', 'title': 'Pelatihan 2025', 'content': 'Tahun 2025 hadir 22 orang.'}])
+            request = NewsRequest(information='Pelatihan direncanakan tahun 2026.', run_id='history', include_historical_context=True, historical_sources=[{'source_id': 'history:news:1', 'title': 'Pelatihan 2025', 'content': 'Tahun 2025 hadir 22 orang.'}])
             self.assertEqual(service.run(request).status, 'awaiting_answers')
             model.missing = False
             service.run(run_id='history', resume=ResumeRequest(owner_id='local', answers=[{'field': 'location', 'value': 'Balai desa'}]))
@@ -34,6 +34,17 @@ class ContextAndLengthTests(unittest.TestCase):
             for schema, data in second.calls:
                 if schema in ('NewsArticle', 'Reflection'):
                     self.assertIn('history:news:1', data['sources'])
+
+    def test_history_excluded_by_default(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            model = ScriptedModel()
+            settings = Settings(_env_file=None, agent_db_path=str(Path(tmp) / 'checkpoint.sqlite'))
+            request = NewsRequest(information='Current file has 64 records.', historical_sources=[{
+                'source_id': 'history:news:1', 'title': 'Old screening', 'content': '120 visits at Punggul.'}])
+            AgentService(settings, model=model).run(request)
+            for schema, data in model.calls:
+                if 'sources' in data:
+                    self.assertNotIn('history:news:1', data['sources'])
 
     def test_overlong_generation_and_revision_are_limited_before_review(self):
         class LongWriter(ScriptedModel):

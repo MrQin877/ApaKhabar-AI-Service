@@ -58,6 +58,7 @@ class NewsRequest(BaseModel):
     run_id: str | None = Field(default=None, pattern=r"^[a-zA-Z0-9_-]{1,100}$")
     eligible_information_ids: list[str] = Field(default_factory=list)
     allow_web: bool = False
+    include_historical_context: bool = False
     historical_sources: list[HistoricalSource] = Field(default_factory=list, max_length=3)
 
     @model_validator(mode="after")

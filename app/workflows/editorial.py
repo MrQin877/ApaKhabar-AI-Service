@@ -78,7 +78,7 @@ class EditorialWorkflow:
 
     def plan(self, state):
         request = NewsRequest.model_validate(state['request'])
-        sources = {item.source_id: item.model_dump() for item in request.historical_sources}
+        sources = {item.source_id: item.model_dump() for item in request.historical_sources} if request.include_historical_context else {}
         if isinstance(request.information, str):
             if request.information.strip():
                 sources['provided:information'] = {'content': request.information, 'kind': 'caller_provided_facts'}
@@ -173,7 +173,7 @@ Historical sources are background: differences between different years/events ar
 Do not demand event dates for timeless profiles or general guidance. Flag contradictions.
 Provide selectable options only for editorial preferences or explicitly supported alternatives; never invent factual choices.
 List known_facts only from sources. Missing optional facts must not block a useful draft.
-Table analysis contains calculated evidence: use non-null unique_person_count and service_totals directly; never ask the user to recalculate them. A known_unique_person_count with missing IDs is only a lower bound. Unknown person totals may be omitted from a service-count report; ask about ambiguous column roles only when necessary for the requested result.''',
+Table analysis contains calculated evidence: use non-null unique_person_count, population_totals and service_totals directly; population summaries do not require participant IDs to report supported population totals; never ask the user to recalculate them. A known_unique_person_count with missing IDs is only a lower bound. Unknown person totals may be omitted from a service-count report; ask about ambiguous column roles only when necessary for the requested result.''',
             {'sources': state['sources'], 'instructions': request.instructions, 'format': request.content_format, 'language': request.language})
         if completeness.conflicts:
             completeness.status = 'has_conflicts'

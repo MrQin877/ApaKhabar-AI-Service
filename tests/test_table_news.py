@@ -43,6 +43,24 @@ class TableNewsTests(unittest.TestCase):
         item = result.information[0]
         return item.fields['table_analysis'], build_brief({'x': item.model_dump()})
 
+    def test_population_workbook_totals(self):
+        path = Path(__file__).resolve().parents[1] / 'evaluations/api_cases/files/TC05_Population_Summary.xlsx'
+        item = extract_document(DocumentService.normalize(path.read_bytes(), path.name, None)).information[0]
+        stats = item.fields['table_analysis']
+        self.assertEqual(stats['population_totals'], {'male': 1226, 'female': 1305, 'total': 2531, 'area_count': 12})
+        self.assertIn('2531', item.summary)
+        brief = build_brief({'x': item.model_dump()})
+        self.assertEqual([f['count'] for f in brief['required_totals']], [1226, 1305, 2531])
+        self.assertFalse(coverage_issues({'lead': 'Jumlah penduduk 2531 orang.',
+            'body': ['Terdapat 1226 laki-laki dan 1305 perempuan.'], 'sources_used': ['x']}, brief))
+
+    def test_population_ambiguous_rows_are_not_summed(self):
+        for rows in ('A,2,3,2026\nA,4,5,2026', 'A,2,3,2026\nTotal,4,5,2026',
+                     'A,2,3,2026\nB,4,5,2025', 'A,2,3,2026\nB,,5,2026'):
+            stats, _ = self.analyze_csv('wilayah,laki-laki,perempuan,tahun\n' + rows + '\n')
+            self.assertIsNone(stats['population_totals'])
+            self.assertEqual(stats['row_semantics'], 'population_summary')
+
     def test_tc03_counts_and_brief(self):
         fixture = Path(__file__).resolve().parents[1] / 'evaluations/api_cases/files/TC03_Health_Screening.csv'
         stats, brief = self.analyze_csv(fixture.read_text(encoding='utf-8-sig'))

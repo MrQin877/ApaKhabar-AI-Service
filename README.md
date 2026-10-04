@@ -178,4 +178,6 @@ See [separate judge and DeepEval setup](docs/separate-judge.md) for local Qwen e
 
 ## Historical context and article length
 
-The Laravel integration automatically supplies relevant approved historical information and published-news context. References are visible in the conversation. The writer distinguishes prior results from current plans. Generated content is limited to 250 words (title/excerpt excluded), including revisions; see [implementation details and retrieval limitations](docs/agent-architecture.md#automatic-background-context-and-concise-drafts).
+The Laravel integration can supply approved historical information and published-news context. The AI service excludes it by default. Clients must set `include_historical_context: true` explicitly on both creation and resume requests to enable historical comparisons. This prevents older event figures from contaminating ordinary file-based drafts. The writer must distinguish prior results from current plans. Generated content is limited to 250 words (title/excerpt excluded), including revisions; see [implementation details and retrieval limitations](docs/agent-architecture.md#automatic-background-context-and-concise-drafts).
+
+Population tables with recognised area, male and female columns are summed from all rows when areas are distinct, reference periods agree, and counts are complete non-negative integers. Repeated areas, total/subtotal rows and mixed periods require review instead of an automatic total. These are reported population totals, not participant-ID counts.
