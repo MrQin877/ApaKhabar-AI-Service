@@ -1,6 +1,7 @@
 from app.services.article_length import enforce_word_limit, word_count
 """Bounded Plan-and-Execute + ReAct + Reflection editorial graph."""
 import json
+from app.services.prompt_context import compact_context
 from app.services.editorial_brief import build_brief, coverage_issues, natural_dates, WRITING_RULES, deduplicate_narrative
 import time
 from typing import TypedDict, Any
@@ -60,7 +61,7 @@ class EditorialWorkflow:
         started = time.monotonic()
         self.event('stage_started', label, payload={'stage': schema.__name__})
         try:
-            result = (self.evaluator if schema is Reflection else self.model).structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+            result = (self.evaluator if schema is Reflection else self.model).structured(schema, POLICY + '\n' + prompt, json.dumps(compact_context(data), ensure_ascii=False, separators=(",", ":")))
         except Exception:
             self.event('stage_failed', label, payload={'stage': schema.__name__})
             raise
