@@ -60,7 +60,7 @@ class EditorialWorkflow:
         started = time.monotonic()
         self.event('stage_started', label, payload={'stage': schema.__name__})
         try:
-            result = (self.evaluator if schema is Reflection else self.model).structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False))
+            result = (self.evaluator if schema is Reflection else self.model).structured(schema, POLICY + '\n' + prompt, json.dumps(data, ensure_ascii=False, separators=(",", ":")))
         except Exception:
             self.event('stage_failed', label, payload={'stage': schema.__name__})
             raise
@@ -171,7 +171,8 @@ Stop research when evidence is sufficient. A tool error is an observation: adapt
 Historical sources are background: differences between different years/events are not inherently conflicts. Never use past attendance as current attendance.
 Do not demand event dates for timeless profiles or general guidance. Flag contradictions.
 Provide selectable options only for editorial preferences or explicitly supported alternatives; never invent factual choices.
-List known_facts only from sources. Missing optional facts must not block a useful draft.''',
+List known_facts only from sources. Missing optional facts must not block a useful draft.
+Table analysis contains calculated evidence: use non-null unique_person_count and service_totals directly; never ask the user to recalculate them. A known_unique_person_count with missing IDs is only a lower bound. Unknown person totals may be omitted from a service-count report; ask about ambiguous column roles only when necessary for the requested result.''',
             {'sources': state['sources'], 'instructions': request.instructions, 'format': request.content_format, 'language': request.language})
         if completeness.conflicts:
             completeness.status = 'has_conflicts'
