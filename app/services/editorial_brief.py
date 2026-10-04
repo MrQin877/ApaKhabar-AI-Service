@@ -26,10 +26,22 @@ def build_brief(sources):
         unit = analysis['record_unit']
         brief['required_totals'].append({'source_id': source_id, 'label': 'Jumlah ' + unit,
             'count': analysis['record_count'], 'unit': unit})
+        if analysis.get('unique_person_count') is not None:
+            brief['required_totals'].append({'source_id': source_id, 'label': 'Jumlah peserta unik',
+                'count': analysis['unique_person_count'], 'unit': 'orang', 'kind': 'unique_people'})
+        elif analysis.get('known_unique_person_count') is not None:
+            brief['supporting_facts'].append({'source_id': source_id,
+                'known_unique_person_count': analysis['known_unique_person_count'],
+                'missing_person_id_rows': analysis['missing_person_id_rows'], 'exact_total_unknown': True})
         brief['limitations'].extend(analysis['limitations'])
+        if analysis.get('service_totals') is not None:
+            brief['required_totals'].extend({'source_id': source_id, 'label': label, 'column': 'layanan',
+                'count': count, 'unit': 'layanan'} for label, count in analysis['service_totals'].items())
         for key, stats in analysis['columns'].items():
             label = stats['label'].replace('_', ' ')
             counts = stats.get('counts', {})
+            if analysis.get('row_semantics', 'records') != 'records':
+                counts = {}  # Aggregate rows are not individual service occurrences.
             role = ('results' if re.search(r'hasil|result|outcome|tindak_lanjut|follow_up', key)
                     else 'activities' if re.search(r'jenis|layanan|service|activity|aktivitas|produk|product', key)
                     else 'context' if len(counts) == 1 else 'supporting_facts')
@@ -63,7 +75,9 @@ def coverage_issues(article, brief):
                    for n in number_forms for sentence in candidates):
             issues.append(f"Include supported total: {fact['label']} = {number} {fact['unit']} ({fact['source_id']}).")
     for fact in brief['required_totals']:
-        if 'column' not in fact and re.search(r'\b' + str(fact['count']) + r'\s+(?:orang|peserta|warga|people|persons)\b', text):
+        supported_people = any(f.get('kind') == 'unique_people' and f['count'] == fact['count']
+                               and f['source_id'] in article['sources_used'] for f in brief['required_totals'])
+        if fact['source_id'] in article['sources_used'] and fact.get('kind') != 'unique_people' and not supported_people and 'column' not in fact and re.search(r'\b' + str(fact['count']) + r'\s+(?:orang|peserta|warga|people|persons)\b', text):
             issues.append('Unsupported unique-person count: source establishes records/visits, not distinct people.')
         if 'column' not in fact and len(re.findall(r'\b' + str(fact['count']) + r'\s+' + re.escape(fact['unit']) + r'\b', text)) > 1:
             issues.append('State the overall record/visit total once; other paragraphs should describe activities and results without repeating that total.')
@@ -86,6 +100,7 @@ Lead: event/topic, main finding, and date/location together when known. Body: ac
 State the overall record/visit total once in the narrative. Do not repeat it in body introductions or transitions.
 Do not create separate paragraphs merely restating when or where the event occurred. Each paragraph adds new facts. Do not repeat the lead as body[0].
 Include the important table totals and explain what was counted. Visit, service, registration and record counts are NOT unique people.
+Use supplied unique-person totals when available; do not request counts already established by the evidence. Known IDs with missing IDs are a lower bound, not an exact total. Never sum distinct people across groups.
 Column distributions are separate measures; do not add overlapping outcomes and follow-up counts. A recommendation is not a completed action.
 Do not infer diagnoses, success, benefits, causation or quotations. Do not invent missing facts. Preserve synthetic/test-data labels as a visible qualification.
 Use natural Indonesian dates such as 21 September 2026, not ISO dates, when language is id. Keep the original units and uncertainty.
