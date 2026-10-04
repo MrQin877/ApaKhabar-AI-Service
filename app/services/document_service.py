@@ -4,6 +4,7 @@ import uuid
 from pathlib import Path
 
 import fitz
+from app.services.poster_ocr import regional_ocr
 from docx import Document
 from openpyxl import load_workbook
 
@@ -77,6 +78,13 @@ class DocumentService:
                 for page_number, page in enumerate(document, start=1):
                     blocks = page.get_text("blocks")
                     if not any(str(block[4]).strip() for block in blocks):
+                        regions = regional_ocr(page, get_settings().ocr_language)
+                        if regions:
+                            for text, region in regions:
+                                elements.append(DocumentElement(element_type="paragraph", content=text,
+                                    source=SourceReference(filename=filename, page=page_number),
+                                    metadata={"ocr_method": "regional_tesseract", "region": region, "requires_visual_review": True}))
+                            continue
                         try:
                             textpage = page.get_textpage_ocr(language=get_settings().ocr_language, dpi=200, full=True)
                             blocks = page.get_text("blocks", textpage=textpage)
