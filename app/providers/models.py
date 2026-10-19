@@ -2,10 +2,15 @@
 from functools import lru_cache
 import hashlib
 import json
+import logging
+import time
 import requests
 from ollama import Client
 from pydantic import BaseModel, ValidationError
 from app.core.config import get_settings
+
+
+logger = logging.getLogger("uvicorn.error")
 
 
 class ModelError(RuntimeError):
@@ -27,9 +32,18 @@ class GenerationModel:
         # One bounded repair attempt; malformed responses never reach tools or storage.
         for attempt in range(2):
             try:
-                raw = self._chat(messages, schema.model_json_schema(), temperature)
+                started = time.perf_counter()
+                logger.info("Model request started: schema=%s attempt=%d provider=%s model=%s",
+                            schema.__name__, attempt + 1, self.settings.ai_provider, self.name)
+                try:
+                    raw = self._chat(messages, schema.model_json_schema(), temperature)
+                finally:
+                    logger.info("Model request ended: schema=%s attempt=%d elapsed_seconds=%.2f",
+                                schema.__name__, attempt + 1, time.perf_counter() - started)
                 return schema.model_validate_json(raw)
             except ValidationError as exc:
+                logger.warning("Model schema validation failed: schema=%s attempt=%d retrying=%s",
+                               schema.__name__, attempt + 1, not bool(attempt))
                 # Keep diagnostics useful without exposing source text or rejected values.
                 errors = [{"field": ".".join(map(str, error["loc"])) or "$",
                            "type": error["type"]}

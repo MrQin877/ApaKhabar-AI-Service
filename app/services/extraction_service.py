@@ -3,6 +3,10 @@ from app.schemas.information import ExtractionResponse
 from app.services.ai_service import AIService
 from pydantic import BaseModel, Field
 import json
+import logging
+import time
+
+logger = logging.getLogger("uvicorn.error")
 
 
 class TableSelection(BaseModel):
@@ -65,7 +69,14 @@ def extract_document(document, query='', progress=None):
         if progress:
             progress('extracting', f'Mengekstrak fakta: bagian {index} dari {len(chunks)}',
                      completed_chunks=index - 1, total_chunks=len(chunks))
-        result = ExtractionResponse.model_validate(AIService.extract_information(chunk, query))
+        started = time.perf_counter()
+        logger.info("Extraction chunk started: document_id=%s chunk=%d/%d characters=%d",
+                    document.document_id, index, len(chunks), len(chunk))
+        try:
+            result = ExtractionResponse.model_validate(AIService.extract_information(chunk, query))
+        finally:
+            logger.info("Extraction chunk ended: document_id=%s chunk=%d/%d elapsed_seconds=%.2f",
+                        document.document_id, index, len(chunks), time.perf_counter() - started)
         for item in result.information:
             key = (item.type, item.title.casefold(), item.summary.casefold())
             if key not in seen:
