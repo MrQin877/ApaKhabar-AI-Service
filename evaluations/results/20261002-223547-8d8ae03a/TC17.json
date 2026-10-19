@@ -1,0 +1,3144 @@
+{
+  "case": {
+    "id": "TC17",
+    "mode": "analysis",
+    "files": [
+      "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv"
+    ],
+    "prompt": "Tolong rangkum hasil survei kebutuhan pelatihan warga, terutama pemasaran, keuangan, dan pengemasan, berdasarkan file ini.",
+    "review_checklist": [
+      "150 respondents; marketing 120 (80%); finance 90 (60%); packaging 90 (60%); 300 selections; multiple choices allowed."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "a1b930b8-7251-4d4a-bd07-a5a89ab8b06b",
+        "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+        "media_type": "application/octet-stream",
+        "character_count": 4114,
+        "elements": [
+          {
+            "element_type": "table_row",
+            "content": "respondent_id | marketing | finance | packaging | selection_mode",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 1,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "respondent_id",
+                "marketing",
+                "finance",
+                "packaging",
+                "selection_mode"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R123 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 2,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R123",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R096 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 3,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R096",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R140 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 4,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R140",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R093 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 5,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R093",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R067 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 6,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R067",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R126 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 7,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R126",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R102 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 8,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R102",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R050 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 9,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R050",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R142 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 10,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R142",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R106 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 11,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R106",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R055 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 12,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R055",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R080 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 13,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R080",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R090 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 14,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R090",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R024 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 15,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R024",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R112 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 16,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R112",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R021 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 17,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R021",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R125 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 18,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R125",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R081 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 19,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R081",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R042 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 20,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R042",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R111 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 21,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R111",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R138 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 22,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R138",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R079 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 23,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R079",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R006 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 24,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R006",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R057 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 25,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R057",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R060 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 26,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R060",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R118 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 27,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R118",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R136 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 28,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R136",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R066 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 29,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R066",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R058 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 30,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R058",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R027 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 31,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R027",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R063 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 32,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R063",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R014 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 33,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R014",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R084 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 34,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R084",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R010 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 35,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R010",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R130 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 36,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R130",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R109 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 37,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R109",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R012 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 38,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R012",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R116 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 39,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R116",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R038 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 40,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R038",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R128 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 41,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R128",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R026 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 42,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R026",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R114 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 43,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R114",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R034 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 44,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R034",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R037 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 45,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R037",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R073 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 46,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R073",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R115 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 47,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R115",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R087 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 48,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R087",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R098 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 49,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R098",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R059 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 50,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R059",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R005 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 51,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R005",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R147 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 52,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R147",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R020 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 53,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R020",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R086 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 54,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R086",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R085 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 55,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R085",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R004 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 56,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R004",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R076 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 57,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R076",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R091 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 58,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R091",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R018 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 59,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R018",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R144 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 60,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R144",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R030 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 61,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R030",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R149 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 62,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R149",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R023 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 63,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R023",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R049 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 64,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R049",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R100 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 65,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R100",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R002 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 66,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R002",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R124 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 67,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R124",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R083 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 68,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R083",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R013 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 69,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R013",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R127 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 70,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R127",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R022 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 71,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R022",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R041 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 72,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R041",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R145 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 73,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R145",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R120 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 74,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R120",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R033 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 75,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R033",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R017 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 76,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R017",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R071 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 77,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R071",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R069 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 78,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R069",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R089 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 79,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R089",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R148 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 80,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R148",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R025 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 81,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R025",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R131 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 82,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R131",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R121 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 83,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R121",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R035 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 84,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R035",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R008 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 85,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R008",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R047 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 86,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R047",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R068 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 87,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R068",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R032 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 88,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R032",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R028 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 89,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R028",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R143 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 90,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R143",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R015 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 91,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R015",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R031 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 92,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R031",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R052 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 93,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R052",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R001 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 94,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R001",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R146 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 95,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R146",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R150 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 96,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R150",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R062 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 97,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R062",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R101 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 98,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R101",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R046 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 99,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R046",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R095 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 100,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R095",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R097 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 101,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R097",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R141 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 102,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R141",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R074 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 103,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R074",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R048 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 104,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R048",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R056 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 105,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R056",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R003 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 106,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R003",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R044 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 107,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R044",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R117 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 108,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R117",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R105 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 109,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R105",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R119 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 110,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R119",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R104 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 111,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R104",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R088 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 112,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R088",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R019 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 113,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R019",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R077 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 114,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R077",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R122 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 115,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R122",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R061 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 116,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R061",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R110 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 117,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R110",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R137 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 118,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R137",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R011 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 119,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R011",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R053 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 120,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R053",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R040 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 121,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R040",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R009 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 122,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R009",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R135 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 123,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R135",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R092 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 124,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R092",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R113 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 125,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R113",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R132 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 126,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R132",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R070 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 127,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R070",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R043 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 128,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R043",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R054 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 129,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R054",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R039 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 130,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R039",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R051 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 131,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R051",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R133 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 132,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R133",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R016 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 133,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R016",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R036 | 1 | 1 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 134,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R036",
+                "1",
+                "1",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R103 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 135,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R103",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R082 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 136,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R082",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R129 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 137,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R129",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R065 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 138,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R065",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R108 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 139,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R108",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R099 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 140,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R099",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R064 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 141,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R064",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R007 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 142,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R007",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R029 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 143,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R029",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R072 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 144,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R072",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R139 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 145,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R139",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R045 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 146,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R045",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R075 | 1 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 147,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R075",
+                "1",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R094 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 148,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R094",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R078 | 0 | 1 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 149,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R078",
+                "0",
+                "1",
+                "1",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R107 | 1 | 0 | 0 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 150,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R107",
+                "1",
+                "0",
+                "0",
+                "multiple"
+              ]
+            }
+          },
+          {
+            "element_type": "table_row",
+            "content": "R134 | 1 | 0 | 1 | multiple",
+            "source": {
+              "filename": "TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+              "page": null,
+              "sheet": null,
+              "row": 151,
+              "paragraph": null
+            },
+            "metadata": {
+              "cells": [
+                "R134",
+                "1",
+                "0",
+                "1",
+                "multiple"
+              ]
+            }
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "General",
+            "title": "Ringkasan data TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv",
+            "summary": "Ringkasan data TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv: 150 catatan tercatat. Rincian kegiatan dan hasil dihitung dari seluruh baris sumber; jumlah orang unik belum diketahui.",
+            "labels": [
+              "ringkasan data"
+            ],
+            "fields": {
+              "table_analysis": {
+                "record_count": 150,
+                "record_unit": "catatan",
+                "unique_person_count": null,
+                "distinct_visit_id_count": null,
+                "columns": {
+                  "respondent_id": {
+                    "label": "respondent_id",
+                    "missing": 0,
+                    "distinct_values": 150
+                  },
+                  "marketing": {
+                    "label": "marketing",
+                    "missing": 0,
+                    "distinct_values": 2,
+                    "counts": {
+                      "0": 30,
+                      "1": 120
+                    },
+                    "minimum": "0",
+                    "maximum": "1"
+                  },
+                  "finance": {
+                    "label": "finance",
+                    "missing": 0,
+                    "distinct_values": 2,
+                    "counts": {
+                      "1": 90,
+                      "0": 60
+                    },
+                    "minimum": "0",
+                    "maximum": "1"
+                  },
+                  "packaging": {
+                    "label": "packaging",
+                    "missing": 0,
+                    "distinct_values": 2,
+                    "counts": {
+                      "1": 90,
+                      "0": 60
+                    },
+                    "minimum": "0",
+                    "maximum": "1"
+                  },
+                  "selection_mode": {
+                    "label": "selection_mode",
+                    "missing": 0,
+                    "distinct_values": 1,
+                    "counts": {
+                      "multiple": 150
+                    }
+                  }
+                },
+                "duplicate_rows": 0,
+                "source_row_ranges": [
+                  [
+                    2,
+                    151
+                  ]
+                ],
+                "method": "full_table_descriptive_v1",
+                "limitations": [
+                  "Jumlah catatan/kunjungan bukan jumlah orang unik.",
+                  "Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda."
+                ]
+              }
+            },
+            "evidence": [
+              {
+                "source": "filename=TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv, section=calculated-table-analysis",
+                "quote": "Perhitungan seluruh baris sumber: {\"record_count\": 150, \"record_unit\": \"catatan\", \"unique_person_count\": null, \"distinct_visit_id_count\": null, \"columns\": {\"respondent_id\": {\"label\": \"respondent_id\", \"missing\": 0, \"distinct_values\": 150}, \"marketing\": {\"label\": \"marketing\", \"missing\": 0, \"distinct_values\": 2, \"counts\": {\"0\": 30, \"1\": 120}, \"minimum\": \"0\", \"maximum\": \"1\"}, \"finance\": {\"label\": \"finance\", \"missing\": 0, \"distinct_values\": 2, \"counts\": {\"1\": 90, \"0\": 60}, \"minimum\": \"0\", \"maximum\": \"1\"}, \"packaging\": {\"label\": \"packaging\", \"missing\": 0, \"distinct_values\": 2, \"counts\": {\"1\": 90, \"0\": 60}, \"minimum\": \"0\", \"maximum\": \"1\"}, \"selection_mode\": {\"label\": \"selection_mode\", \"missing\": 0, \"distinct_values\": 1, \"counts\": {\"multiple\": 150}}}, \"duplicate_rows\": 0, \"source_row_ranges\": [[2, 151]], \"method\": \"full_table_descriptive_v1\", \"limitations\": [\"Jumlah catatan/kunjungan bukan jumlah orang unik.\", \"Distribusi tiap kolom dihitung terpisah; jangan menjumlahkan hasil dan tindak lanjut sebagai orang berbeda.\"]}"
+              }
+            ],
+            "confidence": 0.95
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "intent": "extract_information",
+    "answer": "Berdasarkan file 'TC17_Survei_Kebutuhan_Pelatihan_150_Responden.csv', berikut adalah ringkasan kebutuhan pelatihan berdasarkan kolom yang tersedia:\n\n*   **Pemasaran (marketing):** Terdapat 2 kategori yang direspon. Distribusinya adalah 30 catatan untuk kategori '0' dan 120 catatan untuk kategori '1'.\n*   **Keuangan (finance):** Terdapat 2 kategori yang direspon. Distribusinya adalah 60 catatan untuk kategori '0' dan 90 catatan untuk kategori '1'.\n*   **Pengemasan (packaging):** Terdapat 2 kategori yang direspon. Distribusinya adalah 60 catatan untuk kategori '0' dan 90 catatan untuk kategori '1'.\n\nCatatan penting dari analisis data: Jumlah catatan sumber adalah 150, dan jumlah orang unik belum diketahui. Distribusi tiap kolom dihitung terpisah, jadi hasil ini tidak boleh dijumlahkan dan dianggap sebagai orang yang berbeda.",
+    "source_ids": [
+      1
+    ]
+  },
+  "duration_seconds": 2.75
+}

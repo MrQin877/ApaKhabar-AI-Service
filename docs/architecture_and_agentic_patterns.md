@@ -1,73 +1,77 @@
-# ApaKhabar AI Service - Architecture & Agentic Patterns
+# Architecture and agentic patterns: code map
 
-This document outlines the file structure, core responsibilities of each module, and the agentic AI patterns implemented in the ApaKhabar AI Service.
+Reviewed against the implementation on 1 October 2026. See [operational architecture](agent-architecture.md), [judge setup](separate-judge.md), and the [editable draw.io diagram](architecture/apakhabar-current-ai.drawio).
 
----
+## Roles and graph
 
-## 📂 File and Folder Structure
+The application implements four editorial roles within **one** `EditorialWorkflow`, not independent agent processes. There is no A2A protocol and no MCP server/client in this workflow.
 
-### 1. `app/api/` (FastAPI Routers)
-This folder contains the HTTP endpoints that handle incoming requests from the Laravel backend.
-* **`agent.py`**: Endpoints for running background agent tasks (starting runs, submitting approvals, getting events).
-* **`document.py`**: Endpoints for document upload, normalisation (PDF, CSV, TXT, DOCX), and parsing.
-* **`extraction.py`**: Triggers the AI extraction pipeline for processed documents.
-* **`news.py`**: Endpoints for synchronous news generation requests.
-* **`rag.py` / `knowledge.py`**: Endpoints for embedding generation and ChromaDB vector search.
+| Role | Method in `app/workflows/editorial.py` | Model |
+| --- | --- | --- |
+| Planner | `plan()` | Generation |
+| Researcher | `research()` | Generation |
+| Writer | `write()` | Generation |
+| Reviewer | `reflect()` | Judge when enabled; otherwise generation |
 
-### 2. `app/services/` (Core Business Logic)
-The core Python services that power the application's AI and data capabilities.
-* **`ai_service.py`**: The bridge between the application and the local LLM. It defines prompts and manages the structured extraction pipeline.
-* **`extraction_service.py`**: Chunks normalized documents and calls `ai_service.py` to extract structured JSON information. It handles large tables and long text efficiently.
-* **`document_service.py`**: Parses incoming files (CSV, PDF, Excel) into a standard `NormalizedDocument` schema.
-* **`agent_service.py`**: Manages the persistence, checkpoints, and execution of the LangGraph agent runs using SQLite.
-* **`rag_service.py`**: Chunks knowledge items, calculates embeddings, and stores them in ChromaDB.
+`build()` registers ten nodes: `plan`, `research`, `approval`, `check`, `clarify`, `write`, `reflect`, `replan`, `revise`, `finish`.
 
-### 3. `app/workflows/` (LangGraph Agents)
-Contains the state machine definitions for the autonomous agents.
-* **`editorial.py`**: Defines the `EditorialWorkflow`, a state graph modeling the entire research, drafting, and review process of the AI journalist.
+### Plan and Execute
 
-### 4. `app/tools/` (Agent Tools)
-* **`editorial.py`**: Defines the specific tools the LangGraph agent can call (e.g., `search_knowledge` for RAG).
+`plan()` identifies explicit user assertions and requested format. It requests at most three evidence-research tasks when eligible information is missing or configured web discovery is allowed. Fully supplied evidence can skip research. Writing and review are mandatory downstream stages, not tasks the planner may omit.
 
-### 5. `app/providers/` (Model Integration)
-* **`models.py`**: HTTP wrappers for interacting with `llama.cpp` and `Ollama`. It enforces JSON schema compliance by injecting grammar constraints into the generation process.
+### ReAct-style research
 
-### 6. `app/schemas/` (Pydantic Models)
-Defines the strict type schemas used across the API, LangGraph state, and LLM structured outputs.
-* **`agent.py`, `news.py`, `information.py`, `document.py`**: Enforce correct data structures at runtime.
+`research()` requests a typed `ToolAction`, executes it, stores its result/error as an observation, and chooses another action or finishes. `app/tools/editorial.py` dispatches `search_information`, `inspect_source`, `read_skill`, and optional `web_search`; `finish` is handled by the workflow. These are direct Python tools, not MCP tools or native LangGraph ToolNode calls. Duplicate actions and total tool calls are bounded.
 
-### 7. `skills/` (Prompt Engineering & Personas)
-Markdown-based prompt injection files loaded dynamically by the `SkillRegistry`.
-* **`document-extraction/`**: Prompts for extracting facts from raw text.
-* **`evidence-research/`**: Instructions for the agent on how to search and synthesize facts.
-* **`indonesian-news-writing/` & `draft-revision/`**: Personas and stylistic rules for the AI journalist.
-* **`editorial-review/`**: The strict guidelines the reflection agent uses to critique drafts.
+### Reflection and revision
 
----
+`reflect()` supplies the draft, evidence, and completeness findings to the reviewer. Deterministic coverage and source checks supplement the model review. The code computes a weighted score from returned dimensions. `revise()` increments the revision counter and routes back to `write()` with review feedback. The loop stops at configured limits or when review no longer improves, retaining the best candidate. This reduces errors but does not guarantee factual accuracy.
 
-## 🤖 Agentic Patterns Implemented
+### Human review
 
-The service is built around a robust **LangGraph** state machine (defined in `app/workflows/editorial.py`), which orchestrates several advanced agentic patterns to guarantee factual accuracy and high-quality writing.
+`approval()` interrupts for approval of discovered web snippets **after search**, before they become drafting evidence. `clarify()` interrupts for missing information, with at most one clarification round. Laravel owns source moderation, draft editing, category approval, and publishing confirmation. Completing the graph never publishes news.
 
-### 1. Plan-and-Execute
-Before writing an article, the agent does not immediately start drafting or calling tools randomly.
-1. The agent first reads the user's request.
-2. It generates an `ExecutionPlan` detailing exactly what knowledge it needs to retrieve.
-3. It then executes the plan by transitioning to the tool-calling phase.
+## Model construction and routing
 
-### 2. ReAct (Reasoning and Acting)
-During the research phase, the agent employs the **ReAct** pattern:
-* **Reasoning**: It evaluates its current knowledge against the `ExecutionPlan`.
-* **Acting**: It generates a `ToolAction` (like `search_knowledge`) to query the vector database.
-* **Observation**: The system executes the tool and appends the result to the agent's state.
-The agent loops through this process until it determines it has sufficient evidence to draft the article.
+- `app/core/config.py`: provider, endpoint, alias, timeout, embedding, and evaluator settings, overridden by `.env`.
+- `app/providers/models.py`: `GenerationModel.structured()` validates JSON with one repair attempt; `_chat()` calls llama.cpp or Ollama. `Embeddings` handles the separate retrieval model.
+- `app/providers/evaluator.py`: `build_evaluator()` creates a model client using judge settings and rejects identical writer/judge names. Different aliases alone do not prove different weights.
+- `app/services/agent_service.py`: initializes generation model, optional evaluator, skill registry, and tools; runs the graph with SQLite checkpoints and persisted events.
+- `EditorialWorkflow.call()`: routes `Reflection` schemas to `self.evaluator`; all other graph schemas use `self.model`.
 
-### 3. Reflection Agent (Actor-Critic)
-To prevent hallucinations and enforce strict journalistic standards, the system employs a **Reflection** pattern (often called Actor-Critic).
-1. **Actor (Drafting)**: The agent writes a `NewsArticle` based strictly on retrieved facts.
-2. **Critic (Reviewing)**: A separate node in the graph assumes the `editorial-review` persona and evaluates the draft. It generates a `Reflection` containing a quality score and specific critiques (e.g., "Paragraph 2 contains an unverified date").
-3. **Revision**: If the draft fails the review, the graph loops back to the Actor, providing it with the Critic's feedback so it can rewrite and improve the article.
-This loop is bounded by a `revision_budget` to prevent infinite loops.
+With the judge enabled, its failure preserves the draft with `evaluation_unavailable` and blocks publication rather than falling back to self-review. Defaults disable the judge; deployment configuration controls activation. DeepEval is a separate optional offline calibration runner, not part of each production request.
 
-### 4. Human-in-the-Loop (Interrupts)
-For potentially dangerous or unverified actions (like searching the live web), the LangGraph workflow uses `interrupt()`. The agent pauses its execution, saves its state to SQLite, and waits for the Laravel frontend to submit an explicit user approval before resuming the graph.
+## Skill activation
+
+`app/skills/registry.py` discovers `skills/*/SKILL.md`, validates metadata, and hashes contents. `activate(name)` loads instructions; `resource()` loads bounded Markdown references within that skill directory.
+
+The application chooses skills explicitly:
+
+| Stage | Skill | Trigger |
+| --- | --- | --- |
+| Extraction | `document-extraction` | `AIService` in `app/services/ai_service.py` activates it |
+| Research | `evidence-research` | `plan()` / `research()` call `self.skill(...)` |
+| New draft | `indonesian-news-writing` | `write()` when there is no current draft or revision |
+| Revision | `draft-revision` | `write()` when current draft or revision count exists |
+| Review | `editorial-review` | `reflect()` |
+
+`EditorialWorkflow.skill()` calls `registry.activate()` and checks version consistency. The returned `active['instructions']` is included in the model prompt. The research model may request references through `read_skill`, restricted to active skills. Non-news formats load writing format references directly. Skills are maintained instructions, not independent models, executable programs, or uploaded source documents.
+
+## Other application paths
+
+- `app/api/assistant.py`: `/assistant/respond` classifies intent and answers questions from supplied information. An upload alone does not request a draft.
+- `app/api/document.py`, `app/services/document_service.py`: upload normalization and file parsing, including spreadsheets and OCR-supported inputs.
+- `app/services/extraction_service.py`, `app/services/ai_service.py`: chunked structured extraction; separate from the editorial graph.
+- `app/services/knowledge_service.py`, `app/api/knowledge.py`: approved information indexing and owner/eligibility-filtered retrieval.
+- `app/services/rag_service.py`: legacy raw-document retrieval, isolated from approved editorial research.
+- `app/api/agent.py`: synchronous run/resume calls and persisted state inspection. Laravel queue workers provide asynchronous UI execution.
+
+The Python article schema remains structured (`headline`, `lead`, `body`, etc.). Laravel maps it to unified draft `title`/`content`/`excerpt` fields. Extraction-quality badges in Laravel use evidence/completeness/confidence heuristics; the separate judge currently reviews drafts, not an independently evaluated extraction output.
+
+### Bounded replanning
+
+The reviewer can return up to three `evidence_gaps` for material missing evidence. `after_review()` routes these to `replan()` only when eligible library information or permitted web search exists, tool calls remain, the deadline has not passed, and a revision slot remains. Wording problems and omitted facts already present in the evidence use ordinary revision.
+
+Replanning runs at most once per run, creates up to three replacement research tasks, and consumes one existing revision slot. It preserves the original tool count, observations (including duplicate-action protection), and execution deadline. Research returns through source approval and completeness checking before rewriting and review. New web results require approval; earlier decisions are not prompted again. The new evidence cycle resets the best-candidate comparison so an older score is not reused against changed evidence. Unresolved findings remain visible for moderator review; publication is unchanged.
+
+The service reports `metrics.replans` and emits a `replanning` progress event with a short action summary. No private reasoning is exposed. This is bounded evidence recovery, not unrestricted autonomous research; it cannot retrieve outside the caller's eligible source scope. Regression tests are in `tests/test_replanning.py`.

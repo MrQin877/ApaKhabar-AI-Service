@@ -1,0 +1,486 @@
+{
+  "case": {
+    "id": "TC11",
+    "mode": "draft",
+    "files": [
+      "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+      "TC11_Laporan_Pelatihan_Digital_2026.pdf"
+    ],
+    "prompt": "Buatkan berita tentang kegiatan pelatihan digital tahun 2026 dan bandingkan dengan tahun 2025. Hitung perubahan jumlah peserta dan tingkat penyelesaian tugas.",
+    "review_checklist": [
+      "2025: 20 participants, 15 completions (75%). 2026: 30 participants, 24 completions (80%). Attendance increases by 10 (50%); completion rate increases by 5 percentage points."
+    ],
+    "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+  },
+  "status": "awaiting_human_review",
+  "extractions": [
+    {
+      "document": {
+        "document_id": "246a56f5-db2e-45a8-bad1-b63c42bd2ba7",
+        "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 643,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN KEGIATAN PELATIHAN DIGITAL 2025",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen laporan kegiatan tahunan",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Program pelatihan digital dilaksanakan sebagai bagian dari kegiatan pemberdayaan",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "masyarakat pada tahun 2025. Kegiatan ini memberikan kesempatan kepada peserta untuk",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "mengikuti sesi pembelajaran dan menyelesaikan latihan yang diberikan selama program.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Ringkasan Kegiatan Jumlah",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Jumlah peserta 20",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Peserta yang menyelesaikan tugas 15",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Berdasarkan rekap kegiatan, sebanyak 20 peserta tercatat mengikuti program pada tahun",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "2025. Dari jumlah tersebut, 15 peserta menyelesaikan tugas yang diberikan selama kegiatan.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan: Dokumen ini hanya memuat data kegiatan untuk tahun yang tertera.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Digital Training Program Summary",
+            "summary": "The digital training program in 2025 was part of a community empowerment activity. Participants had the opportunity to attend learning sessions and complete assigned exercises during the program.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "number_of_participants": 20,
+              "participants_completing_tasks": 15,
+              "year": 2025
+            },
+            "evidence": [
+              {
+                "source": "filename=TC11_Laporan_Pelatihan_Digital_2025.pdf, page=1",
+                "quote": "Program pelatihan digital dilaksanakan sebagai bagian dari kegiatan pemberdayaan masyarakat pada tahun 2025."
+              },
+              {
+                "source": "filename=TC11_Laporan_Pelatihan_Digital_2025.pdf, page=1",
+                "quote": "Jumlah peserta 20"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "document_id": "9f831b9c-e1ee-450d-8acc-edfdbeff97b0",
+        "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+        "media_type": "application/octet-stream",
+        "character_count": 643,
+        "elements": [
+          {
+            "element_type": "paragraph",
+            "content": "LAPORAN KEGIATAN PELATIHAN DIGITAL 2026",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Dokumen laporan kegiatan tahunan",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Program pelatihan digital dilaksanakan sebagai bagian dari kegiatan pemberdayaan",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "masyarakat pada tahun 2026. Kegiatan ini memberikan kesempatan kepada peserta untuk",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "mengikuti sesi pembelajaran dan menyelesaikan latihan yang diberikan selama program.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Ringkasan Kegiatan Jumlah",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Jumlah peserta 30",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Peserta yang menyelesaikan tugas 24",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Berdasarkan rekap kegiatan, sebanyak 30 peserta tercatat mengikuti program pada tahun",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "2026. Dari jumlah tersebut, 24 peserta menyelesaikan tugas yang diberikan selama kegiatan.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          },
+          {
+            "element_type": "paragraph",
+            "content": "Catatan: Dokumen ini hanya memuat data kegiatan untuk tahun yang tertera.",
+            "source": {
+              "filename": "TC11_Laporan_Pelatihan_Digital_2026.pdf",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "paragraph": null
+            },
+            "metadata": {}
+          }
+        ]
+      },
+      "extraction": {
+        "information": [
+          {
+            "information_id": null,
+            "type": "Education",
+            "title": "Digital Training Program Summary",
+            "summary": "The digital training program in 2026 was part of a community empowerment activity. Participants had the opportunity to attend learning sessions and complete assigned exercises during the program.",
+            "labels": [
+              "education"
+            ],
+            "fields": {
+              "number_of_participants": 30,
+              "participants_who_completed_tasks": 24,
+              "year": 2026
+            },
+            "evidence": [
+              {
+                "source": "filename=TC11_Laporan_Pelatihan_Digital_2026.pdf, page=1",
+                "quote": "Program pelatihan digital dilaksanakan sebagai bagian dari kegiatan pemberdayaan masyarakat pada tahun 2026."
+              },
+              {
+                "source": "filename=TC11_Laporan_Pelatihan_Digital_2026.pdf, page=1",
+                "quote": "Jumlah peserta 30"
+              }
+            ],
+            "confidence": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "human_review": "pending",
+  "result": {
+    "completeness": {
+      "status": "needs_information",
+      "missing": [
+        {
+          "field": "number_of_participants_2025",
+          "importance": "required",
+          "question": "Berapa jumlah peserta dalam program pelatihan digital tahun 2025?",
+          "options": [],
+          "selection_type": "single"
+        },
+        {
+          "field": "participants_completing_tasks_2025",
+          "importance": "required",
+          "question": "Berapa jumlah peserta yang menyelesaikan tugas dalam program pelatihan digital tahun 2025?",
+          "options": [],
+          "selection_type": "single"
+        }
+      ],
+      "conflicts": [],
+      "known_facts": [
+        "Program pelatihan digital tahun 2026 dilaksanakan sebagai bagian dari kegiatan pemberdayaan masyarakat.",
+        "Jumlah peserta program pelatihan digital tahun 2026 adalah 30.",
+        "Jumlah peserta yang menyelesaikan tugas program pelatihan digital tahun 2026 adalah 24."
+      ]
+    },
+    "article": null,
+    "run_id": "eval-28d7b13f82b94664a913e319ddf7e202",
+    "status": "awaiting_answers",
+    "quality": null,
+    "events": [
+      {
+        "event_type": "stage_started",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding"
+        },
+        "timestamp": 1790951803.380001,
+        "sequence": 1
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memahami permintaan",
+        "content": "Memahami permintaan",
+        "tool_name": null,
+        "payload": {
+          "stage": "RequestUnderstanding",
+          "elapsed_seconds": 0.45
+        },
+        "timestamp": 1790951803.831743,
+        "sequence": 2
+      },
+      {
+        "event_type": "planning",
+        "label": "Rencana editorial disiapkan",
+        "content": "Rencana editorial disiapkan",
+        "tool_name": null,
+        "payload": {
+          "steps": []
+        },
+        "timestamp": 1790951803.832878,
+        "sequence": 3
+      },
+      {
+        "event_type": "stage_started",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult"
+        },
+        "timestamp": 1790951803.834518,
+        "sequence": 4
+      },
+      {
+        "event_type": "stage_completed",
+        "label": "Memeriksa kelengkapan fakta",
+        "content": "Memeriksa kelengkapan fakta",
+        "tool_name": null,
+        "payload": {
+          "stage": "CompletenessResult",
+          "elapsed_seconds": 2.43
+        },
+        "timestamp": 1790951806.261182,
+        "sequence": 5
+      },
+      {
+        "event_type": "completeness",
+        "label": "Kelengkapan dan konflik diperiksa",
+        "content": "Kelengkapan dan konflik diperiksa",
+        "tool_name": null,
+        "payload": {},
+        "timestamp": 1790951806.262207,
+        "sequence": 6
+      }
+    ],
+    "skills_used": [
+      {
+        "name": "evidence-research",
+        "version": "f955e075805f3392a017cb36f5dacd70d74e8b754578760506423c0bc7c42c81"
+      }
+    ],
+    "plan": [
+      {
+        "task": "Write or revise draft",
+        "skill": "indonesian-news-writing"
+      },
+      {
+        "task": "Review evidence and revise within limits",
+        "skill": "editorial-review"
+      }
+    ],
+    "web_sources": [],
+    "guidance": null,
+    "metrics": {
+      "elapsed_seconds": 2.889,
+      "model_calls": 2,
+      "tool_calls": 0,
+      "revisions": 0,
+      "replans": 0
+    }
+  },
+  "duration_seconds": 8.28
+}

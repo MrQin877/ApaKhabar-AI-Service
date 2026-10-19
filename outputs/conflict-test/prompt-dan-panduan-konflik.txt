@@ -1,0 +1,25 @@
+PROMPT UNTUK ASISTEN BERITA
+
+Gunakan seluruh informasi yang telah diekstrak dan disetujui dari dokumen Laporan Persiapan Program Belajar Bersama Desa Punggul. Kedua laporan A dan B merujuk pada kegiatan PB-PGL-2026-01 yang sama dan waktu pencatatan yang sama. Buat draf berita berbahasa Indonesia tentang rencana acara pembukaan program tersebut untuk kategori Pendidikan.
+
+Sebelum menyusun draf, periksa kesesuaian tanggal pelaksanaan, lokasi acara, dan jumlah seluruh peserta terdaftar pada kedua laporan. Rujuk nomor laporan saat menjelaskan perbedaan. Jangan menganggap salah satu laporan sebagai revisi atau lebih benar tanpa bukti. Jangan menggabungkan angka peserta, mengubahnya menjadi rentang, atau mengarang pembagian sesi. Jangan memakai sumber web atau riwayat kegiatan lain untuk menyelesaikan perbedaan ini.
+
+Jika terdapat fakta material yang bertentangan, jelaskan kedua versinya dan minta konfirmasi moderator sebelum membuat draf siap terbit. Jangan menyatakan bahwa fakta yang masih bertentangan telah terverifikasi.
+
+CARA MENGUJI
+
+1. Unggah sumber-konflik-program-belajar.docx melalui perpustakaan dokumen.
+2. Tunggu ekstraksi selesai. Pastikan informasi laporan A dan laporan B sama-sama tersimpan, dengan tanggal, tempat, dan total peserta masing-masing tetap terpisah. Jangan mengoreksi perbedaannya saat menyiapkan pengujian.
+3. Setujui informasi yang diperlukan agar kedua laporan tersedia sebagai sumber AI. Persetujuan di sini hanya untuk memasukkan bahan uji ke sumber yang dapat dibaca.
+4. Mulai percakapan berita baru dan pilih informasi dari kedua laporan. Tempel hanya bagian PROMPT UNTUK ASISTEN BERITA di atas.
+5. Periksa apakah AI menunjukkan pertentangan dan meminta klarifikasi. Jangan menekan persetujuan konflik atau memberikan jawaban penyelesaian sebelum mencatat hasil uji.
+
+HASIL YANG DIHARAPKAN
+
+Tanggal: laporan A menyebut 18 Oktober 2026; laporan B menyebut 19 Oktober 2026.
+Tempat: laporan A menyebut Balai Desa Punggul; laporan B menyebut Lapangan Desa Punggul.
+Peserta terdaftar: laporan A menyebut 120 siswa; laporan B menyebut 80 siswa. Keduanya merupakan total populasi yang sama pada waktu pencatatan yang sama.
+
+Pada alur pemeriksaan kelengkapan, hasil yang diharapkan adalah has_conflicts disertai daftar konflik dan permintaan klarifikasi. AI dapat berhenti sebelum menghasilkan draf; hal itu sesuai dengan alur aplikasi. Konflik sumber berbeda dari label penilaian klaim contradicted pada evaluasi draf. Hasil model tidak dijamin dan harus diperiksa melalui hasil pengujian.
+
+SELURUH PERISTIWA DAN LAPORAN DALAM PAKET INI ADALAH DATA FIKTIF UNTUK PENGUJIAN, BUKAN BERITA UNTUK DITERBITKAN.

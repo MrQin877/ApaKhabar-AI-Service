@@ -1,0 +1,15 @@
+{
+  "id": "TC09",
+  "mode": "draft",
+  "files": [
+    "TC09_Service_Interruption.txt"
+  ],
+  "prompt": "Buatkan berita berdasarkan catatan layanan dalam dokumen ini untuk disampaikan kepada warga desa.",
+  "review_checklist": [
+    "Scheduled water interruption: 12 October 2026, 08.00–14.00 WITA; scheduled duration six hours.",
+    "Both Dusun Timur and Dusun Tengah affected; reason scheduled pipe maintenance.",
+    "Use planned wording before event. Do not claim restoration occurred or guarantee restoration at 14.00; no invented affected areas or alternative supplies."
+  ],
+  "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring.",
+  "temporal_review_note": "Judge planned vs completed wording using actual run date and source evidence; do not inject a fabricated current date."
+}

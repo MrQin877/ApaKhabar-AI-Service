@@ -34,6 +34,14 @@ class NewsArticle(BaseModel):
     category: str | None = None
 
 
+class HistoricalSource(BaseModel):
+    source_id: str = Field(pattern=r"^history:(information|news):[0-9]+$")
+    title: str = Field(max_length=1000)
+    content: str = Field(max_length=6000)
+    recorded_at: str = ""
+    context_type: Literal["historical_background"] = "historical_background"
+
+
 class NewsRequest(BaseModel):
     information: str | ExtractionResponse = ""
     language: NewsLanguage = "id"
@@ -50,6 +58,8 @@ class NewsRequest(BaseModel):
     run_id: str | None = Field(default=None, pattern=r"^[a-zA-Z0-9_-]{1,100}$")
     eligible_information_ids: list[str] = Field(default_factory=list)
     allow_web: bool = False
+    include_historical_context: bool = False
+    historical_sources: list[HistoricalSource] = Field(default_factory=list, max_length=3)
 
     @model_validator(mode="after")
     def reject_blank(self):

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1725" height="1346" viewBox="0 0 1725 1346"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="35" y="38" text-anchor="start" font-family="Arial,sans-serif" font-size="25" font-weight="bold" fill="#0f172a">01 — Document extraction and approved indexing</text>
+<text x="35" y="68" text-anchor="start" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#0f172a">Upload does not imply drafting. Only moderator-approved information enters the agent knowledge index.</text>
+<line x1="70.0" y1="151" x2="70.0" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="4.0" y="95" width="132" height="56" fill="#dcfce7" stroke="#94a3b8"/>
+<text x="70.0" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Moderator</text>
+<line x1="334.1666666666667" y1="151" x2="334.1666666666667" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="234.16666666666669" y="95" width="200" height="56" fill="#dcfce7" stroke="#94a3b8"/>
+<text x="334.1666666666667" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Web app</text>
+<text x="334.1666666666667" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Laravel workers</text>
+<line x1="598.3333333333334" y1="151" x2="598.3333333333334" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="498.33333333333337" y="95" width="200" height="56" fill="#dbeafe" stroke="#94a3b8"/>
+<text x="598.3333333333334" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Application database</text>
+<line x1="862.5" y1="151" x2="862.5" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="762.5" y="95" width="200" height="56" fill="#dcfce7" stroke="#94a3b8"/>
+<text x="862.5" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">AI service</text>
+<text x="862.5" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">FastAPI</text>
+<line x1="1126.6666666666667" y1="151" x2="1126.6666666666667" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="1026.6666666666667" y="95" width="200" height="56" fill="#fef3c7" stroke="#94a3b8"/>
+<text x="1126.6666666666667" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Generation model</text>
+<text x="1126.6666666666667" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Gemma</text>
+<line x1="1390.8333333333333" y1="151" x2="1390.8333333333333" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="1290.8333333333333" y="95" width="200" height="56" fill="#fef3c7" stroke="#94a3b8"/>
+<text x="1390.8333333333333" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">EmbeddingGemma</text>
+<text x="1390.8333333333333" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">300M</text>
+<line x1="1655.0" y1="151" x2="1655.0" y2="1311" stroke="#cbd5e1" stroke-dasharray="5 5"/>
+<rect x="1589.0" y="95" width="132" height="56" fill="#dbeafe" stroke="#94a3b8"/>
+<text x="1655.0" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">Chroma</text>
+<text x="1655.0" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">vector database</text>
+<rect x="25" y="171" width="1675" height="34" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="38" y="193" text-anchor="start" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f172a">Upload and extract</text>
+<line x1="70.0" y1="257" x2="334.1666666666667" y2="257" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="76.68333333333335" y="222" width="250.79999999999998" height="24" fill="white"/>
+<text x="202.08333333333334" y="239" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">1. Upload document and optional prompt</text>
+<line x1="334.1666666666667" y1="319" x2="598.3333333333334" y2="319" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="324.35" y="284" width="283.8" height="24" fill="white"/>
+<text x="466.25" y="301" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">2. Save document, session and queued status</text>
+<line x1="334.1666666666667" y1="381" x2="862.5" y2="381" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="436.6333333333334" y="346" width="323.4" height="24" fill="white"/>
+<text x="598.3333333333334" y="363" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">3. Document worker: POST /documents/batch-extract</text>
+<text x="874.5" y="414" text-anchor="start" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">4. Parse file; OCR if needed; compute table summaries</text>
+<path d="M862.5,441 h45 v14 h-45" fill="none" stroke="#475569" marker-end="url(#arrow)"/>
+<line x1="862.5" y1="505" x2="1126.6666666666667" y2="505" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="793.2833333333334" y="470" width="402.59999999999997" height="24" fill="white"/>
+<text x="994.5833333333334" y="487" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">5. Extract structured facts from normalized text, when needed</text>
+<line x1="1126.6666666666667" y1="567" x2="862.5" y2="567" stroke="#475569" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="879.0833333333334" y="532" width="231.0" height="24" fill="white"/>
+<text x="994.5833333333334" y="549" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">6. Return facts and source evidence</text>
+<line x1="862.5" y1="629" x2="334.1666666666667" y2="629" stroke="#475569" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="423.4333333333334" y="594" width="349.79999999999995" height="24" fill="white"/>
+<text x="598.3333333333334" y="611" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">7. Return extraction results; not indexed as approved</text>
+<line x1="334.1666666666667" y1="691" x2="598.3333333333334" y2="691" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="330.95000000000005" y="656" width="270.59999999999997" height="24" fill="white"/>
+<text x="466.25" y="673" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">8. Save information and extraction status</text>
+<line x1="334.1666666666667" y1="753" x2="70.0" y2="753" stroke="#475569" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="53.58333333333334" y="718" width="297.0" height="24" fill="white"/>
+<text x="202.08333333333334" y="735" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">9. Display facts and progress for this upload</text>
+<rect x="25" y="791" width="1675" height="34" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="38" y="813" text-anchor="start" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f172a">After information is approved</text>
+<line x1="70.0" y1="877" x2="334.1666666666667" y2="877" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="89.88333333333335" y="842" width="224.39999999999998" height="24" fill="white"/>
+<text x="202.08333333333334" y="859" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">10. Review and approve information</text>
+<line x1="334.1666666666667" y1="939" x2="598.3333333333334" y2="939" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="347.45" y="904" width="237.6" height="24" fill="white"/>
+<text x="466.25" y="921" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">11. Update information review status</text>
+<line x1="334.1666666666667" y1="1001" x2="862.5" y2="1001" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="423.4333333333334" y="966" width="349.79999999999995" height="24" fill="white"/>
+<text x="598.3333333333334" y="983" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">12. POST /rag/information/index with approved records</text>
+<line x1="862.5" y1="1063" x2="1390.8333333333333" y2="1063" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="1024.3666666666666" y="1028" width="204.6" height="24" fill="white"/>
+<text x="1126.6666666666665" y="1045" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">13. Encode approved information</text>
+<line x1="1390.8333333333333" y1="1125" x2="862.5" y2="1125" stroke="#475569" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="1034.2666666666664" y="1090" width="184.79999999999998" height="24" fill="white"/>
+<text x="1126.6666666666665" y="1107" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">14. Return embedding vectors</text>
+<line x1="862.5" y1="1187" x2="1655.0" y2="1187" stroke="#475569" stroke-dasharray="none" marker-end="url(#arrow)"/>
+<rect x="1060.75" y="1152" width="396.0" height="24" fill="white"/>
+<text x="1258.75" y="1169" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">15. Store vectors, evidence and owner / eligibility metadata</text>
+<line x1="862.5" y1="1249" x2="334.1666666666667" y2="1249" stroke="#475569" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="512.5333333333334" y="1214" width="171.6" height="24" fill="white"/>
+<text x="598.3333333333334" y="1231" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="normal" fill="#0f172a">16. Return indexing result</text>
+<text x="35" y="1334" text-anchor="start" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#0f172a">Solid arrows: requests/actions   |   Dashed arrows: responses   |   Model names follow bundled launchers; deployments can override them.</text>
+</svg>

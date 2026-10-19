@@ -1,0 +1,13 @@
+{
+  "id": "TC11",
+  "mode": "draft",
+  "files": [
+    "TC11_Laporan_Pelatihan_Digital_2025.pdf",
+    "TC11_Laporan_Pelatihan_Digital_2026.pdf"
+  ],
+  "prompt": "Buatkan berita tentang kegiatan pelatihan digital tahun 2026 dan bandingkan dengan tahun 2025. Hitung perubahan jumlah peserta dan tingkat penyelesaian tugas.",
+  "review_checklist": [
+    "2025: 20 participants, 15 completions (75%). 2026: 30 participants, 24 completions (80%). Attendance increases by 10 (50%); completion rate increases by 5 percentage points."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

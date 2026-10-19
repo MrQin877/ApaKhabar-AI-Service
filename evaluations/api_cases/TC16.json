@@ -1,0 +1,12 @@
+{
+  "id": "TC16",
+  "mode": "draft",
+  "files": [
+    "TC16_Pelatihan_Digital_UMKM.xlsx"
+  ],
+  "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM, termasuk partisipasi warga dan biaya kegiatan, berdasarkan file Excel ini.",
+  "review_checklist": [
+    "12 registered; 9 attended; 3 absent; attendance 75%; total expenses Rp1.400.000."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "TC12",
+  "mode": "historical",
+  "files": [
+    "TC12_Laporan_Dampak_Gunung_Api_2025.pdf",
+    "TC12_Laporan_Dampak_Gunung_Api_2026.pdf"
+  ],
+  "prompt": "Ekstrak informasi penting dari laporan tahun 2025 ini, terutama lokasi kejadian, penyebab, dan persentase pencemaran udara.",
+  "review_checklist": [
+    "First extract and summarise only 2025, then index as approved TEST evidence. Second request supplies only 2026 facts, with previous IDs eligible for research.",
+    "Retrieve 2025 via tool, not injected historical text. Inspect tool events and sources_used to confirm retrieval.",
+    "2025: Desa Suka Maju, eastern slope and residents gardens, Gunung Aruna, 35%. 2026: Desa Punggul, southern slope and village vegetation, Gunung Aruna, 50%.",
+    "Difference is 15 percentage points (relative difference approximately 42.86%); different locations mean this is not established same-location year-over-year deterioration. Preserve fictional-source label."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics.",
+  "second_prompt": "Buatkan berita tentang dampak aktivitas gunung api pada tahun 2026 ini. Tolong cari juga laporan tahun 2025 yang berkaitan dan bandingkan persentase pencemaran udaranya.",
+  "turns": [
+    {
+      "files": [
+        "TC12_Laporan_Dampak_Gunung_Api_2025.pdf"
+      ],
+      "prompt": "Ekstrak informasi penting dari laporan tahun 2025 ini, terutama lokasi kejadian, penyebab, dan persentase pencemaran udara."
+    },
+    {
+      "files": [
+        "TC12_Laporan_Dampak_Gunung_Api_2026.pdf"
+      ],
+      "prompt": "Buatkan berita tentang dampak aktivitas gunung api pada tahun 2026 ini. Tolong cari juga laporan tahun 2025 yang berkaitan dan bandingkan persentase pencemaran udaranya."
+    }
+  ]
+}

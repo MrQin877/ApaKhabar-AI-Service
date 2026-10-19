@@ -13,6 +13,13 @@ class Settings(BaseSettings):
     llama_cpp_model: str = "apakhabar-gemma"
     llama_cpp_timeout_seconds: float = Field(default=180, gt=0)
     llama_cpp_max_tokens: int = Field(default=4096, gt=0)
+    evaluator_enabled: bool = False
+    evaluator_provider: Literal["ollama", "llama_cpp"] = "llama_cpp"
+    evaluator_base_url: str = "http://127.0.0.1:8082/v1"
+    evaluator_model: str = "apakhabar-judge"
+    evaluator_api_key: str = ""
+    evaluator_timeout_seconds: float = Field(default=180, gt=0)
+    evaluator_max_tokens: int = Field(default=4096, gt=0)
     embedding_provider: Literal["ollama", "embedding_gemma", "openai"] = "ollama"
     embedding_model: str = "google/embeddinggemma-300m"
     embedding_device: str = "auto"

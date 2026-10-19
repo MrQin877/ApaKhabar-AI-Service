@@ -1,0 +1,13 @@
+{
+  "id": "TC01",
+  "mode": "draft",
+  "files": [
+    "TC01_Event_Announcement.pdf"
+  ],
+  "prompt": "Buatkan berita berdasarkan informasi dalam dokumen ini untuk disampaikan kepada warga desa.",
+  "review_checklist": [
+    "Planned event, not completed. Organiser Pemerintah Desa Suka Maju; 18 Oktober 2026; 09.00–12.00 WITA; Balai Desa Suka Maju; capacity 30; registration deadline 15 Oktober 2026.",
+    "Capacity is not attendance. No invented speakers, attendance, completed activities or results."
+  ],
+  "expected_origin": "User expectations checked against supplied source text/data; semantic evaluation remains manual."
+}

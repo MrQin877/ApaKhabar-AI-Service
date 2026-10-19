@@ -22,9 +22,11 @@ class RunConflict(ValueError):
 
 
 class AgentService:
-    def __init__(self, settings=None, model=None, knowledge_factory=KnowledgeService):
+    def __init__(self, settings=None, model=None, knowledge_factory=KnowledgeService, evaluator=None):
         self.settings = settings or get_settings()
         self.model = model or GenerationModel(self.settings)
+        from app.providers.evaluator import build_evaluator
+        self.evaluator = evaluator or (build_evaluator(self.settings) if self.settings.evaluator_enabled else self.model)
         self.registry = SkillRegistry(self.settings.agent_skills_path)
         self.tools = EditorialTools(self.settings, self.registry, knowledge_factory)
         Path(self.settings.agent_db_path).parent.mkdir(parents=True, exist_ok=True)
@@ -100,7 +102,7 @@ class AgentService:
         try:
             with SqliteSaver.from_conn_string(self.settings.agent_db_path) as saver:
                 workflow = EditorialWorkflow(self.model, self.registry, self.tools, self.settings,
-                    lambda kind, label, **kwargs: self.event(key, kind, label, **kwargs))
+                    lambda kind, label, **kwargs: self.event(key, kind, label, **kwargs), evaluator=self.evaluator)
                 graph = workflow.build(saver)
                 config = {'configurable': {'thread_id': key}, 'recursion_limit': 100}
                 snapshot = graph.get_state(config)
@@ -118,7 +120,13 @@ class AgentService:
                     values = snapshot.values
                     previous_sources = values.get('sources', {})
                     sources = {k: v for k, v in previous_sources.items() if not k.startswith('information:') or k.removeprefix('information:') in eligible}
+                    # Historical context must be re-authorized by Laravel on each resume.
+                    sources = {k: v for k, v in sources.items() if not k.startswith('history:')}
+                    if resume.include_historical_context:
+                        sources.update({item.source_id: item.model_dump() for item in resume.historical_sources})
                     updated_request = dict(values['request'])
+                    updated_request['include_historical_context'] = resume.include_historical_context
+                    updated_request['historical_sources'] = [item.model_dump() for item in resume.historical_sources]
                     updated_request['eligible_information_ids'] = sorted(eligible)
                     if isinstance(updated_request['information'], dict):
                         updated_request['information'] = {'information': [item for item in updated_request['information']['information']
@@ -126,7 +134,7 @@ class AgentService:
                         if not updated_request['information']['information'] and not updated_request['instructions'] and not updated_request['user_facts']:
                             updated_request['instructions'] = 'Continue using only eligible evidence, or report insufficient evidence.'
                     update = {'sources': sources, 'request': updated_request, 'deadline': time.time() + self.settings.agent_max_seconds}
-                    if not pause and len(sources) != len(previous_sources) and values.get('article'):
+                    if not pause and sources != previous_sources and values.get('article'):
                         # A failed run may already hold a draft. Recheck it from current evidence.
                         update.update(article=None, quality=None, best_article=None, best_quality=None)
                         graph.update_state(config, update, as_node='approval')
@@ -151,7 +159,7 @@ class AgentService:
                     events=self.events(key), skills_used=[{'name': n, 'version': v} for n, v in result.get('skills', {}).items()],
                     plan=result.get('plan', []) + [{'task': 'Write or revise draft', 'skill': 'indonesian-news-writing'}, {'task': 'Review evidence and revise within limits', 'skill': 'editorial-review'}],
                     web_sources=result.get('pending_web', []), guidance=result.get('guidance'),
-                    metrics={'elapsed_seconds': round(time.monotonic() - started, 3), 'model_calls': getattr(self.model, 'call_count', 0) - initial_calls, 'tool_calls': result.get('tool_count', 0), 'revisions': result.get('revisions', 0)})
+                    metrics={'elapsed_seconds': round(time.monotonic() - started, 3), 'model_calls': getattr(self.model, 'call_count', 0) - initial_calls, 'tool_calls': result.get('tool_count', 0), 'revisions': result.get('revisions', 0), 'replans': result.get('replans', 0)})
                 with self.db() as db:
                     db.execute('UPDATE runs SET status=?,response=?,lease=0 WHERE id=?', (status, response.model_dump_json(), key))
                 return response

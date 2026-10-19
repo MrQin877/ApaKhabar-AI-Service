@@ -1,0 +1,13 @@
+{
+  "id": "TC13",
+  "mode": "draft",
+  "files": [
+    "TC13_Laporan_Pelatihan_Digital.pdf",
+    "TC13_Ringkasan_Kehadiran.xlsx"
+  ],
+  "prompt": "Tolong buatkan berita tentang pelatihan digital UMKM dari kedua dokumen ini.",
+  "review_checklist": [
+    "Identify PDF 40 vs XLSX 36 conflict; ask clarification or omit disputed total. Never choose either or average to 38."
+  ],
+  "expected_origin": "User-provided; reviewer must verify against original files before reporting metrics."
+}

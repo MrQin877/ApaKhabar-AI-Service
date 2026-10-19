@@ -38,6 +38,80 @@ class TableNewsTests(unittest.TestCase):
         self.assertEqual(analysis['columns']['tindak_lanjut']['counts']['Disarankan konsultasi lanjutan ke Puskesmas'], 12)
         self.assertEqual(analysis['source_row_ranges'], [[2, 121]])
 
+    def analyze_csv(self, text):
+        result = extract_document(DocumentService.normalize(text.encode(), 'variable.csv', 'text/csv'))
+        item = result.information[0]
+        return item.fields['table_analysis'], build_brief({'x': item.model_dump()})
+
+    def test_population_workbook_totals(self):
+        path = Path(__file__).resolve().parents[1] / 'evaluations/api_cases/files/TC05_Population_Summary.xlsx'
+        item = extract_document(DocumentService.normalize(path.read_bytes(), path.name, None)).information[0]
+        stats = item.fields['table_analysis']
+        self.assertEqual(stats['population_totals'], {'male': 1226, 'female': 1305, 'total': 2531, 'area_count': 12})
+        self.assertIn('2531', item.summary)
+        brief = build_brief({'x': item.model_dump()})
+        self.assertEqual([f['count'] for f in brief['required_totals']], [1226, 1305, 2531])
+        self.assertFalse(coverage_issues({'lead': 'Jumlah penduduk 2531 orang.',
+            'body': ['Terdapat 1226 laki-laki dan 1305 perempuan.'], 'sources_used': ['x']}, brief))
+
+    def test_population_ambiguous_rows_are_not_summed(self):
+        for rows in ('A,2,3,2026\nA,4,5,2026', 'A,2,3,2026\nTotal,4,5,2026',
+                     'A,2,3,2026\nB,4,5,2025', 'A,2,3,2026\nB,,5,2026'):
+            stats, _ = self.analyze_csv('wilayah,laki-laki,perempuan,tahun\n' + rows + '\n')
+            self.assertIsNone(stats['population_totals'])
+            self.assertEqual(stats['row_semantics'], 'population_summary')
+
+    def test_tc03_counts_and_brief(self):
+        fixture = Path(__file__).resolve().parents[1] / 'evaluations/api_cases/files/TC03_Health_Screening.csv'
+        stats, brief = self.analyze_csv(fixture.read_text(encoding='utf-8-sig'))
+        self.assertEqual((stats['record_count'], stats['unique_person_count']), (50, 28))
+        self.assertEqual(stats['columns']['service']['counts'], {
+            'Pemeriksaan tekanan darah': 32, 'Pemeriksaan gula darah': 18})
+        self.assertTrue(any(f['count'] == 28 and f['unit'] == 'orang' for f in brief['required_totals']))
+        article = {'lead': '50 kunjungan oleh 28 peserta.', 'body': [
+            'Pemeriksaan tekanan darah: 32 kunjungan; Pemeriksaan gula darah: 18 kunjungan.'], 'sources_used': ['x']}
+        self.assertEqual(coverage_issues(article, brief), [])
+        article['lead'] = '50 orang mengikuti kegiatan.'
+        self.assertTrue(any('Unsupported unique-person' in i for i in coverage_issues(article, brief)))
+
+    def test_person_aliases_and_incomplete_identifiers(self):
+        for key in ('participant_id', 'patient_id', 'id_peserta', 'Person ID'):
+            stats, brief = self.analyze_csv(f'{key},service\nA,X\nA,Y\nB,X\n')
+            self.assertEqual(stats['unique_person_count'], 2)
+            self.assertNotIn('counts', stats['columns'][key.lower().replace(' ', '_')])
+        for missing in ('', 'N/A', 'unknown', '-'):
+            stats, brief = self.analyze_csv(f'id_peserta,service\nA,X\nA,Y\n{missing},X\n')
+            self.assertIsNone(stats['unique_person_count'])
+            self.assertEqual(stats['known_unique_person_count'], 1)
+            self.assertEqual(stats['missing_person_id_rows'], 1)
+        stats, _ = self.analyze_csv('participant_id,patient_id,service\nA,B,X\n')
+        self.assertIsNone(stats['unique_person_count'])
+
+    def test_aggregate_counts_and_invalid_totals(self):
+        stats, brief = self.analyze_csv('service,total_count\nA,12\nB,8\nA,3\n')
+        self.assertEqual(stats['record_count'], 3)
+        self.assertEqual(stats['service_totals'], {'A': 15, 'B': 8})
+        self.assertIsNone(stats['unique_person_count'])
+        self.assertEqual([f['count'] for f in brief['required_totals'] if f.get('column')], [15, 8])
+        for value in ('', '-2', '1.5', 'unknown'):
+            stats, brief = self.analyze_csv(f'service,count\nA,{value}\nB,2\n')
+            self.assertEqual(stats['row_semantics'], 'ambiguous_aggregate')
+            self.assertIsNone(stats['service_totals'])
+            self.assertFalse(any(f.get('column') for f in brief['required_totals']))
+
+    def test_person_counts_stay_scoped_to_each_event(self):
+        data = b'event_name,participant_id,service\nFirst,A,X\nFirst,B,Y\nSecond,A,X\n'
+        result = extract_document(DocumentService.normalize(data, 'events.csv', 'text/csv'))
+        self.assertEqual([i.fields['table_analysis']['unique_person_count'] for i in result.information], [2, 1])
+        self.assertTrue(all('antarkelompok' in ' '.join(i.fields['table_analysis']['limitations'])
+                            for i in result.information))
+
+    def test_equal_people_and_records_is_valid_when_identified(self):
+        stats, brief = self.analyze_csv('participant_id,visit_id\nA,1\nB,2\n')
+        issues = coverage_issues({'lead': '2 peserta mengikuti 2 kunjungan.',
+            'body': ['Data dihitung dari ID peserta.'], 'sources_used': ['x']}, brief)
+        self.assertFalse(any('Unsupported unique-person' in i for i in issues))
+
     def test_health_csv_draft_revises_repetition_and_missing_totals(self):
         # The test model deliberately returns a flawed first draft. Revision text is
         # built from the actual brief, not a canned health-specific expected answer.

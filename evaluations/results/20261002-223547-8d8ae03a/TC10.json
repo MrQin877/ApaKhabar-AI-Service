@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "TC10",
+    "mode": "draft",
+    "files": [
+      "TC10_Poster_Kerja_Bakti.jpeg"
+    ],
+    "prompt": "Buatkan berita berdasarkan informasi dalam poster ini untuk disampaikan kepada warga desa.",
+    "review_checklist": [
+      "OCR activity: gotong royong bersih lingkungan.",
+      "OCR date exactly 25 October 2026; start time exactly 07.00 WITA.",
+      "OCR meeting point: kantor desa; instruction: bring gloves (bawa sarung tangan).",
+      "No invented end time, organiser, attendance or completed results. Illustrated people and scenery do not establish factual attendance or location.",
+      "If material text is unreadable, request clarification rather than guess."
+    ],
+    "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring."
+  },
+  "status": "error",
+  "extractions": [],
+  "human_review": "pending",
+  "error": "503 Server Error: Service Unavailable for url: http://127.0.0.1:8003/documents/extract-information",
+  "duration_seconds": 2.66
+}

@@ -1,6 +1,7 @@
 """Provider adapters. Graphs use validated schemas, never provider-specific messages."""
 from functools import lru_cache
 import hashlib
+import json
 import requests
 from ollama import Client
 from pydantic import BaseModel, ValidationError
@@ -29,9 +30,20 @@ class GenerationModel:
                 raw = self._chat(messages, schema.model_json_schema(), temperature)
                 return schema.model_validate_json(raw)
             except ValidationError as exc:
+                # Keep diagnostics useful without exposing source text or rejected values.
+                errors = [{"field": ".".join(map(str, error["loc"])) or "$",
+                           "type": error["type"]}
+                          for error in exc.errors(include_input=False, include_url=False)][:20]
                 if attempt:
-                    raise ModelError(f"Model output did not match {schema.__name__}") from exc
-                messages.append({"role": "user", "content": "Return valid JSON matching the supplied schema. Do not add markdown or commentary."})
+                    raise ModelError(f"Model output did not match {schema.__name__}: "
+                                     + json.dumps(errors, ensure_ascii=False)) from exc
+                # Regenerate from the original evidence instead of appending a potentially
+                # max-length rejected response to an already large context.
+                messages = [{"role": "system", "content": system +
+                    "\nThe previous attempt failed schema validation. Regenerate a complete JSON object "
+                    "from the supplied evidence, correcting these field errors. Do not invent facts or "
+                    "add markdown/commentary. Validation errors: " + json.dumps(errors, separators=(",", ":"))},
+                    {"role": "user", "content": data}]
         raise ModelError("No structured response")
 
     def text(self, system: str, data: str):
@@ -53,8 +65,13 @@ class GenerationModel:
             headers = {"Authorization": f"Bearer {s.llama_cpp_api_key}"} if s.llama_cpp_api_key else {}
             response = requests.post(s.llama_cpp_base_url.rstrip("/") + "/chat/completions",
                                      json=payload, headers=headers, timeout=s.llama_cpp_timeout_seconds)
+            if not response.ok and any(marker in response.text.lower() for marker in (
+                    "exceeds the available context", "context_length_exceeded", "exceed_context_size")):
+                raise ModelError("Model context limit exceeded. Reduce request context or increase the model server context window.")
             response.raise_for_status()
             return response.json()["choices"][0]["message"]["content"]
+        except ModelError:
+            raise
         except Exception as exc:
             raise ModelError(f"Generation provider {s.ai_provider} failed ({type(exc).__name__})") from exc
 

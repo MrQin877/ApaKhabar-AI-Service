@@ -1,0 +1,14 @@
+{
+  "id": "TC07",
+  "mode": "draft",
+  "files": [
+    "TC07_Waste_Collection.csv"
+  ],
+  "prompt": "Buatkan berita berdasarkan data kegiatan dalam dokumen ini untuk disampaikan kepada warga desa.",
+  "review_checklist": [
+    "400 kg collected across three sessions (120 + 150 + 130).",
+    "40 volunteer participations (12 + 15 + 13), not 40 unique volunteers. Explicitly state unique volunteer attendance cannot be determined because people may join multiple sessions.",
+    "No invented waste categories, recycling results or environmental improvements."
+  ],
+  "expected_origin": "Checked against supplied source data/text or visible poster. Human review required for semantic scoring."
+}
