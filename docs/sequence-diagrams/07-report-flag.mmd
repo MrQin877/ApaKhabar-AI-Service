@@ -1,0 +1,30 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Reader / reviewer
+    participant P1 as Web Application (Engagement UI)
+    participant P2 as EngagementController / CommentFlagController
+    participant P3 as Application Database
+    alt [signed-in reader reports]
+    P0->>P1: submit report category and details
+    P1->>P2: POST /comments/{id}/report
+    P2->>P2: require authenticated non-admin/non-moderator, validate
+    P2->>P3: find published comment and active news
+    P3-->>P2: return eligible target
+    P2->>P3: insertOrIgnore comment_reports (category, explanation)
+    P3-->>P2: report stored / duplicate ignored
+    P2-->>P1: JSON: report received
+    P1-->>P0: display acknowledgement
+    else [verified admin/moderator flags]
+    P0->>P1: select comment and submit flag
+    P1->>P2: POST /admin/news/{news}/moderation-comments/{comment}/flag
+    P2->>P2: authorize reviewer, validate category and explanation
+    P2->>P3: transaction: lock published/pending comment, check open flag
+    P3-->>P2: return open flag existence
+    opt [no open flag by same reviewer]
+    P2->>P3: insert comment_flags
+    end
+    P2->>P3: commit
+    P2-->>P1: JSON: marked for review
+    P1-->>P0: display acknowledgement
+    end
+    Note over P0,P3: Reporting or flagging creates a review item, it does not immediately hide the comment. Moderator review is a separate request. Short-video reports/flags use equivalent short_video_comment_reports / short_video_comment_flags tables.

@@ -1,0 +1,1012 @@
+[
+  {
+    "slug": "01-review-finalize",
+    "title": "Review and Finalize News Post",
+    "people": [
+      "Moderator / Administrator",
+      "Web Application\n(System)",
+      "Application Database",
+      "AI Service\nDraft Quality Review"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "openDraft(draftId)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "load owned draft, version, sources and evaluations",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return draft and quality results",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display draft editor, evidence and warnings",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "loop [changes required]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "saveChanges(content, category, image)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "validate ownership, editable status and fields",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "transaction: save changes; increment version; clear reviewed_at",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "store draft-version snapshot",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "opt [AI draft with existing evaluations: content edit]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "create pending evaluation; read approved active sources",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return version and evidence",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 3,
+        "label": "POST /news/review-draft (title, content, sources)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 1,
+        "label": "return quality, claims and publish_blocked / failure",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "validate quality and evidence; block on missing support or failure",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "lock draft; save evaluation only if version still current",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return updated draft state",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display revised version and quality warnings",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "confirmReview(currentDraft)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "verify owned draft is still editable",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "update reviewed_at",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "review recorded",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "show reviewed draft; publication is separate",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Content edits with evaluations trigger re-review. Image changes also increment version and clear reviewed_at. Marking reviewed or approving an eligible conflict does not override the publication endpoint\u2019s publish_blocked check."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/NewsCreatorController.php:saveDraft/reviewDraft/uploadDraftImage",
+      "app/Services/DraftQualityReviewService.php"
+    ]
+  },
+  {
+    "slug": "02-publish-news",
+    "title": "Publishing News Post",
+    "people": [
+      "Moderator / Administrator",
+      "Web Application\n(System)",
+      "Application Database",
+      "Facebook / Instagram\nPublishing API"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "openPublicationPreview(draftId, selectedPlatforms)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "load draft, media variants and connection context",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return publication data",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display previews and platform issues",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "confirmPublish(platforms, version, previewToken)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "validate ownership, draft status, current review and quality gate",
+        "return": false
+      },
+      {
+        "kind": "note",
+        "label": "Validate applicable category and preview checks. An invalid/stale preview or blocked AI quality stops publishing; return errors for correction."
+      },
+      {
+        "kind": "frame",
+        "label": "loop [each selected platform]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "lock draft; check existing published platform ID",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return existing publication state",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [already published on platform]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "reuse published ID; avoid duplicate creation",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[website not yet published]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "create active news; store published_news_id",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return news ID",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[Facebook or Instagram not yet published]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 3,
+        "label": "publish image + post text / caption",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 1,
+        "label": "return platform ID or publishing error",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [provider success]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "store facebook_post_id / instagram_media_id",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[provider failure]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "record safe error for this platform; continue other targets",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "merge publication_results; retain successful platform IDs",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "opt [all stored publication results successful]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "set draft.status = published",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return final per-platform state",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display success or partial-failure summary",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [retry failed targets]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "retry failed platforms after correcting issues",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "repeat checks and publishing loop; reuse successful IDs",
+        "return": false
+      },
+      {
+        "kind": "end"
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/NewsWorkspaceController.php:publish",
+      "app/Services/FacebookPublishingService.php",
+      "app/Services/InstagramService.php"
+    ]
+  },
+  {
+    "slug": "03-engagement-moderation",
+    "title": "News Post Engagement and Moderation",
+    "people": [
+      "Reader / Villager",
+      "Web Application\n(System)",
+      "Application Database",
+      "Moderation API\n(OpenAI)",
+      "Moderator / Administrator"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "openNewsArticle(newsId)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "load active news and published comments",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return public content",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display article and engagement controls",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [qualified view]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "request engagement token; submit after reading interval",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "validate encrypted token, age and session",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "transaction: deduplicate visit; record viewer; update counters",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return unique_views",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update view count",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "frame",
+        "label": "alt [like or unlike: login required]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "toggleLike(post or comment)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "lock target; insert/delete like; count likes",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "update cached likes_count for news posts",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return liked and count",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update Like button and count",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[comment or reply]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "submitComment(content, parentId?, guestChallenge?)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "validate fields; check guest challenge when anonymous",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "check guest quota if applicable, visibility and duplicate hash",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return eligibility",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Invalid input, duplicate content, or exhausted guest quota stops submission. Guests may submit up to three comments per day; replies require a published parent."
+      },
+      {
+        "kind": "frame",
+        "label": "opt [moderation API key configured]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 3,
+        "label": "POST /v1/moderations (content)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 1,
+        "label": "return flags/categories or service failure",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "publish only clean valid result without suspicious links/promotion",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "save comment + initial history; increment guest quota on success",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return published or pending_review",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "show publication / awaiting-review confirmation",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[report published comment: login required]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "reportComment(category, details)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "insertOrIgnore comment_reports",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "report accepted",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display acknowledgement; do not auto-hide",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "frame",
+        "label": "opt [human review: pending, reported or flagged comment]"
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 1,
+        "label": "open moderation queue",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "load comments, reports, flags and history",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return review records and revision",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 4,
+        "label": "display review details",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 1,
+        "label": "allow / hide (reason, expectedRevision?)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "transaction: lock comment; check current revision and transition",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "alt [conflict]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 4,
+        "label": "409: reload latest comment",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[valid decision]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "set published / hidden; increment revision; append history",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "resolve open reports and flags; commit",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "decision saved",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 4,
+        "label": "display saved decision",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "This use case summarizes independent reader interactions. Human moderation happens later; no reader request waits for a moderator. Reviewers can create comment_flags separately. Unavailable AI moderation leaves comments pending_review."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/News/EngagementController.php",
+      "app/Http/Controllers/News/CommentController.php",
+      "app/Services/News/InteractionService.php",
+      "app/Services/News/CommentModeration.php",
+      "app/Services/News/ModerationDecisionService.php"
+    ]
+  },
+  {
+    "slug": "04-monitor-analytics",
+    "title": "Monitor News Analytics",
+    "people": [
+      "Administrator",
+      "Web Application\n(System)",
+      "Application Database",
+      "Background Worker\nMeta Insights Sync",
+      "Meta Graph API"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "openAnalytics(filters)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "authorize administrator; validate date range and filters",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "read analytics settings; aggregate news, audience and engagement",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return summary, trends and post performance",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "read saved Meta snapshots and synchronization status",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return social metrics",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display dashboard, filters, charts and tables",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [inspect or change filters]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "select post / date range / category / sort",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "query filtered data and optional post inspection",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return filtered results",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update analytics view",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "frame",
+        "label": "opt [export report]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "export(scope, CSV or XLSX)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "read report data for selected scope and filters",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return export rows",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 1,
+        "label": "build CSV / XLSX",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "download report",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "frame",
+        "label": "opt [synchronize social analytics]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "requestMetaSync()",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 3,
+        "label": "dispatch unique SyncMetaInsights job",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "return to analytics",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "read selected connections and credentials",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "return configured accounts",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "loop [each connected account]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "request daily metric series (last seven days)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return points / provider error",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [valid data and unchanged account]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "upsert snapshots; set ready and synced timestamp",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[failure or no data]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "set unavailable / no_data; preserve prior snapshots",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "refreshAnalytics()",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "read stored snapshots and status",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return updated saved metrics",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display refreshed social analytics",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "Disconnected connections are skipped and marked disconnected. Queue execution depends on its configured driver. Reports read snapshots, not live Meta calls. PostPerformance supplies actual post statistics; the generic engagement widget remains a placeholder."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/AnalyticsController.php",
+      "app/Http/Controllers/Admin/MetaAnalyticsController.php",
+      "app/Services/Analytics/AnalyticsReport.php",
+      "app/Services/Analytics/PostPerformance.php",
+      "app/Services/Analytics/MetaInsights.php"
+    ]
+  }
+]

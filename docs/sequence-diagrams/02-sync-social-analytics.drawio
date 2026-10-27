@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="02-sync-social-analytics" name="Synchronize social-media analytics">
+    <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Synchronize social-media analytics" style="text;html=0;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="2260" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow" style="text;html=0;align=left;fontSize=13;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="65" width="2260" height="30" />
+        </mxCell>
+        <mxCell id="frame0" value="alt [change selected accounts]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="290" width="2260" height="753" />
+        </mxCell>
+        <mxCell id="frame1" value="alt [valid points and same account/token still selected]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1898" width="2260" height="516" />
+        </mxCell>
+        <mxCell id="frame2" value="alt [connection is disconnected]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1533" width="2260" height="921" />
+        </mxCell>
+        <mxCell id="frame3" value="loop [each selected connection]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1478" width="2260" height="1016" />
+        </mxCell>
+        <mxCell id="p0" value="Administrator" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#ffd2a8;strokeColor=#64748b;participant=umlActor;verticalAlign=bottom;labelPosition=center;verticalLabelPosition=top;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="p1" value="Web Application&#10;(System)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#e2f0d9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="p2" value="MetaAnalyticsController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#e2f0d9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="830" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="p3" value="Queue Worker&#10;SyncMetaInsights / MetaInsights" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#e2f0d9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="p4" value="Application Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#dae8fc;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1610" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="p5" value="Meta Graph API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#fff2cc;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2000" y="125" width="200" height="2524" />
+        </mxCell>
+        <mxCell id="port0s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p0">
+          <mxGeometry as="geometry" x="99" y="99" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port0t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="99" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation0" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="94" y="100" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message0" edge="1" parent="1" source="port0s" target="port0t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label0" value="select accounts or request synchronization" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="162" y="200" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port1s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="239" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port1t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="239" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation1" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="240" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message1" edge="1" parent="1" source="port1s" target="port1t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label1" value="PUT /admin/analytics/meta (connection_ids)" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="340" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port2s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="324" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port2t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="324" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation2" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="325" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message2" edge="1" parent="1" source="port2s" target="port2t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label2" value="validate owned connections; one account per platform" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="425" width="756" height="18" />
+        </mxCell>
+        <mxCell id="port3s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="409" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port3t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="409" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message3" edge="1" parent="1" source="port3s" target="port3t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label3" value="return validated connections" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="510" width="756" height="18" />
+        </mxCell>
+        <mxCell id="port4s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="494" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port4t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="494" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation4" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="495" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message4" edge="1" parent="1" source="port4s" target="port4t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label4" value="transaction: update analytics_settings; insert setting change" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="595" width="756" height="18" />
+        </mxCell>
+        <mxCell id="port5s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="579" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port5t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="579" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message5" edge="1" parent="1" source="port5s" target="port5t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label5" value="commit configuration" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="680" width="756" height="18" />
+        </mxCell>
+        <mxCell id="else-line6" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#64748b;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="40" y="770" />
+            <mxPoint as="targetPoint" x="2300" y="770" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="else6" value="[manual refresh]" style="text;html=0;align=left;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="772" width="2220" height="30" />
+        </mxCell>
+        <mxCell id="port7s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="719" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port7t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="719" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation7" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="720" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message7" edge="1" parent="1" source="port7s" target="port7t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label7" value="POST /admin/analytics/meta/sync" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="820" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port8s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="822" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port8t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="847" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation8" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="848" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message8" edge="1" parent="1" source="port8s" target="port8t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="975" y="948" />
+              <mxPoint x="975" y="973" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label8" value="authorize administrator; apply route&#10;throttle" style="text;html=0;whiteSpace=wrap;align=left;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="985" y="905" width="320" height="36" />
+        </mxCell>
+        <mxCell id="port9s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="947" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port9t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="947" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation9" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="948" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message9" edge="1" parent="1" source="port9s" target="port9t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label9" value="dispatch SyncMetaInsights (unique job)" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1048" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port10s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1032" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port10t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="1032" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message10" edge="1" parent="1" source="port10s" target="port10t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label10" value="redirect back" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="1133" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port11s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="1117" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port11t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p0">
+          <mxGeometry as="geometry" x="99" y="1117" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message11" edge="1" parent="1" source="port11s" target="port11t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label11" value="display current saved metrics" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="162" y="1218" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port12s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1202" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port12t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="1202" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation12" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="1203" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message12" edge="1" parent="1" source="port12s" target="port12t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label12" value="read selected social_connections" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1303" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port13s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="1287" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port13t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1287" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message13" edge="1" parent="1" source="port13s" target="port13t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label13" value="return configured connections" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1388" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port14s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1482" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port14t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="1482" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation14" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="1483" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message14" edge="1" parent="1" source="port14s" target="port14t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label14" value="set insights_status = disconnected" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1583" width="366" height="18" />
+        </mxCell>
+        <mxCell id="else-line15" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#64748b;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="40" y="1673" />
+            <mxPoint as="targetPoint" x="2300" y="1673" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="else15" value="[connection is usable]" style="text;html=0;align=left;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="1675" width="2220" height="30" />
+        </mxCell>
+        <mxCell id="port16s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1622" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port16t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p5">
+          <mxGeometry as="geometry" x="99" y="1622" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation16" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p5">
+          <mxGeometry as="geometry" x="94" y="1623" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message16" edge="1" parent="1" source="port16s" target="port16t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label16" value="GET account insights (daily metrics; last 7 days)" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1723" width="756" height="18" />
+        </mxCell>
+        <mxCell id="port17s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p5">
+          <mxGeometry as="geometry" x="99" y="1707" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port17t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1707" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message17" edge="1" parent="1" source="port17s" target="port17t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label17" value="return metric series / provider error" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1808" width="756" height="18" />
+        </mxCell>
+        <mxCell id="port18s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1865" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port18t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="1865" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation18" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="1866" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message18" edge="1" parent="1" source="port18s" target="port18t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label18" value="transaction: lock connection; recheck identity;&#10;upsert snapshots" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="1948" width="366" height="36" />
+        </mxCell>
+        <mxCell id="port19s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1950" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port19t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="1950" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation19" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="1951" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message19" edge="1" parent="1" source="port19s" target="port19t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label19" value="set insights_status = ready and insights_synced_at" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="2051" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port20s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="2035" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port20t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="2035" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message20" edge="1" parent="1" source="port20s" target="port20t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label20" value="commit snapshots" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="2136" width="366" height="18" />
+        </mxCell>
+        <mxCell id="else-line21" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#64748b;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="40" y="2226" />
+            <mxPoint as="targetPoint" x="2300" y="2226" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="else21" value="[no data / failure / changed connection]" style="text;html=0;align=left;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="2228" width="2220" height="30" />
+        </mxCell>
+        <mxCell id="port22s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="2193" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port22t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="99" y="2193" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation22" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p4">
+          <mxGeometry as="geometry" x="94" y="2194" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message22" edge="1" parent="1" source="port22s" target="port22t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label22" value="set no_data or unavailable; discard stale-account&#10;response" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1332" y="2276" width="366" height="36" />
+        </mxCell>
+        <mxCell id="note23" value="A later analytics request reads these snapshots. Queue timing depends on the configured driver; with a sync driver, dispatch runs inline. No automatic UI polling is implied." style="shape=note;whiteSpace=wrap;html=0;align=left;spacing=10;fontSize=13;fillColor=#fffbea;strokeColor=#c9b975;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="65" y="2514" width="2210" height="55" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

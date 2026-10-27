@@ -1,6 +1,6 @@
 # ApaKhabar AI Service
 
-A local-first editorial service built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
+An editorial service using hosted generation APIs and local embeddings built with FastAPI, LangGraph, Pydantic, and Chroma. It combines **Plan-and-Execute**, **ReAct**, **Reflection**, and **Agent Skills** to turn approved evidence into Indonesian drafts. Laravel owns users, files, source approval, conversations, draft versions, categories, and publication. Python owns extraction, retrieval, model execution, and durable graph checkpoints.
 
 ## Architecture at a glance
 
@@ -15,7 +15,7 @@ The editorial graph has **four roles in one LangGraph workflow**, not four indep
 
 There are nine graph nodes, including approval, completeness checks, clarification, revision routing, and finish. Two editorial models are used when `EVALUATOR_ENABLED=true`; an additional embedding model supports retrieval. Defaults leave the separate judge disabled, so enable it explicitly and restart the service. Model aliases identify configured endpoints, not proof of different model weights.
 
-The service uses **neither A2A nor MCP**. Roles share LangGraph state, tools are called through a Python dispatcher, Laravel communicates with FastAPI over HTTP, and model adapters call llama.cpp or Ollama over HTTP.
+The service uses **neither A2A nor MCP**. Roles share LangGraph state, tools are called through a Python dispatcher, Laravel communicates with FastAPI over HTTP, and model adapters call hosted OpenAI-compatible APIs over HTTPS.
 
 - [Code map and agent patterns](docs/architecture_and_agentic_patterns.md)
 - [Architecture, evidence boundaries, and operations](docs/agent-architecture.md)
@@ -46,7 +46,13 @@ Copy-Item .env.example .env
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
 
-Keep an existing `.env`; the implementation reads the existing `AI_PROVIDER`, `LLAMA_CPP_*`, and `EMBEDDING_*` settings. Start your llama.cpp server separately with the configured model alias and URL. The service does not download or start generation models. Local EmbeddingGemma loads an already cached model through Sentence Transformers with `local_files_only=True`; provision the model separately. Alternatively use an embedding HTTP server or Ollama.
+Configure `AI_BASE_URL`, `AI_API_KEY`, `AI_MODEL`, `AI_TIMEOUT_SECONDS`, and `AI_MAX_TOKENS` for the writer. Configure `EVALUATOR_BASE_URL`, `EVALUATOR_API_KEY`, `EVALUATOR_MODEL`, `EVALUATOR_TIMEOUT_SECONDS`, and `EVALUATOR_MAX_TOKENS` for a separate hosted reviewer. Use a provider's OpenAI-compatible Chat Completions base URL, including its `/v1` or `/v1beta/openai` prefix, and a model available to your account. Keys are server secrets; keep them in the ignored `.env` or your deployment secret store. API credits and rate limits belong to each provider account.
+
+For existing installations, rename every `LLAMA_CPP_*` writer setting to `AI_*` (for example, `LLAMA_CPP_API_KEY` becomes `AI_API_KEY`), and remove `AI_PROVIDER`, `EVALUATOR_PROVIDER`, and `OLLAMA_*`. Restart Uvicorn after migrating. These old names are no longer read. Keep current hosted URLs, keys and model IDs; this is a configuration migration, not a provider switch.
+
+`EMBEDDING_PROVIDER=embedding_gemma` remains the default. Local EmbeddingGemma loads an already cached model through Sentence Transformers with `local_files_only=True`; provision the model separately. `EMBEDDING_PROVIDER=openai` selects a hosted embedding endpoint with `EMBEDDING_BASE_URL`, `EMBEDDING_API_KEY`, `EMBEDDING_MODEL`, and matching `EMBEDDING_DIMENSIONS`.
+
+Temporary HTTP 502/503/504 responses get at most two retries with short delays within the call's timeout budget. Authentication, invalid-model and quota failures are not automatically retried. A successful small probe does not guarantee a complete multi-call article run.
 
 For image and scanned-PDF OCR, install Tesseract and its language data. Set `OCR_LANGUAGE=ind+eng` for Indonesian/English documents if both language packs are installed. Without OCR support, image-only inputs fail with an explicit error. DOCX, XLSX/XLSM, CSV, TXT, and text PDFs do not require OCR. Legacy binary DOC/XLS formats are not supported.
 
@@ -91,12 +97,12 @@ Skills supply procedures; Python code enforces source approval, ownership, limit
 
 ## API
 
-When a service token is configured, every endpoint except `/` and `/health` requires the service header, including `/health/models` and `/health/ollama`. Swagger is at `/docs` (also protected when a token is configured).
+When a service token is configured, every endpoint except `/` and `/health` requires the service header, including `/health/models`. Swagger is at `/docs` (also protected when a token is configured).
 
 | Endpoint | Purpose |
 | --- | --- |
 | `GET /health` | Lightweight process health |
-| `GET /health/models` | Explicit structured-generation capability probe (one model call, with at most one schema repair) |
+| `GET /health/models` | Explicit writer capability probe; use `?target=evaluator` for the separate judge (consumes API quota) |
 | `GET /agent/skills` | Skill metadata and hashes |
 | `POST /assistant/respond` | Classify conversation intent and answer from supplied information; does not itself save, extract, or publish |
 | `POST /news/generate` | Laravel-compatible agent generation |
@@ -150,9 +156,9 @@ The trusted caller must refresh eligible IDs on every resume. Revoked documentar
 
 SQLite checkpoints and run/event records are stored below `data/agent/`. Storage is initialized when the relevant services are used, not guaranteed to be fully initialized by starting Uvicorn. Chroma runs embedded at `CHROMA_PATH` (default `./data/chroma`), so no separate Chroma server is required. Keep the configured data/upload directories writable. These stores are separate from Laravel's application database. Back up the checkpoint file and companion `.runs` database together. Per-run execution leases prevent simultaneous duplicate calls; after a crashed process, recovery can begin after the lease expires. Successfully completed node results are reused, but a model call interrupted before its checkpoint may repeat. The AI graph does not write Laravel drafts or publish, so replay cannot duplicate those side effects inside Python.
 
-Approved knowledge uses a separate Chroma collection keyed by embedding provider/model/dimensions. Existing raw-document vectors are never silently considered approved. Reindex approved Laravel information into the new collection with `php artisan ai:reindex-approved` from the Laravel project (optionally `--owner=7`); do not delete the old collection to migrate. The AI server and embedding provider must be available. Changing embedding configuration requires reindexing.
+Approved knowledge uses a separate Chroma collection keyed by embedding provider/model/dimensions. Existing raw-document vectors are never silently considered approved. Reindex approved Laravel information into the new collection with `php artisan ai:reindex-approved` from the Laravel project (optionally `--owner=7`); do not delete the old collection to migrate. The AI server and embedding provider must be available. Changing embedding configuration requires reindexing. The legacy raw-document collection now also includes the embedding fingerprint; reindex raw documents explicitly if you use legacy search. Existing collections are retained, and approved EmbeddingGemma collection names remain unchanged.
 
-`AGENT_ENABLED=false` restores the legacy fixed `/news/generate` path for debugging. Legacy `/rag/search` and `/rag/generate-news` are disabled (410) in agent mode because they query raw documents. Use approved-information endpoints instead. `/documents/index` remains an isolated legacy raw-document indexing endpoint, not an approval operation. `/health/ollama` remains available only as an Ollama-specific diagnostic.
+`AGENT_ENABLED=false` restores the legacy fixed `/news/generate` path for debugging. Legacy `/rag/search` and `/rag/generate-news` are disabled (410) in agent mode because they query raw documents. Use approved-information endpoints instead. `/documents/index` remains an isolated legacy raw-document indexing endpoint, not an approval operation.
 
 ## Optional web discovery
 
@@ -160,7 +166,7 @@ Configure `WEB_SEARCH_URL` for a trusted search adapter accepting `POST {"query"
 
 ## Verification
 
-The implemented evaluation runners are `scripts/evaluate_editorial.py` and the optional `scripts/evaluate_news_deepeval.py`. This checkout does not contain `scripts/evaluate_with_ragas.py` or an implemented Ragas evaluation pipeline. Do not claim a Ragas metrics CSV is produced. LangSmith tracing is not a verified evaluation deliverable here; setting environment variables alone does not establish complete tracing, instrument direct HTTP model calls, or expose private reasoning.
+The implemented evaluation runners are `scripts/evaluate_editorial.py` and the optional `scripts/evaluate_news_deepeval.py`. `scripts/evaluate_with_ragas.py` is an optional Ragas runner using the configured hosted evaluator; its live metrics are not verified by unit tests. LangSmith tracing is not a verified evaluation deliverable here; setting environment variables alone does not establish complete tracing, instrument direct HTTP model calls, or expose private reasoning.
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
@@ -168,13 +174,13 @@ python scripts/evaluate_editorial.py --mode agent --output /tmp/agent-evaluation
 python scripts/evaluate_editorial.py --mode legacy --output /tmp/legacy-evaluation.json
 ```
 
-Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require the configured local models and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
+Unit/integration tests use scripted generation and small test vectors, and require no model server. The evaluation commands require configured hosted APIs and usable provider quota and produce reviewable outputs and latency/call metrics. They do not establish 95% accuracy. Human reviewers must assess factual support against the fixture evidence.
 
 See [the architecture and evaluation notes](docs/agent-architecture.md) for implementation boundaries and acceptance cases.
 
 ## Separate quality judge
 
-See [separate judge and DeepEval setup](docs/separate-judge.md) for local Qwen evaluation, Windows/macOS startup, and labelled offline calibration tests.
+See [separate judge and DeepEval setup](docs/separate-judge.md) for hosted evaluator settings and labelled offline calibration tests.
 
 ## Historical context and article length
 

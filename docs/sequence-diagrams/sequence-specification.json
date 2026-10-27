@@ -1,0 +1,1496 @@
+[
+  {
+    "slug": "01-view-analytics",
+    "title": "View analytics and export reports",
+    "people": [
+      "Administrator",
+      "Web Application\n(Analytics UI)",
+      "AnalyticsController",
+      "Analytics Services\n(Report / Performance / Export)",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "navigateAnalyticsPage(filters)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "GET /admin/analytics",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "authorize administrator; validate dates, filters and range",
+        "return": false
+      },
+      {
+        "kind": "note",
+        "label": "Authenticated, verified administrator required. Invalid filters stop the request; no report is returned."
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "read AnalyticsSetting::current() and layout",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "return dashboard configuration",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "build(widgets, from, to, source, platform)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "aggregate users, activity, news and broadcasts",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return aggregate rows",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "read selected social connections and saved Meta snapshots",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return social metrics and sync status",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return report widgets",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [export requested]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "data(scope, filters); build CSV or XLSX",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "read additional export rows as required",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return export data",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return export content / workbook path",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "download CSV / XLSX (private, no-store)",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "save report file",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[view dashboard]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "interactionTrend(); listing(); optional post inspection",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "query likes, comments and post performance",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return rows and trends",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return performance data",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "read categories and administrator connections",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "return selection options",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "render admin/analytics with filters and configuration",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display charts, tables and social sync status",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "Changing filters repeats GET /admin/analytics. Dashboard reads stored Meta metrics; it does not call Meta live. The generic engagement widget is still a placeholder; post performance is calculated separately."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/AnalyticsController.php:index",
+      "app/Services/Analytics/AnalyticsReport.php:build",
+      "app/Services/Analytics/PostPerformance.php",
+      "app/Services/Analytics/MetaInsights.php:report",
+      "app/Services/Analytics/AnalyticsExport.php"
+    ]
+  },
+  {
+    "slug": "02-sync-social-analytics",
+    "title": "Synchronize social-media analytics",
+    "people": [
+      "Administrator",
+      "Web Application\n(System)",
+      "MetaAnalyticsController",
+      "Queue Worker\nSyncMetaInsights / MetaInsights",
+      "Application Database",
+      "Meta Graph API"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "select accounts or request synchronization",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "alt [change selected accounts]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "PUT /admin/analytics/meta (connection_ids)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "validate owned connections; one account per platform",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "return validated connections",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "transaction: update analytics_settings; insert setting change",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "commit configuration",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[manual refresh]"
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /admin/analytics/meta/sync",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "authorize administrator; apply route throttle",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "dispatch SyncMetaInsights (unique job)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "redirect back",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display current saved metrics",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "read selected social_connections",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return configured connections",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "loop [each selected connection]"
+      },
+      {
+        "kind": "frame",
+        "label": "alt [connection is disconnected]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "set insights_status = disconnected",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[connection is usable]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 5,
+        "label": "GET account insights (daily metrics; last 7 days)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 5,
+        "to": 3,
+        "label": "return metric series / provider error",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [valid points and same account/token still selected]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "transaction: lock connection; recheck identity; upsert snapshots",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "set insights_status = ready and insights_synced_at",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "commit snapshots",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[no data / failure / changed connection]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "set no_data or unavailable; discard stale-account response",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "A later analytics request reads these snapshots. Queue timing depends on the configured driver; with a sync driver, dispatch runs inline. No automatic UI polling is implied."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/MetaAnalyticsController.php",
+      "app/Jobs/SyncMetaInsights.php",
+      "app/Services/Analytics/MetaInsights.php:sync"
+    ]
+  },
+  {
+    "slug": "03-record-news-view",
+    "title": "Record a news view",
+    "people": [
+      "Reader\n(Guest / signed-in)",
+      "Web Application\n(News UI)",
+      "EngagementController",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "open article",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "GET /news/{id}/engagement",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "verify active news",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return news record",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "create viewer key and session-bound encrypted token",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return token; set news_visitor cookie",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "The UI waits for the qualified reading interval while the document is visible. Server accepts token age 5 seconds to 2 hours."
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /news/{id}/view (token)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "decrypt; validate news ID, token age and session",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "alt [invalid token]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "422: reject view request",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[valid token]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "begin transaction; lock active news",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "check hashed visit ID in news_visits",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return visit existence",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [visit already recorded]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "read unchanged unique_views; commit",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[new visit]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "insert news_visits; check news_viewers",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return viewer existence",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [new viewer]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "insert news_viewers; increment news.unique_views",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "increment news.view; commit",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return unique_views",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: unique_views",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update displayed view count",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "Repeat submissions of one visit token do not increment counts again. A new visit from a known viewer increases total views, but not unique views."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/News/EngagementController.php:context/view",
+      "resources/js/components/news-engagement.tsx"
+    ]
+  },
+  {
+    "slug": "04-record-short-view",
+    "title": "Record a short-video view",
+    "people": [
+      "Viewer\n(Guest / signed-in)",
+      "Web Application\n(Short-video player)",
+      "ShortViewerController",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "open and play a published short video",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "GET /shorts/{id}/view-token",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "verify published video and published_at",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return video",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "create viewer key and session-bound encrypted token",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return token; set short_visitor cookie",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "The player tracks qualified visible playback before submitting a view. Server accepts token age 5 seconds to 2 hours."
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /shorts/{id}/view (token)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "validate video, age, current viewer and session",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "alt [invalid token]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "422: reject request",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[valid token]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "begin transaction; lock published short_videos row",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "insertOrIgnore short_video_viewers(video_id, viewer_key)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return whether a row was inserted",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [first recorded view for this viewer]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "increment short_videos.view_count",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "commit; read view_count",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return view_count",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: view_count",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update displayed count",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "Short-video view_count is deduplicated by (short_video_id, viewer_key). Unlike news, this flow has no separate news_visits-style total-visit counter."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Home/ShortViewerController.php:token/view",
+      "resources/js/pages/short-viewer.tsx"
+    ]
+  },
+  {
+    "slug": "05-like-unlike",
+    "title": "Like or unlike news and comments",
+    "people": [
+      "Signed-in reader",
+      "Web Application\n(Engagement UI)",
+      "News controllers",
+      "InteractionService",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "click Like",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /news/{id}/like or /comments/{id}/like",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "authentication and throttle middleware",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "likeNews(userId, newsId) / likeComment(userId, commentId)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "begin transaction; lock target; verify visibility",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "find existing like for this user and target",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return existing / absent",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [not liked]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "insert likes / comment_likes row",
+        "return": false
+      },
+      {
+        "kind": "else",
+        "label": "[already liked]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "delete existing like row",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "count remaining likes",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return count",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [news post]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "update news.likes_count",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "commit",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return liked and likes_count",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: liked, likes_count",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "update Like state and count",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Comment likes are counted directly; there is no cached comments.likes_count column. Unauthenticated requests stop at middleware. Short-video equivalents use ShortEngagementController and short_video_likes / short_video_comment_likes, with the same toggle pattern."
+      }
+    ],
+    "sources": [
+      "app/Services/News/InteractionService.php:likeNews/likeComment",
+      "app/Http/Controllers/News/PostLikeController.php",
+      "app/Http/Controllers/News/CommentController.php:like",
+      "app/Http/Controllers/Home/ShortEngagementController.php:likeVideo/likeComment",
+      "routes/web.php"
+    ]
+  },
+  {
+    "slug": "06-comment-reply",
+    "title": "Submit a comment or reply with moderation",
+    "people": [
+      "Reader\n(Guest / signed-in)",
+      "Web Application\n(News UI)",
+      "CommentController /\nGuestCommentIdentity",
+      "InteractionService /\nCommentModeration",
+      "Application Database",
+      "Moderation API\n(OpenAI)"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "enter comment or reply",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /news/{id}/comment or /comments/{id}/replies",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "validate content; resolve published parent for replies",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "opt [guest reader]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "validate challenge age 3s\u20132h, news ID and session",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "find/create guest identity; lock identity; read daily quota",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "return username and comment_count",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Invalid challenge or quota of 3/day reached: stop with validation error. Guest quota day uses Asia/Jakarta in the implementation."
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "addComment(...) / addReply(...)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "verify active news; check duplicate submission_hash",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return eligibility and duplicate result",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Duplicate content stops with validation error. Replies must reference a published parent."
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 3,
+        "label": "check(content): detect suspicious links / promotion",
+        "return": false
+      },
+      {
+        "kind": "frame",
+        "label": "alt [moderation API key configured]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 5,
+        "label": "POST /v1/moderations (omni-moderation-latest, content)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 5,
+        "to": 3,
+        "label": "return flags / categories, or error",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[no moderation key]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 3,
+        "label": "use pending_review fallback",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 3,
+        "label": "choose published only if clean, valid and not suspicious",
+        "return": false
+      },
+      {
+        "kind": "note",
+        "label": "Flagged, suspicious, unavailable or malformed results remain pending_review. The Laravel moderation service calls this API directly; it does not call the project AI service."
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "transaction: lock news; recheck duplicate; insert comment",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "insert initial comment_moderation_history",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return saved comment",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return status",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [guest submission succeeded]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "increment guest_comment_days; commit guest transaction",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "201: status, remaining_quota and confirmation",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "show published or awaiting-review confirmation",
+        "return": true
+      },
+      {
+        "kind": "note",
+        "label": "Short-video comments use ShortCommentService with short_video_comments / short_video_comment_history and the shared moderation and guest-identity services."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/News/CommentController.php",
+      "app/Services/GuestCommentIdentity.php",
+      "app/Services/News/InteractionService.php:addComment/addReply",
+      "app/Services/News/CommentModeration.php",
+      "app/Services/Shorts/ShortCommentService.php"
+    ]
+  },
+  {
+    "slug": "07-report-flag",
+    "title": "Report or flag a comment",
+    "people": [
+      "Reader / reviewer",
+      "Web Application\n(Engagement UI)",
+      "EngagementController /\nCommentFlagController",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "frame",
+        "label": "alt [signed-in reader reports]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "submit report category and details",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /comments/{id}/report",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "require authenticated non-admin/non-moderator; validate",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "find published comment and active news",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return eligible target",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "insertOrIgnore comment_reports (category, explanation)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "report stored / duplicate ignored",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: report received",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display acknowledgement",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[verified admin/moderator flags]"
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "select comment and submit flag",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /admin/news/{news}/moderation-comments/{comment}/flag",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "authorize reviewer; validate category and explanation",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "transaction: lock published/pending comment; check open flag",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "return open flag existence",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "opt [no open flag by same reviewer]"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "insert comment_flags",
+        "return": false
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "commit",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: marked for review",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display acknowledgement",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "Reporting or flagging creates a review item; it does not immediately hide the comment. Moderator review is a separate request. Short-video reports/flags use equivalent short_video_comment_reports / short_video_comment_flags tables."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/News/EngagementController.php:report",
+      "app/Http/Controllers/Admin/CommentFlagController.php:flag",
+      "app/Models/Comment.php:scopeAwaitingReview",
+      "app/Http/Controllers/Home/ShortEngagementController.php:report/flag"
+    ]
+  },
+  {
+    "slug": "08-moderation-decision",
+    "title": "Review comments and apply a moderation decision",
+    "people": [
+      "Administrator /\nModerator",
+      "Web Application\n(Moderation UI)",
+      "CommentModerationController",
+      "ModerationDecisionService",
+      "Application Database"
+    ],
+    "events": [
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "open comment review queue",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "GET /admin/comments (filters)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 4,
+        "label": "query pending comments, reports, flags and history",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 2,
+        "label": "return paginated review data",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "render admin/comments",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "display review queue and revision",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 0,
+        "to": 1,
+        "label": "choose allow / hide; enter reason",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 2,
+        "label": "POST /admin/comments/{id}/decision",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 2,
+        "label": "validate action, reason, optional expected_revision",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 3,
+        "label": "decide(actor, id, action, reason, expectedRevision)",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 3,
+        "label": "authorize verified admin/moderator",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "begin transaction; lock comment; read open reports/flags",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return current status and revision",
+        "return": true
+      },
+      {
+        "kind": "frame",
+        "label": "alt [revision mismatch or invalid transition]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "409 conflict; transaction rolls back",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "return conflict response",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "ask reviewer to reload current comment",
+        "return": true
+      },
+      {
+        "kind": "else",
+        "label": "[valid decision]"
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "allow \u2192 published; hide \u2192 hidden; increment revision",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "insert moderation history with actor/action/reason",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 4,
+        "label": "resolve open reports and flags; commit",
+        "return": false
+      },
+      {
+        "kind": "message",
+        "from": 4,
+        "to": 3,
+        "label": "return history ID",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 3,
+        "to": 2,
+        "label": "decision saved",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 2,
+        "to": 1,
+        "label": "JSON: confirmation",
+        "return": true
+      },
+      {
+        "kind": "message",
+        "from": 1,
+        "to": 0,
+        "label": "refresh review queue / show saved decision",
+        "return": true
+      },
+      {
+        "kind": "end"
+      },
+      {
+        "kind": "note",
+        "label": "content_type=shorts routes to ShortCommentDecisionService and short-video tables. No AI re-evaluation or new legacy feedback/assessment record is created by this decision."
+      }
+    ],
+    "sources": [
+      "app/Http/Controllers/Admin/CommentModerationController.php:index/decide",
+      "app/Services/News/ModerationDecisionService.php",
+      "app/Services/Shorts/ShortCommentDecisionService.php"
+    ]
+  }
+]

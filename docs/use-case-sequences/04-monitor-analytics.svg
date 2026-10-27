@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="3461"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="40" y="47" font-family="Arial" font-size="25" font-weight="bold">Monitor News Analytics</text>
+<text x="40" y="85" font-family="Arial" font-size="13" fill="#475569">Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow</text>
+<rect x="40" y="854" width="1870" height="425" fill="none" stroke="#64748b"/><text x="55" y="876" font-family="Arial" font-size="13">opt [inspect or change filters]</text>
+<rect x="40" y="1289" width="1870" height="510" fill="none" stroke="#64748b"/><text x="55" y="1311" font-family="Arial" font-size="13">opt [export report]</text>
+<rect x="40" y="2514" width="1870" height="328" fill="none" stroke="#64748b"/><text x="55" y="2536" font-family="Arial" font-size="13">alt [valid data and unchanged account]</text>
+<rect x="40" y="2289" width="1870" height="593" fill="none" stroke="#64748b"/><text x="55" y="2311" font-family="Arial" font-size="13">loop [each connected account]</text>
+<rect x="40" y="1809" width="1870" height="1453" fill="none" stroke="#64748b"/><text x="55" y="1831" font-family="Arial" font-size="13">opt [synchronize social analytics]</text>
+<line x1="150" y1="190" x2="150" y2="3426" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<circle cx="150" cy="143" r="10" fill="#ffd2a8" stroke="#555"/><path d="M 150 153 v 22 m -22 -12 h44 m-22 12 l-18 18 m18 -18 l18 18" fill="none" stroke="#555"/>
+<text x="150" y="108" text-anchor="middle" font-family="Arial" font-size="13">Administrator</text>
+<line x1="540" y1="190" x2="540" y2="3426" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="440" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="540" y="151" text-anchor="middle" font-family="Arial" font-size="14">Web Application</text>
+<text x="540" y="170" text-anchor="middle" font-family="Arial" font-size="14">(System)</text>
+<line x1="930" y1="190" x2="930" y2="3426" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="830" y="125" width="200" height="65" fill="#dae8fc" stroke="#64748b"/>
+<text x="930" y="151" text-anchor="middle" font-family="Arial" font-size="14">Application Database</text>
+<line x1="1320" y1="190" x2="1320" y2="3426" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1220" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="1320" y="151" text-anchor="middle" font-family="Arial" font-size="14">Background Worker</text>
+<text x="1320" y="170" text-anchor="middle" font-family="Arial" font-size="14">Meta Insights Sync</text>
+<line x1="1710" y1="190" x2="1710" y2="3426" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1610" y="125" width="200" height="65" fill="#fff2cc" stroke="#64748b"/>
+<text x="1710" y="151" text-anchor="middle" font-family="Arial" font-size="14">Meta Graph API</text>
+<rect x="534" y="225" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,225 540,225" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="221" text-anchor="middle" font-family="Arial" font-size="13">openAnalytics(filters)</text>
+<rect x="534" y="353" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,328 585,328 585,353 540,353" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="306" text-anchor="start" font-family="Arial" font-size="13">authorize administrator; validate</text>
+<text x="595" y="324" text-anchor="start" font-family="Arial" font-size="13">date range and filters</text>
+<rect x="924" y="431" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,431 930,431" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="409" text-anchor="middle" font-family="Arial" font-size="13">read analytics settings; aggregate news, audience</text>
+<text x="735.0" y="427" text-anchor="middle" font-family="Arial" font-size="13">and engagement</text>
+<polyline points="930,516 540,516" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="512" text-anchor="middle" font-family="Arial" font-size="13">return summary, trends and post performance</text>
+<rect x="924" y="619" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,619 930,619" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="597" text-anchor="middle" font-family="Arial" font-size="13">read saved Meta snapshots and synchronization</text>
+<text x="735.0" y="615" text-anchor="middle" font-family="Arial" font-size="13">status</text>
+<polyline points="930,704 540,704" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="700" text-anchor="middle" font-family="Arial" font-size="13">return social metrics</text>
+<polyline points="540,789 150,789" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="785" text-anchor="middle" font-family="Arial" font-size="13">display dashboard, filters, charts and tables</text>
+<rect x="534" y="929" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,929 540,929" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="925" text-anchor="middle" font-family="Arial" font-size="13">select post / date range / category / sort</text>
+<rect x="924" y="1014" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1014 930,1014" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="1010" text-anchor="middle" font-family="Arial" font-size="13">query filtered data and optional post inspection</text>
+<polyline points="930,1099 540,1099" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1095" text-anchor="middle" font-family="Arial" font-size="13">return filtered results</text>
+<polyline points="540,1184 150,1184" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="1180" text-anchor="middle" font-family="Arial" font-size="13">update analytics view</text>
+<rect x="534" y="1364" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,1364 540,1364" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="1360" text-anchor="middle" font-family="Arial" font-size="13">export(scope, CSV or XLSX)</text>
+<rect x="924" y="1449" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1449 930,1449" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="1445" text-anchor="middle" font-family="Arial" font-size="13">read report data for selected scope and filters</text>
+<polyline points="930,1534 540,1534" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1530" text-anchor="middle" font-family="Arial" font-size="13">return export rows</text>
+<rect x="534" y="1644" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1619 585,1619 585,1644 540,1644" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="1615" text-anchor="start" font-family="Arial" font-size="13">build CSV / XLSX</text>
+<polyline points="540,1704 150,1704" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="1700" text-anchor="middle" font-family="Arial" font-size="13">download report</text>
+<rect x="534" y="1884" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,1884 540,1884" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="1880" text-anchor="middle" font-family="Arial" font-size="13">requestMetaSync()</text>
+<rect x="1314" y="1969" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1969 1320,1969" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="930.0" y="1965" text-anchor="middle" font-family="Arial" font-size="13">dispatch unique SyncMetaInsights job</text>
+<polyline points="540,2054 150,2054" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="2050" text-anchor="middle" font-family="Arial" font-size="13">return to analytics</text>
+<rect x="924" y="2139" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,2139 930,2139" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="2135" text-anchor="middle" font-family="Arial" font-size="13">read selected connections and credentials</text>
+<polyline points="930,2224 1320,2224" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="2220" text-anchor="middle" font-family="Arial" font-size="13">return configured accounts</text>
+<rect x="1704" y="2364" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,2364 1710,2364" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="2360" text-anchor="middle" font-family="Arial" font-size="13">request daily metric series (last seven days)</text>
+<polyline points="1710,2449 1320,2449" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="2445" text-anchor="middle" font-family="Arial" font-size="13">return points / provider error</text>
+<rect x="924" y="2589" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,2589 930,2589" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="2585" text-anchor="middle" font-family="Arial" font-size="13">upsert snapshots; set ready and synced timestamp</text>
+<line x1="40" y1="2654" x2="1910" y2="2654" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="2676" font-family="Arial" font-size="13">[failure or no data]</text>
+<rect x="924" y="2747" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,2747 930,2747" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="2725" text-anchor="middle" font-family="Arial" font-size="13">set unavailable / no_data; preserve prior</text>
+<text x="1125.0" y="2743" text-anchor="middle" font-family="Arial" font-size="13">snapshots</text>
+<rect x="534" y="2912" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,2912 540,2912" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="2908" text-anchor="middle" font-family="Arial" font-size="13">refreshAnalytics()</text>
+<rect x="924" y="2997" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,2997 930,2997" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="2993" text-anchor="middle" font-family="Arial" font-size="13">read stored snapshots and status</text>
+<polyline points="930,3082 540,3082" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="3078" text-anchor="middle" font-family="Arial" font-size="13">return updated saved metrics</text>
+<polyline points="540,3167 150,3167" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="3163" text-anchor="middle" font-family="Arial" font-size="13">display refreshed social analytics</text>
+<rect x="65" y="3282" width="1820" height="64" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="3304" font-family="Arial" font-size="13">Disconnected connections are skipped and marked disconnected. Queue execution depends on its configured driver. Reports read snapshots, not live Meta calls. PostPerformance supplies actual post statistics; the generic engagement widget</text>
+<text x="77" y="3326" font-family="Arial" font-size="13">remains a placeholder.</text>
+</svg>

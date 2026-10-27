@@ -2,4 +2,3 @@
 deepeval==3.9.9
 requests>=2.32,<3
 pydantic-settings>=2,<3
-ollama>=0.6,<1

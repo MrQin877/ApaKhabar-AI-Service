@@ -185,7 +185,7 @@ def build() -> None:
     )
     add_heading(document, "1.1 Design goals", 2)
     for item in [
-        "Local-first: generation and embeddings run through Ollama without a paid model API.",
+        "Hosted API generation and evaluation; cached local EmbeddingGemma supports retrieval.",
         "Traceable: extracted facts retain evidence and source coordinates.",
         "Schema-driven: Pydantic defines stable contracts between model, API, and frontend.",
         "Progressive: short inputs use a direct path; large collections use RAG.",
@@ -210,7 +210,7 @@ def build() -> None:
         "↓ validated request",
         "DOCUMENT  |  AI  |  RAG SERVICES",
         "↓ typed data contracts",
-        "OLLAMA GENERATION  |  OLLAMA EMBEDDINGS  |  CHROMADB",
+        "HOSTED GENERATION API  |  LOCAL EMBEDDINGS  |  CHROMADB",
     ])
     add_table(document, ["Layer", "Current module", "Responsibility"], [
         ["Transport", "app/api/", "Receive requests, validate inputs, map failures to HTTP responses"],
@@ -219,7 +219,7 @@ def build() -> None:
         ["Ingestion", "document_service.py", "Parse bytes and preserve source coordinates"],
         ["Model orchestration", "ai_service.py", "Structured extraction, completeness checks, summaries, writing"],
         ["Retrieval", "rag_service.py", "Chunk, embed, index, filter, retrieve, and delete"],
-        ["External runtime", "Ollama + ChromaDB", "Run local models and persist vectors"],
+        ["External runtime", "Hosted API + local EmbeddingGemma + ChromaDB", "Call hosted models and persist local vectors"],
     ], [1400, 2900, 5060])
     add_heading(document, "2.1 Dependency direction", 2)
     document.add_paragraph(
@@ -254,7 +254,7 @@ def build() -> None:
         "→ size + extension validation",
         "→ format parser",
         "→ NormalizedDocument with source markers",
-        "→ Ollama structured extraction",
+        "→ hosted API structured extraction",
         "→ Pydantic validation",
         "→ ExtractionResponse",
     ])
@@ -313,7 +313,7 @@ def build() -> None:
     document.add_page_break()
     add_heading(document, "6. Reliability and safety design", 1)
     add_table(document, ["Risk", "Current control", "Next production control"], [
-        ["Invalid model JSON", "Ollama JSON schema + Pydantic validation", "Evaluation and retry policy"],
+        ["Invalid model JSON", "hosted API JSON schema + Pydantic validation", "Evaluation and retry policy"],
         ["Invented facts", "Strict prompts, evidence, source guard", "Claim-level verification"],
         ["Missing facts", "Completeness gate before writing", "Editorial workflow and audit log"],
         ["Irrelevant retrieval", "Top-k, distance threshold, document filter", "Reranker and retrieval evaluation"],
@@ -341,11 +341,11 @@ def build() -> None:
           "GET /health returns 200 and Swagger loads.",
           add_numbering_instance(document, 1001))
 
-    phase(document, 2, "Configure local Ollama",
+    phase(document, 2, "Configure hosted model APIs",
           "Move runtime settings out of source code and verify required models.",
           ".env.example, app/core/config.py, app/api/health.py",
-          ["Install Ollama and pull the generation and embedding models.", "Create typed settings with safe defaults.", "Add an Ollama/model health endpoint."],
-          "GET /health/ollama identifies both configured models.",
+          ["Configure writer/evaluator API credentials and provision the embedding model cache.", "Create typed settings with safe defaults.", "Add an hosted API/model health endpoint."],
+          "GET /health/models probes the writer; target=evaluator probes the judge.",
           add_numbering_instance(document, 1002))
     phase(document, 3, "Design the schemas",
           "Make valid inputs and outputs explicit before prompt engineering.",
@@ -363,7 +363,7 @@ def build() -> None:
     phase(document, 5, "Add structured information extraction",
           "Obtain deterministic JSON-shaped information from local generation.",
           "app/services/ai_service.py, app/api/extraction.py",
-          ["Pass the Pydantic JSON schema to Ollama.", "Set temperature to zero for extraction.", "Validate the returned message and map model failures.", "Require evidence and source markers."],
+          ["Pass the Pydantic JSON schema to hosted API.", "Set temperature to zero for extraction.", "Validate the returned message and map model failures.", "Require evidence and source markers."],
           "A synthetic announcement becomes a valid ExtractionResponse with evidence.",
           add_numbering_instance(document, 1005))
 
@@ -417,11 +417,11 @@ def build() -> None:
     add_heading(document, "8. Endpoint build order and integration", 1)
     add_table(document, ["Order", "Endpoint", "Depends on"], [
         ["1", "GET /health", "FastAPI only"],
-        ["2", "GET /health/ollama", "Settings + Ollama"],
+        ["2", "GET /health/models", "Settings + hosted API"],
         ["3", "POST /documents/upload", "Document normalization"],
-        ["4", "POST /extract-information", "Ollama + extraction schema"],
+        ["4", "POST /extract-information", "hosted API + extraction schema"],
         ["5", "POST /documents/extract-information", "Upload + extraction"],
-        ["6", "POST /news/check-completeness", "Completeness schema + Ollama"],
+        ["6", "POST /news/check-completeness", "Completeness schema + hosted API"],
         ["7", "POST /news/generate", "Completeness + writer"],
         ["8", "POST /documents/index", "Normalization + embeddings + Chroma"],
         ["9", "POST /rag/search", "Query embedding + Chroma"],
@@ -445,7 +445,7 @@ def build() -> None:
         ["Schema", "Invalid model/API data is rejected", "Confidence outside 0..1 fails"],
         ["Service", "Prompt orchestration and guards", "Plain text cannot invent a page source"],
         ["API", "Status and response contracts", "Empty upload returns 422"],
-        ["Integration", "Real Ollama and Chroma", "Index, search, generate, delete"],
+        ["Integration", "Real hosted API and Chroma", "Index, search, generate, delete"],
         ["Evaluation", "Quality against labelled samples", "Fact precision and retrieval hit rate"],
     ], [1700, 3900, 3760])
     add_heading(document, "9.1 Recommended project metrics", 2)
@@ -490,7 +490,7 @@ def build() -> None:
     document.core_properties.title = "ApaKhabar Service Architecture and Development Guide"
     document.core_properties.subject = "Architecture concepts and incremental development sequence"
     document.core_properties.author = "ApaKhabar Project"
-    document.core_properties.keywords = "ApaKhabar, architecture, FastAPI, Ollama, RAG, development"
+    document.core_properties.keywords = "ApaKhabar, architecture, FastAPI, hosted API, RAG, development"
     document.save(OUTPUT)
 
 

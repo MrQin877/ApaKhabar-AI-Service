@@ -34,7 +34,7 @@ The application implements four editorial roles within **one** `EditorialWorkflo
 ## Model construction and routing
 
 - `app/core/config.py`: provider, endpoint, alias, timeout, embedding, and evaluator settings, overridden by `.env`.
-- `app/providers/models.py`: `GenerationModel.structured()` validates JSON with one repair attempt; `_chat()` calls llama.cpp or Ollama. `Embeddings` handles the separate retrieval model.
+- `app/providers/models.py`: `GenerationModel.structured()` validates JSON with one repair attempt; `_chat()` calls a hosted OpenAI-compatible API. `Embeddings` handles the separate retrieval model.
 - `app/providers/evaluator.py`: `build_evaluator()` creates a model client using judge settings and rejects identical writer/judge names. Different aliases alone do not prove different weights.
 - `app/services/agent_service.py`: initializes generation model, optional evaluator, skill registry, and tools; runs the graph with SQLite checkpoints and persisted events.
 - `EditorialWorkflow.call()`: routes `Reflection` schemas to `self.evaluator`; all other graph schemas use `self.model`.

@@ -1,0 +1,29 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Signed-in reader
+    participant P1 as Web Application (Engagement UI)
+    participant P2 as News controllers
+    participant P3 as InteractionService
+    participant P4 as Application Database
+    P0->>P1: click Like
+    P1->>P2: POST /news/{id}/like or /comments/{id}/like
+    P2->>P2: authentication and throttle middleware
+    P2->>P3: likeNews(userId, newsId) / likeComment(userId, commentId)
+    P3->>P4: begin transaction, lock target, verify visibility
+    P3->>P4: find existing like for this user and target
+    P4-->>P3: return existing / absent
+    alt [not liked]
+    P3->>P4: insert likes / comment_likes row
+    else [already liked]
+    P3->>P4: delete existing like row
+    end
+    P3->>P4: count remaining likes
+    P4-->>P3: return count
+    opt [news post]
+    P3->>P4: update news.likes_count
+    end
+    P3->>P4: commit
+    P3-->>P2: return liked and likes_count
+    P2-->>P1: JSON: liked, likes_count
+    P1-->>P0: update Like state and count
+    Note over P0,P4: Comment likes are counted directly, there is no cached comments.likes_count column. Unauthenticated requests stop at middleware. Short-video equivalents use ShortEngagementController and short_video_likes / short_video_comment_likes, with the same toggle pattern.

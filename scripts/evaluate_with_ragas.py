@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 import pandas as pd
 
-# You will need to install these packages for local llama.cpp evaluation:
+# You will need to install these packages for hosted API evaluation:
 # pip install ragas langchain-openai langchain-community datasets pandas sentence-transformers
 
 try:
@@ -20,9 +20,9 @@ try:
     from ragas import evaluate
     from ragas.metrics import faithfulness, answer_relevancy
     
-    # Use OpenAI client to connect to your local llama.cpp server!
+    # Use the configured hosted evaluator endpoint.
     from langchain_openai import ChatOpenAI
-    # Use HuggingFace for fast, local embeddings without needing Ollama
+    # Use HuggingFace for local embeddings
     from langchain_community.embeddings import HuggingFaceEmbeddings
 except ImportError:
     print("Please install requirements first:")
@@ -67,18 +67,20 @@ def run_evaluation(evaluation_results_path: str):
         "answer": answers,
     })
 
-    print(f"Evaluating {len(dataset)} articles using your local llama.cpp server...")
-    
-    # --- 100% FREE LOCAL EVALUATION USING YOUR EXISTING LLAMA.CPP ---
-    
-    # 1. Connect to your existing llama.cpp server (running the Gemma GGUF)
+    sys.path.insert(0, str(root))
+    from app.core.config import Settings
+    settings = Settings()
+    if not settings.evaluator_api_key or not settings.evaluator_model:
+        raise ValueError("Set EVALUATOR_API_KEY and EVALUATOR_MODEL before evaluation")
+    print(f"Evaluating {len(dataset)} articles using the hosted evaluator...")
     eval_llm = ChatOpenAI(
-        model="apakhabar-gemma",       # Name doesn't matter for local llama.cpp
-        api_key="dummy_key",           # llama.cpp doesn't need a real key
-        base_url="http://127.0.0.1:8080/v1", # Your local llama.cpp port
-        max_retries=1
+        model=settings.evaluator_model,
+        api_key=settings.evaluator_api_key,
+        base_url=settings.evaluator_base_url,
+        timeout=settings.evaluator_timeout_seconds,
+        max_retries=1,
     )
-    
+
     # 2. Run fast local embeddings directly in Python (no server needed)
     print("Loading local embedding model...")
     eval_embeddings = HuggingFaceEmbeddings(

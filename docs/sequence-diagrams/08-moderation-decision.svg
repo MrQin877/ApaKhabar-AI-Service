@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="2562"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="40" y="47" font-family="Arial" font-size="25" font-weight="bold">Review comments and apply a moderation decision</text>
+<text x="40" y="85" font-family="Arial" font-size="13" fill="#475569">Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow</text>
+<rect x="40" y="1364" width="1870" height="1008" fill="none" stroke="#64748b"/><text x="55" y="1386" font-family="Arial" font-size="13">alt [revision mismatch or invalid transition]</text>
+<line x1="150" y1="190" x2="150" y2="2527" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<circle cx="150" cy="143" r="10" fill="#ffd2a8" stroke="#555"/><path d="M 150 153 v 22 m -22 -12 h44 m-22 12 l-18 18 m18 -18 l18 18" fill="none" stroke="#555"/>
+<text x="150" y="108" text-anchor="middle" font-family="Arial" font-size="13">Administrator /</text>
+<text x="150" y="123" text-anchor="middle" font-family="Arial" font-size="13">Moderator</text>
+<line x1="540" y1="190" x2="540" y2="2527" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="440" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="540" y="151" text-anchor="middle" font-family="Arial" font-size="14">Web Application</text>
+<text x="540" y="170" text-anchor="middle" font-family="Arial" font-size="14">(Moderation UI)</text>
+<line x1="930" y1="190" x2="930" y2="2527" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="830" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="930" y="151" text-anchor="middle" font-family="Arial" font-size="14">CommentModerationController</text>
+<line x1="1320" y1="190" x2="1320" y2="2527" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1220" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="1320" y="151" text-anchor="middle" font-family="Arial" font-size="14">ModerationDecisionService</text>
+<line x1="1710" y1="190" x2="1710" y2="2527" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1610" y="125" width="200" height="65" fill="#dae8fc" stroke="#64748b"/>
+<text x="1710" y="151" text-anchor="middle" font-family="Arial" font-size="14">Application Database</text>
+<rect x="534" y="225" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,225 540,225" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="221" text-anchor="middle" font-family="Arial" font-size="13">open comment review queue</text>
+<rect x="924" y="310" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,310 930,310" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="306" text-anchor="middle" font-family="Arial" font-size="13">GET /admin/comments (filters)</text>
+<rect x="1704" y="395" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,395 1710,395" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1320.0" y="391" text-anchor="middle" font-family="Arial" font-size="13">query pending comments, reports, flags and history</text>
+<polyline points="1710,480 930,480" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1320.0" y="476" text-anchor="middle" font-family="Arial" font-size="13">return paginated review data</text>
+<polyline points="930,565 540,565" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="561" text-anchor="middle" font-family="Arial" font-size="13">render admin/comments</text>
+<polyline points="540,650 150,650" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="646" text-anchor="middle" font-family="Arial" font-size="13">display review queue and revision</text>
+<rect x="534" y="735" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,735 540,735" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="731" text-anchor="middle" font-family="Arial" font-size="13">choose allow / hide; enter reason</text>
+<rect x="924" y="820" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,820 930,820" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="816" text-anchor="middle" font-family="Arial" font-size="13">POST /admin/comments/{id}/decision</text>
+<rect x="924" y="948" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,923 975,923 975,948 930,948" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="985" y="901" text-anchor="start" font-family="Arial" font-size="13">validate action, reason, optional</text>
+<text x="985" y="919" text-anchor="start" font-family="Arial" font-size="13">expected_revision</text>
+<rect x="1314" y="1026" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,1026 1320,1026" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="1004" text-anchor="middle" font-family="Arial" font-size="13">decide(actor, id, action, reason,</text>
+<text x="1125.0" y="1022" text-anchor="middle" font-family="Arial" font-size="13">expectedRevision)</text>
+<rect x="1314" y="1136" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1111 1365,1111 1365,1136 1320,1136" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1375" y="1107" text-anchor="start" font-family="Arial" font-size="13">authorize verified admin/moderator</text>
+<rect x="1704" y="1214" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1214 1710,1214" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1192" text-anchor="middle" font-family="Arial" font-size="13">begin transaction; lock comment; read open</text>
+<text x="1515.0" y="1210" text-anchor="middle" font-family="Arial" font-size="13">reports/flags</text>
+<polyline points="1710,1299 1320,1299" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="1295" text-anchor="middle" font-family="Arial" font-size="13">return current status and revision</text>
+<polyline points="1320,1439 930,1439" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="1435" text-anchor="middle" font-family="Arial" font-size="13">409 conflict; transaction rolls back</text>
+<polyline points="930,1524 540,1524" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1520" text-anchor="middle" font-family="Arial" font-size="13">return conflict response</text>
+<polyline points="540,1609 150,1609" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="1605" text-anchor="middle" font-family="Arial" font-size="13">ask reviewer to reload current comment</text>
+<line x1="40" y1="1674" x2="1910" y2="1674" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="1696" font-family="Arial" font-size="13">[valid decision]</text>
+<rect x="1704" y="1767" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1767 1710,1767" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1745" text-anchor="middle" font-family="Arial" font-size="13">allow → published; hide → hidden; increment</text>
+<text x="1515.0" y="1763" text-anchor="middle" font-family="Arial" font-size="13">revision</text>
+<rect x="1704" y="1852" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1852 1710,1852" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1848" text-anchor="middle" font-family="Arial" font-size="13">insert moderation history with actor/action/reason</text>
+<rect x="1704" y="1937" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1937 1710,1937" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1933" text-anchor="middle" font-family="Arial" font-size="13">resolve open reports and flags; commit</text>
+<polyline points="1710,2022 1320,2022" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="2018" text-anchor="middle" font-family="Arial" font-size="13">return history ID</text>
+<polyline points="1320,2107 930,2107" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="2103" text-anchor="middle" font-family="Arial" font-size="13">decision saved</text>
+<polyline points="930,2192 540,2192" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="2188" text-anchor="middle" font-family="Arial" font-size="13">JSON: confirmation</text>
+<polyline points="540,2277 150,2277" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="2273" text-anchor="middle" font-family="Arial" font-size="13">refresh review queue / show saved decision</text>
+<rect x="65" y="2392" width="1820" height="55" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="2414" font-family="Arial" font-size="13">content_type=shorts routes to ShortCommentDecisionService and short-video tables. No AI re-evaluation or new legacy feedback/assessment record is created by this decision.</text>
+</svg>

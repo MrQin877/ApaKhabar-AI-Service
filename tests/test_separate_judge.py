@@ -11,15 +11,17 @@ from test_agent_workflow import ScriptedModel
 
 class SeparateJudgeTests(unittest.TestCase):
     def test_configuration_does_not_modify_writer(self):
-        settings = Settings(_env_file=None, ai_provider='llama_cpp', evaluator_model='judge')
+        settings = Settings(_env_file=None, ai_model='writer', ai_api_key='writer-key', evaluator_model='judge', evaluator_api_key='judge-key')
         judge = build_evaluator(settings)
         self.assertEqual(judge.name, 'judge')
-        self.assertEqual(judge.settings.llama_cpp_base_url, 'http://127.0.0.1:8082/v1')
-        self.assertEqual(settings.llama_cpp_base_url, 'http://127.0.0.1:8080/v1')
+        self.assertEqual(judge.settings.ai_api_key, 'judge-key')
+        self.assertEqual(settings.ai_api_key, 'writer-key')
+        self.assertEqual(judge.settings.ai_base_url, 'https://api.groq.com/openai/v1')
+        self.assertEqual(settings.ai_base_url, 'https://generativelanguage.googleapis.com/v1beta/openai')
 
     def test_same_model_rejected(self):
         with self.assertRaises(ValueError):
-            build_evaluator(Settings(_env_file=None, evaluator_model='qwen3:4b'))
+            build_evaluator(Settings(_env_file=None, ai_model='same-model', evaluator_model='same-model'))
 
     def run_draft(self, judge):
         with tempfile.TemporaryDirectory() as directory:

@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="1200" viewBox="0 0 2570 1200"><rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="50" y="60" font-family="Arial" font-size="30" font-weight="bold">11 Social and analytics</text>
+<text x="50" y="100" font-family="Arial" font-size="16" fill="#475569">All attributes shown. Grey boxes reference another page. Parent / child labels give exact cardinality; dashed lines are logical only.</text>
+<polyline points="2340,883 2370,883 2370,225 170,225 170,305 200,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="878" font-family="Arial" font-size="11" fill="#475569">1</text><text x="175" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,319 812,319 812,205 942,205 942,319 990,319" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="314" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="314" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,911 2414,911 2414,333 2340,333" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="906" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="2315" y="328" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,883 2436,883 2436,743 116,743 116,883 200,883" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="878" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="175" y="878" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,897 2458,897 2458,723 888,723 888,897 990,897" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="892" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="892" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<rect x="200" y="260" width="560" height="408" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">social_connections</text>
+<text x="212" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="345" font-family="Arial" font-size="12">id</text>
+<text x="610" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="286" y="369" font-family="Arial" font-size="12">user_id</text>
+<text x="610" y="369" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="393" font-family="Arial" font-size="12">platform</text>
+<text x="610" y="393" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="417" font-family="Arial" font-size="12">account_id</text>
+<text x="610" y="417" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="441" font-family="Arial" font-size="12">account_name</text>
+<text x="610" y="441" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="465" font-family="Arial" font-size="12">access_token</text>
+<text x="610" y="465" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="489" font-family="Arial" font-size="12">expires_at ?</text>
+<text x="610" y="489" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="513" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="513" font-family="Arial" font-size="12">invalidated_at ?</text>
+<text x="610" y="513" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="537" font-family="Arial" font-size="12">created_at ?</text>
+<text x="610" y="537" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="544" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="561" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="561" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="610" y="561" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="568" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="585" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="585" font-family="Arial" font-size="12">auth_source ?</text>
+<text x="610" y="585" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="592" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="609" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="609" font-family="Arial" font-size="12">insights_status ?</text>
+<text x="610" y="609" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="616" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="633" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="633" font-family="Arial" font-size="12">insights_synced_at ?</text>
+<text x="610" y="633" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<text x="210" y="657" font-family="Arial" font-size="11" fill="#7c3aed">UQ: user_id, platform</text>
+<rect x="990" y="260" width="560" height="288" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">meta_insight_snapshots</text>
+<text x="1002" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="345" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="369" font-family="Arial" font-size="12">connection_id</text>
+<text x="1400" y="369" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="393" font-family="Arial" font-size="12">account_id</text>
+<text x="1400" y="393" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="417" font-family="Arial" font-size="12">metric</text>
+<text x="1400" y="417" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="441" font-family="Arial" font-size="12">period</text>
+<text x="1400" y="441" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="465" font-family="Arial" font-size="12">period_end</text>
+<text x="1400" y="465" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="489" font-family="Arial" font-size="12">value</text>
+<text x="1400" y="489" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="513" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="513" font-family="Arial" font-size="12">synced_at</text>
+<text x="1400" y="513" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<text x="1000" y="537" font-family="Arial" font-size="11" fill="#7c3aed">UQ: connection_id, account_id, metric, period_end</text>
+<rect x="1780" y="260" width="560" height="288" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">analytics_settings</text>
+<text x="1792" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="1781" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="345" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="369" font-family="Arial" font-size="12">widgets</text>
+<text x="2190" y="369" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="1781" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="393" font-family="Arial" font-size="12">layout ?</text>
+<text x="2190" y="393" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="1781" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="417" font-family="Arial" font-size="12">meta_connection_ids ?</text>
+<text x="2190" y="417" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="1781" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="441" font-family="Arial" font-size="12">period_days</text>
+<text x="2190" y="441" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="465" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1866" y="465" font-family="Arial" font-size="12">updated_by ?</text>
+<text x="2190" y="465" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="489" font-family="Arial" font-size="12">tracking_started_at</text>
+<text x="2190" y="489" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="513" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="513" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2190" y="513" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="537" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2190" y="537" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="200" y="838" width="560" height="168" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="838" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="864" font-family="Arial" font-weight="bold" font-size="16" fill="white">analytics_setting_changes</text>
+<text x="212" y="896" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="906" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="923" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="923" font-family="Arial" font-size="12">id</text>
+<text x="610" y="923" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="930" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="947" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="286" y="947" font-family="Arial" font-size="12">user_id ?</text>
+<text x="610" y="947" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="954" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="971" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="971" font-family="Arial" font-size="12">configuration</text>
+<text x="610" y="971" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="978" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="995" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="995" font-family="Arial" font-size="12">created_at</text>
+<text x="610" y="995" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="990" y="838" width="560" height="192" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="838" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="864" font-family="Arial" font-weight="bold" font-size="16" fill="white">villager_activity_hours</text>
+<text x="1002" y="896" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="906" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="923" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="923" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="923" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="930" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="947" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="947" font-family="Arial" font-size="12">user_id</text>
+<text x="1400" y="947" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="954" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="971" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="971" font-family="Arial" font-size="12">hour</text>
+<text x="1400" y="971" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="978" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="995" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="995" font-family="Arial" font-size="12">platform</text>
+<text x="1400" y="995" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<text x="1000" y="1019" font-family="Arial" font-size="11" fill="#7c3aed">UQ: user_id, hour, platform</text>
+<rect x="1780" y="838" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="838" width="560" height="40" fill="#334155"/>
+<text x="1792" y="864" font-family="Arial" font-weight="bold" font-size="16" fill="white">users</text>
+<text x="1792" y="896" font-family="Arial" font-size="11" fill="#64748b">REF · 01 Accounts</text>
+<rect x="1781" y="906" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="923" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="923" font-family="Arial" font-size="12">userID</text>
+<text x="2190" y="923" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+</svg>

@@ -1,0 +1,40 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Reader (Guest / signed-in)
+    participant P1 as Web Application (News UI)
+    participant P2 as CommentController / GuestCommentIdentity
+    participant P3 as InteractionService / CommentModeration
+    participant P4 as Application Database
+    participant P5 as Moderation API (OpenAI)
+    P0->>P1: enter comment or reply
+    P1->>P2: POST /news/{id}/comment or /comments/{id}/replies
+    P2->>P2: validate content, resolve published parent for replies
+    opt [guest reader]
+    P2->>P2: validate challenge age 3s–2h, news ID and session
+    P2->>P4: find/create guest identity, lock identity, read daily quota
+    P4-->>P2: return username and comment_count
+    Note over P0,P5: Invalid challenge or quota of 3/day reached: stop with validation error. Guest quota day uses Asia/Jakarta in the implementation.
+    end
+    P2->>P3: addComment(...) / addReply(...)
+    P3->>P4: verify active news, check duplicate submission_hash
+    P4-->>P3: return eligibility and duplicate result
+    Note over P0,P5: Duplicate content stops with validation error. Replies must reference a published parent.
+    P3->>P3: check(content): detect suspicious links / promotion
+    alt [moderation API key configured]
+    P3->>P5: POST /v1/moderations (omni-moderation-latest, content)
+    P5-->>P3: return flags / categories, or error
+    else [no moderation key]
+    P3->>P3: use pending_review fallback
+    end
+    P3->>P3: choose published only if clean, valid and not suspicious
+    Note over P0,P5: Flagged, suspicious, unavailable or malformed results remain pending_review. The Laravel moderation service calls this API directly, it does not call the project AI service.
+    P3->>P4: transaction: lock news, recheck duplicate, insert comment
+    P3->>P4: insert initial comment_moderation_history
+    P4-->>P3: return saved comment
+    P3-->>P2: return status
+    opt [guest submission succeeded]
+    P2->>P4: increment guest_comment_days, commit guest transaction
+    end
+    P2-->>P1: 201: status, remaining_quota and confirmation
+    P1-->>P0: show published or awaiting-review confirmation
+    Note over P0,P5: Short-video comments use ShortCommentService with short_video_comments / short_video_comment_history and the shared moderation and guest-identity services.

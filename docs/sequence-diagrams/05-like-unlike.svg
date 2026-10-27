@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="2035"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="40" y="47" font-family="Arial" font-size="25" font-weight="bold">Like or unlike news and comments</text>
+<text x="40" y="85" font-family="Arial" font-size="13" fill="#475569">Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow</text>
+<rect x="40" y="836" width="1870" height="310" fill="none" stroke="#64748b"/><text x="55" y="858" font-family="Arial" font-size="13">alt [not liked]</text>
+<rect x="40" y="1326" width="1870" height="170" fill="none" stroke="#64748b"/><text x="55" y="1348" font-family="Arial" font-size="13">opt [news post]</text>
+<line x1="150" y1="190" x2="150" y2="2000" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<circle cx="150" cy="143" r="10" fill="#ffd2a8" stroke="#555"/><path d="M 150 153 v 22 m -22 -12 h44 m-22 12 l-18 18 m18 -18 l18 18" fill="none" stroke="#555"/>
+<text x="150" y="108" text-anchor="middle" font-family="Arial" font-size="13">Signed-in reader</text>
+<line x1="540" y1="190" x2="540" y2="2000" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="440" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="540" y="151" text-anchor="middle" font-family="Arial" font-size="14">Web Application</text>
+<text x="540" y="170" text-anchor="middle" font-family="Arial" font-size="14">(Engagement UI)</text>
+<line x1="930" y1="190" x2="930" y2="2000" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="830" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="930" y="151" text-anchor="middle" font-family="Arial" font-size="14">News controllers</text>
+<line x1="1320" y1="190" x2="1320" y2="2000" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1220" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="1320" y="151" text-anchor="middle" font-family="Arial" font-size="14">InteractionService</text>
+<line x1="1710" y1="190" x2="1710" y2="2000" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1610" y="125" width="200" height="65" fill="#dae8fc" stroke="#64748b"/>
+<text x="1710" y="151" text-anchor="middle" font-family="Arial" font-size="14">Application Database</text>
+<rect x="534" y="225" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,225 540,225" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="221" text-anchor="middle" font-family="Arial" font-size="13">click Like</text>
+<rect x="924" y="310" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,310 930,310" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="306" text-anchor="middle" font-family="Arial" font-size="13">POST /news/{id}/like or /comments/{id}/like</text>
+<rect x="924" y="438" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,413 975,413 975,438 930,438" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="985" y="391" text-anchor="start" font-family="Arial" font-size="13">authentication and throttle</text>
+<text x="985" y="409" text-anchor="start" font-family="Arial" font-size="13">middleware</text>
+<rect x="1314" y="516" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,516 1320,516" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="494" text-anchor="middle" font-family="Arial" font-size="13">likeNews(userId, newsId) / likeComment(userId,</text>
+<text x="1125.0" y="512" text-anchor="middle" font-family="Arial" font-size="13">commentId)</text>
+<rect x="1704" y="601" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,601 1710,601" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="597" text-anchor="middle" font-family="Arial" font-size="13">begin transaction; lock target; verify visibility</text>
+<rect x="1704" y="686" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,686 1710,686" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="682" text-anchor="middle" font-family="Arial" font-size="13">find existing like for this user and target</text>
+<polyline points="1710,771 1320,771" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="767" text-anchor="middle" font-family="Arial" font-size="13">return existing / absent</text>
+<rect x="1704" y="911" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,911 1710,911" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="907" text-anchor="middle" font-family="Arial" font-size="13">insert likes / comment_likes row</text>
+<line x1="40" y1="976" x2="1910" y2="976" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="998" font-family="Arial" font-size="13">[already liked]</text>
+<rect x="1704" y="1051" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1051 1710,1051" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1047" text-anchor="middle" font-family="Arial" font-size="13">delete existing like row</text>
+<rect x="1704" y="1176" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1176 1710,1176" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1172" text-anchor="middle" font-family="Arial" font-size="13">count remaining likes</text>
+<polyline points="1710,1261 1320,1261" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="1257" text-anchor="middle" font-family="Arial" font-size="13">return count</text>
+<rect x="1704" y="1401" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1401 1710,1401" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1397" text-anchor="middle" font-family="Arial" font-size="13">update news.likes_count</text>
+<rect x="1704" y="1526" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1526 1710,1526" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1522" text-anchor="middle" font-family="Arial" font-size="13">commit</text>
+<polyline points="1320,1611 930,1611" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="1607" text-anchor="middle" font-family="Arial" font-size="13">return liked and likes_count</text>
+<polyline points="930,1696 540,1696" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1692" text-anchor="middle" font-family="Arial" font-size="13">JSON: liked, likes_count</text>
+<polyline points="540,1781 150,1781" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="1777" text-anchor="middle" font-family="Arial" font-size="13">update Like state and count</text>
+<rect x="65" y="1856" width="1820" height="64" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="1878" font-family="Arial" font-size="13">Comment likes are counted directly; there is no cached comments.likes_count column. Unauthenticated requests stop at middleware. Short-video equivalents use ShortEngagementController and short_video_likes / short_video_comment_likes, with</text>
+<text x="77" y="1900" font-family="Arial" font-size="13">the same toggle pattern.</text>
+</svg>

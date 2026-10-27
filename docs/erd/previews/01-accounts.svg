@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="1320" viewBox="0 0 2570 1320"><rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="50" y="60" font-family="Arial" font-size="30" font-weight="bold">01 Accounts</text>
+<text x="50" y="100" font-family="Arial" font-size="16" fill="#475569">All attributes shown. Grey boxes reference another page. Parent / child labels give exact cardinality; dashed lines are logical only.</text>
+<polyline points="760,305 790,305 790,225 960,225 960,305 990,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="300" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,319 1602,319 1602,205 1732,205 1732,319 1780,319" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="314" font-family="Arial" font-size="11" fill="#475569">1</text><text x="1755" y="314" font-family="Arial" font-size="11" fill="#475569">0..1</text>
+<polyline points="1550,333 1624,333 1624,185 134,185 134,935 200,935" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="328" font-family="Arial" font-size="11" fill="#475569">1</text><text x="175" y="930" font-family="Arial" font-size="11" fill="#475569">0..1</text>
+<polyline points="1550,305 1646,305 1646,165 1696,165 1696,907 1780,907" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="300" font-family="Arial" font-size="11" fill="#475569">1</text><text x="1755" y="902" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<rect x="200" y="260" width="560" height="168" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">user_roles</text>
+<text x="212" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="345" font-family="Arial" font-size="12">roleID</text>
+<text x="610" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="369" font-family="Arial" font-size="12">name</text>
+<text x="610" y="369" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="393" font-family="Arial" font-size="12">created_at ?</text>
+<text x="610" y="393" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="417" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="610" y="417" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="990" y="260" width="560" height="432" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">users</text>
+<text x="1002" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="345" font-family="Arial" font-size="12">userID</text>
+<text x="1400" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="369" font-family="Arial" font-size="12">name</text>
+<text x="1400" y="369" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="393" font-family="Arial" font-size="12">password</text>
+<text x="1400" y="393" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="417" font-family="Arial" font-size="12">push_token ?</text>
+<text x="1400" y="417" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="441" font-family="Arial" font-size="12">remember_token ?</text>
+<text x="1400" y="441" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="465" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1400" y="465" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="489" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1400" y="489" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="513" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="513" font-family="Arial" font-size="12">roleID</text>
+<text x="1400" y="513" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="537" font-family="Arial" font-size="12">two_factor_secret ?</text>
+<text x="1400" y="537" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="544" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="561" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="561" font-family="Arial" font-size="12">two_factor_recovery_codes ?</text>
+<text x="1400" y="561" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="568" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="585" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="585" font-family="Arial" font-size="12">two_factor_confirmed_at ?</text>
+<text x="1400" y="585" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="592" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="609" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="609" font-family="Arial" font-size="12">date_of_birth ?</text>
+<text x="1400" y="609" font-family="Arial" font-size="12" fill="#64748b">date</text>
+<rect x="991" y="616" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="633" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="633" font-family="Arial" font-size="12">citizenship ?</text>
+<text x="1400" y="633" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="640" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="657" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="657" font-family="Arial" font-size="12">gender ?</text>
+<text x="1400" y="657" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="664" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="681" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="681" font-family="Arial" font-size="12">ethnicity ?</text>
+<text x="1400" y="681" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1780" y="260" width="560" height="192" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">emails</text>
+<text x="1792" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="1781" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="345" font-family="Arial" font-size="12">email</text>
+<text x="2190" y="345" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="369" font-family="Arial" font-size="12">email_verified_at ?</text>
+<text x="2190" y="369" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="393" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2190" y="393" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="417" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2190" y="417" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="441" font-family="Arial" font-size="12" fill="#1d4ed8">FK,UK</text>
+<text x="1866" y="441" font-family="Arial" font-size="12">userID</text>
+<text x="2190" y="441" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="862" width="560" height="240" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="862" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="888" font-family="Arial" font-weight="bold" font-size="16" fill="white">phones</text>
+<text x="212" y="920" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="930" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="947" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="947" font-family="Arial" font-size="12">phone</text>
+<text x="610" y="947" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="954" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="971" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="971" font-family="Arial" font-size="12">phone_otp ?</text>
+<text x="610" y="971" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="978" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="995" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="995" font-family="Arial" font-size="12">phone_otp_expires_at ?</text>
+<text x="610" y="995" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="1002" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1019" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1019" font-family="Arial" font-size="12">phone_verified_at ?</text>
+<text x="610" y="1019" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="1026" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1043" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1043" font-family="Arial" font-size="12">created_at ?</text>
+<text x="610" y="1043" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="1050" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1067" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1067" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="610" y="1067" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="1074" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1091" font-family="Arial" font-size="12" fill="#1d4ed8">FK,UK</text>
+<text x="286" y="1091" font-family="Arial" font-size="12">userID</text>
+<text x="610" y="1091" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="862" width="560" height="168" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="862" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="888" font-family="Arial" font-weight="bold" font-size="16" fill="white">password_reset_tokens</text>
+<text x="1002" y="920" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="930" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="947" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="947" font-family="Arial" font-size="12">passwordID</text>
+<text x="1400" y="947" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="954" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="971" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="971" font-family="Arial" font-size="12">email</text>
+<text x="1400" y="971" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="978" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="995" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="995" font-family="Arial" font-size="12">token</text>
+<text x="1400" y="995" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="1002" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1019" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1019" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1400" y="1019" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1780" y="862" width="560" height="288" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="862" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="888" font-family="Arial" font-weight="bold" font-size="16" fill="white">personal_access_tokens</text>
+<text x="1792" y="920" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="1781" y="930" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="947" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="947" font-family="Arial" font-size="12">tokenID</text>
+<text x="2190" y="947" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="954" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="971" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1866" y="971" font-family="Arial" font-size="12">tokenable_id</text>
+<text x="2190" y="971" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="978" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="995" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="995" font-family="Arial" font-size="12">tokenable_type</text>
+<text x="2190" y="995" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="1002" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="1019" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="1019" font-family="Arial" font-size="12">name</text>
+<text x="2190" y="1019" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="1026" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1043" font-family="Arial" font-size="12" fill="#1d4ed8">UK</text>
+<text x="1866" y="1043" font-family="Arial" font-size="12">token</text>
+<text x="2190" y="1043" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="1050" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="1067" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="1067" font-family="Arial" font-size="12">abilities ?</text>
+<text x="2190" y="1067" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="1781" y="1074" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1091" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="1091" font-family="Arial" font-size="12">expires_at ?</text>
+<text x="2190" y="1091" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="1098" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="1115" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="1115" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2190" y="1115" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="1122" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1139" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="1139" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2190" y="1139" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+</svg>

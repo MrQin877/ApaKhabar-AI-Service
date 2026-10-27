@@ -2,11 +2,11 @@ import unittest
 from unittest.mock import patch
 
 from app.schemas.news import NewsArticle
-from app.services.ai_service import OllamaService
+from app.services.ai_service import AIService
 
 
 class AIServiceTests(unittest.TestCase):
-    @patch.object(OllamaService, "_structured_chat")
+    @patch.object(AIService, "_structured_chat")
     def test_plain_text_cannot_return_invented_source_metadata(self, chat):
         chat.return_value = NewsArticle(
             headline="Headline",
@@ -20,10 +20,10 @@ class AIServiceTests(unittest.TestCase):
             warnings=[],
         )
 
-        result = OllamaService.write_news("A supported fact.", "en", "formal")
+        result = AIService.write_news("A supported fact.", "en", "formal")
         self.assertEqual(result.sources_used, [])
 
-    @patch.object(OllamaService, "_structured_chat")
+    @patch.object(AIService, "_structured_chat")
     def test_normalized_text_may_return_source_metadata(self, chat):
         chat.return_value = NewsArticle(
             headline="Headline",
@@ -37,7 +37,7 @@ class AIServiceTests(unittest.TestCase):
             warnings=[],
         )
 
-        result = OllamaService.write_news(
+        result = AIService.write_news(
             "[source: page=2] A supported fact.",
             "en",
             "formal",

@@ -14,37 +14,25 @@ Production Reflection reviews the **draft against supplied sources**. It does no
 
 The workflow computes the final weighted score from judge dimensions: accuracy 30%, completeness 20%, relevance 15%, readability 10%, structure 10%, language 10%, safety 5%. Deterministic checks can still require review or block publication.
 
-## Start locally (Windows or macOS)
+## Configure the hosted evaluator
 
-Install llama.cpp and keep the existing writer server running on port 8080.
-From the AI Service repository, in another terminal:
-
-```sh
-python scripts/start_judge.py
-```
-
-This downloads `Qwen/Qwen3-4B-GGUF:Q4_K_M` on first use, starts it on port 8082
-with alias `apakhabar-judge`, and keeps it running in the foreground. The Python
-launcher works in Windows PowerShell without Bash. GPU configuration is optional:
-set `JUDGE_GPU_LAYERS=0` for CPU execution. Larger contexts and two loaded models
-require more memory. This small model is a starting candidate, not a validated
-expert evaluator. Replace `JUDGE_HF_MODEL` to test another model.
-
-After the judge is listening, add to the AI Service `.env` and restart Uvicorn:
+Set these in the AI Service `.env`, then restart Uvicorn:
 
 ```dotenv
 EVALUATOR_ENABLED=true
-EVALUATOR_PROVIDER=llama_cpp
-EVALUATOR_BASE_URL=http://127.0.0.1:8082/v1
-EVALUATOR_MODEL=apakhabar-judge
+EVALUATOR_BASE_URL=https://api.groq.com/openai/v1
+EVALUATOR_API_KEY=your-provider-key
+EVALUATOR_MODEL=your-available-judge-model
 EVALUATOR_TIMEOUT_SECONDS=180
 EVALUATOR_MAX_TOKENS=4096
 ```
 
-For Ollama use `EVALUATOR_PROVIDER=ollama`, the Ollama server root URL (without
-`/v1`), and an installed model name different from the writer. Different aliases
-alone do not prove different underlying weights; provision a genuinely different
-model. The application rejects identical configured writer/judge model names.
+The writer uses independent `AI_BASE_URL`, `AI_API_KEY`, and `AI_MODEL` settings.
+The application rejects identical writer/judge model names. Distinct aliases do
+not by themselves establish independent underlying models. Both endpoints need
+usable provider quota. Probe them separately with `/health/models` and
+`/health/models?target=evaluator` using the service authentication header.
+These probes perform inference and consume quota. No local generation server is required.
 
 Existing saved scores are not re-evaluated automatically. Generate a new draft
 to verify the new evaluator metadata. The UI identifies the evaluator and displays
@@ -72,7 +60,7 @@ Windows PowerShell:
 .\.venv-eval\Scripts\python.exe scripts/evaluate_news_deepeval.py
 ```
 
-The runner explicitly supplies the local judge to every metric and writes
+The runner explicitly supplies the hosted judge to every metric and writes
 `evaluation/results/judge_report.json`. It does not call the hosted evaluation
 dashboard. Model execution errors are recorded separately from failed quality
 checks. A nonzero exit code means execution failed or the judge disagreed with
@@ -93,7 +81,7 @@ set or treat the evaluator's own scores as independent ground truth.
 References: https://deepeval.com/guides/guides-using-custom-llms and
 https://huggingface.co/Qwen/Qwen3-4B-GGUF
 
-## Initial smoke results (29 September 2026)
+## Historical local-model smoke results (29 September 2026)
 
 DeepEval 3.9.9 with Qwen3-4B Q4_K_M completed all four calibration cases.
 Agreement was 3/4 (75% on these four examples only). It rejected the wrong total

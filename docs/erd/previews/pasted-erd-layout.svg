@@ -1,0 +1,646 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8630.0" height="7823.0">
+<rect width="100%" height="100%" fill="white"/>
+<text x="100" y="65" font-family="Arial" font-size="34">Updated original layout — table placement preview</text>
+<rect x="3411.9999999999995" y="220.0" width="380" height="660" rx="8" fill="white" stroke="#333"/>
+<text x="3601.9999999999995" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligence_documents</text>
+<text x="3416.9999999999995" y="270.0" font-family="Arial" font-size="11">PK</text><text x="3481.9999999999995" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="3416.9999999999995" y="300.0" font-family="Arial" font-size="11">FK</text><text x="3481.9999999999995" y="300.0" font-family="Arial" font-size="12">uploaded_by</text>
+<text x="3416.9999999999995" y="330.0" font-family="Arial" font-size="11">UK</text><text x="3481.9999999999995" y="330.0" font-family="Arial" font-size="12">ai_document_id ?</text>
+<text x="3416.9999999999995" y="360.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="360.0" font-family="Arial" font-size="12">original_name</text>
+<text x="3416.9999999999995" y="390.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="390.0" font-family="Arial" font-size="12">storage_disk</text>
+<text x="3416.9999999999995" y="420.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="420.0" font-family="Arial" font-size="12">storage_path</text>
+<text x="3416.9999999999995" y="450.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="450.0" font-family="Arial" font-size="12">mime_type ?</text>
+<text x="3416.9999999999995" y="480.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="480.0" font-family="Arial" font-size="12">file_size</text>
+<text x="3416.9999999999995" y="510.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="510.0" font-family="Arial" font-size="12">sha256</text>
+<text x="3416.9999999999995" y="540.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="540.0" font-family="Arial" font-size="12">status</text>
+<text x="3416.9999999999995" y="570.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="570.0" font-family="Arial" font-size="12">embedding_status</text>
+<text x="3416.9999999999995" y="600.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="600.0" font-family="Arial" font-size="12">character_count ?</text>
+<text x="3416.9999999999995" y="630.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="630.0" font-family="Arial" font-size="12">error_message ?</text>
+<text x="3416.9999999999995" y="660.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="660.0" font-family="Arial" font-size="12">processed_at ?</text>
+<text x="3416.9999999999995" y="690.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="690.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="3416.9999999999995" y="720.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="720.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="3416.9999999999995" y="750.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="750.0" font-family="Arial" font-size="12">processing_attempts</text>
+<text x="3416.9999999999995" y="780.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="780.0" font-family="Arial" font-size="12">last_attempted_at ?</text>
+<text x="3416.9999999999995" y="810.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="810.0" font-family="Arial" font-size="12">archive_after ?</text>
+<text x="3416.9999999999995" y="840.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="840.0" font-family="Arial" font-size="12">archived_at ?</text>
+<text x="3416.9999999999995" y="870.0" font-family="Arial" font-size="11"></text><text x="3481.9999999999995" y="870.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<rect x="1158.0" y="933.0" width="380" height="480" rx="8" fill="white" stroke="#333"/>
+<text x="1348.0" y="953.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">users</text>
+<text x="1163.0" y="983.0" font-family="Arial" font-size="11">PK</text><text x="1228.0" y="983.0" font-family="Arial" font-size="12">userID</text>
+<text x="1163.0" y="1013.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1013.0" font-family="Arial" font-size="12">name</text>
+<text x="1163.0" y="1043.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1043.0" font-family="Arial" font-size="12">password</text>
+<text x="1163.0" y="1073.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1073.0" font-family="Arial" font-size="12">push_token ?</text>
+<text x="1163.0" y="1103.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1103.0" font-family="Arial" font-size="12">remember_token ?</text>
+<text x="1163.0" y="1133.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1133.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1163.0" y="1163.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1163.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1163.0" y="1193.0" font-family="Arial" font-size="11">FK</text><text x="1228.0" y="1193.0" font-family="Arial" font-size="12">roleID</text>
+<text x="1163.0" y="1223.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1223.0" font-family="Arial" font-size="12">two_factor_secret ?</text>
+<text x="1163.0" y="1253.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1253.0" font-family="Arial" font-size="12">two_factor_recovery_codes ?</text>
+<text x="1163.0" y="1283.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1283.0" font-family="Arial" font-size="12">two_factor_confirmed_at ?</text>
+<text x="1163.0" y="1313.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1313.0" font-family="Arial" font-size="12">date_of_birth ?</text>
+<text x="1163.0" y="1343.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1343.0" font-family="Arial" font-size="12">citizenship ?</text>
+<text x="1163.0" y="1373.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1373.0" font-family="Arial" font-size="12">gender ?</text>
+<text x="1163.0" y="1403.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1403.0" font-family="Arial" font-size="12">ethnicity ?</text>
+<rect x="1640.9999999999998" y="220.0" width="380" height="180" rx="8" fill="white" stroke="#333"/>
+<text x="1830.9999999999998" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">emails</text>
+<text x="1645.9999999999998" y="270.0" font-family="Arial" font-size="11">PK</text><text x="1710.9999999999998" y="270.0" font-family="Arial" font-size="12">email</text>
+<text x="1645.9999999999998" y="300.0" font-family="Arial" font-size="11"></text><text x="1710.9999999999998" y="300.0" font-family="Arial" font-size="12">email_verified_at ?</text>
+<text x="1645.9999999999998" y="330.0" font-family="Arial" font-size="11"></text><text x="1710.9999999999998" y="330.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1645.9999999999998" y="360.0" font-family="Arial" font-size="11"></text><text x="1710.9999999999998" y="360.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1645.9999999999998" y="390.0" font-family="Arial" font-size="11">FK,UK</text><text x="1710.9999999999998" y="390.0" font-family="Arial" font-size="12">userID</text>
+<rect x="2101.0" y="220.0" width="380" height="240" rx="8" fill="white" stroke="#333"/>
+<text x="2291.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">phones</text>
+<text x="2106.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="2171.0" y="270.0" font-family="Arial" font-size="12">phone</text>
+<text x="2106.0" y="300.0" font-family="Arial" font-size="11"></text><text x="2171.0" y="300.0" font-family="Arial" font-size="12">phone_otp ?</text>
+<text x="2106.0" y="330.0" font-family="Arial" font-size="11"></text><text x="2171.0" y="330.0" font-family="Arial" font-size="12">phone_otp_expires_at ?</text>
+<text x="2106.0" y="360.0" font-family="Arial" font-size="11"></text><text x="2171.0" y="360.0" font-family="Arial" font-size="12">phone_verified_at ?</text>
+<text x="2106.0" y="390.0" font-family="Arial" font-size="11"></text><text x="2171.0" y="390.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2106.0" y="420.0" font-family="Arial" font-size="11"></text><text x="2171.0" y="420.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2106.0" y="450.0" font-family="Arial" font-size="11">FK,UK</text><text x="2171.0" y="450.0" font-family="Arial" font-size="12">userID</text>
+<rect x="1158.0" y="220.0" width="380" height="210" rx="8" fill="white" stroke="#333"/>
+<text x="1348.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">two_factors</text>
+<text x="1163.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="1228.0" y="270.0" font-family="Arial" font-size="12">two_factor_secret</text>
+<text x="1163.0" y="300.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="300.0" font-family="Arial" font-size="12">two_factor_recovery_codes ?</text>
+<text x="1163.0" y="330.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="330.0" font-family="Arial" font-size="12">two_factor_confirmed_at ?</text>
+<text x="1163.0" y="360.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="360.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1163.0" y="390.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="390.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1163.0" y="420.0" font-family="Arial" font-size="11">FK,UK</text><text x="1228.0" y="420.0" font-family="Arial" font-size="12">userID</text>
+<rect x="2584.0" y="220.0" width="380" height="150" rx="8" fill="white" stroke="#333"/>
+<text x="2774.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">user_roles</text>
+<text x="2589.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="2654.0" y="270.0" font-family="Arial" font-size="12">roleID</text>
+<text x="2589.0" y="300.0" font-family="Arial" font-size="11"></text><text x="2654.0" y="300.0" font-family="Arial" font-size="12">name</text>
+<text x="2589.0" y="330.0" font-family="Arial" font-size="11"></text><text x="2654.0" y="330.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2589.0" y="360.0" font-family="Arial" font-size="11"></text><text x="2654.0" y="360.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="629.0" y="220.0" width="380" height="300" rx="8" fill="white" stroke="#333"/>
+<text x="819.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">personal_access_tokens</text>
+<text x="634.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="699.0" y="270.0" font-family="Arial" font-size="12">tokenID</text>
+<text x="634.0" y="300.0" font-family="Arial" font-size="11">FK</text><text x="699.0" y="300.0" font-family="Arial" font-size="12">tokenable_id</text>
+<text x="634.0" y="330.0" font-family="Arial" font-size="11"></text><text x="699.0" y="330.0" font-family="Arial" font-size="12">tokenable_type</text>
+<text x="634.0" y="360.0" font-family="Arial" font-size="11"></text><text x="699.0" y="360.0" font-family="Arial" font-size="12">name</text>
+<text x="634.0" y="390.0" font-family="Arial" font-size="11">UK</text><text x="699.0" y="390.0" font-family="Arial" font-size="12">token</text>
+<text x="634.0" y="420.0" font-family="Arial" font-size="11"></text><text x="699.0" y="420.0" font-family="Arial" font-size="12">abilities ?</text>
+<text x="634.0" y="450.0" font-family="Arial" font-size="11"></text><text x="699.0" y="450.0" font-family="Arial" font-size="12">expires_at ?</text>
+<text x="634.0" y="480.0" font-family="Arial" font-size="11"></text><text x="699.0" y="480.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="634.0" y="510.0" font-family="Arial" font-size="11"></text><text x="699.0" y="510.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="100.0" y="220.0" width="380" height="150" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">password_reset_tokens</text>
+<text x="105.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="170.0" y="270.0" font-family="Arial" font-size="12">passwordID</text>
+<text x="105.0" y="300.0" font-family="Arial" font-size="11"></text><text x="170.0" y="300.0" font-family="Arial" font-size="12">email</text>
+<text x="105.0" y="330.0" font-family="Arial" font-size="11"></text><text x="170.0" y="330.0" font-family="Arial" font-size="12">token</text>
+<text x="105.0" y="360.0" font-family="Arial" font-size="11"></text><text x="170.0" y="360.0" font-family="Arial" font-size="12">created_at ?</text>
+<rect x="2584.0" y="1542.5" width="380" height="480" rx="8" fill="white" stroke="#333"/>
+<text x="2774.0" y="1562.5" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">news</text>
+<text x="2589.0" y="1592.5" font-family="Arial" font-size="11">PK</text><text x="2654.0" y="1592.5" font-family="Arial" font-size="12">postID</text>
+<text x="2589.0" y="1622.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1622.5" font-family="Arial" font-size="12">title</text>
+<text x="2589.0" y="1652.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1652.5" font-family="Arial" font-size="12">content</text>
+<text x="2589.0" y="1682.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1682.5" font-family="Arial" font-size="12">image ?</text>
+<text x="2589.0" y="1712.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1712.5" font-family="Arial" font-size="12">likes_count</text>
+<text x="2589.0" y="1742.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1742.5" font-family="Arial" font-size="12">view</text>
+<text x="2589.0" y="1772.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1772.5" font-family="Arial" font-size="12">excerpt ?</text>
+<text x="2589.0" y="1802.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1802.5" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2589.0" y="1832.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1832.5" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2589.0" y="1862.5" font-family="Arial" font-size="11">FK</text><text x="2654.0" y="1862.5" font-family="Arial" font-size="12">category_id ?</text>
+<text x="2589.0" y="1892.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1892.5" font-family="Arial" font-size="12">status</text>
+<text x="2589.0" y="1922.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1922.5" font-family="Arial" font-size="12">creation_method</text>
+<text x="2589.0" y="1952.5" font-family="Arial" font-size="11">FK</text><text x="2654.0" y="1952.5" font-family="Arial" font-size="12">created_by ?</text>
+<text x="2589.0" y="1982.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="1982.5" font-family="Arial" font-size="12">show_on_homepage</text>
+<text x="2589.0" y="2012.5" font-family="Arial" font-size="11"></text><text x="2654.0" y="2012.5" font-family="Arial" font-size="12">unique_views</text>
+<rect x="1893.9999999999998" y="2083.0" width="380" height="390" rx="8" fill="white" stroke="#333"/>
+<text x="2084.0" y="2103.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">news_categories</text>
+<text x="1898.9999999999998" y="2133.0" font-family="Arial" font-size="11">PK</text><text x="1963.9999999999998" y="2133.0" font-family="Arial" font-size="12">categoryID</text>
+<text x="1898.9999999999998" y="2163.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2163.0" font-family="Arial" font-size="12">name</text>
+<text x="1898.9999999999998" y="2193.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2193.0" font-family="Arial" font-size="12">description ?</text>
+<text x="1898.9999999999998" y="2223.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2223.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1898.9999999999998" y="2253.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2253.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1898.9999999999998" y="2283.0" font-family="Arial" font-size="11">UK</text><text x="1963.9999999999998" y="2283.0" font-family="Arial" font-size="12">slug ?</text>
+<text x="1898.9999999999998" y="2313.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2313.0" font-family="Arial" font-size="12">status</text>
+<text x="1898.9999999999998" y="2343.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2343.0" font-family="Arial" font-size="12">display_order</text>
+<text x="1898.9999999999998" y="2373.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2373.0" font-family="Arial" font-size="12">is_default</text>
+<text x="1898.9999999999998" y="2403.0" font-family="Arial" font-size="11">FK</text><text x="1963.9999999999998" y="2403.0" font-family="Arial" font-size="12">created_by ?</text>
+<text x="1898.9999999999998" y="2433.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2433.0" font-family="Arial" font-size="12">is_active</text>
+<text x="1898.9999999999998" y="2463.0" font-family="Arial" font-size="11"></text><text x="1963.9999999999998" y="2463.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<rect x="1847.9999999999998" y="1301.0" width="380" height="480" rx="8" fill="white" stroke="#333"/>
+<text x="2037.9999999999998" y="1321.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">comments</text>
+<text x="1852.9999999999998" y="1351.0" font-family="Arial" font-size="11">PK</text><text x="1917.9999999999998" y="1351.0" font-family="Arial" font-size="12">commentID</text>
+<text x="1852.9999999999998" y="1381.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1381.0" font-family="Arial" font-size="12">content</text>
+<text x="1852.9999999999998" y="1411.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1411.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1852.9999999999998" y="1441.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1441.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1852.9999999999998" y="1471.0" font-family="Arial" font-size="11">FK</text><text x="1917.9999999999998" y="1471.0" font-family="Arial" font-size="12">newsID</text>
+<text x="1852.9999999999998" y="1501.0" font-family="Arial" font-size="11">FK</text><text x="1917.9999999999998" y="1501.0" font-family="Arial" font-size="12">userID ?</text>
+<text x="1852.9999999999998" y="1531.0" font-family="Arial" font-size="11">FK</text><text x="1917.9999999999998" y="1531.0" font-family="Arial" font-size="12">parentID ?</text>
+<text x="1852.9999999999998" y="1561.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1561.0" font-family="Arial" font-size="12">guest_name ?</text>
+<text x="1852.9999999999998" y="1591.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1591.0" font-family="Arial" font-size="12">status</text>
+<text x="1852.9999999999998" y="1621.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1621.0" font-family="Arial" font-size="12">ai_flagged ?</text>
+<text x="1852.9999999999998" y="1651.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1651.0" font-family="Arial" font-size="12">moderation_categories ?</text>
+<text x="1852.9999999999998" y="1681.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1681.0" font-family="Arial" font-size="12">moderation_reason ?</text>
+<text x="1852.9999999999998" y="1711.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1711.0" font-family="Arial" font-size="12">moderated_at ?</text>
+<text x="1852.9999999999998" y="1741.0" font-family="Arial" font-size="11">UK</text><text x="1917.9999999999998" y="1741.0" font-family="Arial" font-size="12">submission_hash ?</text>
+<text x="1852.9999999999998" y="1771.0" font-family="Arial" font-size="11"></text><text x="1917.9999999999998" y="1771.0" font-family="Arial" font-size="12">moderation_revision</text>
+<rect x="2584.0" y="1140.0" width="380" height="180" rx="8" fill="white" stroke="#333"/>
+<text x="2774.0" y="1160.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">likes</text>
+<text x="2589.0" y="1190.0" font-family="Arial" font-size="11">PK</text><text x="2654.0" y="1190.0" font-family="Arial" font-size="12">likeID</text>
+<text x="2589.0" y="1220.0" font-family="Arial" font-size="11"></text><text x="2654.0" y="1220.0" font-family="Arial" font-size="12">created_at</text>
+<text x="2589.0" y="1250.0" font-family="Arial" font-size="11">FK</text><text x="2654.0" y="1250.0" font-family="Arial" font-size="12">postID</text>
+<text x="2589.0" y="1280.0" font-family="Arial" font-size="11">FK</text><text x="2654.0" y="1280.0" font-family="Arial" font-size="12">userID</text>
+<rect x="629.0" y="1209.0" width="380" height="390" rx="8" fill="white" stroke="#333"/>
+<text x="819.0" y="1229.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">broadcasts</text>
+<text x="634.0" y="1259.0" font-family="Arial" font-size="11">PK</text><text x="699.0" y="1259.0" font-family="Arial" font-size="12">alertID</text>
+<text x="634.0" y="1289.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1289.0" font-family="Arial" font-size="12">title</text>
+<text x="634.0" y="1319.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1319.0" font-family="Arial" font-size="12">message</text>
+<text x="634.0" y="1349.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1349.0" font-family="Arial" font-size="12">send_mode</text>
+<text x="634.0" y="1379.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1379.0" font-family="Arial" font-size="12">status</text>
+<text x="634.0" y="1409.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1409.0" font-family="Arial" font-size="12">sent_at ?</text>
+<text x="634.0" y="1439.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1439.0" font-family="Arial" font-size="12">scheduled_at ?</text>
+<text x="634.0" y="1469.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1469.0" font-family="Arial" font-size="12">archived_at ?</text>
+<text x="634.0" y="1499.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1499.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="634.0" y="1529.0" font-family="Arial" font-size="11"></text><text x="699.0" y="1529.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="634.0" y="1559.0" font-family="Arial" font-size="11">FK</text><text x="699.0" y="1559.0" font-family="Arial" font-size="12">created_by</text>
+<text x="634.0" y="1589.0" font-family="Arial" font-size="11">FK</text><text x="699.0" y="1589.0" font-family="Arial" font-size="12">categoryID ?</text>
+<rect x="100.0" y="841.0" width="380" height="150" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="861.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">broadcast_categories</text>
+<text x="105.0" y="891.0" font-family="Arial" font-size="11">PK</text><text x="170.0" y="891.0" font-family="Arial" font-size="12">categoryID</text>
+<text x="105.0" y="921.0" font-family="Arial" font-size="11"></text><text x="170.0" y="921.0" font-family="Arial" font-size="12">name</text>
+<text x="105.0" y="951.0" font-family="Arial" font-size="11"></text><text x="170.0" y="951.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="105.0" y="981.0" font-family="Arial" font-size="11"></text><text x="170.0" y="981.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="100.0" y="1347.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="1367.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">broadcast_user</text>
+<text x="105.0" y="1397.0" font-family="Arial" font-size="11">PK,FK</text><text x="170.0" y="1397.0" font-family="Arial" font-size="12">broadcast_id</text>
+<text x="105.0" y="1427.0" font-family="Arial" font-size="11">PK,FK</text><text x="170.0" y="1427.0" font-family="Arial" font-size="12">user_id</text>
+<rect x="100.0" y="1760.9999999999998" width="380" height="150" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="1780.9999999999998" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">channels</text>
+<text x="105.0" y="1810.9999999999998" font-family="Arial" font-size="11">PK</text><text x="170.0" y="1810.9999999999998" font-family="Arial" font-size="12">channelID</text>
+<text x="105.0" y="1840.9999999999998" font-family="Arial" font-size="11"></text><text x="170.0" y="1840.9999999999998" font-family="Arial" font-size="12">name</text>
+<text x="105.0" y="1870.9999999999998" font-family="Arial" font-size="11"></text><text x="170.0" y="1870.9999999999998" font-family="Arial" font-size="12">created_at ?</text>
+<text x="105.0" y="1900.9999999999998" font-family="Arial" font-size="11"></text><text x="170.0" y="1900.9999999999998" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="1158.0" y="1692.0" width="380" height="360" rx="8" fill="white" stroke="#333"/>
+<text x="1348.0" y="1712.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">notifications</text>
+<text x="1163.0" y="1742.0" font-family="Arial" font-size="11">PK</text><text x="1228.0" y="1742.0" font-family="Arial" font-size="12">notificationID</text>
+<text x="1163.0" y="1772.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1772.0" font-family="Arial" font-size="12">type</text>
+<text x="1163.0" y="1802.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1802.0" font-family="Arial" font-size="12">data ?</text>
+<text x="1163.0" y="1832.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1832.0" font-family="Arial" font-size="12">read_at ?</text>
+<text x="1163.0" y="1862.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1862.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1163.0" y="1892.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1892.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1163.0" y="1922.0" font-family="Arial" font-size="11">FK</text><text x="1228.0" y="1922.0" font-family="Arial" font-size="12">notifiable_id</text>
+<text x="1163.0" y="1952.0" font-family="Arial" font-size="11"></text><text x="1228.0" y="1952.0" font-family="Arial" font-size="12">notifiable_type</text>
+<text x="1163.0" y="1982.0" font-family="Arial" font-size="11">FK</text><text x="1228.0" y="1982.0" font-family="Arial" font-size="12">alertID ?</text>
+<text x="1163.0" y="2012.0" font-family="Arial" font-size="11">FK</text><text x="1228.0" y="2012.0" font-family="Arial" font-size="12">postID ?</text>
+<text x="1163.0" y="2042.0" font-family="Arial" font-size="11">FK</text><text x="1228.0" y="2042.0" font-family="Arial" font-size="12">commentID ?</text>
+<rect x="3940.9999999999995" y="220.0" width="380" height="810" rx="8" fill="white" stroke="#333"/>
+<text x="4131.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_drafts</text>
+<text x="3945.9999999999995" y="270.0" font-family="Arial" font-size="11">PK</text><text x="4010.9999999999995" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="3945.9999999999995" y="300.0" font-family="Arial" font-size="11">FK</text><text x="4010.9999999999995" y="300.0" font-family="Arial" font-size="12">created_by</text>
+<text x="3945.9999999999995" y="330.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="330.0" font-family="Arial" font-size="12">title</text>
+<text x="3945.9999999999995" y="360.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="360.0" font-family="Arial" font-size="12">excerpt</text>
+<text x="3945.9999999999995" y="390.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="390.0" font-family="Arial" font-size="12">labels</text>
+<text x="3945.9999999999995" y="420.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="420.0" font-family="Arial" font-size="12">sources_used</text>
+<text x="3945.9999999999995" y="450.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="450.0" font-family="Arial" font-size="12">warnings</text>
+<text x="3945.9999999999995" y="480.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="480.0" font-family="Arial" font-size="12">user_prompt ?</text>
+<text x="3945.9999999999995" y="510.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="510.0" font-family="Arial" font-size="12">status</text>
+<text x="3945.9999999999995" y="540.0" font-family="Arial" font-size="11">FK</text><text x="4010.9999999999995" y="540.0" font-family="Arial" font-size="12">published_news_id ?</text>
+<text x="3945.9999999999995" y="570.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="570.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="3945.9999999999995" y="600.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="600.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="3945.9999999999995" y="630.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="630.0" font-family="Arial" font-size="12">creation_method</text>
+<text x="3945.9999999999995" y="660.0" font-family="Arial" font-size="11">FK</text><text x="4010.9999999999995" y="660.0" font-family="Arial" font-size="12">category_id ?</text>
+<text x="3945.9999999999995" y="690.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="690.0" font-family="Arial" font-size="12">image ?</text>
+<text x="3945.9999999999995" y="720.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="720.0" font-family="Arial" font-size="12">version</text>
+<text x="3945.9999999999995" y="750.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="750.0" font-family="Arial" font-size="12">reviewed_at ?</text>
+<text x="3945.9999999999995" y="780.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="780.0" font-family="Arial" font-size="12">show_on_homepage</text>
+<text x="3945.9999999999995" y="810.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="810.0" font-family="Arial" font-size="12">instagram_media_id ?</text>
+<text x="3945.9999999999995" y="840.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="840.0" font-family="Arial" font-size="12">facebook_post_id ?</text>
+<text x="3945.9999999999995" y="870.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="870.0" font-family="Arial" font-size="12">publication_results ?</text>
+<text x="3945.9999999999995" y="900.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="900.0" font-family="Arial" font-size="12">publication_started_at ?</text>
+<text x="3945.9999999999995" y="930.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="930.0" font-family="Arial" font-size="12">image_crops ?</text>
+<text x="3945.9999999999995" y="960.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="960.0" font-family="Arial" font-size="12">image_variants ?</text>
+<text x="3945.9999999999995" y="990.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="990.0" font-family="Arial" font-size="12">content</text>
+<text x="3945.9999999999995" y="1020.0" font-family="Arial" font-size="11"></text><text x="4010.9999999999995" y="1020.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<rect x="4493.0" y="220.0" width="380" height="480" rx="8" fill="white" stroke="#333"/>
+<text x="4683.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligence_extraction_requests</text>
+<text x="4498.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="4563.0" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="4498.0" y="300.0" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="300.0" font-family="Arial" font-size="12">document_id</text>
+<text x="4498.0" y="330.0" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="330.0" font-family="Arial" font-size="12">requested_by</text>
+<text x="4498.0" y="360.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="360.0" font-family="Arial" font-size="12">mode</text>
+<text x="4498.0" y="390.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="390.0" font-family="Arial" font-size="12">original_prompt ?</text>
+<text x="4498.0" y="420.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="420.0" font-family="Arial" font-size="12">normalized_query ?</text>
+<text x="4498.0" y="450.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="450.0" font-family="Arial" font-size="12">keywords</text>
+<text x="4498.0" y="480.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="480.0" font-family="Arial" font-size="12">model_name ?</text>
+<text x="4498.0" y="510.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="510.0" font-family="Arial" font-size="12">prompt_version</text>
+<text x="4498.0" y="540.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="540.0" font-family="Arial" font-size="12">status</text>
+<text x="4498.0" y="570.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="570.0" font-family="Arial" font-size="12">error_message ?</text>
+<text x="4498.0" y="600.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="600.0" font-family="Arial" font-size="12">started_at ?</text>
+<text x="4498.0" y="630.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="630.0" font-family="Arial" font-size="12">completed_at ?</text>
+<text x="4498.0" y="660.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="660.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="4498.0" y="690.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="690.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="4493.0" y="1370.0" width="380" height="210" rx="8" fill="white" stroke="#333"/>
+<text x="4683.0" y="1390.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_draft_sources</text>
+<text x="4498.0" y="1420.0" font-family="Arial" font-size="11">PK</text><text x="4563.0" y="1420.0" font-family="Arial" font-size="12">id</text>
+<text x="4498.0" y="1450.0" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="1450.0" font-family="Arial" font-size="12">draft_id</text>
+<text x="4498.0" y="1480.0" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="1480.0" font-family="Arial" font-size="12">information_id</text>
+<text x="4498.0" y="1510.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="1510.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="4498.0" y="1540.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="1540.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="4493.0" y="1852.9999999999998" width="380" height="360" rx="8" fill="white" stroke="#333"/>
+<text x="4683.0" y="1872.9999999999998" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_draft_versions</text>
+<text x="4498.0" y="1902.9999999999998" font-family="Arial" font-size="11">PK</text><text x="4563.0" y="1902.9999999999998" font-family="Arial" font-size="12">id</text>
+<text x="4498.0" y="1932.9999999999998" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="1932.9999999999998" font-family="Arial" font-size="12">draft_id</text>
+<text x="4498.0" y="1962.9999999999998" font-family="Arial" font-size="11"></text><text x="4563.0" y="1962.9999999999998" font-family="Arial" font-size="12">version</text>
+<text x="4498.0" y="1992.9999999999998" font-family="Arial" font-size="11"></text><text x="4563.0" y="1992.9999999999998" font-family="Arial" font-size="12">change_type</text>
+<text x="4498.0" y="2022.9999999999998" font-family="Arial" font-size="11"></text><text x="4563.0" y="2022.9999999999998" font-family="Arial" font-size="12">snapshot</text>
+<text x="4498.0" y="2053.0" font-family="Arial" font-size="11">FK</text><text x="4563.0" y="2053.0" font-family="Arial" font-size="12">created_by</text>
+<text x="4498.0" y="2083.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="2083.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="4498.0" y="2113.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="2113.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="4498.0" y="2143.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="2143.0" font-family="Arial" font-size="12">revision_source</text>
+<text x="4498.0" y="2173.0" font-family="Arial" font-size="11"></text><text x="4563.0" y="2173.0" font-family="Arial" font-size="12">revision_instruction ?</text>
+<rect x="5045.0" y="220.0" width="380" height="720" rx="8" fill="white" stroke="#333"/>
+<text x="5235.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligence_information</text>
+<text x="5050.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="5115.0" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="5050.0" y="300.0" font-family="Arial" font-size="11">FK</text><text x="5115.0" y="300.0" font-family="Arial" font-size="12">document_id</text>
+<text x="5050.0" y="330.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="330.0" font-family="Arial" font-size="12">item_index</text>
+<text x="5050.0" y="360.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="360.0" font-family="Arial" font-size="12">type</text>
+<text x="5050.0" y="390.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="390.0" font-family="Arial" font-size="12">title</text>
+<text x="5050.0" y="420.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="420.0" font-family="Arial" font-size="12">summary</text>
+<text x="5050.0" y="450.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="450.0" font-family="Arial" font-size="12">labels</text>
+<text x="5050.0" y="480.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="480.0" font-family="Arial" font-size="12">fields</text>
+<text x="5050.0" y="510.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="510.0" font-family="Arial" font-size="12">evidence</text>
+<text x="5050.0" y="540.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="540.0" font-family="Arial" font-size="12">confidence ?</text>
+<text x="5050.0" y="570.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="570.0" font-family="Arial" font-size="12">search_text</text>
+<text x="5050.0" y="600.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="600.0" font-family="Arial" font-size="12">is_active</text>
+<text x="5050.0" y="630.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="630.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="5050.0" y="660.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="660.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="5050.0" y="690.0" font-family="Arial" font-size="11">FK</text><text x="5115.0" y="690.0" font-family="Arial" font-size="12">extraction_request_id ?</text>
+<text x="5050.0" y="720.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="720.0" font-family="Arial" font-size="12">review_status</text>
+<text x="5050.0" y="750.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="750.0" font-family="Arial" font-size="12">quality_score ?</text>
+<text x="5050.0" y="780.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="780.0" font-family="Arial" font-size="12">quality_breakdown ?</text>
+<text x="5050.0" y="810.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="810.0" font-family="Arial" font-size="12">information_embedding_status</text>
+<text x="5050.0" y="840.0" font-family="Arial" font-size="11">FK</text><text x="5115.0" y="840.0" font-family="Arial" font-size="12">reviewed_by ?</text>
+<text x="5050.0" y="870.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="870.0" font-family="Arial" font-size="12">reviewed_at ?</text>
+<text x="5050.0" y="900.0" font-family="Arial" font-size="11"></text><text x="5115.0" y="900.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<rect x="5620.0" y="220.0" width="380" height="540" rx="8" fill="white" stroke="#333"/>
+<text x="5810.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">ai_quality_evaluations</text>
+<text x="5625.0" y="270.0" font-family="Arial" font-size="11">PK</text><text x="5690.0" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="5625.0" y="300.0" font-family="Arial" font-size="11">FK</text><text x="5690.0" y="300.0" font-family="Arial" font-size="12">draft_id</text>
+<text x="5625.0" y="330.0" font-family="Arial" font-size="11">FK</text><text x="5690.0" y="330.0" font-family="Arial" font-size="12">draft_version_id ?</text>
+<text x="5625.0" y="360.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="360.0" font-family="Arial" font-size="12">evaluation_version</text>
+<text x="5625.0" y="390.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="390.0" font-family="Arial" font-size="12">evaluator_model ?</text>
+<text x="5625.0" y="420.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="420.0" font-family="Arial" font-size="12">overall_score</text>
+<text x="5625.0" y="450.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="450.0" font-family="Arial" font-size="12">quality_label</text>
+<text x="5625.0" y="480.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="480.0" font-family="Arial" font-size="12">publish_blocked</text>
+<text x="5625.0" y="510.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="510.0" font-family="Arial" font-size="12">dimensions</text>
+<text x="5625.0" y="540.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="540.0" font-family="Arial" font-size="12">claim_checks</text>
+<text x="5625.0" y="570.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="570.0" font-family="Arial" font-size="12">warnings</text>
+<text x="5625.0" y="600.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="600.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="5625.0" y="630.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="630.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="5625.0" y="660.0" font-family="Arial" font-size="11">FK</text><text x="5690.0" y="660.0" font-family="Arial" font-size="12">approved_by ?</text>
+<text x="5625.0" y="690.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="690.0" font-family="Arial" font-size="12">approved_at ?</text>
+<text x="5625.0" y="720.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="720.0" font-family="Arial" font-size="12">approval_note ?</text>
+<text x="5625.0" y="750.0" font-family="Arial" font-size="11"></text><text x="5690.0" y="750.0" font-family="Arial" font-size="12">approved_version ?</text>
+<rect x="6355.999999999999" y="220.0" width="380" height="600" rx="8" fill="white" stroke="#333"/>
+<text x="6545.999999999999" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_sessions</text>
+<text x="6360.999999999999" y="270.0" font-family="Arial" font-size="11">PK</text><text x="6425.999999999999" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="6360.999999999999" y="300.0" font-family="Arial" font-size="11">FK</text><text x="6425.999999999999" y="300.0" font-family="Arial" font-size="12">created_by</text>
+<text x="6360.999999999999" y="330.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="330.0" font-family="Arial" font-size="12">status</text>
+<text x="6360.999999999999" y="360.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="360.0" font-family="Arial" font-size="12">prompt ?</text>
+<text x="6360.999999999999" y="390.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="390.0" font-family="Arial" font-size="12">selected_document_ids</text>
+<text x="6360.999999999999" y="420.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="420.0" font-family="Arial" font-size="12">selected_information_ids</text>
+<text x="6360.999999999999" y="450.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="450.0" font-family="Arial" font-size="12">user_facts</text>
+<text x="6360.999999999999" y="480.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="480.0" font-family="Arial" font-size="12">pending_questions</text>
+<text x="6360.999999999999" y="510.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="510.0" font-family="Arial" font-size="12">conflicts</text>
+<text x="6360.999999999999" y="540.0" font-family="Arial" font-size="11">FK</text><text x="6425.999999999999" y="540.0" font-family="Arial" font-size="12">draft_id ?</text>
+<text x="6360.999999999999" y="570.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="570.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="6360.999999999999" y="600.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="600.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="6360.999999999999" y="630.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="630.0" font-family="Arial" font-size="12">archived_at ?</text>
+<text x="6360.999999999999" y="660.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="660.0" font-family="Arial" font-size="12">clarification_rounds</text>
+<text x="6360.999999999999" y="690.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="690.0" font-family="Arial" font-size="12">title ?</text>
+<text x="6360.999999999999" y="720.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="720.0" font-family="Arial" font-size="12">context_summary ?</text>
+<text x="6360.999999999999" y="750.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="750.0" font-family="Arial" font-size="12">current_intent ?</text>
+<text x="6360.999999999999" y="780.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="780.0" font-family="Arial" font-size="12">last_message_at ?</text>
+<text x="6360.999999999999" y="810.0" font-family="Arial" font-size="11"></text><text x="6425.999999999999" y="810.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<rect x="6953.999999999999" y="220.0" width="380" height="360" rx="8" fill="white" stroke="#333"/>
+<text x="7143.999999999999" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_run_events</text>
+<text x="6958.999999999999" y="270.0" font-family="Arial" font-size="11">PK</text><text x="7023.999999999999" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="6958.999999999999" y="300.0" font-family="Arial" font-size="11">FK</text><text x="7023.999999999999" y="300.0" font-family="Arial" font-size="12">run_id</text>
+<text x="6958.999999999999" y="330.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="330.0" font-family="Arial" font-size="12">sequence</text>
+<text x="6958.999999999999" y="360.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="360.0" font-family="Arial" font-size="12">event_type</text>
+<text x="6958.999999999999" y="390.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="390.0" font-family="Arial" font-size="12">tool_name ?</text>
+<text x="6958.999999999999" y="420.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="420.0" font-family="Arial" font-size="12">label ?</text>
+<text x="6958.999999999999" y="450.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="450.0" font-family="Arial" font-size="12">content ?</text>
+<text x="6958.999999999999" y="480.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="480.0" font-family="Arial" font-size="12">payload ?</text>
+<text x="6958.999999999999" y="510.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="510.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="6958.999999999999" y="540.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="540.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="7551.999999999999" y="220.0" width="380" height="420" rx="8" fill="white" stroke="#333"/>
+<text x="7741.999999999999" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_messages</text>
+<text x="7556.999999999999" y="270.0" font-family="Arial" font-size="11">PK</text><text x="7621.999999999999" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="7556.999999999999" y="300.0" font-family="Arial" font-size="11">FK</text><text x="7621.999999999999" y="300.0" font-family="Arial" font-size="12">session_id</text>
+<text x="7556.999999999999" y="330.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="330.0" font-family="Arial" font-size="12">role</text>
+<text x="7556.999999999999" y="360.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="360.0" font-family="Arial" font-size="12">intent ?</text>
+<text x="7556.999999999999" y="390.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="390.0" font-family="Arial" font-size="12">content ?</text>
+<text x="7556.999999999999" y="420.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="420.0" font-family="Arial" font-size="12">tool_name ?</text>
+<text x="7556.999999999999" y="450.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="450.0" font-family="Arial" font-size="12">payload ?</text>
+<text x="7556.999999999999" y="480.0" font-family="Arial" font-size="11">FK</text><text x="7621.999999999999" y="480.0" font-family="Arial" font-size="12">draft_version_id ?</text>
+<text x="7556.999999999999" y="510.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="510.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="7556.999999999999" y="540.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="540.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="7556.999999999999" y="570.0" font-family="Arial" font-size="11">FK</text><text x="7621.999999999999" y="570.0" font-family="Arial" font-size="12">reply_to_id ?</text>
+<text x="7556.999999999999" y="600.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="600.0" font-family="Arial" font-size="12">status</text>
+<text x="7556.999999999999" y="630.0" font-family="Arial" font-size="11"></text><text x="7621.999999999999" y="630.0" font-family="Arial" font-size="12">sequence</text>
+<rect x="8149.999999999999" y="220.0" width="380" height="480" rx="8" fill="white" stroke="#333"/>
+<text x="8340.0" y="240.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_source_selections</text>
+<text x="8154.999999999999" y="270.0" font-family="Arial" font-size="11">PK</text><text x="8220.0" y="270.0" font-family="Arial" font-size="12">id</text>
+<text x="8154.999999999999" y="300.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="300.0" font-family="Arial" font-size="12">session_id</text>
+<text x="8154.999999999999" y="330.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="330.0" font-family="Arial" font-size="12">message_id ?</text>
+<text x="8154.999999999999" y="360.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="360.0" font-family="Arial" font-size="12">run_id ?</text>
+<text x="8154.999999999999" y="390.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="390.0" font-family="Arial" font-size="12">source_type</text>
+<text x="8154.999999999999" y="420.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="420.0" font-family="Arial" font-size="12">information_id ?</text>
+<text x="8154.999999999999" y="450.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="450.0" font-family="Arial" font-size="12">document_id ?</text>
+<text x="8154.999999999999" y="480.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="480.0" font-family="Arial" font-size="12">url ?</text>
+<text x="8154.999999999999" y="510.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="510.0" font-family="Arial" font-size="12">title</text>
+<text x="8154.999999999999" y="540.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="540.0" font-family="Arial" font-size="12">source_snapshot ?</text>
+<text x="8154.999999999999" y="570.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="570.0" font-family="Arial" font-size="12">decision</text>
+<text x="8154.999999999999" y="600.0" font-family="Arial" font-size="11">FK</text><text x="8220.0" y="600.0" font-family="Arial" font-size="12">decided_by ?</text>
+<text x="8154.999999999999" y="630.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="630.0" font-family="Arial" font-size="12">decided_at ?</text>
+<text x="8154.999999999999" y="660.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="660.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="8154.999999999999" y="690.0" font-family="Arial" font-size="11"></text><text x="8220.0" y="690.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="6953.999999999999" y="1048.0" width="380" height="360" rx="8" fill="white" stroke="#333"/>
+<text x="7143.999999999999" y="1068.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">intelligent_news_runs</text>
+<text x="6958.999999999999" y="1098.0" font-family="Arial" font-size="11">PK</text><text x="7023.999999999999" y="1098.0" font-family="Arial" font-size="12">id</text>
+<text x="6958.999999999999" y="1128.0" font-family="Arial" font-size="11">FK</text><text x="7023.999999999999" y="1128.0" font-family="Arial" font-size="12">session_id</text>
+<text x="6958.999999999999" y="1158.0" font-family="Arial" font-size="11">FK</text><text x="7023.999999999999" y="1158.0" font-family="Arial" font-size="12">user_message_id ?</text>
+<text x="6958.999999999999" y="1188.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1188.0" font-family="Arial" font-size="12">intent</text>
+<text x="6958.999999999999" y="1218.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1218.0" font-family="Arial" font-size="12">status</text>
+<text x="6958.999999999999" y="1248.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1248.0" font-family="Arial" font-size="12">current_stage ?</text>
+<text x="6958.999999999999" y="1278.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1278.0" font-family="Arial" font-size="12">error_message ?</text>
+<text x="6958.999999999999" y="1308.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1308.0" font-family="Arial" font-size="12">started_at ?</text>
+<text x="6958.999999999999" y="1338.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1338.0" font-family="Arial" font-size="12">completed_at ?</text>
+<text x="6958.999999999999" y="1368.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1368.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="6958.999999999999" y="1398.0" font-family="Arial" font-size="11"></text><text x="7023.999999999999" y="1398.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="3250.9999999999995" y="2612.0" width="380" height="510" rx="8" fill="white" stroke="#333"/>
+<text x="3440.9999999999995" y="2632.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">archived_comment_moderation_assessments</text>
+<text x="3255.9999999999995" y="2662.0" font-family="Arial" font-size="11">PK</text><text x="3320.9999999999995" y="2662.0" font-family="Arial" font-size="12">id</text>
+<text x="3255.9999999999995" y="2692.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2692.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="3255.9999999999995" y="2722.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2722.0" font-family="Arial" font-size="12">classification</text>
+<text x="3255.9999999999995" y="2752.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2752.0" font-family="Arial" font-size="12">ai_flagged ?</text>
+<text x="3255.9999999999995" y="2782.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2782.0" font-family="Arial" font-size="12">categories ?</text>
+<text x="3255.9999999999995" y="2812.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2812.0" font-family="Arial" font-size="12">category_scores ?</text>
+<text x="3255.9999999999995" y="2842.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2842.0" font-family="Arial" font-size="12">reason ?</text>
+<text x="3255.9999999999995" y="2872.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2872.0" font-family="Arial" font-size="12">initial_status ?</text>
+<text x="3255.9999999999995" y="2902.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2902.0" font-family="Arial" font-size="12">requested_model ?</text>
+<text x="3255.9999999999995" y="2932.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2932.0" font-family="Arial" font-size="12">returned_model ?</text>
+<text x="3255.9999999999995" y="2962.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2962.0" font-family="Arial" font-size="12">source</text>
+<text x="3255.9999999999995" y="2992.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="2992.0" font-family="Arial" font-size="12">assessed_at ?</text>
+<text x="3255.9999999999995" y="3022.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3022.0" font-family="Arial" font-size="12">created_at</text>
+<text x="3255.9999999999995" y="3052.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3052.0" font-family="Arial" font-size="12">comment_snapshot ?</text>
+<text x="3255.9999999999995" y="3082.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3082.0" font-family="Arial" font-size="12">source_sha256</text>
+<text x="3255.9999999999995" y="3112.0" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3112.0" font-family="Arial" font-size="12">archived_at</text>
+<rect x="3250.9999999999995" y="3462.9999999999995" width="380" height="540" rx="8" fill="white" stroke="#333"/>
+<text x="3440.9999999999995" y="3482.9999999999995" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">archived_comment_moderation_feedback</text>
+<text x="3255.9999999999995" y="3512.9999999999995" font-family="Arial" font-size="11">PK</text><text x="3320.9999999999995" y="3512.9999999999995" font-family="Arial" font-size="12">id</text>
+<text x="3255.9999999999995" y="3542.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3542.9999999999995" font-family="Arial" font-size="12">comment_id</text>
+<text x="3255.9999999999995" y="3572.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3572.9999999999995" font-family="Arial" font-size="12">assessment_id</text>
+<text x="3255.9999999999995" y="3602.9999999999995" font-family="Arial" font-size="11">UK</text><text x="3320.9999999999995" y="3602.9999999999995" font-family="Arial" font-size="12">history_id</text>
+<text x="3255.9999999999995" y="3632.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3632.9999999999995" font-family="Arial" font-size="12">administrator_id ?</text>
+<text x="3255.9999999999995" y="3662.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3662.9999999999995" font-family="Arial" font-size="12">classification</text>
+<text x="3255.9999999999995" y="3692.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3692.9999999999995" font-family="Arial" font-size="12">category</text>
+<text x="3255.9999999999995" y="3722.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3722.9999999999995" font-family="Arial" font-size="12">explanation ?</text>
+<text x="3255.9999999999995" y="3752.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3752.9999999999995" font-family="Arial" font-size="12">verification_status</text>
+<text x="3255.9999999999995" y="3782.9999999999995" font-family="Arial" font-size="11">UK</text><text x="3320.9999999999995" y="3782.9999999999995" font-family="Arial" font-size="12">request_id</text>
+<text x="3255.9999999999995" y="3812.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3812.9999999999995" font-family="Arial" font-size="12">expected_revision</text>
+<text x="3255.9999999999995" y="3842.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3842.9999999999995" font-family="Arial" font-size="12">created_at</text>
+<text x="3255.9999999999995" y="3872.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3872.9999999999995" font-family="Arial" font-size="12">comment_snapshot ?</text>
+<text x="3255.9999999999995" y="3902.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3902.9999999999995" font-family="Arial" font-size="12">history_snapshot ?</text>
+<text x="3255.9999999999995" y="3932.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3932.9999999999995" font-family="Arial" font-size="12">administrator_snapshot ?</text>
+<text x="3255.9999999999995" y="3962.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3962.9999999999995" font-family="Arial" font-size="12">source_sha256</text>
+<text x="3255.9999999999995" y="3992.9999999999995" font-family="Arial" font-size="11"></text><text x="3320.9999999999995" y="3992.9999999999995" font-family="Arial" font-size="12">archived_at</text>
+<rect x="3837.4999999999995" y="3577.9999999999995" width="380" height="180" rx="8" fill="white" stroke="#333"/>
+<text x="4027.4999999999995" y="3597.9999999999995" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">news_viewers</text>
+<text x="3842.4999999999995" y="3627.9999999999995" font-family="Arial" font-size="11">PK</text><text x="3907.4999999999995" y="3627.9999999999995" font-family="Arial" font-size="12">id</text>
+<text x="3842.4999999999995" y="3657.9999999999995" font-family="Arial" font-size="11">FK</text><text x="3907.4999999999995" y="3657.9999999999995" font-family="Arial" font-size="12">news_id</text>
+<text x="3842.4999999999995" y="3687.9999999999995" font-family="Arial" font-size="11"></text><text x="3907.4999999999995" y="3687.9999999999995" font-family="Arial" font-size="12">viewer_key</text>
+<text x="3842.4999999999995" y="3717.9999999999995" font-family="Arial" font-size="11"></text><text x="3907.4999999999995" y="3717.9999999999995" font-family="Arial" font-size="12">expires_at ?</text>
+<rect x="100" y="4283.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">broadcast_channel</text>
+<text x="105" y="4333.0" font-family="Arial" font-size="11">PK,FK</text><text x="170" y="4333.0" font-family="Arial" font-size="12">broadcast_id</text>
+<text x="105" y="4363.0" font-family="Arial" font-size="11">PK,FK</text><text x="170" y="4363.0" font-family="Arial" font-size="12">channel_id</text>
+<rect x="700" y="4283.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="890.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">comment_likes</text>
+<text x="705" y="4333.0" font-family="Arial" font-size="11">PK,FK</text><text x="770" y="4333.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="705" y="4363.0" font-family="Arial" font-size="11">PK,FK</text><text x="770" y="4363.0" font-family="Arial" font-size="12">user_id</text>
+<rect x="1300" y="4283.0" width="380" height="270" rx="8" fill="white" stroke="#333"/>
+<text x="1490.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">comment_reports</text>
+<text x="1305" y="4333.0" font-family="Arial" font-size="11">PK</text><text x="1370" y="4333.0" font-family="Arial" font-size="12">id</text>
+<text x="1305" y="4363.0" font-family="Arial" font-size="11">FK</text><text x="1370" y="4363.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="1305" y="4393.0" font-family="Arial" font-size="11">FK</text><text x="1370" y="4393.0" font-family="Arial" font-size="12">user_id</text>
+<text x="1305" y="4423.0" font-family="Arial" font-size="11"></text><text x="1370" y="4423.0" font-family="Arial" font-size="12">created_at</text>
+<text x="1305" y="4453.0" font-family="Arial" font-size="11"></text><text x="1370" y="4453.0" font-family="Arial" font-size="12">resolved_at ?</text>
+<text x="1305" y="4483.0" font-family="Arial" font-size="11"></text><text x="1370" y="4483.0" font-family="Arial" font-size="12">category ?</text>
+<text x="1305" y="4513.0" font-family="Arial" font-size="11"></text><text x="1370" y="4513.0" font-family="Arial" font-size="12">explanation ?</text>
+<rect x="1900" y="4283.0" width="380" height="240" rx="8" fill="white" stroke="#333"/>
+<text x="2090.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">comment_flags</text>
+<text x="1905" y="4333.0" font-family="Arial" font-size="11">PK</text><text x="1970" y="4333.0" font-family="Arial" font-size="12">id</text>
+<text x="1905" y="4363.0" font-family="Arial" font-size="11">FK</text><text x="1970" y="4363.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="1905" y="4393.0" font-family="Arial" font-size="11">FK</text><text x="1970" y="4393.0" font-family="Arial" font-size="12">moderator_id</text>
+<text x="1905" y="4423.0" font-family="Arial" font-size="11"></text><text x="1970" y="4423.0" font-family="Arial" font-size="12">category</text>
+<text x="1905" y="4453.0" font-family="Arial" font-size="11"></text><text x="1970" y="4453.0" font-family="Arial" font-size="12">explanation ?</text>
+<text x="1905" y="4483.0" font-family="Arial" font-size="11"></text><text x="1970" y="4483.0" font-family="Arial" font-size="12">created_at</text>
+<text x="1905" y="4513.0" font-family="Arial" font-size="11"></text><text x="1970" y="4513.0" font-family="Arial" font-size="12">resolved_at ?</text>
+<rect x="2500" y="4283.0" width="380" height="270" rx="8" fill="white" stroke="#333"/>
+<text x="2690.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">comment_moderation_history</text>
+<text x="2505" y="4333.0" font-family="Arial" font-size="11">PK</text><text x="2570" y="4333.0" font-family="Arial" font-size="12">id</text>
+<text x="2505" y="4363.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="4363.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="2505" y="4393.0" font-family="Arial" font-size="11"></text><text x="2570" y="4393.0" font-family="Arial" font-size="12">moderator_id ?</text>
+<text x="2505" y="4423.0" font-family="Arial" font-size="11"></text><text x="2570" y="4423.0" font-family="Arial" font-size="12">from_status ?</text>
+<text x="2505" y="4453.0" font-family="Arial" font-size="11"></text><text x="2570" y="4453.0" font-family="Arial" font-size="12">to_status</text>
+<text x="2505" y="4483.0" font-family="Arial" font-size="11"></text><text x="2570" y="4483.0" font-family="Arial" font-size="12">reason</text>
+<text x="2505" y="4513.0" font-family="Arial" font-size="11"></text><text x="2570" y="4513.0" font-family="Arial" font-size="12">created_at</text>
+<text x="2505" y="4543.0" font-family="Arial" font-size="11"></text><text x="2570" y="4543.0" font-family="Arial" font-size="12">action ?</text>
+<rect x="3100" y="4283.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="3290.0" y="4303.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">news_visits</text>
+<text x="3105" y="4333.0" font-family="Arial" font-size="11">PK</text><text x="3170" y="4333.0" font-family="Arial" font-size="12">id</text>
+<text x="3105" y="4363.0" font-family="Arial" font-size="11"></text><text x="3170" y="4363.0" font-family="Arial" font-size="12">expires_at</text>
+<rect x="100" y="4773.0" width="380" height="240" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_comment_flags</text>
+<text x="105" y="4823.0" font-family="Arial" font-size="11">PK</text><text x="170" y="4823.0" font-family="Arial" font-size="12">id</text>
+<text x="105" y="4853.0" font-family="Arial" font-size="11">FK</text><text x="170" y="4853.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="105" y="4883.0" font-family="Arial" font-size="11">FK</text><text x="170" y="4883.0" font-family="Arial" font-size="12">moderator_id</text>
+<text x="105" y="4913.0" font-family="Arial" font-size="11"></text><text x="170" y="4913.0" font-family="Arial" font-size="12">category</text>
+<text x="105" y="4943.0" font-family="Arial" font-size="11"></text><text x="170" y="4943.0" font-family="Arial" font-size="12">explanation ?</text>
+<text x="105" y="4973.0" font-family="Arial" font-size="11"></text><text x="170" y="4973.0" font-family="Arial" font-size="12">created_at</text>
+<text x="105" y="5003.0" font-family="Arial" font-size="11"></text><text x="170" y="5003.0" font-family="Arial" font-size="12">resolved_at ?</text>
+<rect x="700" y="4773.0" width="380" height="270" rx="8" fill="white" stroke="#333"/>
+<text x="890.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_comment_history</text>
+<text x="705" y="4823.0" font-family="Arial" font-size="11">PK</text><text x="770" y="4823.0" font-family="Arial" font-size="12">id</text>
+<text x="705" y="4853.0" font-family="Arial" font-size="11">FK</text><text x="770" y="4853.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="705" y="4883.0" font-family="Arial" font-size="11">FK</text><text x="770" y="4883.0" font-family="Arial" font-size="12">moderator_id ?</text>
+<text x="705" y="4913.0" font-family="Arial" font-size="11"></text><text x="770" y="4913.0" font-family="Arial" font-size="12">from_status ?</text>
+<text x="705" y="4943.0" font-family="Arial" font-size="11"></text><text x="770" y="4943.0" font-family="Arial" font-size="12">to_status</text>
+<text x="705" y="4973.0" font-family="Arial" font-size="11"></text><text x="770" y="4973.0" font-family="Arial" font-size="12">reason</text>
+<text x="705" y="5003.0" font-family="Arial" font-size="11"></text><text x="770" y="5003.0" font-family="Arial" font-size="12">created_at</text>
+<text x="705" y="5033.0" font-family="Arial" font-size="11"></text><text x="770" y="5033.0" font-family="Arial" font-size="12">action ?</text>
+<rect x="1300" y="4773.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="1490.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_comment_likes</text>
+<text x="1305" y="4823.0" font-family="Arial" font-size="11">PK,FK</text><text x="1370" y="4823.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="1305" y="4853.0" font-family="Arial" font-size="11">PK,FK</text><text x="1370" y="4853.0" font-family="Arial" font-size="12">user_id</text>
+<rect x="1900" y="4773.0" width="380" height="270" rx="8" fill="white" stroke="#333"/>
+<text x="2090.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_comment_reports</text>
+<text x="1905" y="4823.0" font-family="Arial" font-size="11">PK</text><text x="1970" y="4823.0" font-family="Arial" font-size="12">id</text>
+<text x="1905" y="4853.0" font-family="Arial" font-size="11">FK</text><text x="1970" y="4853.0" font-family="Arial" font-size="12">comment_id</text>
+<text x="1905" y="4883.0" font-family="Arial" font-size="11">FK</text><text x="1970" y="4883.0" font-family="Arial" font-size="12">user_id</text>
+<text x="1905" y="4913.0" font-family="Arial" font-size="11"></text><text x="1970" y="4913.0" font-family="Arial" font-size="12">created_at</text>
+<text x="1905" y="4943.0" font-family="Arial" font-size="11"></text><text x="1970" y="4943.0" font-family="Arial" font-size="12">resolved_at ?</text>
+<text x="1905" y="4973.0" font-family="Arial" font-size="11"></text><text x="1970" y="4973.0" font-family="Arial" font-size="12">category ?</text>
+<text x="1905" y="5003.0" font-family="Arial" font-size="11"></text><text x="1970" y="5003.0" font-family="Arial" font-size="12">explanation ?</text>
+<rect x="2500" y="4773.0" width="380" height="510" rx="8" fill="white" stroke="#333"/>
+<text x="2690.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_comments</text>
+<text x="2505" y="4823.0" font-family="Arial" font-size="11">PK</text><text x="2570" y="4823.0" font-family="Arial" font-size="12">id</text>
+<text x="2505" y="4853.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="4853.0" font-family="Arial" font-size="12">short_video_id</text>
+<text x="2505" y="4883.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="4883.0" font-family="Arial" font-size="12">user_id ?</text>
+<text x="2505" y="4913.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="4913.0" font-family="Arial" font-size="12">parent_id ?</text>
+<text x="2505" y="4943.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="4943.0" font-family="Arial" font-size="12">root_id ?</text>
+<text x="2505" y="4973.0" font-family="Arial" font-size="11"></text><text x="2570" y="4973.0" font-family="Arial" font-size="12">guest_name ?</text>
+<text x="2505" y="5003.0" font-family="Arial" font-size="11"></text><text x="2570" y="5003.0" font-family="Arial" font-size="12">content</text>
+<text x="2505" y="5033.0" font-family="Arial" font-size="11"></text><text x="2570" y="5033.0" font-family="Arial" font-size="12">status</text>
+<text x="2505" y="5063.0" font-family="Arial" font-size="11"></text><text x="2570" y="5063.0" font-family="Arial" font-size="12">ai_flagged ?</text>
+<text x="2505" y="5093.0" font-family="Arial" font-size="11"></text><text x="2570" y="5093.0" font-family="Arial" font-size="12">moderation_categories ?</text>
+<text x="2505" y="5123.0" font-family="Arial" font-size="11"></text><text x="2570" y="5123.0" font-family="Arial" font-size="12">moderation_reason ?</text>
+<text x="2505" y="5153.0" font-family="Arial" font-size="11"></text><text x="2570" y="5153.0" font-family="Arial" font-size="12">moderated_at ?</text>
+<text x="2505" y="5183.0" font-family="Arial" font-size="11"></text><text x="2570" y="5183.0" font-family="Arial" font-size="12">moderation_revision</text>
+<text x="2505" y="5213.0" font-family="Arial" font-size="11">UK</text><text x="2570" y="5213.0" font-family="Arial" font-size="12">submission_hash</text>
+<text x="2505" y="5243.0" font-family="Arial" font-size="11"></text><text x="2570" y="5243.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2505" y="5273.0" font-family="Arial" font-size="11"></text><text x="2570" y="5273.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="3100" y="4773.0" width="380" height="90" rx="8" fill="white" stroke="#333"/>
+<text x="3290.0" y="4793.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_likes</text>
+<text x="3105" y="4823.0" font-family="Arial" font-size="11">PK,FK</text><text x="3170" y="4823.0" font-family="Arial" font-size="12">short_video_id</text>
+<text x="3105" y="4853.0" font-family="Arial" font-size="11">PK,FK</text><text x="3170" y="4853.0" font-family="Arial" font-size="12">user_id</text>
+<rect x="100" y="5443.0" width="380" height="750" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="5463.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_publications</text>
+<text x="105" y="5493.0" font-family="Arial" font-size="11">PK</text><text x="170" y="5493.0" font-family="Arial" font-size="12">id</text>
+<text x="105" y="5523.0" font-family="Arial" font-size="11">FK</text><text x="170" y="5523.0" font-family="Arial" font-size="12">short_video_id</text>
+<text x="105" y="5553.0" font-family="Arial" font-size="11"></text><text x="170" y="5553.0" font-family="Arial" font-size="12">platform</text>
+<text x="105" y="5583.0" font-family="Arial" font-size="11">FK</text><text x="170" y="5583.0" font-family="Arial" font-size="12">connection_id ?</text>
+<text x="105" y="5613.0" font-family="Arial" font-size="11"></text><text x="170" y="5613.0" font-family="Arial" font-size="12">account_id ?</text>
+<text x="105" y="5643.0" font-family="Arial" font-size="11"></text><text x="170" y="5643.0" font-family="Arial" font-size="12">account_name ?</text>
+<text x="105" y="5673.0" font-family="Arial" font-size="11"></text><text x="170" y="5673.0" font-family="Arial" font-size="12">graph_host ?</text>
+<text x="105" y="5703.0" font-family="Arial" font-size="11"></text><text x="170" y="5703.0" font-family="Arial" font-size="12">graph_version ?</text>
+<text x="105" y="5733.0" font-family="Arial" font-size="11"></text><text x="170" y="5733.0" font-family="Arial" font-size="12">credential ?</text>
+<text x="105" y="5763.0" font-family="Arial" font-size="11"></text><text x="170" y="5763.0" font-family="Arial" font-size="12">credential_expires_at ?</text>
+<text x="105" y="5793.0" font-family="Arial" font-size="11"></text><text x="170" y="5793.0" font-family="Arial" font-size="12">container_id ?</text>
+<text x="105" y="5823.0" font-family="Arial" font-size="11"></text><text x="170" y="5823.0" font-family="Arial" font-size="12">media_id ?</text>
+<text x="105" y="5853.0" font-family="Arial" font-size="11"></text><text x="170" y="5853.0" font-family="Arial" font-size="12">permalink ?</text>
+<text x="105" y="5883.0" font-family="Arial" font-size="11"></text><text x="170" y="5883.0" font-family="Arial" font-size="12">status</text>
+<text x="105" y="5913.0" font-family="Arial" font-size="11"></text><text x="170" y="5913.0" font-family="Arial" font-size="12">stage</text>
+<text x="105" y="5943.0" font-family="Arial" font-size="11"></text><text x="170" y="5943.0" font-family="Arial" font-size="12">locked_until ?</text>
+<text x="105" y="5973.0" font-family="Arial" font-size="11"></text><text x="170" y="5973.0" font-family="Arial" font-size="12">attempts</text>
+<text x="105" y="6003.0" font-family="Arial" font-size="11"></text><text x="170" y="6003.0" font-family="Arial" font-size="12">polls</text>
+<text x="105" y="6033.0" font-family="Arial" font-size="11"></text><text x="170" y="6033.0" font-family="Arial" font-size="12">error_summary ?</text>
+<text x="105" y="6063.0" font-family="Arial" font-size="11"></text><text x="170" y="6063.0" font-family="Arial" font-size="12">next_attempt_at ?</text>
+<text x="105" y="6093.0" font-family="Arial" font-size="11"></text><text x="170" y="6093.0" font-family="Arial" font-size="12">published_at ?</text>
+<text x="105" y="6123.0" font-family="Arial" font-size="11"></text><text x="170" y="6123.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="105" y="6153.0" font-family="Arial" font-size="11"></text><text x="170" y="6153.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="700" y="5443.0" width="380" height="120" rx="8" fill="white" stroke="#333"/>
+<text x="890.0" y="5463.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_video_viewers</text>
+<text x="705" y="5493.0" font-family="Arial" font-size="11">PK,FK</text><text x="770" y="5493.0" font-family="Arial" font-size="12">short_video_id</text>
+<text x="705" y="5523.0" font-family="Arial" font-size="11">PK</text><text x="770" y="5523.0" font-family="Arial" font-size="12">viewer_key</text>
+<text x="705" y="5553.0" font-family="Arial" font-size="11"></text><text x="770" y="5553.0" font-family="Arial" font-size="12">viewed_at</text>
+<rect x="1300" y="5443.0" width="380" height="540" rx="8" fill="white" stroke="#333"/>
+<text x="1490.0" y="5463.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">short_videos</text>
+<text x="1305" y="5493.0" font-family="Arial" font-size="11">PK</text><text x="1370" y="5493.0" font-family="Arial" font-size="12">id</text>
+<text x="1305" y="5523.0" font-family="Arial" font-size="11">FK</text><text x="1370" y="5523.0" font-family="Arial" font-size="12">created_by</text>
+<text x="1305" y="5553.0" font-family="Arial" font-size="11"></text><text x="1370" y="5553.0" font-family="Arial" font-size="12">title ?</text>
+<text x="1305" y="5583.0" font-family="Arial" font-size="11"></text><text x="1370" y="5583.0" font-family="Arial" font-size="12">description ?</text>
+<text x="1305" y="5613.0" font-family="Arial" font-size="11"></text><text x="1370" y="5613.0" font-family="Arial" font-size="12">video_url</text>
+<text x="1305" y="5643.0" font-family="Arial" font-size="11"></text><text x="1370" y="5643.0" font-family="Arial" font-size="12">video_public_id</text>
+<text x="1305" y="5673.0" font-family="Arial" font-size="11"></text><text x="1370" y="5673.0" font-family="Arial" font-size="12">thumbnail_url</text>
+<text x="1305" y="5703.0" font-family="Arial" font-size="11"></text><text x="1370" y="5703.0" font-family="Arial" font-size="12">thumbnail_public_id ?</text>
+<text x="1305" y="5733.0" font-family="Arial" font-size="11"></text><text x="1370" y="5733.0" font-family="Arial" font-size="12">frame_offset</text>
+<text x="1305" y="5763.0" font-family="Arial" font-size="11"></text><text x="1370" y="5763.0" font-family="Arial" font-size="12">metadata</text>
+<text x="1305" y="5793.0" font-family="Arial" font-size="11"></text><text x="1370" y="5793.0" font-family="Arial" font-size="12">status</text>
+<text x="1305" y="5823.0" font-family="Arial" font-size="11"></text><text x="1370" y="5823.0" font-family="Arial" font-size="12">published_at ?</text>
+<text x="1305" y="5853.0" font-family="Arial" font-size="11"></text><text x="1370" y="5853.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1305" y="5883.0" font-family="Arial" font-size="11"></text><text x="1370" y="5883.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1305" y="5913.0" font-family="Arial" font-size="11"></text><text x="1370" y="5913.0" font-family="Arial" font-size="12">deleted_at ?</text>
+<text x="1305" y="5943.0" font-family="Arial" font-size="11"></text><text x="1370" y="5943.0" font-family="Arial" font-size="12">view_count</text>
+<text x="1305" y="5973.0" font-family="Arial" font-size="11"></text><text x="1370" y="5973.0" font-family="Arial" font-size="12">likes_count</text>
+<rect x="100" y="6413.0" width="380" height="180" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">guest_comment_identities</text>
+<text x="105" y="6463.0" font-family="Arial" font-size="11">PK</text><text x="170" y="6463.0" font-family="Arial" font-size="12">id</text>
+<text x="105" y="6493.0" font-family="Arial" font-size="11">UK</text><text x="170" y="6493.0" font-family="Arial" font-size="12">token_hash</text>
+<text x="105" y="6523.0" font-family="Arial" font-size="11">UK</text><text x="170" y="6523.0" font-family="Arial" font-size="12">username</text>
+<text x="105" y="6553.0" font-family="Arial" font-size="11"></text><text x="170" y="6553.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="105" y="6583.0" font-family="Arial" font-size="11"></text><text x="170" y="6583.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="700" y="6413.0" width="380" height="120" rx="8" fill="white" stroke="#333"/>
+<text x="890.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">guest_comment_days</text>
+<text x="705" y="6463.0" font-family="Arial" font-size="11">PK,FK</text><text x="770" y="6463.0" font-family="Arial" font-size="12">guest_id</text>
+<text x="705" y="6493.0" font-family="Arial" font-size="11">PK</text><text x="770" y="6493.0" font-family="Arial" font-size="12">day</text>
+<text x="705" y="6523.0" font-family="Arial" font-size="11"></text><text x="770" y="6523.0" font-family="Arial" font-size="12">comment_count</text>
+<rect x="1300" y="6413.0" width="380" height="450" rx="8" fill="white" stroke="#333"/>
+<text x="1490.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">social_connections</text>
+<text x="1305" y="6463.0" font-family="Arial" font-size="11">PK</text><text x="1370" y="6463.0" font-family="Arial" font-size="12">id</text>
+<text x="1305" y="6493.0" font-family="Arial" font-size="11">FK</text><text x="1370" y="6493.0" font-family="Arial" font-size="12">user_id</text>
+<text x="1305" y="6523.0" font-family="Arial" font-size="11"></text><text x="1370" y="6523.0" font-family="Arial" font-size="12">platform</text>
+<text x="1305" y="6553.0" font-family="Arial" font-size="11"></text><text x="1370" y="6553.0" font-family="Arial" font-size="12">account_id</text>
+<text x="1305" y="6583.0" font-family="Arial" font-size="11"></text><text x="1370" y="6583.0" font-family="Arial" font-size="12">account_name</text>
+<text x="1305" y="6613.0" font-family="Arial" font-size="11"></text><text x="1370" y="6613.0" font-family="Arial" font-size="12">access_token</text>
+<text x="1305" y="6643.0" font-family="Arial" font-size="11"></text><text x="1370" y="6643.0" font-family="Arial" font-size="12">expires_at ?</text>
+<text x="1305" y="6673.0" font-family="Arial" font-size="11"></text><text x="1370" y="6673.0" font-family="Arial" font-size="12">invalidated_at ?</text>
+<text x="1305" y="6703.0" font-family="Arial" font-size="11"></text><text x="1370" y="6703.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1305" y="6733.0" font-family="Arial" font-size="11"></text><text x="1370" y="6733.0" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1305" y="6763.0" font-family="Arial" font-size="11"></text><text x="1370" y="6763.0" font-family="Arial" font-size="12">auth_source ?</text>
+<text x="1305" y="6793.0" font-family="Arial" font-size="11"></text><text x="1370" y="6793.0" font-family="Arial" font-size="12">insights_status ?</text>
+<text x="1305" y="6823.0" font-family="Arial" font-size="11"></text><text x="1370" y="6823.0" font-family="Arial" font-size="12">insights_synced_at ?</text>
+<rect x="1900" y="6413.0" width="380" height="300" rx="8" fill="white" stroke="#333"/>
+<text x="2090.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">meta_insight_snapshots</text>
+<text x="1905" y="6463.0" font-family="Arial" font-size="11">PK</text><text x="1970" y="6463.0" font-family="Arial" font-size="12">id</text>
+<text x="1905" y="6493.0" font-family="Arial" font-size="11">FK</text><text x="1970" y="6493.0" font-family="Arial" font-size="12">connection_id</text>
+<text x="1905" y="6523.0" font-family="Arial" font-size="11"></text><text x="1970" y="6523.0" font-family="Arial" font-size="12">account_id</text>
+<text x="1905" y="6553.0" font-family="Arial" font-size="11"></text><text x="1970" y="6553.0" font-family="Arial" font-size="12">metric</text>
+<text x="1905" y="6583.0" font-family="Arial" font-size="11"></text><text x="1970" y="6583.0" font-family="Arial" font-size="12">period</text>
+<text x="1905" y="6613.0" font-family="Arial" font-size="11"></text><text x="1970" y="6613.0" font-family="Arial" font-size="12">period_end</text>
+<text x="1905" y="6643.0" font-family="Arial" font-size="11"></text><text x="1970" y="6643.0" font-family="Arial" font-size="12">value</text>
+<text x="1905" y="6673.0" font-family="Arial" font-size="11"></text><text x="1970" y="6673.0" font-family="Arial" font-size="12">synced_at</text>
+<rect x="2500" y="6413.0" width="380" height="300" rx="8" fill="white" stroke="#333"/>
+<text x="2690.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">analytics_settings</text>
+<text x="2505" y="6463.0" font-family="Arial" font-size="11">PK</text><text x="2570" y="6463.0" font-family="Arial" font-size="12">id</text>
+<text x="2505" y="6493.0" font-family="Arial" font-size="11"></text><text x="2570" y="6493.0" font-family="Arial" font-size="12">widgets</text>
+<text x="2505" y="6523.0" font-family="Arial" font-size="11"></text><text x="2570" y="6523.0" font-family="Arial" font-size="12">layout ?</text>
+<text x="2505" y="6553.0" font-family="Arial" font-size="11"></text><text x="2570" y="6553.0" font-family="Arial" font-size="12">meta_connection_ids ?</text>
+<text x="2505" y="6583.0" font-family="Arial" font-size="11"></text><text x="2570" y="6583.0" font-family="Arial" font-size="12">period_days</text>
+<text x="2505" y="6613.0" font-family="Arial" font-size="11">FK</text><text x="2570" y="6613.0" font-family="Arial" font-size="12">updated_by ?</text>
+<text x="2505" y="6643.0" font-family="Arial" font-size="11"></text><text x="2570" y="6643.0" font-family="Arial" font-size="12">tracking_started_at</text>
+<text x="2505" y="6673.0" font-family="Arial" font-size="11"></text><text x="2570" y="6673.0" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2505" y="6703.0" font-family="Arial" font-size="11"></text><text x="2570" y="6703.0" font-family="Arial" font-size="12">updated_at ?</text>
+<rect x="3100" y="6413.0" width="380" height="150" rx="8" fill="white" stroke="#333"/>
+<text x="3290.0" y="6433.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">analytics_setting_changes</text>
+<text x="3105" y="6463.0" font-family="Arial" font-size="11">PK</text><text x="3170" y="6463.0" font-family="Arial" font-size="12">id</text>
+<text x="3105" y="6493.0" font-family="Arial" font-size="11">FK</text><text x="3170" y="6493.0" font-family="Arial" font-size="12">user_id ?</text>
+<text x="3105" y="6523.0" font-family="Arial" font-size="11"></text><text x="3170" y="6523.0" font-family="Arial" font-size="12">configuration</text>
+<text x="3105" y="6553.0" font-family="Arial" font-size="11"></text><text x="3170" y="6553.0" font-family="Arial" font-size="12">created_at</text>
+<rect x="100" y="7023.0" width="380" height="180" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="7043.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">villager_activity_hours</text>
+<text x="105" y="7073.0" font-family="Arial" font-size="11">PK</text><text x="170" y="7073.0" font-family="Arial" font-size="12">id</text>
+<text x="105" y="7103.0" font-family="Arial" font-size="11">FK</text><text x="170" y="7103.0" font-family="Arial" font-size="12">user_id</text>
+<text x="105" y="7133.0" font-family="Arial" font-size="11"></text><text x="170" y="7133.0" font-family="Arial" font-size="12">hour</text>
+<text x="105" y="7163.0" font-family="Arial" font-size="11"></text><text x="170" y="7163.0" font-family="Arial" font-size="12">platform</text>
+<rect x="100" y="7423.0" width="380" height="240" rx="8" fill="white" stroke="#333"/>
+<text x="290.0" y="7443.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">jobs</text>
+<text x="105" y="7473.0" font-family="Arial" font-size="11">PK</text><text x="170" y="7473.0" font-family="Arial" font-size="12">id</text>
+<text x="105" y="7503.0" font-family="Arial" font-size="11"></text><text x="170" y="7503.0" font-family="Arial" font-size="12">queue</text>
+<text x="105" y="7533.0" font-family="Arial" font-size="11"></text><text x="170" y="7533.0" font-family="Arial" font-size="12">payload</text>
+<text x="105" y="7563.0" font-family="Arial" font-size="11"></text><text x="170" y="7563.0" font-family="Arial" font-size="12">attempts</text>
+<text x="105" y="7593.0" font-family="Arial" font-size="11"></text><text x="170" y="7593.0" font-family="Arial" font-size="12">reserved_at ?</text>
+<text x="105" y="7623.0" font-family="Arial" font-size="11"></text><text x="170" y="7623.0" font-family="Arial" font-size="12">available_at</text>
+<text x="105" y="7653.0" font-family="Arial" font-size="11"></text><text x="170" y="7653.0" font-family="Arial" font-size="12">created_at</text>
+<rect x="700" y="7423.0" width="380" height="240" rx="8" fill="white" stroke="#333"/>
+<text x="890.0" y="7443.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">failed_jobs</text>
+<text x="705" y="7473.0" font-family="Arial" font-size="11">PK</text><text x="770" y="7473.0" font-family="Arial" font-size="12">id</text>
+<text x="705" y="7503.0" font-family="Arial" font-size="11">UK</text><text x="770" y="7503.0" font-family="Arial" font-size="12">uuid</text>
+<text x="705" y="7533.0" font-family="Arial" font-size="11"></text><text x="770" y="7533.0" font-family="Arial" font-size="12">connection</text>
+<text x="705" y="7563.0" font-family="Arial" font-size="11"></text><text x="770" y="7563.0" font-family="Arial" font-size="12">queue</text>
+<text x="705" y="7593.0" font-family="Arial" font-size="11"></text><text x="770" y="7593.0" font-family="Arial" font-size="12">payload</text>
+<text x="705" y="7623.0" font-family="Arial" font-size="11"></text><text x="770" y="7623.0" font-family="Arial" font-size="12">exception</text>
+<text x="705" y="7653.0" font-family="Arial" font-size="11"></text><text x="770" y="7653.0" font-family="Arial" font-size="12">failed_at</text>
+<rect x="1300" y="7423.0" width="380" height="120" rx="8" fill="white" stroke="#333"/>
+<text x="1490.0" y="7443.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">migrations</text>
+<text x="1305" y="7473.0" font-family="Arial" font-size="11">PK</text><text x="1370" y="7473.0" font-family="Arial" font-size="12">id</text>
+<text x="1305" y="7503.0" font-family="Arial" font-size="11"></text><text x="1370" y="7503.0" font-family="Arial" font-size="12">migration</text>
+<text x="1305" y="7533.0" font-family="Arial" font-size="11"></text><text x="1370" y="7533.0" font-family="Arial" font-size="12">batch</text>
+<text x="100" y="4253.0" font-family="Arial" font-size="26">Additional broadcast and news tables</text>
+<text x="100" y="4743.0" font-family="Arial" font-size="26">Short videos and engagement</text>
+<text x="100" y="6383.0" font-family="Arial" font-size="26">Guest identities, social and analytics</text>
+<text x="100" y="7393.0" font-family="Arial" font-size="26">Laravel infrastructure</text>
+</svg>

@@ -1,12 +1,11 @@
 from collections.abc import Iterable
 
 import chromadb
-from ollama import Client, ResponseError
+from app.providers.models import Embeddings
 
 from app.core.config import get_settings
 from app.schemas.document import DocumentElement, NormalizedDocument
 from app.schemas.rag import RetrievedChunk
-from app.services.ai_service import AIServiceError
 
 
 class RagService:
@@ -15,10 +14,10 @@ class RagService:
     def __init__(self) -> None:
         settings = get_settings()
         self.settings = settings
-        self.ollama = Client(host=settings.ollama_base_url, timeout=120.0)
+        self.embeddings = Embeddings(settings)
         self.chroma = chromadb.PersistentClient(path=settings.chroma_path)
         self.collection = self.chroma.get_or_create_collection(
-            name=self.COLLECTION_NAME,
+            name=f"{self.COLLECTION_NAME}_{self.embeddings.fingerprint}",
             metadata={"hnsw:space": "cosine"},
         )
 
@@ -28,13 +27,7 @@ class RagService:
             return 0
 
         texts = [chunk["content"] for chunk in chunks]
-        try:
-            embedding_response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=texts,
-            )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+        vectors = self.embeddings.encode(texts)
 
         ids = [f"{document.document_id}:{index}" for index in range(len(chunks))]
         metadatas = [
@@ -49,7 +42,7 @@ class RagService:
         self.collection.upsert(
             ids=ids,
             documents=texts,
-            embeddings=embedding_response.embeddings,
+            embeddings=vectors,
             metadatas=metadatas,
         )
         return len(chunks)
@@ -64,13 +57,7 @@ class RagService:
         if not cleaned_query:
             raise ValueError("Search query cannot be empty.")
 
-        try:
-            embedding_response = self.ollama.embed(
-                model=self.settings.ollama_embedding_model,
-                input=cleaned_query,
-            )
-        except (ResponseError, ConnectionError, OSError) as exc:
-            raise AIServiceError(f"Embedding request failed: {exc}") from exc
+        vectors = self.embeddings.encode([cleaned_query], query=True)
 
         where = None
         if document_ids:
@@ -81,7 +68,7 @@ class RagService:
             )
 
         result = self.collection.query(
-            query_embeddings=[embedding_response.embeddings[0]],
+            query_embeddings=vectors,
             n_results=top_k or self.settings.rag_top_k,
             where=where,
             include=["documents", "metadatas", "distances"],

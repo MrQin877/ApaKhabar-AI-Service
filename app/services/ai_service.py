@@ -169,7 +169,3 @@ field must be {language}.
         if not summary:
             raise AIServiceError("The model returned an empty summary")
         return summary
-
-
-# Compatibility alias for integrations importing the previous service name.
-OllamaService = AIService

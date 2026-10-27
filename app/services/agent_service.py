@@ -91,10 +91,10 @@ class AgentService:
                     raise RunConflict('Run is already executing')
                 if resume and not row['status'].startswith('awaiting_') and row['status'] != 'failed':
                     raise RunConflict('Run is not awaiting input')
-                db.execute('UPDATE runs SET status=?, lease=? WHERE id=?', ('running', time.time() + self.settings.agent_max_seconds + self.settings.llama_cpp_timeout_seconds * 2 + 60, key))
+                db.execute('UPDATE runs SET status=?, lease=? WHERE id=?', ('running', time.time() + self.settings.agent_max_seconds + self.settings.ai_timeout_seconds * 2 + 60, key))
             else:
                 db.execute('INSERT INTO runs(id,owner,request_hash,status,lease) VALUES (?,?,?,?,?)',
-                           (key, owner, input_hash, 'running', time.time() + self.settings.agent_max_seconds + self.settings.llama_cpp_timeout_seconds * 2 + 60))
+                           (key, owner, input_hash, 'running', time.time() + self.settings.agent_max_seconds + self.settings.ai_timeout_seconds * 2 + 60))
         input_validated = not bool(resume)
         previous_status = row['status'] if row else 'failed'
         started = time.monotonic()

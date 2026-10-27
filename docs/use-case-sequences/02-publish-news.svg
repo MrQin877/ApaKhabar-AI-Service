@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="2900"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="40" y="47" font-family="Arial" font-size="25" font-weight="bold">Publishing News Post</text>
+<text x="40" y="85" font-family="Arial" font-size="13" fill="#475569">Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow</text>
+<rect x="40" y="1646" width="1480" height="328" fill="none" stroke="#64748b"/><text x="55" y="1668" font-family="Arial" font-size="13">alt [provider success]</text>
+<rect x="40" y="1038" width="1480" height="976" fill="none" stroke="#64748b"/><text x="55" y="1060" font-family="Arial" font-size="13">alt [already published on platform]</text>
+<rect x="40" y="813" width="1480" height="1241" fill="none" stroke="#64748b"/><text x="55" y="835" font-family="Arial" font-size="13">loop [each selected platform]</text>
+<rect x="40" y="2167" width="1480" height="170" fill="none" stroke="#64748b"/><text x="55" y="2189" font-family="Arial" font-size="13">opt [all stored publication results successful]</text>
+<rect x="40" y="2517" width="1480" height="273" fill="none" stroke="#64748b"/><text x="55" y="2539" font-family="Arial" font-size="13">opt [retry failed targets]</text>
+<line x1="150" y1="190" x2="150" y2="2865" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<circle cx="150" cy="143" r="10" fill="#ffd2a8" stroke="#555"/><path d="M 150 153 v 22 m -22 -12 h44 m-22 12 l-18 18 m18 -18 l18 18" fill="none" stroke="#555"/>
+<text x="150" y="108" text-anchor="middle" font-family="Arial" font-size="13">Moderator / Administrator</text>
+<line x1="540" y1="190" x2="540" y2="2865" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="440" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="540" y="151" text-anchor="middle" font-family="Arial" font-size="14">Web Application</text>
+<text x="540" y="170" text-anchor="middle" font-family="Arial" font-size="14">(System)</text>
+<line x1="930" y1="190" x2="930" y2="2865" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="830" y="125" width="200" height="65" fill="#dae8fc" stroke="#64748b"/>
+<text x="930" y="151" text-anchor="middle" font-family="Arial" font-size="14">Application Database</text>
+<line x1="1320" y1="190" x2="1320" y2="2865" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1220" y="125" width="200" height="65" fill="#fff2cc" stroke="#64748b"/>
+<text x="1320" y="151" text-anchor="middle" font-family="Arial" font-size="14">Facebook / Instagram</text>
+<text x="1320" y="170" text-anchor="middle" font-family="Arial" font-size="14">Publishing API</text>
+<rect x="534" y="225" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,225 540,225" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="221" text-anchor="middle" font-family="Arial" font-size="13">openPublicationPreview(draftId, selectedPlatforms)</text>
+<rect x="924" y="310" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,310 930,310" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="306" text-anchor="middle" font-family="Arial" font-size="13">load draft, media variants and connection context</text>
+<polyline points="930,395 540,395" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="391" text-anchor="middle" font-family="Arial" font-size="13">return publication data</text>
+<polyline points="540,480 150,480" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="476" text-anchor="middle" font-family="Arial" font-size="13">display previews and platform issues</text>
+<rect x="534" y="565" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,565 540,565" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="561" text-anchor="middle" font-family="Arial" font-size="13">confirmPublish(platforms, version, previewToken)</text>
+<rect x="534" y="693" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,668 585,668 585,693 540,693" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="646" text-anchor="start" font-family="Arial" font-size="13">validate ownership, draft status,</text>
+<text x="595" y="664" text-anchor="start" font-family="Arial" font-size="13">current review and quality gate</text>
+<rect x="65" y="743" width="1430" height="55" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="765" font-family="Arial" font-size="13">Validate applicable category and preview checks. An invalid/stale preview or blocked AI quality stops publishing; return errors for correction.</text>
+<rect x="924" y="888" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,888 930,888" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="884" text-anchor="middle" font-family="Arial" font-size="13">lock draft; check existing published platform ID</text>
+<polyline points="930,973 540,973" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="969" text-anchor="middle" font-family="Arial" font-size="13">return existing publication state</text>
+<rect x="534" y="1156" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1131 585,1131 585,1156 540,1156" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="1109" text-anchor="start" font-family="Arial" font-size="13">reuse published ID; avoid duplicate</text>
+<text x="595" y="1127" text-anchor="start" font-family="Arial" font-size="13">creation</text>
+<line x1="40" y1="1196" x2="1520" y2="1196" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="1218" font-family="Arial" font-size="13">[website not yet published]</text>
+<rect x="924" y="1271" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1271 930,1271" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="1267" text-anchor="middle" font-family="Arial" font-size="13">create active news; store published_news_id</text>
+<polyline points="930,1356 540,1356" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1352" text-anchor="middle" font-family="Arial" font-size="13">return news ID</text>
+<line x1="40" y1="1421" x2="1520" y2="1421" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="1443" font-family="Arial" font-size="13">[Facebook or Instagram not yet published]</text>
+<rect x="1314" y="1496" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1496 1320,1496" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="930.0" y="1492" text-anchor="middle" font-family="Arial" font-size="13">publish image + post text / caption</text>
+<polyline points="1320,1581 540,1581" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="930.0" y="1577" text-anchor="middle" font-family="Arial" font-size="13">return platform ID or publishing error</text>
+<rect x="924" y="1721" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1721 930,1721" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="1717" text-anchor="middle" font-family="Arial" font-size="13">store facebook_post_id / instagram_media_id</text>
+<line x1="40" y1="1786" x2="1520" y2="1786" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="1808" font-family="Arial" font-size="13">[provider failure]</text>
+<rect x="534" y="1904" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,1879 585,1879 585,1904 540,1904" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="1857" text-anchor="start" font-family="Arial" font-size="13">record safe error for this platform;</text>
+<text x="595" y="1875" text-anchor="start" font-family="Arial" font-size="13">continue other targets</text>
+<rect x="924" y="2102" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,2102 930,2102" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="2080" text-anchor="middle" font-family="Arial" font-size="13">merge publication_results; retain successful</text>
+<text x="735.0" y="2098" text-anchor="middle" font-family="Arial" font-size="13">platform IDs</text>
+<rect x="924" y="2242" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,2242 930,2242" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="2238" text-anchor="middle" font-family="Arial" font-size="13">set draft.status = published</text>
+<polyline points="930,2367 540,2367" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="2363" text-anchor="middle" font-family="Arial" font-size="13">return final per-platform state</text>
+<polyline points="540,2452 150,2452" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="2448" text-anchor="middle" font-family="Arial" font-size="13">display success or partial-failure summary</text>
+<rect x="534" y="2592" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,2592 540,2592" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="2588" text-anchor="middle" font-family="Arial" font-size="13">retry failed platforms after correcting issues</text>
+<rect x="534" y="2720" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,2695 585,2695 585,2720 540,2720" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="595" y="2673" text-anchor="start" font-family="Arial" font-size="13">repeat checks and publishing loop;</text>
+<text x="595" y="2691" text-anchor="start" font-family="Arial" font-size="13">reuse successful IDs</text>
+</svg>

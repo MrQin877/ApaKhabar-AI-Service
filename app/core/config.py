@@ -7,24 +7,22 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    ai_provider: Literal["ollama", "llama_cpp"] = "ollama"
-    llama_cpp_base_url: str = "http://127.0.0.1:8080/v1"
-    llama_cpp_api_key: str = ""
-    llama_cpp_model: str = "apakhabar-gemma"
-    llama_cpp_timeout_seconds: float = Field(default=180, gt=0)
-    llama_cpp_max_tokens: int = Field(default=4096, gt=0)
+    ai_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+    ai_api_key: str = ""
+    ai_model: str = ""
+    ai_timeout_seconds: float = Field(default=180, gt=0)
+    ai_max_tokens: int = Field(default=4096, gt=0)
     evaluator_enabled: bool = False
-    evaluator_provider: Literal["ollama", "llama_cpp"] = "llama_cpp"
-    evaluator_base_url: str = "http://127.0.0.1:8082/v1"
-    evaluator_model: str = "apakhabar-judge"
+    evaluator_base_url: str = "https://api.groq.com/openai/v1"
+    evaluator_model: str = ""
     evaluator_api_key: str = ""
     evaluator_timeout_seconds: float = Field(default=180, gt=0)
     evaluator_max_tokens: int = Field(default=4096, gt=0)
-    embedding_provider: Literal["ollama", "embedding_gemma", "openai"] = "ollama"
+    embedding_provider: Literal["embedding_gemma", "openai"] = "embedding_gemma"
     embedding_model: str = "google/embeddinggemma-300m"
     embedding_device: str = "auto"
     embedding_dimensions: int = Field(default=768, gt=0)
-    embedding_base_url: str = "http://127.0.0.1:8081/v1"
+    embedding_base_url: str = "https://api.openai.com/v1"
     embedding_api_key: str = ""
     apakhabar_ai_service_token: str = ""
     agent_enabled: bool = True
@@ -38,9 +36,6 @@ class Settings(BaseSettings):
     web_search_api_key: str = ""
     ocr_language: str = "eng"
     ocr_max_pages: int = Field(default=100, ge=1)
-    ollama_base_url: str = "http://localhost:11434"
-    ollama_generation_model: str = "qwen3:4b"
-    ollama_embedding_model: str = "qwen3-embedding:0.6b"
 
     chroma_path: str = "./data/chroma"
     upload_path: str = "./data/uploads"

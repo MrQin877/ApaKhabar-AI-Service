@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="1590" viewBox="0 0 2570 1590"><rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="50" y="60" font-family="Arial" font-size="30" font-weight="bold">00 Core overview</text>
+<text x="50" y="100" font-family="Arial" font-size="16" fill="#475569">Selected core entities and relationships — open numbered pages for the complete schema.</text>
+<polyline points="760,305 790,305 790,225 960,225 960,305 990,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="300" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,585 812,585 812,471 942,471 942,585 990,585" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="580" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="580" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,599 1624,599 1624,451 1714,451 1714,599 1780,599" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="594" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="1755" y="594" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,571 856,571 856,431 1696,431 1696,571 1780,571" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="566" font-family="Arial" font-size="11" fill="#475569">1</text><text x="1755" y="566" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,851 2458,851 2458,677 98,677 98,851 200,851" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="846" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="175" y="846" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,333 2480,333 2480,225 170,225 170,865 200,865" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="328" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="175" y="860" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,571 2370,571 2370,471 942,471 942,837 990,837" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="566" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="832" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,851 812,851 812,717 924,717 924,851 990,851" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="846" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="846" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,333 2414,333 2414,865 2340,865" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="328" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="2315" y="860" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,837 856,837 856,1103 760,1103" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="832" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="735" y="1098" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,1117 878,1117 878,1023 960,1023 960,1117 990,1117" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="1112" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="1112" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,865 2480,865 2480,1131 2340,1131" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="860" font-family="Arial" font-size="11" fill="#475569">1</text><text x="2315" y="1126" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,1369 2370,1369 2370,1249 924,1249 924,1369 990,1369" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="1364" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="965" y="1364" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,1383 812,1383 812,1229 906,1229 906,1383 990,1383" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="1378" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="1378" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<rect x="200" y="260" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">user_roles</text>
+<text x="212" y="318" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 01 Accounts</text>
+<rect x="201" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="345" font-family="Arial" font-size="12">roleID</text>
+<text x="610" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="260" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">users</text>
+<text x="1002" y="318" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 01 Accounts</text>
+<rect x="991" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="345" font-family="Arial" font-size="12">userID</text>
+<text x="1400" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="260" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">news_categories</text>
+<text x="1792" y="318" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 03 News</text>
+<rect x="1781" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="345" font-family="Arial" font-size="12">categoryID</text>
+<text x="2190" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="526" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="526" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="552" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligence_documents</text>
+<text x="212" y="584" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 08 Intelligence</text>
+<rect x="201" y="594" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="611" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="611" font-family="Arial" font-size="12">id</text>
+<text x="610" y="611" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="526" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="526" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="552" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligence_extraction_requests</text>
+<text x="1002" y="584" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 08 Intelligence</text>
+<rect x="991" y="594" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="611" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="611" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="611" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="526" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="526" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="552" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligence_information</text>
+<text x="1792" y="584" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 08 Intelligence</text>
+<rect x="1781" y="594" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="611" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="611" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="611" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="792" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="792" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="818" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_drafts</text>
+<text x="212" y="850" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 09 Drafting and review</text>
+<rect x="201" y="860" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="877" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="877" font-family="Arial" font-size="12">id</text>
+<text x="610" y="877" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="792" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="792" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="818" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_draft_sources</text>
+<text x="1002" y="850" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 09 Drafting and review</text>
+<rect x="991" y="860" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="877" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="877" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="877" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="792" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="792" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="818" font-family="Arial" font-weight="bold" font-size="16" fill="white">news</text>
+<text x="1792" y="850" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 03 News</text>
+<rect x="1781" y="860" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="877" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="877" font-family="Arial" font-size="12">postID</text>
+<text x="2190" y="877" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="1058" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="1058" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="1084" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_sessions</text>
+<text x="212" y="1116" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 10 AI conversations</text>
+<rect x="201" y="1126" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1143" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="1143" font-family="Arial" font-size="12">id</text>
+<text x="610" y="1143" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="1058" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="1058" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="1084" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_messages</text>
+<text x="1002" y="1116" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 10 AI conversations</text>
+<rect x="991" y="1126" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1143" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="1143" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="1143" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="1058" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="1058" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="1084" font-family="Arial" font-weight="bold" font-size="16" fill="white">comments</text>
+<text x="1792" y="1116" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 04 News moderation</text>
+<rect x="1781" y="1126" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1143" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="1143" font-family="Arial" font-size="12">commentID</text>
+<text x="2190" y="1143" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="1324" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="1324" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="1350" font-family="Arial" font-weight="bold" font-size="16" fill="white">short_videos</text>
+<text x="212" y="1382" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 05 Short videos</text>
+<rect x="201" y="1392" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1409" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="1409" font-family="Arial" font-size="12">id</text>
+<text x="610" y="1409" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="1324" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="1324" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="1350" font-family="Arial" font-weight="bold" font-size="16" fill="white">short_video_publications</text>
+<text x="1002" y="1382" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 05 Short videos</text>
+<rect x="991" y="1392" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1409" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="1409" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="1409" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="1324" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="1324" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="1350" font-family="Arial" font-weight="bold" font-size="16" fill="white">social_connections</text>
+<text x="1792" y="1382" font-family="Arial" font-size="11" fill="#64748b">KEYS ONLY · 11 Social and analytics</text>
+<rect x="1781" y="1392" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1409" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="1409" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="1409" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+</svg>

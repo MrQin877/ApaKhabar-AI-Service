@@ -1,0 +1,763 @@
+erDiagram
+    user_roles {
+        integer roleID PK
+        varchar name
+        datetime created_at
+        datetime updated_at
+    }
+    users {
+        integer userID PK
+        varchar name
+        varchar password
+        varchar push_token
+        varchar remember_token
+        datetime created_at
+        datetime updated_at
+        integer roleID FK
+        text two_factor_secret
+        text two_factor_recovery_codes
+        datetime two_factor_confirmed_at
+        date date_of_birth
+        varchar citizenship
+        varchar gender
+        varchar ethnicity
+    }
+    user_roles ||..o{ users : "roleID"
+    emails {
+        varchar email PK
+        datetime email_verified_at
+        datetime created_at
+        datetime updated_at
+        integer userID FK,UK
+    }
+    users ||..o| emails : "userID"
+    phones {
+        varchar phone PK
+        varchar phone_otp
+        datetime phone_otp_expires_at
+        datetime phone_verified_at
+        datetime created_at
+        datetime updated_at
+        integer userID FK,UK
+    }
+    users ||..o| phones : "userID"
+    password_reset_tokens {
+        integer passwordID PK
+        varchar email
+        varchar token
+        datetime created_at
+    }
+    personal_access_tokens {
+        integer tokenID PK
+        integer tokenable_id FK
+        varchar tokenable_type
+        varchar name
+        varchar token UK
+        text abilities
+        datetime expires_at
+        datetime created_at
+        datetime updated_at
+    }
+    users ||..o{ personal_access_tokens : "tokenable_id"
+    broadcast_categories {
+        integer categoryID PK
+        varchar name
+        datetime created_at
+        datetime updated_at
+    }
+    channels {
+        integer channelID PK
+        varchar name
+        datetime created_at
+        datetime updated_at
+    }
+    broadcasts {
+        integer alertID PK
+        varchar title
+        text message
+        varchar send_mode
+        varchar status
+        datetime sent_at
+        datetime scheduled_at
+        datetime archived_at
+        datetime created_at
+        datetime updated_at
+        integer created_by FK
+        integer categoryID FK
+    }
+    broadcast_categories |o..o{ broadcasts : "categoryID"
+    users ||..o{ broadcasts : "created_by"
+    broadcast_channel {
+        integer broadcast_id PK,FK
+        integer channel_id PK,FK
+    }
+    channels ||..o{ broadcast_channel : "channel_id"
+    broadcasts ||..o{ broadcast_channel : "broadcast_id"
+    broadcast_user {
+        integer broadcast_id PK,FK
+        integer user_id PK,FK
+    }
+    users ||..o{ broadcast_user : "user_id"
+    broadcasts ||..o{ broadcast_user : "broadcast_id"
+    news_categories {
+        integer categoryID PK
+        varchar name
+        text description
+        datetime created_at
+        datetime updated_at
+        varchar slug UK
+        varchar status
+        integer display_order
+        tinyint is_default
+        integer created_by FK
+        tinyint is_active
+        datetime deleted_at
+    }
+    users |o..o{ news_categories : "created_by"
+    news {
+        integer postID PK
+        varchar title
+        text content
+        varchar image
+        integer likes_count
+        integer view
+        text excerpt
+        datetime created_at
+        datetime updated_at
+        integer category_id FK
+        varchar status
+        varchar creation_method
+        integer created_by FK
+        tinyint show_on_homepage
+        integer unique_views
+    }
+    users |o..o{ news : "created_by"
+    news_categories |o..o{ news : "category_id"
+    likes {
+        integer likeID PK
+        datetime created_at
+        integer postID FK
+        integer userID FK
+    }
+    users ||..o{ likes : "userID"
+    news ||..o{ likes : "postID"
+    news_viewers {
+        integer id PK
+        integer news_id FK
+        varchar viewer_key
+        datetime expires_at
+    }
+    news ||..o{ news_viewers : "news_id"
+    news_visits {
+        varchar id PK
+        datetime expires_at
+    }
+    comments {
+        integer commentID PK
+        text content
+        datetime created_at
+        datetime updated_at
+        integer newsID FK
+        integer userID FK
+        integer parentID FK
+        varchar guest_name
+        varchar status
+        tinyint ai_flagged
+        text moderation_categories
+        varchar moderation_reason
+        datetime moderated_at
+        varchar submission_hash UK
+        integer moderation_revision
+    }
+    news ||..o{ comments : "newsID"
+    users |o..o{ comments : "userID"
+    comments |o..o{ comments : "parentID"
+    comment_likes {
+        integer comment_id PK,FK
+        integer user_id PK,FK
+    }
+    users ||..o{ comment_likes : "user_id"
+    comments ||..o{ comment_likes : "comment_id"
+    comment_reports {
+        integer id PK
+        integer comment_id FK
+        integer user_id FK
+        datetime created_at
+        datetime resolved_at
+        varchar category
+        varchar explanation
+    }
+    users ||..o{ comment_reports : "user_id"
+    comments ||..o{ comment_reports : "comment_id"
+    comment_flags {
+        integer id PK
+        integer comment_id FK
+        integer moderator_id FK
+        varchar category
+        varchar explanation
+        datetime created_at
+        datetime resolved_at
+    }
+    users ||..o{ comment_flags : "moderator_id"
+    comments ||..o{ comment_flags : "comment_id"
+    comment_moderation_history {
+        integer id PK
+        integer comment_id FK
+        integer moderator_id
+        varchar from_status
+        varchar to_status
+        varchar reason
+        datetime created_at
+        varchar action
+    }
+    comments ||..o{ comment_moderation_history : "comment_id"
+    short_videos {
+        integer id PK
+        integer created_by FK
+        varchar title
+        text description
+        text video_url
+        varchar video_public_id
+        text thumbnail_url
+        varchar thumbnail_public_id
+        numeric frame_offset
+        text metadata
+        varchar status
+        datetime published_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer view_count
+        integer likes_count
+    }
+    users ||..o{ short_videos : "created_by"
+    short_video_publications {
+        integer id PK
+        integer short_video_id FK
+        varchar platform
+        integer connection_id FK
+        varchar account_id
+        varchar account_name
+        varchar graph_host
+        varchar graph_version
+        text credential
+        datetime credential_expires_at
+        varchar container_id
+        varchar media_id
+        text permalink
+        varchar status
+        varchar stage
+        datetime locked_until
+        integer attempts
+        integer polls
+        text error_summary
+        datetime next_attempt_at
+        datetime published_at
+        datetime created_at
+        datetime updated_at
+    }
+    social_connections |o..o{ short_video_publications : "connection_id"
+    short_videos ||..o{ short_video_publications : "short_video_id"
+    short_video_viewers {
+        integer short_video_id PK,FK
+        varchar viewer_key PK
+        datetime viewed_at
+    }
+    short_videos ||..o{ short_video_viewers : "short_video_id"
+    short_video_likes {
+        integer short_video_id PK,FK
+        integer user_id PK,FK
+    }
+    users ||..o{ short_video_likes : "user_id"
+    short_videos ||..o{ short_video_likes : "short_video_id"
+    short_video_comments {
+        integer id PK
+        integer short_video_id FK
+        integer user_id FK
+        integer parent_id FK
+        integer root_id FK
+        varchar guest_name
+        text content
+        varchar status
+        tinyint ai_flagged
+        text moderation_categories
+        varchar moderation_reason
+        datetime moderated_at
+        integer moderation_revision
+        varchar submission_hash UK
+        datetime created_at
+        datetime updated_at
+    }
+    short_videos ||..o{ short_video_comments : "short_video_id"
+    users |o..o{ short_video_comments : "user_id"
+    short_video_comments |o..o{ short_video_comments : "parent_id"
+    short_video_comments |o..o{ short_video_comments : "root_id"
+    short_video_comment_likes {
+        integer comment_id PK,FK
+        integer user_id PK,FK
+    }
+    users ||..o{ short_video_comment_likes : "user_id"
+    short_video_comments ||..o{ short_video_comment_likes : "comment_id"
+    short_video_comment_reports {
+        integer id PK
+        integer comment_id FK
+        integer user_id FK
+        datetime created_at
+        datetime resolved_at
+        varchar category
+        varchar explanation
+    }
+    users ||..o{ short_video_comment_reports : "user_id"
+    short_video_comments ||..o{ short_video_comment_reports : "comment_id"
+    short_video_comment_flags {
+        integer id PK
+        integer comment_id FK
+        integer moderator_id FK
+        varchar category
+        varchar explanation
+        datetime created_at
+        datetime resolved_at
+    }
+    users ||..o{ short_video_comment_flags : "moderator_id"
+    short_video_comments ||..o{ short_video_comment_flags : "comment_id"
+    short_video_comment_history {
+        integer id PK
+        integer comment_id FK
+        integer moderator_id FK
+        varchar from_status
+        varchar to_status
+        varchar reason
+        datetime created_at
+        varchar action
+    }
+    users |o..o{ short_video_comment_history : "moderator_id"
+    short_video_comments ||..o{ short_video_comment_history : "comment_id"
+    guest_comment_identities {
+        integer id PK
+        varchar token_hash UK
+        varchar username UK
+        datetime created_at
+        datetime updated_at
+    }
+    guest_comment_days {
+        integer guest_id PK,FK
+        date day PK
+        integer comment_count
+    }
+    guest_comment_identities ||..o{ guest_comment_days : "guest_id"
+    notifications {
+        integer notificationID PK
+        varchar type
+        text data
+        datetime read_at
+        datetime created_at
+        datetime updated_at
+        integer notifiable_id FK
+        varchar notifiable_type
+        integer alertID FK
+        integer postID FK
+        integer commentID FK
+    }
+    comments |o..o{ notifications : "commentID"
+    news |o..o{ notifications : "postID"
+    broadcasts |o..o{ notifications : "alertID"
+    users ||..o{ notifications : "notifiable_id"
+    intelligence_documents {
+        integer id PK
+        integer uploaded_by FK
+        varchar ai_document_id UK
+        varchar original_name
+        varchar storage_disk
+        varchar storage_path
+        varchar mime_type
+        integer file_size
+        varchar sha256
+        varchar status
+        varchar embedding_status
+        integer character_count
+        text error_message
+        datetime processed_at
+        datetime created_at
+        datetime updated_at
+        integer processing_attempts
+        datetime last_attempted_at
+        datetime archive_after
+        datetime archived_at
+        datetime deleted_at
+    }
+    users ||..o{ intelligence_documents : "uploaded_by"
+    intelligence_extraction_requests {
+        integer id PK
+        integer document_id FK
+        integer requested_by FK
+        varchar mode
+        text original_prompt
+        text normalized_query
+        text keywords
+        varchar model_name
+        varchar prompt_version
+        varchar status
+        text error_message
+        datetime started_at
+        datetime completed_at
+        datetime created_at
+        datetime updated_at
+    }
+    users ||..o{ intelligence_extraction_requests : "requested_by"
+    intelligence_documents ||..o{ intelligence_extraction_requests : "document_id"
+    intelligence_information {
+        integer id PK
+        integer document_id FK
+        integer item_index
+        varchar type
+        varchar title
+        text summary
+        text labels
+        text fields
+        text evidence
+        numeric confidence
+        text search_text
+        tinyint is_active
+        datetime created_at
+        datetime updated_at
+        integer extraction_request_id FK
+        varchar review_status
+        numeric quality_score
+        text quality_breakdown
+        varchar information_embedding_status
+        integer reviewed_by FK
+        datetime reviewed_at
+        datetime deleted_at
+    }
+    users |o..o{ intelligence_information : "reviewed_by"
+    intelligence_extraction_requests |o..o{ intelligence_information : "extraction_request_id"
+    intelligence_documents ||..o{ intelligence_information : "document_id"
+    intelligent_news_drafts {
+        integer id PK
+        integer created_by FK
+        varchar title
+        text excerpt
+        text labels
+        text sources_used
+        text warnings
+        text user_prompt
+        varchar status
+        integer published_news_id FK
+        datetime created_at
+        datetime updated_at
+        varchar creation_method
+        integer category_id FK
+        varchar image
+        integer version
+        datetime reviewed_at
+        tinyint show_on_homepage
+        varchar instagram_media_id
+        varchar facebook_post_id
+        text publication_results
+        datetime publication_started_at
+        text image_crops
+        text image_variants
+        text content
+        datetime deleted_at
+    }
+    news |o..o{ intelligent_news_drafts : "published_news_id"
+    users ||..o{ intelligent_news_drafts : "created_by"
+    news_categories |o..o{ intelligent_news_drafts : "category_id"
+    intelligent_news_draft_sources {
+        integer id PK
+        integer draft_id FK
+        integer information_id FK
+        datetime created_at
+        datetime updated_at
+    }
+    intelligence_information ||..o{ intelligent_news_draft_sources : "information_id"
+    intelligent_news_drafts ||..o{ intelligent_news_draft_sources : "draft_id"
+    intelligent_news_draft_versions {
+        integer id PK
+        integer draft_id FK
+        integer version
+        varchar change_type
+        text snapshot
+        integer created_by FK
+        datetime created_at
+        datetime updated_at
+        varchar revision_source
+        text revision_instruction
+    }
+    users ||..o{ intelligent_news_draft_versions : "created_by"
+    intelligent_news_drafts ||..o{ intelligent_news_draft_versions : "draft_id"
+    ai_quality_evaluations {
+        integer id PK
+        integer draft_id FK
+        integer draft_version_id FK
+        varchar evaluation_version
+        varchar evaluator_model
+        numeric overall_score
+        varchar quality_label
+        tinyint publish_blocked
+        text dimensions
+        text claim_checks
+        text warnings
+        datetime created_at
+        datetime updated_at
+        integer approved_by FK
+        datetime approved_at
+        text approval_note
+        integer approved_version
+    }
+    users |o..o{ ai_quality_evaluations : "approved_by"
+    intelligent_news_drafts ||..o{ ai_quality_evaluations : "draft_id"
+    intelligent_news_draft_versions |o..o{ ai_quality_evaluations : "draft_version_id"
+    intelligent_news_sessions {
+        integer id PK
+        integer created_by FK
+        varchar status
+        text prompt
+        text selected_document_ids
+        text selected_information_ids
+        text user_facts
+        text pending_questions
+        text conflicts
+        integer draft_id FK
+        datetime created_at
+        datetime updated_at
+        datetime archived_at
+        integer clarification_rounds
+        varchar title
+        text context_summary
+        varchar current_intent
+        datetime last_message_at
+        datetime deleted_at
+    }
+    intelligent_news_drafts |o..o{ intelligent_news_sessions : "draft_id"
+    users ||..o{ intelligent_news_sessions : "created_by"
+    intelligent_news_messages {
+        integer id PK
+        integer session_id FK
+        varchar role
+        varchar intent
+        text content
+        varchar tool_name
+        text payload
+        integer draft_version_id FK
+        datetime created_at
+        datetime updated_at
+        integer reply_to_id FK
+        varchar status
+        integer sequence
+    }
+    intelligent_news_messages |o..o{ intelligent_news_messages : "reply_to_id"
+    intelligent_news_sessions ||..o{ intelligent_news_messages : "session_id"
+    intelligent_news_draft_versions |o..o{ intelligent_news_messages : "draft_version_id"
+    intelligent_news_runs {
+        integer id PK
+        integer session_id FK
+        integer user_message_id FK
+        varchar intent
+        varchar status
+        varchar current_stage
+        text error_message
+        datetime started_at
+        datetime completed_at
+        datetime created_at
+        datetime updated_at
+    }
+    intelligent_news_messages |o..o{ intelligent_news_runs : "user_message_id"
+    intelligent_news_sessions ||..o{ intelligent_news_runs : "session_id"
+    intelligent_news_run_events {
+        integer id PK
+        integer run_id FK
+        integer sequence
+        varchar event_type
+        varchar tool_name
+        varchar label
+        text content
+        text payload
+        datetime created_at
+        datetime updated_at
+    }
+    intelligent_news_runs ||..o{ intelligent_news_run_events : "run_id"
+    intelligent_news_source_selections {
+        integer id PK
+        integer session_id FK
+        integer message_id FK
+        integer run_id FK
+        varchar source_type
+        integer information_id FK
+        integer document_id FK
+        text url
+        varchar title
+        text source_snapshot
+        varchar decision
+        integer decided_by FK
+        datetime decided_at
+        datetime created_at
+        datetime updated_at
+    }
+    users |o..o{ intelligent_news_source_selections : "decided_by"
+    intelligence_documents |o..o{ intelligent_news_source_selections : "document_id"
+    intelligence_information |o..o{ intelligent_news_source_selections : "information_id"
+    intelligent_news_runs |o..o{ intelligent_news_source_selections : "run_id"
+    intelligent_news_messages |o..o{ intelligent_news_source_selections : "message_id"
+    intelligent_news_sessions ||..o{ intelligent_news_source_selections : "session_id"
+    social_connections {
+        integer id PK
+        integer user_id FK
+        varchar platform
+        varchar account_id
+        varchar account_name
+        text access_token
+        datetime expires_at
+        datetime invalidated_at
+        datetime created_at
+        datetime updated_at
+        varchar auth_source
+        varchar insights_status
+        datetime insights_synced_at
+    }
+    users ||..o{ social_connections : "user_id"
+    meta_insight_snapshots {
+        integer id PK
+        integer connection_id FK
+        varchar account_id
+        varchar metric
+        varchar period
+        datetime period_end
+        integer value
+        datetime synced_at
+    }
+    social_connections ||..o{ meta_insight_snapshots : "connection_id"
+    analytics_settings {
+        integer id PK
+        text widgets
+        text layout
+        text meta_connection_ids
+        integer period_days
+        integer updated_by FK
+        datetime tracking_started_at
+        datetime created_at
+        datetime updated_at
+    }
+    users |o..o{ analytics_settings : "updated_by"
+    analytics_setting_changes {
+        integer id PK
+        integer user_id FK
+        text configuration
+        datetime created_at
+    }
+    users |o..o{ analytics_setting_changes : "user_id"
+    villager_activity_hours {
+        integer id PK
+        integer user_id FK
+        datetime hour
+        varchar platform
+    }
+    users ||..o{ villager_activity_hours : "user_id"
+    archived_comment_moderation_assessments {
+        integer id PK
+        integer comment_id
+        varchar classification
+        tinyint ai_flagged
+        text categories
+        text category_scores
+        varchar reason
+        varchar initial_status
+        varchar requested_model
+        varchar returned_model
+        varchar source
+        datetime assessed_at
+        datetime created_at
+        text comment_snapshot
+        varchar source_sha256
+        datetime archived_at
+    }
+    archived_comment_moderation_feedback {
+        integer id PK
+        integer comment_id
+        integer assessment_id
+        integer history_id UK
+        integer administrator_id
+        varchar classification
+        varchar category
+        varchar explanation
+        varchar verification_status
+        varchar request_id UK
+        integer expected_revision
+        datetime created_at
+        text comment_snapshot
+        text history_snapshot
+        text administrator_snapshot
+        varchar source_sha256
+        datetime archived_at
+    }
+    two_factors {
+        varchar two_factor_secret PK
+        text two_factor_recovery_codes
+        datetime two_factor_confirmed_at
+        datetime created_at
+        datetime updated_at
+        integer userID FK,UK
+    }
+    users ||..o| two_factors : "userID"
+    jobs {
+        integer id PK
+        varchar queue
+        text payload
+        integer attempts
+        integer reserved_at
+        integer available_at
+        integer created_at
+    }
+    failed_jobs {
+        integer id PK
+        varchar uuid UK
+        text connection
+        text queue
+        text payload
+        text exception
+        datetime failed_at
+    }
+    migrations {
+        integer id PK
+        varchar migration
+        integer batch
+    }
+    runs {
+        TEXT id PK
+        TEXT owner
+        TEXT request_hash
+        TEXT status
+        TEXT response
+        REAL lease
+    }
+    events {
+        INTEGER id PK
+        TEXT run_id
+        TEXT data
+    }
+    progress {
+        TEXT id PK
+        REAL updated
+        TEXT data
+    }
+    checkpoints {
+        TEXT thread_id PK
+        TEXT checkpoint_ns PK
+        TEXT checkpoint_id PK
+        TEXT parent_checkpoint_id
+        TEXT type
+        BLOB checkpoint
+        BLOB metadata
+    }
+    writes {
+        TEXT thread_id PK
+        TEXT checkpoint_ns PK
+        TEXT checkpoint_id PK
+        TEXT task_id PK
+        INTEGER idx PK
+        TEXT channel
+        TEXT type
+        BLOB value
+    }
+    runs ||..o{ events : "logical_run_id_no_FK"
+    checkpoints ||..o{ writes : "logical_checkpoint_key_no_FK"

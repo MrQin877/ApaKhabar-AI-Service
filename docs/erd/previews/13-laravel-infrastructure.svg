@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="670" viewBox="0 0 2570 670"><rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="50" y="60" font-family="Arial" font-size="30" font-weight="bold">13 Laravel infrastructure</text>
+<text x="50" y="100" font-family="Arial" font-size="16" fill="#475569">All attributes shown. Grey boxes reference another page. Parent / child labels give exact cardinality; dashed lines are logical only.</text>
+<rect x="200" y="260" width="560" height="240" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">jobs</text>
+<text x="212" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="345" font-family="Arial" font-size="12">id</text>
+<text x="610" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="369" font-family="Arial" font-size="12">queue</text>
+<text x="610" y="369" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="393" font-family="Arial" font-size="12">payload</text>
+<text x="610" y="393" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="417" font-family="Arial" font-size="12">attempts</text>
+<text x="610" y="417" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="441" font-family="Arial" font-size="12">reserved_at ?</text>
+<text x="610" y="441" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="465" font-family="Arial" font-size="12">available_at</text>
+<text x="610" y="465" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="489" font-family="Arial" font-size="12">created_at</text>
+<text x="610" y="489" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="260" width="560" height="240" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">failed_jobs</text>
+<text x="1002" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="345" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">UK</text>
+<text x="1076" y="369" font-family="Arial" font-size="12">uuid</text>
+<text x="1400" y="369" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="393" font-family="Arial" font-size="12">connection</text>
+<text x="1400" y="393" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="417" font-family="Arial" font-size="12">queue</text>
+<text x="1400" y="417" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="441" font-family="Arial" font-size="12">payload</text>
+<text x="1400" y="441" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="465" font-family="Arial" font-size="12">exception</text>
+<text x="1400" y="465" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="489" font-family="Arial" font-size="12">failed_at</text>
+<text x="1400" y="489" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1780" y="260" width="560" height="144" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">migrations</text>
+<text x="1792" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="1781" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="345" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="369" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="369" font-family="Arial" font-size="12">migration</text>
+<text x="2190" y="369" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="393" font-family="Arial" font-size="12">batch</text>
+<text x="2190" y="393" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+</svg>

@@ -1,0 +1,34 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Administrator / Moderator
+    participant P1 as Web Application (Moderation UI)
+    participant P2 as CommentModerationController
+    participant P3 as ModerationDecisionService
+    participant P4 as Application Database
+    P0->>P1: open comment review queue
+    P1->>P2: GET /admin/comments (filters)
+    P2->>P4: query pending comments, reports, flags and history
+    P4-->>P2: return paginated review data
+    P2-->>P1: render admin/comments
+    P1-->>P0: display review queue and revision
+    P0->>P1: choose allow / hide, enter reason
+    P1->>P2: POST /admin/comments/{id}/decision
+    P2->>P2: validate action, reason, optional expected_revision
+    P2->>P3: decide(actor, id, action, reason, expectedRevision)
+    P3->>P3: authorize verified admin/moderator
+    P3->>P4: begin transaction, lock comment, read open reports/flags
+    P4-->>P3: return current status and revision
+    alt [revision mismatch or invalid transition]
+    P3-->>P2: 409 conflict, transaction rolls back
+    P2-->>P1: return conflict response
+    P1-->>P0: ask reviewer to reload current comment
+    else [valid decision]
+    P3->>P4: allow → published, hide → hidden, increment revision
+    P3->>P4: insert moderation history with actor/action/reason
+    P3->>P4: resolve open reports and flags, commit
+    P4-->>P3: return history ID
+    P3-->>P2: decision saved
+    P2-->>P1: JSON: confirmation
+    P1-->>P0: refresh review queue / show saved decision
+    end
+    Note over P0,P4: content_type=shorts routes to ShortCommentDecisionService and short-video tables. No AI re-evaluation or new legacy feedback/assessment record is created by this decision.

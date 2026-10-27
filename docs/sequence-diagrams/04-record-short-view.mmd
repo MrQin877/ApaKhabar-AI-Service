@@ -1,0 +1,30 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Viewer (Guest / signed-in)
+    participant P1 as Web Application (Short-video player)
+    participant P2 as ShortViewerController
+    participant P3 as Application Database
+    P0->>P1: open and play a published short video
+    P1->>P2: GET /shorts/{id}/view-token
+    P2->>P3: verify published video and published_at
+    P3-->>P2: return video
+    P2->>P2: create viewer key and session-bound encrypted token
+    P2-->>P1: return token, set short_visitor cookie
+    Note over P0,P3: The player tracks qualified visible playback before submitting a view. Server accepts token age 5 seconds to 2 hours.
+    P1->>P2: POST /shorts/{id}/view (token)
+    P2->>P2: validate video, age, current viewer and session
+    alt [invalid token]
+    P2-->>P1: 422: reject request
+    else [valid token]
+    P2->>P3: begin transaction, lock published short_videos row
+    P2->>P3: insertOrIgnore short_video_viewers(video_id, viewer_key)
+    P3-->>P2: return whether a row was inserted
+    opt [first recorded view for this viewer]
+    P2->>P3: increment short_videos.view_count
+    end
+    P2->>P3: commit, read view_count
+    P3-->>P2: return view_count
+    P2-->>P1: JSON: view_count
+    P1-->>P0: update displayed count
+    end
+    Note over P0,P3: Short-video view_count is deduplicated by (short_video_id, viewer_key). Unlike news, this flow has no separate news_visits-style total-visit counter.

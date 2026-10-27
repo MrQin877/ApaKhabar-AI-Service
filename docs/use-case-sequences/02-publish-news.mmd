@@ -1,0 +1,41 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Moderator / Administrator
+    participant P1 as Web Application (System)
+    participant P2 as Application Database
+    participant P3 as Facebook / Instagram Publishing API
+    P0->>P1: openPublicationPreview(draftId, selectedPlatforms)
+    P1->>P2: load draft, media variants and connection context
+    P2-->>P1: return publication data
+    P1-->>P0: display previews and platform issues
+    P0->>P1: confirmPublish(platforms, version, previewToken)
+    P1->>P1: validate ownership, draft status, current review and quality gate
+    Note over P0,P3: Validate applicable category and preview checks. An invalid/stale preview or blocked AI quality stops publishing, return errors for correction.
+    loop [each selected platform]
+    P1->>P2: lock draft, check existing published platform ID
+    P2-->>P1: return existing publication state
+    alt [already published on platform]
+    P1->>P1: reuse published ID, avoid duplicate creation
+    else [website not yet published]
+    P1->>P2: create active news, store published_news_id
+    P2-->>P1: return news ID
+    else [Facebook or Instagram not yet published]
+    P1->>P3: publish image + post text / caption
+    P3-->>P1: return platform ID or publishing error
+    alt [provider success]
+    P1->>P2: store facebook_post_id / instagram_media_id
+    else [provider failure]
+    P1->>P1: record safe error for this platform, continue other targets
+    end
+    end
+    end
+    P1->>P2: merge publication_results, retain successful platform IDs
+    opt [all stored publication results successful]
+    P1->>P2: set draft.status = published
+    end
+    P2-->>P1: return final per-platform state
+    P1-->>P0: display success or partial-failure summary
+    opt [retry failed targets]
+    P0->>P1: retry failed platforms after correcting issues
+    P1->>P1: repeat checks and publishing loop, reuse successful IDs
+    end

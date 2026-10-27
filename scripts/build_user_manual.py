@@ -329,7 +329,7 @@ def build() -> None:
     document.add_paragraph().paragraph_format.space_after = Pt(55)
     metadata = document.add_paragraph()
     metadata.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    metadata.add_run("Version 1.0  •  September 2026  •  Local Ollama Edition").italic = True
+    metadata.add_run("Version 2.0  •  October 2026  •  Hosted API Edition").italic = True
     document.add_page_break()
 
     add_heading(document, "Contents", 1)
@@ -348,7 +348,7 @@ def build() -> None:
     document.add_paragraph(
         "ApaKhabar converts supported documents or plain text into labelled, structured information, "
         "checks whether the facts are sufficient for news writing, and produces editable news drafts. "
-        "All model inference and embeddings run locally through Ollama."
+        "Writer and evaluator use hosted APIs; EmbeddingGemma runs locally for retrieval."
     )
     add_heading(document, "1.1 What the service does", 2)
     for item in [
@@ -369,10 +369,10 @@ def build() -> None:
 
     add_heading(document, "2. Installation and first run", 1)
     add_heading(document, "2.1 Prerequisites", 2)
-    for item in ["Python 3.11 or newer", "Ollama", "8 GB memory minimum; 16 GB recommended", "Approximately 4 GB free storage for the recommended models"]:
+    for item in ["Python 3.12 or newer", "Hosted API credentials and cached EmbeddingGemma model", "8 GB memory minimum; 16 GB recommended", "Approximately 4 GB free storage for the recommended models"]:
         add_bullet(document, item, bullet_id)
     add_heading(document, "2.2 Install models", 2)
-    add_code(document, "ollama pull qwen3:4b\nollama pull qwen3-embedding:0.6b\nollama list")
+    add_code(document, "AI_BASE_URL=https://your-provider.example/v1\nAI_API_KEY=your-key\nAI_MODEL=your-model\nEMBEDDING_PROVIDER=embedding_gemma")
     add_heading(document, "2.3 Create the Python environment", 2)
     for step in [
         "Clone or copy the repository and open a terminal in its root directory.",
@@ -384,7 +384,7 @@ def build() -> None:
     add_code(document, "python3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npip install -r requirements.txt\ncp .env.example .env\nuvicorn app.main:app --reload")
     add_note(document, "Windows", "Use .venv\\Scripts\\Activate.ps1 in PowerShell instead of the source command.")
     add_heading(document, "2.4 Verify installation", 2)
-    add_code(document, "curl http://127.0.0.1:8000/health\ncurl http://127.0.0.1:8000/health/ollama")
+    add_code(document, "curl http://127.0.0.1:8000/health\ncurl http://127.0.0.1:8000/health/models")
     document.add_paragraph("Interactive API documentation is available at http://127.0.0.1:8000/docs.")
 
     add_heading(document, "3. User workflows", 1)
@@ -420,7 +420,7 @@ def build() -> None:
 
     add_heading(document, "5. API reference", 1)
     api_rows = [
-        ["GET", "/health", "Application health"], ["GET", "/health/ollama", "Ollama and model health"],
+        ["GET", "/health", "Application health"], ["GET", "/health/models", "Hosted model capability probe"],
         ["POST", "/documents/upload", "Normalize a file"], ["POST", "/documents/extract-information", "Extract labelled information"],
         ["POST", "/documents/index", "Index a file for RAG"], ["POST", "/extract-information", "Extract plain text"],
         ["POST", "/summarize", "Summarize plain text"], ["POST", "/news/check-completeness", "Find missing/conflicting facts"],
@@ -432,9 +432,9 @@ def build() -> None:
     document.add_page_break()
     add_heading(document, "6. Configuration", 1)
     config_rows = [
-        ["OLLAMA_BASE_URL", "http://localhost:11434", "Ollama API address"],
-        ["OLLAMA_GENERATION_MODEL", "qwen3:4b", "Extraction and writing model"],
-        ["OLLAMA_EMBEDDING_MODEL", "qwen3-embedding:0.6b", "Embedding model"],
+        ["AI_BASE_URL", "Provider HTTPS URL", "Chat Completions base URL"],
+        ["AI_MODEL", "Configured hosted model", "Extraction and writing model"],
+        ["EMBEDDING_MODEL", "google/embeddinggemma-300m", "Cached embedding model"],
         ["CHROMA_PATH", "./data/chroma", "Vector data directory"],
         ["MAX_UPLOAD_MB", "20", "Upload limit"], ["RAG_CHUNK_SIZE", "1000", "Approximate chunk characters"],
         ["RAG_CHUNK_OVERLAP", "150", "Chunk overlap"], ["RAG_TOP_K", "5", "Default retrieval count"],
@@ -501,7 +501,7 @@ def build() -> None:
     document.add_page_break()
     add_heading(document, "10. Troubleshooting", 1)
     troubleshooting = [
-        ["Ollama returns 503", "Start Ollama; compare ollama list with .env model names."],
+        ["Provider request fails", "Inspect provider status: verify API key, model access, balance and quota."],
         ["Slow response", "Use qwen3:4b, shorten input, reduce top-k, close memory-heavy apps."],
         ["No RAG result", "Confirm indexing; refine the query; cautiously tune maximum distance."],
         ["Scanned PDF is empty", "The file has no text layer; add OCR for image-only PDFs."],
@@ -511,7 +511,7 @@ def build() -> None:
     add_table(document, ["Problem", "Action"], troubleshooting, [2800, 6560])
 
     add_heading(document, "Appendix A. Quick commands", 1)
-    add_code(document, "ollama list\nsource .venv/bin/activate\nuvicorn app.main:app --reload\npython -m unittest discover -s tests -v")
+    add_code(document, "source .venv/bin/activate\nuvicorn app.main:app --reload\npython -m unittest discover -s tests -v")
     add_heading(document, "Appendix B. Current limitations", 1)
     for item in [
         "No OCR for image-only PDFs", "No user authentication or tenant isolation", "Synchronous model jobs can block under concurrent load",
@@ -522,7 +522,7 @@ def build() -> None:
     document.core_properties.title = "ApaKhabar AI Service User & Developer Manual"
     document.core_properties.subject = "Installation, API usage, RAG, development, and operations"
     document.core_properties.author = "ApaKhabar Project"
-    document.core_properties.keywords = "ApaKhabar, Ollama, FastAPI, RAG, ChromaDB, news"
+    document.core_properties.keywords = "ApaKhabar, hosted APIs, FastAPI, RAG, ChromaDB, news"
     document.save(OUTPUT)
 
 

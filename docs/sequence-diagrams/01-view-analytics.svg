@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="2812"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="40" y="47" font-family="Arial" font-size="25" font-weight="bold">View analytics and export reports</text>
+<text x="40" y="85" font-family="Arial" font-size="13" fill="#475569">Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow</text>
+<rect x="40" y="1256" width="1870" height="1366" fill="none" stroke="#64748b"/><text x="55" y="1278" font-family="Arial" font-size="13">alt [export requested]</text>
+<line x1="150" y1="190" x2="150" y2="2777" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<circle cx="150" cy="143" r="10" fill="#ffd2a8" stroke="#555"/><path d="M 150 153 v 22 m -22 -12 h44 m-22 12 l-18 18 m18 -18 l18 18" fill="none" stroke="#555"/>
+<text x="150" y="108" text-anchor="middle" font-family="Arial" font-size="13">Administrator</text>
+<line x1="540" y1="190" x2="540" y2="2777" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="440" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="540" y="151" text-anchor="middle" font-family="Arial" font-size="14">Web Application</text>
+<text x="540" y="170" text-anchor="middle" font-family="Arial" font-size="14">(Analytics UI)</text>
+<line x1="930" y1="190" x2="930" y2="2777" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="830" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="930" y="151" text-anchor="middle" font-family="Arial" font-size="14">AnalyticsController</text>
+<line x1="1320" y1="190" x2="1320" y2="2777" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1220" y="125" width="200" height="65" fill="#e2f0d9" stroke="#64748b"/>
+<text x="1320" y="151" text-anchor="middle" font-family="Arial" font-size="14">Analytics Services</text>
+<text x="1320" y="170" text-anchor="middle" font-family="Arial" font-size="14">(Report / Performance / Export)</text>
+<line x1="1710" y1="190" x2="1710" y2="2777" stroke="#94a3b8" stroke-dasharray="6 5"/>
+<rect x="1610" y="125" width="200" height="65" fill="#dae8fc" stroke="#64748b"/>
+<text x="1710" y="151" text-anchor="middle" font-family="Arial" font-size="14">Application Database</text>
+<rect x="534" y="225" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="150,225 540,225" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="345.0" y="221" text-anchor="middle" font-family="Arial" font-size="13">navigateAnalyticsPage(filters)</text>
+<rect x="924" y="310" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="540,310 930,310" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="735.0" y="306" text-anchor="middle" font-family="Arial" font-size="13">GET /admin/analytics</text>
+<rect x="924" y="438" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,413 975,413 975,438 930,438" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="985" y="391" text-anchor="start" font-family="Arial" font-size="13">authorize administrator; validate</text>
+<text x="985" y="409" text-anchor="start" font-family="Arial" font-size="13">dates, filters and range</text>
+<rect x="65" y="488" width="1820" height="55" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="510" font-family="Arial" font-size="13">Authenticated, verified administrator required. Invalid filters stop the request; no report is returned.</text>
+<rect x="1704" y="578" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,578 1710,578" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1320.0" y="574" text-anchor="middle" font-family="Arial" font-size="13">read AnalyticsSetting::current() and layout</text>
+<polyline points="1710,663 930,663" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1320.0" y="659" text-anchor="middle" font-family="Arial" font-size="13">return dashboard configuration</text>
+<rect x="1314" y="748" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,748 1320,748" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="744" text-anchor="middle" font-family="Arial" font-size="13">build(widgets, from, to, source, platform)</text>
+<rect x="1704" y="833" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,833 1710,833" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="829" text-anchor="middle" font-family="Arial" font-size="13">aggregate users, activity, news and broadcasts</text>
+<polyline points="1710,918 1320,918" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="914" text-anchor="middle" font-family="Arial" font-size="13">return aggregate rows</text>
+<rect x="1704" y="1021" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1021 1710,1021" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="999" text-anchor="middle" font-family="Arial" font-size="13">read selected social connections and saved Meta</text>
+<text x="1515.0" y="1017" text-anchor="middle" font-family="Arial" font-size="13">snapshots</text>
+<polyline points="1710,1106 1320,1106" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="1102" text-anchor="middle" font-family="Arial" font-size="13">return social metrics and sync status</text>
+<polyline points="1320,1191 930,1191" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="1187" text-anchor="middle" font-family="Arial" font-size="13">return report widgets</text>
+<rect x="1314" y="1331" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,1331 1320,1331" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="1327" text-anchor="middle" font-family="Arial" font-size="13">data(scope, filters); build CSV or XLSX</text>
+<rect x="1704" y="1416" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1416 1710,1416" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1412" text-anchor="middle" font-family="Arial" font-size="13">read additional export rows as required</text>
+<polyline points="1710,1501 1320,1501" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="1497" text-anchor="middle" font-family="Arial" font-size="13">return export data</text>
+<polyline points="1320,1586 930,1586" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="1582" text-anchor="middle" font-family="Arial" font-size="13">return export content / workbook path</text>
+<polyline points="930,1671 540,1671" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="1667" text-anchor="middle" font-family="Arial" font-size="13">download CSV / XLSX (private, no-store)</text>
+<polyline points="540,1756 150,1756" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="1752" text-anchor="middle" font-family="Arial" font-size="13">save report file</text>
+<line x1="40" y1="1821" x2="1910" y2="1821" stroke="#64748b" stroke-dasharray="6 4"/><text x="55" y="1843" font-family="Arial" font-size="13">[view dashboard]</text>
+<rect x="1314" y="1914" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,1914 1320,1914" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1125.0" y="1892" text-anchor="middle" font-family="Arial" font-size="13">interactionTrend(); listing(); optional post</text>
+<text x="1125.0" y="1910" text-anchor="middle" font-family="Arial" font-size="13">inspection</text>
+<rect x="1704" y="1999" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="1320,1999 1710,1999" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1515.0" y="1995" text-anchor="middle" font-family="Arial" font-size="13">query likes, comments and post performance</text>
+<polyline points="1710,2084 1320,2084" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1515.0" y="2080" text-anchor="middle" font-family="Arial" font-size="13">return rows and trends</text>
+<polyline points="1320,2169 930,2169" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1125.0" y="2165" text-anchor="middle" font-family="Arial" font-size="13">return performance data</text>
+<rect x="1704" y="2254" width="12" height="28" fill="white" stroke="#64748b"/>
+<polyline points="930,2254 1710,2254" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="1320.0" y="2250" text-anchor="middle" font-family="Arial" font-size="13">read categories and administrator connections</text>
+<polyline points="1710,2339 930,2339" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="1320.0" y="2335" text-anchor="middle" font-family="Arial" font-size="13">return selection options</text>
+<polyline points="930,2442 540,2442" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="735.0" y="2420" text-anchor="middle" font-family="Arial" font-size="13">render admin/analytics with filters and</text>
+<text x="735.0" y="2438" text-anchor="middle" font-family="Arial" font-size="13">configuration</text>
+<polyline points="540,2527 150,2527" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="345.0" y="2523" text-anchor="middle" font-family="Arial" font-size="13">display charts, tables and social sync status</text>
+<rect x="65" y="2642" width="1820" height="55" fill="#fffbea" stroke="#c9b975"/>
+<text x="77" y="2664" font-family="Arial" font-size="13">Changing filters repeats GET /admin/analytics. Dashboard reads stored Meta metrics; it does not call Meta live. The generic engagement widget is still a placeholder; post performance is calculated separately.</text>
+</svg>

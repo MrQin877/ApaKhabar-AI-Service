@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="04-record-short-view" name="Record a short-video view">
+    <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Record a short-video view" style="text;html=0;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1480" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Solid arrow: request / call     Dashed arrow: return     Frames: alternative, optional or repeated flow" style="text;html=0;align=left;fontSize=13;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="65" width="1480" height="30" />
+        </mxCell>
+        <mxCell id="frame0" value="opt [first recorded view for this viewer]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1469" width="1480" height="170" />
+        </mxCell>
+        <mxCell id="frame1" value="alt [invalid token]" style="shape=umlFrame;whiteSpace=wrap;html=0;pointerEvents=0;width=500;height=30;fillColor=none;strokeColor=#64748b;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1001" width="1480" height="1018" />
+        </mxCell>
+        <mxCell id="p0" value="Viewer&#10;(Guest / signed-in)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#ffd2a8;strokeColor=#64748b;participant=umlActor;verticalAlign=bottom;labelPosition=center;verticalLabelPosition=top;align=center;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="125" width="200" height="2049" />
+        </mxCell>
+        <mxCell id="p1" value="Web Application&#10;(Short-video player)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#e2f0d9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="125" width="200" height="2049" />
+        </mxCell>
+        <mxCell id="p2" value="ShortViewerController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#e2f0d9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="830" y="125" width="200" height="2049" />
+        </mxCell>
+        <mxCell id="p3" value="Application Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=0;container=1;dropTarget=0;collapsible=0;recursiveResize=0;size=65;fontSize=14;fillColor=#dae8fc;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="125" width="200" height="2049" />
+        </mxCell>
+        <mxCell id="port0s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p0">
+          <mxGeometry as="geometry" x="99" y="99" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port0t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="99" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation0" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="94" y="100" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message0" edge="1" parent="1" source="port0s" target="port0t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label0" value="open and play a published short video" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="162" y="200" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port1s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="184" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port1t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="184" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation1" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="185" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message1" edge="1" parent="1" source="port1s" target="port1t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label1" value="GET /shorts/{id}/view-token" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="285" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port2s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="269" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port2t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="269" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation2" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="270" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message2" edge="1" parent="1" source="port2s" target="port2t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label2" value="verify published video and published_at" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="370" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port3s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="354" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port3t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="354" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message3" edge="1" parent="1" source="port3s" target="port3t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label3" value="return video" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="455" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port4s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="457" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port4t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="482" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation4" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="483" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message4" edge="1" parent="1" source="port4s" target="port4t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="975" y="583" />
+              <mxPoint x="975" y="608" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="create viewer key and session-bound&#10;encrypted token" style="text;html=0;whiteSpace=wrap;align=left;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="985" y="540" width="320" height="36" />
+        </mxCell>
+        <mxCell id="port5s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="542" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port5t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="542" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message5" edge="1" parent="1" source="port5s" target="port5t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label5" value="return token; set short_visitor cookie" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="643" width="366" height="18" />
+        </mxCell>
+        <mxCell id="note6" value="The player tracks qualified visible playback before submitting a view. Server accepts token age 5 seconds to 2 hours." style="shape=note;whiteSpace=wrap;html=0;align=left;spacing=10;fontSize=13;fillColor=#fffbea;strokeColor=#c9b975;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="65" y="743" width="1430" height="55" />
+        </mxCell>
+        <mxCell id="port7s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="707" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port7t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="707" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation7" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="708" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message7" edge="1" parent="1" source="port7s" target="port7t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label7" value="POST /shorts/{id}/view (token)" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="808" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port8s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="810" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port8t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="835" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation8" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="94" y="836" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message8" edge="1" parent="1" source="port8s" target="port8t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="975" y="936" />
+              <mxPoint x="975" y="961" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label8" value="validate video, age, current viewer&#10;and session" style="text;html=0;whiteSpace=wrap;align=left;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="985" y="893" width="320" height="36" />
+        </mxCell>
+        <mxCell id="port9s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="950" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port9t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="950" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message9" edge="1" parent="1" source="port9s" target="port9t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label9" value="422: reject request" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="1051" width="366" height="18" />
+        </mxCell>
+        <mxCell id="else-line10" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#64748b;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="40" y="1141" />
+            <mxPoint as="targetPoint" x="1520" y="1141" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="else10" value="[valid token]" style="text;html=0;align=left;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="1143" width="1440" height="30" />
+        </mxCell>
+        <mxCell id="port11s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1090" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port11t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1090" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation11" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="1091" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message11" edge="1" parent="1" source="port11s" target="port11t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label11" value="begin transaction; lock published short_videos row" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1191" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port12s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1193" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port12t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1193" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation12" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="1194" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message12" edge="1" parent="1" source="port12s" target="port12t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label12" value="insertOrIgnore short_video_viewers(video_id,&#10;viewer_key)" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1276" width="366" height="36" />
+        </mxCell>
+        <mxCell id="port13s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1278" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port13t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1278" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message13" edge="1" parent="1" source="port13s" target="port13t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label13" value="return whether a row was inserted" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1379" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port14s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1418" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port14t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1418" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation14" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="1419" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message14" edge="1" parent="1" source="port14s" target="port14t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label14" value="increment short_videos.view_count" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1519" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port15s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1543" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port15t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1543" width="2" height="2" />
+        </mxCell>
+        <mxCell id="activation15" value="" style="fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="94" y="1544" width="12" height="28" />
+        </mxCell>
+        <mxCell id="message15" edge="1" parent="1" source="port15s" target="port15t" style="edgeStyle=none;html=0;rounded=0;endArrow=block;strokeColor=#333;strokeWidth=1.2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label15" value="commit; read view_count" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1644" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port16s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p3">
+          <mxGeometry as="geometry" x="99" y="1628" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port16t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1628" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message16" edge="1" parent="1" source="port16s" target="port16t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label16" value="return view_count" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="942" y="1729" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port17s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p2">
+          <mxGeometry as="geometry" x="99" y="1713" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port17t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="1713" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message17" edge="1" parent="1" source="port17s" target="port17t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label17" value="JSON: view_count" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="552" y="1814" width="366" height="18" />
+        </mxCell>
+        <mxCell id="port18s" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p1">
+          <mxGeometry as="geometry" x="99" y="1798" width="2" height="2" />
+        </mxCell>
+        <mxCell id="port18t" value="" style="opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="p0">
+          <mxGeometry as="geometry" x="99" y="1798" width="2" height="2" />
+        </mxCell>
+        <mxCell id="message18" edge="1" parent="1" source="port18s" target="port18t" style="edgeStyle=none;html=0;rounded=0;endArrow=open;strokeColor=#333;strokeWidth=1.2;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label18" value="update displayed count" style="text;html=0;whiteSpace=wrap;align=center;fontSize=13;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="162" y="1899" width="366" height="18" />
+        </mxCell>
+        <mxCell id="note19" value="Short-video view_count is deduplicated by (short_video_id, viewer_key). Unlike news, this flow has no separate news_visits-style total-visit counter." style="shape=note;whiteSpace=wrap;html=0;align=left;spacing=10;fontSize=13;fillColor=#fffbea;strokeColor=#c9b975;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="65" y="2039" width="1430" height="55" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

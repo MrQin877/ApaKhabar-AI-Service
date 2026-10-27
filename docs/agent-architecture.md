@@ -46,7 +46,7 @@ Automated acceptance tests cover typed provider responses, bounded schema repair
 
 The fixed Indonesian examples in `evaluation/editorial_cases.json` exercise complete announcements, missing details, conflicting dates, source-text injection, and timeless profiles. `scripts/evaluate_editorial.py` runs them through agent or fixed-pipeline mode and saves outputs, elapsed time, and model calls. Human evaluation should record unsupported claim rate, supported fact coverage, relevance, Indonesian language quality, and appropriate abstention. Compare the modes on the same model/settings. The fixture is an initial regression set, not a statistically sufficient accuracy benchmark.
 
-Local verification during restructuring: unit tests use scripted models, and the installed EmbeddingGemma adapter was exercised locally. Live generation requires the separate llama.cpp server; its absence is not a successful model-compatibility or article-quality evaluation.
+Local verification during restructuring: unit tests use scripted models, and the installed EmbeddingGemma adapter was exercised locally. Live generation requires the configured hosted API and quota; unit tests do not establish live article quality.
 
 ## Live progress and latency
 
@@ -71,7 +71,7 @@ Verification: Python tests exercise progress visibility during inference and chu
 
 Inactivity does not intentionally stop the service. Laptop sleep suspends local execution and may interrupt connections or cause timeouts after wake. A queue `RUNNING` line only confirms the job started. Check document status, progress, and error details before retrying; avoid dispatching duplicates while an existing job is active.
 
-`GET /health` confirms the FastAPI process responds; it does not probe generation, judge, embeddings, or OCR. `GET /health/models` performs a generation capability call, not a judge check. Check each configured llama.cpp server's `/health` separately. Server health alone does not prove a document can be fully extracted. For local demonstrations, `caffeinate -i` on macOS prevents idle system sleep while that command runs; it does not make a sleeping or powered-off laptop a background server.
+`GET /health` confirms the FastAPI process responds; it does not probe generation, judge, embeddings, or OCR. `GET /health/models` performs a writer capability call; use `?target=evaluator` to probe the judge separately. Both probes consume API quota. Server health alone does not prove a document can be fully extracted. For local demonstrations, `caffeinate -i` on macOS prevents idle system sleep while that command runs; it does not make a sleeping or powered-off laptop a background server.
 
 ## Automatic background context and concise drafts
 

@@ -1,0 +1,32 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Moderator / Administrator
+    participant P1 as Web Application (System)
+    participant P2 as Application Database
+    participant P3 as AI Service Draft Quality Review
+    P0->>P1: openDraft(draftId)
+    P1->>P2: load owned draft, version, sources and evaluations
+    P2-->>P1: return draft and quality results
+    P1-->>P0: display draft editor, evidence and warnings
+    loop [changes required]
+    P0->>P1: saveChanges(content, category, image)
+    P1->>P1: validate ownership, editable status and fields
+    P1->>P2: transaction: save changes, increment version, clear reviewed_at
+    P1->>P2: store draft-version snapshot
+    opt [AI draft with existing evaluations: content edit]
+    P1->>P2: create pending evaluation, read approved active sources
+    P2-->>P1: return version and evidence
+    P1->>P3: POST /news/review-draft (title, content, sources)
+    P3-->>P1: return quality, claims and publish_blocked / failure
+    P1->>P1: validate quality and evidence, block on missing support or failure
+    P1->>P2: lock draft, save evaluation only if version still current
+    end
+    P2-->>P1: return updated draft state
+    P1-->>P0: display revised version and quality warnings
+    end
+    P0->>P1: confirmReview(currentDraft)
+    P1->>P1: verify owned draft is still editable
+    P1->>P2: update reviewed_at
+    P2-->>P1: review recorded
+    P1-->>P0: show reviewed draft, publication is separate
+    Note over P0,P3: Content edits with evaluations trigger re-review. Image changes also increment version and clear reviewed_at. Marking reviewed or approving an eligible conflict does not override the publication endpoint’s publish_blocked check.

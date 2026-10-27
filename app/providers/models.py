@@ -4,8 +4,8 @@ import hashlib
 import json
 import logging
 import time
+from urllib.parse import urlsplit
 import requests
-from ollama import Client
 from pydantic import BaseModel, ValidationError
 from app.core.config import get_settings
 
@@ -25,7 +25,7 @@ class GenerationModel:
     @property
     def name(self):
         s = self.settings
-        return s.llama_cpp_model if s.ai_provider == "llama_cpp" else s.ollama_generation_model
+        return s.ai_model
 
     def structured(self, schema: type[BaseModel], system: str, data: str, temperature=0):
         messages = [{"role": "system", "content": system}, {"role": "user", "content": data}]
@@ -34,7 +34,7 @@ class GenerationModel:
             try:
                 started = time.perf_counter()
                 logger.info("Model request started: schema=%s attempt=%d provider=%s model=%s",
-                            schema.__name__, attempt + 1, self.settings.ai_provider, self.name)
+                            schema.__name__, attempt + 1, urlsplit(self.settings.ai_base_url).hostname, self.name)
                 try:
                     raw = self._chat(messages, schema.model_json_schema(), temperature)
                 finally:
@@ -67,27 +67,65 @@ class GenerationModel:
         self.call_count += 1
         s = self.settings
         try:
-            if s.ai_provider == "ollama":
-                result = Client(host=s.ollama_base_url, timeout=s.llama_cpp_timeout_seconds).chat(
-                    model=self.name, messages=messages, format=schema, stream=False, think=False,
-                    options={"temperature": temperature, "num_predict": s.llama_cpp_max_tokens})
-                return result.message.content
+            if not s.ai_api_key.strip() or not s.ai_model.strip():
+                raise ModelError("Configure the API key and model for this writer/evaluator endpoint before generating.")
             payload = {"model": self.name, "messages": messages, "temperature": temperature,
-                       "max_tokens": s.llama_cpp_max_tokens, "stream": False}
+                       "max_tokens": s.ai_max_tokens, "stream": False}
+            if urlsplit(s.ai_base_url).hostname == "api.openai.com" and self.name.startswith(("gpt-5", "o1", "o3", "o4")):
+                payload["max_completion_tokens"] = payload.pop("max_tokens")
+                payload.pop("temperature")
             if schema:
                 payload["response_format"] = {"type": "json_schema", "json_schema": {"name": "response", "schema": schema}}
-            headers = {"Authorization": f"Bearer {s.llama_cpp_api_key}"} if s.llama_cpp_api_key else {}
-            response = requests.post(s.llama_cpp_base_url.rstrip("/") + "/chat/completions",
-                                     json=payload, headers=headers, timeout=s.llama_cpp_timeout_seconds)
+            headers = {"Authorization": f"Bearer {s.ai_api_key}"} if s.ai_api_key else {}
+            deadline = time.monotonic() + s.ai_timeout_seconds
+            for attempt in range(3):
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise requests.Timeout()
+                response = requests.post(s.ai_base_url.rstrip("/") + "/chat/completions",
+                                         json=payload, headers=headers, timeout=remaining)
+                if response.ok or response.status_code not in (502, 503, 504) or attempt == 2:
+                    break
+                delay = 2 ** attempt
+                if deadline - time.monotonic() <= delay:
+                    break
+                logger.warning("Generation API temporary failure: host=%s model=%s HTTP=%s retry=%d/2 delay=%ss",
+                               urlsplit(s.ai_base_url).hostname, self.name,
+                               response.status_code, attempt + 1, delay)
+                time.sleep(delay)
             if not response.ok and any(marker in response.text.lower() for marker in (
                     "exceeds the available context", "context_length_exceeded", "exceed_context_size")):
                 raise ModelError("Model context limit exceeded. Reduce request context or increase the model server context window.")
-            response.raise_for_status()
+            if not response.ok:
+                # Only expose bounded identifiers, never provider messages that can
+                # contain credentials, source text, or rejected request values.
+                try:
+                    body = response.json()
+                    if isinstance(body, list):
+                        body = body[0] if body else {}
+                    error = body.get("error", {}) if isinstance(body, dict) else {}
+                    error = error if isinstance(error, dict) else {}
+                except (ValueError, AttributeError):
+                    error = {}
+                import re
+                identifiers = {key: value for key in ("code", "status", "type", "param")
+                               if isinstance(value := error.get(key), str)
+                               and re.fullmatch(r"[a-zA-Z0-9_.-]{1,100}", value)}
+                host = urlsplit(s.ai_base_url).hostname or "configured endpoint"
+                hint = ""
+                if identifiers.get("code") in {"credit_balance_exhausted", "insufficient_quota"} or identifiers.get("type") == "insufficient_quota":
+                    hint = " API credits/quota exhausted; check this provider's billing balance before retrying."
+                raise ModelError(f"Generation API {host} model={self.name} returned HTTP {response.status_code} "
+                                 + json.dumps(identifiers, sort_keys=True) + hint)
             return response.json()["choices"][0]["message"]["content"]
         except ModelError:
             raise
+        except requests.Timeout as exc:
+            host = urlsplit(s.ai_base_url).hostname or "configured endpoint"
+            raise ModelError(f"Generation API {host} model={self.name} timed out "
+                             f"(configured timeout: {s.ai_timeout_seconds:g}s; {type(exc).__name__}).") from exc
         except Exception as exc:
-            raise ModelError(f"Generation provider {s.ai_provider} failed ({type(exc).__name__})") from exc
+            raise ModelError(f"Generation API {urlsplit(s.ai_base_url).hostname} model={self.name} failed ({type(exc).__name__})") from exc
 
 
 @lru_cache(maxsize=2)
@@ -103,15 +141,12 @@ class Embeddings:
     @property
     def fingerprint(self):
         s = self.settings
-        name = s.ollama_embedding_model if s.embedding_provider == "ollama" else s.embedding_model
+        name = s.embedding_model
         return hashlib.sha256(f"{s.embedding_provider}:{name}:{s.embedding_dimensions}".encode()).hexdigest()[:16]
 
     def encode(self, texts: list[str], query=False):
         s = self.settings
         try:
-            if s.embedding_provider == "ollama":
-                return Client(host=s.ollama_base_url, timeout=s.llama_cpp_timeout_seconds).embed(
-                    model=s.ollama_embedding_model, input=texts).embeddings
             if s.embedding_provider == "embedding_gemma":
                 model = _sentence_model(s.embedding_model, s.embedding_device)
                 method = model.encode_query if query else model.encode_document

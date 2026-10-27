@@ -1,0 +1,365 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2570" height="2092" viewBox="0 0 2570 2092"><rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="50" y="60" font-family="Arial" font-size="30" font-weight="bold">10 AI conversations</text>
+<text x="50" y="100" font-family="Arial" font-size="16" fill="#475569">All attributes shown. Grey boxes reference another page. Parent / child labels give exact cardinality; dashed lines are logical only.</text>
+<polyline points="2340,1605 2370,1605 2370,225 170,225 170,305 200,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="1600" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="175" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,1885 812,1885 812,319 760,319" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="1880" font-family="Arial" font-size="11" fill="#475569">1</text><text x="735" y="314" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,333 1624,333 1624,232 1270.0,232 1270.0,260 1270.0,260" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="328" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="1245.0" y="255" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,305 856,305 856,165 906,165 906,305 990,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="300" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,1619 1668,1619 1668,319 1550,319" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="1614" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="1525" y="314" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,333 1690,333 1690,225 1750,225 1750,333 1780,333" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="328" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="1755" y="328" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,305 790,305 790,205 1732,205 1732,305 1780,305" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="300" font-family="Arial" font-size="11" fill="#475569">1</text><text x="1755" y="300" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,319 2392,319 2392,185 134,185 134,1017 200,1017" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="314" font-family="Arial" font-size="11" fill="#475569">1</text><text x="175" y="1012" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,1899 834,1899 834,863 906,863 906,1031 990,1031" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="1894" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="965" y="1026" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,1003 2436,1003 2436,843 888,843 888,1003 990,1003" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="998" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="965" y="998" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,1619 878,1619 878,923 960,923 960,1017 990,1017" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="1614" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="965" y="1012" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="2340,333 2480,333 2480,205 942,205 942,1031 990,1031" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="2345" y="328" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="965" y="1026" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="1550,305 1580,305 1580,1003 1550,1003" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1555" y="300" font-family="Arial" font-size="11" fill="#475569">0..1</text><text x="1525" y="998" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<polyline points="760,319 812,319 812,165 906,165 906,1017 990,1017" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="765" y="314" font-family="Arial" font-size="11" fill="#475569">1</text><text x="965" y="1012" font-family="Arial" font-size="11" fill="#475569">0..N</text>
+<rect x="200" y="260" width="560" height="528" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_sessions</text>
+<text x="212" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="345" font-family="Arial" font-size="12">id</text>
+<text x="610" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="286" y="369" font-family="Arial" font-size="12">created_by</text>
+<text x="610" y="369" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="393" font-family="Arial" font-size="12">status</text>
+<text x="610" y="393" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="417" font-family="Arial" font-size="12">prompt ?</text>
+<text x="610" y="417" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="441" font-family="Arial" font-size="12">selected_document_ids</text>
+<text x="610" y="441" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="465" font-family="Arial" font-size="12">selected_information_ids</text>
+<text x="610" y="465" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="489" font-family="Arial" font-size="12">user_facts</text>
+<text x="610" y="489" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="513" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="513" font-family="Arial" font-size="12">pending_questions</text>
+<text x="610" y="513" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="537" font-family="Arial" font-size="12">conflicts</text>
+<text x="610" y="537" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="544" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="561" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="286" y="561" font-family="Arial" font-size="12">draft_id ?</text>
+<text x="610" y="561" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="568" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="585" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="585" font-family="Arial" font-size="12">created_at ?</text>
+<text x="610" y="585" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="592" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="609" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="609" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="610" y="609" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="616" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="633" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="633" font-family="Arial" font-size="12">archived_at ?</text>
+<text x="610" y="633" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="640" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="657" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="657" font-family="Arial" font-size="12">clarification_rounds</text>
+<text x="610" y="657" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="664" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="681" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="681" font-family="Arial" font-size="12">title ?</text>
+<text x="610" y="681" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="688" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="705" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="705" font-family="Arial" font-size="12">context_summary ?</text>
+<text x="610" y="705" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="712" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="729" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="729" font-family="Arial" font-size="12">current_intent ?</text>
+<text x="610" y="729" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="736" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="753" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="753" font-family="Arial" font-size="12">last_message_at ?</text>
+<text x="610" y="753" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="760" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="777" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="777" font-family="Arial" font-size="12">deleted_at ?</text>
+<text x="610" y="777" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="990" y="260" width="560" height="384" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_messages</text>
+<text x="1002" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="345" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="369" font-family="Arial" font-size="12">session_id</text>
+<text x="1400" y="369" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="393" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="393" font-family="Arial" font-size="12">role</text>
+<text x="1400" y="393" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="417" font-family="Arial" font-size="12">intent ?</text>
+<text x="1400" y="417" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="441" font-family="Arial" font-size="12">content ?</text>
+<text x="1400" y="441" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="465" font-family="Arial" font-size="12">tool_name ?</text>
+<text x="1400" y="465" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="489" font-family="Arial" font-size="12">payload ?</text>
+<text x="1400" y="489" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="513" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="513" font-family="Arial" font-size="12">draft_version_id ?</text>
+<text x="1400" y="513" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="537" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1400" y="537" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="544" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="561" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="561" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1400" y="561" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="568" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="585" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="585" font-family="Arial" font-size="12">reply_to_id ?</text>
+<text x="1400" y="585" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="592" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="609" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="609" font-family="Arial" font-size="12">status</text>
+<text x="1400" y="609" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="616" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="633" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="633" font-family="Arial" font-size="12">sequence</text>
+<text x="1400" y="633" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="260" width="560" height="336" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="260" width="560" height="40" fill="#1e40af"/>
+<text x="1792" y="286" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_runs</text>
+<text x="1792" y="318" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="1781" y="328" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="345" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="345" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="345" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="352" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="369" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1866" y="369" font-family="Arial" font-size="12">session_id</text>
+<text x="2190" y="369" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="376" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="393" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1866" y="393" font-family="Arial" font-size="12">user_message_id ?</text>
+<text x="2190" y="393" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1781" y="400" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="417" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="417" font-family="Arial" font-size="12">intent</text>
+<text x="2190" y="417" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="424" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="441" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="441" font-family="Arial" font-size="12">status</text>
+<text x="2190" y="441" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="448" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="465" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="465" font-family="Arial" font-size="12">current_stage ?</text>
+<text x="2190" y="465" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="1781" y="472" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="489" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="489" font-family="Arial" font-size="12">error_message ?</text>
+<text x="2190" y="489" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="1781" y="496" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="513" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="513" font-family="Arial" font-size="12">started_at ?</text>
+<text x="2190" y="513" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="520" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="537" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="537" font-family="Arial" font-size="12">completed_at ?</text>
+<text x="2190" y="537" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="544" width="558" height="24" fill="#ffffff"/>
+<text x="1788" y="561" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="561" font-family="Arial" font-size="12">created_at ?</text>
+<text x="2190" y="561" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1781" y="568" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="585" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1866" y="585" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="2190" y="585" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="200" y="958" width="560" height="336" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="958" width="560" height="40" fill="#1e40af"/>
+<text x="212" y="984" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_run_events</text>
+<text x="212" y="1016" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="201" y="1026" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1043" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="1043" font-family="Arial" font-size="12">id</text>
+<text x="610" y="1043" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="1050" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1067" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="286" y="1067" font-family="Arial" font-size="12">run_id</text>
+<text x="610" y="1067" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="1074" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1091" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1091" font-family="Arial" font-size="12">sequence</text>
+<text x="610" y="1091" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="201" y="1098" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1115" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1115" font-family="Arial" font-size="12">event_type</text>
+<text x="610" y="1115" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="1122" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1139" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1139" font-family="Arial" font-size="12">tool_name ?</text>
+<text x="610" y="1139" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="1146" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1163" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1163" font-family="Arial" font-size="12">label ?</text>
+<text x="610" y="1163" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="201" y="1170" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1187" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1187" font-family="Arial" font-size="12">content ?</text>
+<text x="610" y="1187" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="1194" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1211" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1211" font-family="Arial" font-size="12">payload ?</text>
+<text x="610" y="1211" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="201" y="1218" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1235" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1235" font-family="Arial" font-size="12">created_at ?</text>
+<text x="610" y="1235" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="201" y="1242" width="558" height="24" fill="#ffffff"/>
+<text x="208" y="1259" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="286" y="1259" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="610" y="1259" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<text x="210" y="1283" font-family="Arial" font-size="11" fill="#7c3aed">UQ: run_id, sequence</text>
+<rect x="990" y="958" width="560" height="432" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="958" width="560" height="40" fill="#1e40af"/>
+<text x="1002" y="984" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_source_selections</text>
+<text x="1002" y="1016" font-family="Arial" font-size="11" fill="#64748b">PK primary · FK foreign · UK unique · ? nullable</text>
+<rect x="991" y="1026" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1043" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="1043" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="1043" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1050" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1067" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1067" font-family="Arial" font-size="12">session_id</text>
+<text x="1400" y="1067" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1074" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1091" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1091" font-family="Arial" font-size="12">message_id ?</text>
+<text x="1400" y="1091" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1098" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1115" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1115" font-family="Arial" font-size="12">run_id ?</text>
+<text x="1400" y="1115" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1122" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1139" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1139" font-family="Arial" font-size="12">source_type</text>
+<text x="1400" y="1139" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="1146" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1163" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1163" font-family="Arial" font-size="12">information_id ?</text>
+<text x="1400" y="1163" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1170" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1187" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1187" font-family="Arial" font-size="12">document_id ?</text>
+<text x="1400" y="1187" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1194" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1211" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1211" font-family="Arial" font-size="12">url ?</text>
+<text x="1400" y="1211" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="1218" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1235" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1235" font-family="Arial" font-size="12">title</text>
+<text x="1400" y="1235" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="1242" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1259" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1259" font-family="Arial" font-size="12">source_snapshot ?</text>
+<text x="1400" y="1259" font-family="Arial" font-size="12" fill="#64748b">text</text>
+<rect x="991" y="1266" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1283" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1283" font-family="Arial" font-size="12">decision</text>
+<text x="1400" y="1283" font-family="Arial" font-size="12" fill="#64748b">varchar</text>
+<rect x="991" y="1290" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1307" font-family="Arial" font-size="12" fill="#1d4ed8">FK</text>
+<text x="1076" y="1307" font-family="Arial" font-size="12">decided_by ?</text>
+<text x="1400" y="1307" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="991" y="1314" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1331" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1331" font-family="Arial" font-size="12">decided_at ?</text>
+<text x="1400" y="1331" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="1338" width="558" height="24" fill="#ffffff"/>
+<text x="998" y="1355" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1355" font-family="Arial" font-size="12">created_at ?</text>
+<text x="1400" y="1355" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="991" y="1362" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1379" font-family="Arial" font-size="12" fill="#1d4ed8"></text>
+<text x="1076" y="1379" font-family="Arial" font-size="12">updated_at ?</text>
+<text x="1400" y="1379" font-family="Arial" font-size="12" fill="#64748b">datetime</text>
+<rect x="1780" y="958" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="958" width="560" height="40" fill="#334155"/>
+<text x="1792" y="984" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligence_documents</text>
+<text x="1792" y="1016" font-family="Arial" font-size="11" fill="#64748b">REF · 08 Intelligence</text>
+<rect x="1781" y="1026" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1043" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="1043" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="1043" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="1560" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="1560" width="560" height="40" fill="#334155"/>
+<text x="212" y="1586" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligence_information</text>
+<text x="212" y="1618" font-family="Arial" font-size="11" fill="#64748b">REF · 08 Intelligence</text>
+<rect x="201" y="1628" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1645" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="1645" font-family="Arial" font-size="12">id</text>
+<text x="610" y="1645" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="990" y="1560" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="990" y="1560" width="560" height="40" fill="#334155"/>
+<text x="1002" y="1586" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_draft_versions</text>
+<text x="1002" y="1618" font-family="Arial" font-size="11" fill="#64748b">REF · 09 Drafting and review</text>
+<rect x="991" y="1628" width="558" height="24" fill="#f1f5f9"/>
+<text x="998" y="1645" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1076" y="1645" font-family="Arial" font-size="12">id</text>
+<text x="1400" y="1645" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="1780" y="1560" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="1780" y="1560" width="560" height="40" fill="#334155"/>
+<text x="1792" y="1586" font-family="Arial" font-weight="bold" font-size="16" fill="white">intelligent_news_drafts</text>
+<text x="1792" y="1618" font-family="Arial" font-size="11" fill="#64748b">REF · 09 Drafting and review</text>
+<rect x="1781" y="1628" width="558" height="24" fill="#f1f5f9"/>
+<text x="1788" y="1645" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="1866" y="1645" font-family="Arial" font-size="12">id</text>
+<text x="2190" y="1645" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+<rect x="200" y="1826" width="560" height="96" fill="white" stroke="#cbd5e1"/>
+<rect x="200" y="1826" width="560" height="40" fill="#334155"/>
+<text x="212" y="1852" font-family="Arial" font-weight="bold" font-size="16" fill="white">users</text>
+<text x="212" y="1884" font-family="Arial" font-size="11" fill="#64748b">REF · 01 Accounts</text>
+<rect x="201" y="1894" width="558" height="24" fill="#f1f5f9"/>
+<text x="208" y="1911" font-family="Arial" font-size="12" fill="#1d4ed8">PK</text>
+<text x="286" y="1911" font-family="Arial" font-size="12">userID</text>
+<text x="610" y="1911" font-family="Arial" font-size="12" fill="#64748b">integer</text>
+</svg>

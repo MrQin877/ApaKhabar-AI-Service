@@ -1,0 +1,61 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Reader / Villager
+    participant P1 as Web Application (System)
+    participant P2 as Application Database
+    participant P3 as Moderation API (OpenAI)
+    participant P4 as Moderator / Administrator
+    P0->>P1: openNewsArticle(newsId)
+    P1->>P2: load active news and published comments
+    P2-->>P1: return public content
+    P1-->>P0: display article and engagement controls
+    opt [qualified view]
+    P0->>P1: request engagement token, submit after reading interval
+    P1->>P1: validate encrypted token, age and session
+    P1->>P2: transaction: deduplicate visit, record viewer, update counters
+    P2-->>P1: return unique_views
+    P1-->>P0: update view count
+    end
+    alt [like or unlike: login required]
+    P0->>P1: toggleLike(post or comment)
+    P1->>P2: lock target, insert/delete like, count likes
+    P1->>P2: update cached likes_count for news posts
+    P2-->>P1: return liked and count
+    P1-->>P0: update Like button and count
+    else [comment or reply]
+    P0->>P1: submitComment(content, parentId?, guestChallenge?)
+    P1->>P1: validate fields, check guest challenge when anonymous
+    P1->>P2: check guest quota if applicable, visibility and duplicate hash
+    P2-->>P1: return eligibility
+    Note over P0,P4: Invalid input, duplicate content, or exhausted guest quota stops submission. Guests may submit up to three comments per day, replies require a published parent.
+    opt [moderation API key configured]
+    P1->>P3: POST /v1/moderations (content)
+    P3-->>P1: return flags/categories or service failure
+    end
+    P1->>P1: publish only clean valid result without suspicious links/promotion
+    P1->>P2: save comment + initial history, increment guest quota on success
+    P2-->>P1: return published or pending_review
+    P1-->>P0: show publication / awaiting-review confirmation
+    else [report published comment: login required]
+    P0->>P1: reportComment(category, details)
+    P1->>P2: insertOrIgnore comment_reports
+    P2-->>P1: report accepted
+    P1-->>P0: display acknowledgement, do not auto-hide
+    end
+    opt [human review: pending, reported or flagged comment]
+    P4->>P1: open moderation queue
+    P1->>P2: load comments, reports, flags and history
+    P2-->>P1: return review records and revision
+    P1-->>P4: display review details
+    P4->>P1: allow / hide (reason, expectedRevision?)
+    P1->>P2: transaction: lock comment, check current revision and transition
+    alt [conflict]
+    P1-->>P4: 409: reload latest comment
+    else [valid decision]
+    P1->>P2: set published / hidden, increment revision, append history
+    P1->>P2: resolve open reports and flags, commit
+    P2-->>P1: decision saved
+    P1-->>P4: display saved decision
+    end
+    end
+    Note over P0,P4: This use case summarizes independent reader interactions. Human moderation happens later, no reader request waits for a moderator. Reviewers can create comment_flags separately. Unavailable AI moderation leaves comments pending_review.

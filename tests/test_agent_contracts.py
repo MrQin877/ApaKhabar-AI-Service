@@ -10,7 +10,7 @@ from app.core.config import Settings
 from app.providers.models import GenerationModel, ModelError
 from app.schemas.knowledge import KnowledgeItem
 from app.services.knowledge_service import KnowledgeService
-from app.services.ai_service import OllamaService
+from app.services.ai_service import AIService
 from app.schemas.information import ExtractionResponse
 
 
@@ -30,9 +30,9 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(chat.call_count, 2)
 
     @patch('app.providers.models.requests.post')
-    def test_llama_adapter_sends_json_schema(self, post):
+    def test_hosted_adapter_sends_json_schema(self, post):
         post.return_value.json.return_value = {'choices': [{'message': {'content': '{"ok":true}'}}]}
-        model = GenerationModel(Settings(_env_file=None, ai_provider='llama_cpp'))
+        model = GenerationModel(Settings(_env_file=None, ai_model='writer', ai_api_key='test-key'))
         self.assertTrue(model.structured(Probe, 'System', 'Input').ok)
         self.assertEqual(post.call_args.kwargs['json']['response_format']['json_schema']['schema'], Probe.model_json_schema())
 
@@ -76,12 +76,12 @@ class ContractTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             NewsRequest(information={'information': [{'information_id':'42', 'type':'General', 'title':'A', 'summary':'B', 'labels':[], 'fields':{}, 'evidence':[], 'confidence': .8}]})
 
-    @patch.object(OllamaService, '_structured_chat')
+    @patch.object(AIService, '_structured_chat')
     def test_extraction_rejects_invented_quote_location(self, chat):
         chat.return_value = ExtractionResponse(information=[{'type': 'General', 'title': 'Title', 'summary': 'Summary', 'labels': [], 'fields': {}, 'confidence': .9,
             'evidence': [{'source': 'page=2', 'quote': 'Real text'}]}])
         with self.assertRaises(ModelError):
-            OllamaService.extract_information('[source: page=1] Real text')
+            AIService.extract_information('[source: page=1] Real text')
 
 
 if __name__ == '__main__':

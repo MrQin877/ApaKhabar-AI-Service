@@ -1,0 +1,37 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Administrator
+    participant P1 as Web Application (Analytics UI)
+    participant P2 as AnalyticsController
+    participant P3 as Analytics Services (Report / Performance / Export)
+    participant P4 as Application Database
+    P0->>P1: navigateAnalyticsPage(filters)
+    P1->>P2: GET /admin/analytics
+    P2->>P2: authorize administrator, validate dates, filters and range
+    Note over P0,P4: Authenticated, verified administrator required. Invalid filters stop the request, no report is returned.
+    P2->>P4: read AnalyticsSetting::current() and layout
+    P4-->>P2: return dashboard configuration
+    P2->>P3: build(widgets, from, to, source, platform)
+    P3->>P4: aggregate users, activity, news and broadcasts
+    P4-->>P3: return aggregate rows
+    P3->>P4: read selected social connections and saved Meta snapshots
+    P4-->>P3: return social metrics and sync status
+    P3-->>P2: return report widgets
+    alt [export requested]
+    P2->>P3: data(scope, filters), build CSV or XLSX
+    P3->>P4: read additional export rows as required
+    P4-->>P3: return export data
+    P3-->>P2: return export content / workbook path
+    P2-->>P1: download CSV / XLSX (private, no-store)
+    P1-->>P0: save report file
+    else [view dashboard]
+    P2->>P3: interactionTrend(), listing(), optional post inspection
+    P3->>P4: query likes, comments and post performance
+    P4-->>P3: return rows and trends
+    P3-->>P2: return performance data
+    P2->>P4: read categories and administrator connections
+    P4-->>P2: return selection options
+    P2-->>P1: render admin/analytics with filters and configuration
+    P1-->>P0: display charts, tables and social sync status
+    end
+    Note over P0,P4: Changing filters repeats GET /admin/analytics. Dashboard reads stored Meta metrics, it does not call Meta live. The generic engagement widget is still a placeholder, post performance is calculated separately.
