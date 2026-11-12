@@ -1,0 +1,44 @@
+{
+  "synthetic": true,
+  "records": 500,
+  "event_capacity": 25,
+  "counts": {
+    "sektor_usaha": {
+      "Hasil pertanian": 80,
+      "Kuliner": 213,
+      "Pakaian": 77,
+      "Kerajinan": 78,
+      "Jasa": 52
+    },
+    "kanal_penjualan_utama": {
+      "Toko atau lapak": 205,
+      "WhatsApp": 181,
+      "Marketplace": 46,
+      "Instagram": 68
+    },
+    "memiliki_ponsel": {
+      "Ya": 472,
+      "Tidak": 28
+    },
+    "pernah_pelatihan_foto": {
+      "Tidak": 422,
+      "Ya": 78
+    },
+    "kebutuhan_utama": {
+      "Kemasan produk": 82,
+      "Foto produk": 205,
+      "Pencatatan keuangan": 103,
+      "Promosi digital": 110
+    },
+    "minat_pelatihan_foto": {
+      "Tidak": 57,
+      "Ya": 337,
+      "Belum memutuskan": 106
+    },
+    "waktu_pilihan": {
+      "Siang": 168,
+      "Sore": 164,
+      "Pagi": 168
+    }
+  }
+}

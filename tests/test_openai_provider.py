@@ -6,6 +6,57 @@ from app.providers.models import GenerationModel, ModelError
 
 
 class OpenAIProviderTests(unittest.TestCase):
+    @patch('app.providers.models.time.sleep')
+    def test_internal_error_recovers_without_exposing_provider_message(self, sleep):
+        failure = Mock(ok=False, status_code=500, text='PRIVATE')
+        success = Mock(ok=True)
+        success.json.return_value = {'choices': [{'message': {'content': 'OK'}}]}
+        with patch('app.providers.models.requests.post', side_effect=[failure, success]) as post:
+            self.assertEqual(self.model().text('system', 'test'), 'OK')
+        self.assertEqual(post.call_count, 2)
+        sleep.assert_called_once_with(1)
+
+    @patch('app.providers.models.time.sleep')
+    def test_persistent_internal_error_stops_after_three_requests(self, sleep):
+        failure = Mock(ok=False, status_code=500, text='PRIVATE')
+        failure.json.return_value = {'error': {'status': 'INTERNAL', 'message': 'PRIVATE'}}
+        with patch('app.providers.models.requests.post', return_value=failure) as post:
+            with self.assertRaises(ModelError) as raised:
+                self.model().text('system', 'test')
+        self.assertEqual(post.call_count, 3)
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [1, 2])
+        self.assertIn('HTTP 500', str(raised.exception))
+        self.assertNotIn('PRIVATE', str(raised.exception))
+
+    def test_hosted_gemma_uses_json_mode_and_validates_extraction(self):
+        from app.services.ai_service import ExtractionChunkResponse
+        model = GenerationModel(Settings(_env_file=None,
+            ai_base_url='https://generativelanguage.googleapis.com/v1beta/openai',
+            ai_model='gemma-4-26b-a4b-it', ai_api_key='test-key'))
+        response = Mock(ok=True)
+        response.json.side_effect = [
+            {'choices': [{'message': {'content': '{"information": "invalid"}'}}]},
+            {'choices': [{'message': {'content': '{"information": []}'}}]},
+        ]
+        with patch('app.providers.models.requests.post', return_value=response) as post:
+            result = model.structured(ExtractionChunkResponse, 'Extract facts.', 'No facts.')
+        self.assertEqual(result.information, [])
+        self.assertEqual(post.call_count, 2)
+        for call in post.call_args_list:
+            payload = call.kwargs['json']
+            self.assertEqual(payload['response_format'], {'type': 'json_object'})
+            self.assertIn('"$defs"', payload['messages'][0]['content'])
+            self.assertEqual(payload['messages'][1]['content'], 'No facts.')
+
+    def test_local_gemma_keeps_native_schema(self):
+        response = Mock(ok=True)
+        response.json.return_value = {'choices': [{'message': {'content': '{}'}}]}
+        model = GenerationModel(Settings(_env_file=None, ai_base_url='http://localhost:8080/v1',
+            ai_model='gemma-4-26b-a4b-it', ai_api_key='local'))
+        with patch('app.providers.models.requests.post', return_value=response) as post:
+            model._chat([{'role': 'system', 'content': 'Test'}], {'type': 'object'}, 0)
+        self.assertEqual(post.call_args.kwargs['json']['response_format']['type'], 'json_schema')
+
     def model(self, endpoint='https://api.openai.com/v1'):
         return GenerationModel(Settings(_env_file=None, 
             ai_base_url=endpoint, ai_model='gpt-5.4-mini', ai_api_key='test-key'))
