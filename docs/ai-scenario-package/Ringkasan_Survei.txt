@@ -1,0 +1,41 @@
+Ringkasan survei kebutuhan UMKM
+Periode 20 Oktober–6 November 2026
+Total respons: 500
+Satu baris per responden anonim. Minat bukan pendaftaran.
+
+sektor_usaha
+Hasil pertanian: 80 (16.0%)
+Kuliner: 213 (42.6%)
+Pakaian: 77 (15.4%)
+Kerajinan: 78 (15.6%)
+Jasa: 52 (10.4%)
+
+kanal_penjualan_utama
+Toko atau lapak: 205 (41.0%)
+WhatsApp: 181 (36.2%)
+Marketplace: 46 (9.2%)
+Instagram: 68 (13.6%)
+
+memiliki_ponsel
+Ya: 472 (94.4%)
+Tidak: 28 (5.6%)
+
+pernah_pelatihan_foto
+Tidak: 422 (84.4%)
+Ya: 78 (15.6%)
+
+kebutuhan_utama
+Kemasan produk: 82 (16.4%)
+Foto produk: 205 (41.0%)
+Pencatatan keuangan: 103 (20.6%)
+Promosi digital: 110 (22.0%)
+
+minat_pelatihan_foto
+Tidak: 57 (11.4%)
+Ya: 337 (67.4%)
+Belum memutuskan: 106 (21.2%)
+
+waktu_pilihan
+Siang: 168 (33.6%)
+Sore: 164 (32.8%)
+Pagi: 168 (33.6%)

@@ -4,6 +4,7 @@ import hashlib
 import json
 import logging
 import math
+import re
 import time
 from urllib.parse import urlsplit
 import requests
@@ -38,9 +39,22 @@ class GenerationModel:
                             schema.__name__, attempt + 1, urlsplit(self.settings.ai_base_url).hostname, self.name)
                 try:
                     raw = self._chat(messages, schema.model_json_schema(), temperature)
+                except ModelError as exc:
+                    # ModelError contains bounded provider identifiers, not source text.
+                    logger.warning("Model request failed: schema=%s attempt=%d error=%s",
+                                   schema.__name__, attempt + 1, exc)
+                    raise
                 finally:
                     logger.info("Model request ended: schema=%s attempt=%d elapsed_seconds=%.2f",
                                 schema.__name__, attempt + 1, time.perf_counter() - started)
+                if (urlsplit(self.settings.ai_base_url).hostname == "generativelanguage.googleapis.com"
+                        and self.name.startswith("gemma-") and isinstance(raw, str)):
+                    # Hosted Gemma may prepend a complete thought block even in
+                    # JSON mode. Never recover JSON from inside an unfinished thought.
+                    raw = re.sub(r'\A\s*<thought>.*?</thought>\s*', '', raw, count=1, flags=re.DOTALL)
+                    fenced = re.fullmatch(r'\s*```(?:json)?\s*\n(.*?)\n```\s*', raw, flags=re.DOTALL)
+                    if fenced:
+                        raw = fenced.group(1)
                 return schema.model_validate_json(raw)
             except ValidationError as exc:
                 logger.warning("Model schema validation failed: schema=%s attempt=%d retrying=%s",
@@ -76,7 +90,18 @@ class GenerationModel:
                 payload["max_completion_tokens"] = payload.pop("max_tokens")
                 payload.pop("temperature")
             if schema:
-                payload["response_format"] = {"type": "json_schema", "json_schema": {"name": "response", "schema": schema}}
+                if (urlsplit(s.ai_base_url).hostname == "generativelanguage.googleapis.com"
+                        and self.name.startswith("gemma-")):
+                    # Hosted Gemma accepts JSON mode but rejects some nested schemas
+                    # (including our extraction schema). Keep full local validation.
+                    payload["messages"] = [{**message} for message in messages]
+                    payload["messages"][0]["content"] += (
+                        "\nReturn only a JSON object matching this JSON Schema. "
+                        "Do not include markdown fences or commentary.\n"
+                        + json.dumps(schema, ensure_ascii=False))
+                    payload["response_format"] = {"type": "json_object"}
+                else:
+                    payload["response_format"] = {"type": "json_schema", "json_schema": {"name": "response", "schema": schema}}
             headers = {"Authorization": f"Bearer {s.ai_api_key}"} if s.ai_api_key else {}
             deadline = time.monotonic() + s.ai_timeout_seconds
             for attempt in range(3):
@@ -85,7 +110,7 @@ class GenerationModel:
                     raise requests.Timeout()
                 response = requests.post(s.ai_base_url.rstrip("/") + "/chat/completions",
                                          json=payload, headers=headers, timeout=remaining)
-                if response.ok or response.status_code not in (502, 503, 504) or attempt == 2:
+                if response.ok or response.status_code not in (500, 502, 503, 504) or attempt == 2:
                     break
                 delay = 2 ** attempt
                 if deadline - time.monotonic() <= delay:

@@ -11,6 +11,30 @@ class Result(BaseModel):
 
 
 class SchemaRepairTests(unittest.TestCase):
+    def gemma(self):
+        return GenerationModel(Settings(_env_file=None,
+            ai_base_url='https://generativelanguage.googleapis.com/v1beta/openai',
+            ai_model='gemma-4-26b-a4b-it'))
+
+    def test_gemma_validates_final_json_outside_thought(self):
+        for final in ['{"body":["final"]}', '```json\n{"body":["final"]}\n```']:
+            with self.subTest(final=final):
+                model = self.gemma()
+                with patch.object(model, '_chat', return_value='<thought>{"body":["wrong"]}</thought>'+final) as chat:
+                    self.assertEqual(model.structured(Result, 'system', 'data').body, ['final'])
+                    chat.assert_called_once()
+
+    def test_gemma_rejects_unfinished_thought_and_invalid_final_schema(self):
+        for raw in ['<thought>{"body":["not final"]}',
+                    '<thought>analysis</thought>{"body":"wrong type"}',
+                    '<thought>analysis</thought>Commentary {"body":["value"]}']:
+            with self.subTest(raw=raw):
+                model = self.gemma()
+                with patch.object(model, '_chat', return_value=raw) as chat:
+                    with self.assertRaises(ModelError):
+                        model.structured(Result, 'system', 'data')
+                    self.assertEqual(chat.call_count, 2)
+
     def test_repair_keeps_evidence_and_field_errors_without_growing_history(self):
         model = GenerationModel(Settings(_env_file=None))
         calls = []
