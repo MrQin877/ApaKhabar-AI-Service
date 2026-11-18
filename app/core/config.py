@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     evaluator_api_key: str = ""
     evaluator_timeout_seconds: float = Field(default=180, gt=0)
     evaluator_max_tokens: int = Field(default=4096, gt=0)
-    embedding_provider: Literal["embedding_gemma", "openai"] = "embedding_gemma"
+    embedding_provider: Literal["embedding_gemma", "openai", "gemini"] = "embedding_gemma"
     embedding_model: str = "google/embeddinggemma-300m"
     embedding_device: str = "auto"
     embedding_dimensions: int = Field(default=768, gt=0)

@@ -3,6 +3,7 @@ from functools import lru_cache
 import hashlib
 import json
 import logging
+import math
 import re
 import time
 from urllib.parse import urlsplit
@@ -176,10 +177,45 @@ class Embeddings:
                 model = _sentence_model(s.embedding_model, s.embedding_device)
                 method = model.encode_query if query else model.encode_document
                 return method(texts, normalize_embeddings=True, truncate_dim=s.embedding_dimensions).tolist()
+            if s.embedding_provider == "gemini":
+                if not s.embedding_api_key.strip():
+                    raise ModelError("Configure EMBEDDING_API_KEY for Gemini embeddings.")
+                from google import genai
+                from google.genai import types
+                vectors = []
+                client = genai.Client(api_key=s.embedding_api_key)
+                try:
+                    for start in range(0, len(texts), 50):
+                        batch = texts[start:start + 50]
+                        response = client.models.embed_content(
+                            model=s.embedding_model,
+                            contents=batch,
+                            config=types.EmbedContentConfig(
+                                task_type="RETRIEVAL_QUERY" if query else "RETRIEVAL_DOCUMENT",
+                                output_dimensionality=s.embedding_dimensions,
+                            ),
+                        )
+                        embeddings = response.embeddings or []
+                        if len(embeddings) != len(batch):
+                            raise ModelError("Gemini returned an unexpected number of embeddings.")
+                        for item in embeddings:
+                            values = item.values or []
+                            if len(values) != s.embedding_dimensions:
+                                raise ModelError("Gemini returned an unexpected embedding dimension.")
+                            # gemini-embedding-001 needs normalization below 3072 dimensions.
+                            length = math.sqrt(sum(value * value for value in values))
+                            if not length or not math.isfinite(length):
+                                raise ModelError("Gemini returned an invalid embedding vector.")
+                            vectors.append([value / length for value in values])
+                finally:
+                    client.close()
+                return vectors
             headers = {"Authorization": f"Bearer {s.embedding_api_key}"} if s.embedding_api_key else {}
             response = requests.post(s.embedding_base_url.rstrip("/") + "/embeddings",
                                      headers=headers, json={"model": s.embedding_model, "input": texts}, timeout=120)
             response.raise_for_status()
             return [item["embedding"] for item in sorted(response.json()["data"], key=lambda item: item["index"])]
+        except ModelError:
+            raise
         except Exception as exc:
             raise ModelError(f"Embedding provider {s.embedding_provider} failed ({type(exc).__name__})") from exc
